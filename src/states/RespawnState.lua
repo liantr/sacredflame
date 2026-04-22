@@ -1,0 +1,1 @@
+RespawnState = Class{__includes = BaseState}

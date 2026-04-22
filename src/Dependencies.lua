@@ -10,11 +10,28 @@ Class = require 'lib/class'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
 
+require 'src/StateMachine'
+require 'src/states/BaseState'
+require 'src/states/StartState'
+require 'src/states/PlayState'
+require 'src/states/BossBattleState'
+require 'src/states/GameOverState'
+require 'src/states/PauseState'
+require 'src/states/RespawnState'
+require 'src/states/TorchLightingState'
+require 'src/states/VictoryState'
+
+
+require 'src/constants'
+
 require 'src/Util'
 
 gTextures = {
     -- backgrounds
-    --['blue-desert'] = love.graphics.newImage('graphics/blue_desert.png'),
+    ['templeBg1'] = love.graphics.newImage('assets/graphics/ruinedTemple/background.png'),
+    ['templeBg2'] = love.graphics.newImage('assets/graphics/ruinedTemple/background2.png'),
+    ['templeBg3'] = love.graphics.newImage('assets/graphics/ruinedTemple/background3.png'),
+    ['templeBg4'] = love.graphics.newImage('assets/graphics/ruinedTemple/background4.png'),
 
     -- aliens
     --['aliens'] = love.graphics.newImage('graphics/aliens.png'),
@@ -32,9 +49,10 @@ gSounds = {
 }
 
 gFonts = {
+    ['title'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 64),
 --     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
---     ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),
---     ['large'] = love.graphics.newFont('fonts/font.ttf', 32),
+    ['medium'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 16),
+    ['large'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 32),
 --     ['huge'] = love.graphics.newFont('fonts/font.ttf', 64)
 }
 

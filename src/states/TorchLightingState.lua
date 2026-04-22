@@ -1,0 +1,1 @@
+TorchLightingState = Class{__includes = BaseState}

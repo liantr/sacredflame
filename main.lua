@@ -25,7 +25,8 @@ end
 
 function love.load()
     math.randomseed(os.time())
-    love.window.setTitle('Angry 50')
+    
+    love.window.setTitle('The Sacred Flame')
 
     love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
@@ -37,12 +38,18 @@ function love.load()
 
     gStateMachine = StateMachine {
         ['start'] = function() return StartState() end,
-        ['play'] = function() return PlayState() end
+        ['play'] = function() return PlayState() end,
+        ['boss'] = function() return PlayState() end,
+        ['gameOver'] = function() return PlayState() end,
+        ['pause'] = function() return PlayState() end,
+        ['respawn'] = function() return PlayState() end,
+        ['torchLighting'] = function() return PlayState() end,
+        ['victory'] = function() return PlayState() end
     }
     gStateMachine:change('start')
 
-    gSounds['music']:setLooping(true)
-    gSounds['music']:play()
+    --gSounds['music']:setLooping(true)
+    --gSounds['music']:play()
 
     love.keyboard.keysPressed = {}
     love.mouse.keysPressed = {}

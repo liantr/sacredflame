@@ -1,0 +1,1 @@
+BossBattleState = Class{__includes = BaseState}
