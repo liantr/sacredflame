@@ -45,8 +45,6 @@ function createAnimations(animations)
     local animationsReturned = {}
 
     for k, animationDef in pairs(animations) do
-                print("creating animation: " .. k .. " with texture: " .. tostring(animationDef.texture))
-
         animationsReturned[k] = Animation {
             texture = animationDef.texture or 'entities',
             frames = animationDef.frames,

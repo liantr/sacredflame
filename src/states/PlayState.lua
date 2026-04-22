@@ -60,9 +60,19 @@ function PlayState:init()
     self.world:setCallbacks(beginContact)
 end
 
+function PlayState:enter(params)
+    if params then
+        self = params.playState
+    end
+end
+
 function PlayState:update(dt)
     self.world:update(dt)
     self.player:update(dt)
+
+    if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then
+        gStateMachine:change('pause', {playState = self})
+    end
 end
 
 function PlayState:updateCamera()

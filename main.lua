@@ -39,12 +39,12 @@ function love.load()
     gStateMachine = StateMachine {
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end,
-        ['boss'] = function() return PlayState() end,
-        ['gameOver'] = function() return PlayState() end,
-        ['pause'] = function() return PlayState() end,
-        ['respawn'] = function() return PlayState() end,
-        ['torchLighting'] = function() return PlayState() end,
-        ['victory'] = function() return PlayState() end
+        ['boss'] = function() return BossBattleState() end,
+        ['gameOver'] = function() return GameOverState() end,
+        ['pause'] = function() return PauseState() end,
+        ['respawn'] = function() return RespawnState() end,
+        ['torchLighting'] = function() return TorchLightingState() end,
+        ['victory'] = function() return VictoryState() end
     }
     gStateMachine:change('start')
 
@@ -54,8 +54,6 @@ function love.load()
     love.keyboard.keysPressed = {}
     love.mouse.keysPressed = {}
     love.mouse.keysReleased = {}
-
-    paused = false
 end
 
 function push.resize(w, h)
@@ -63,9 +61,6 @@ function push.resize(w, h)
 end
 
 function love.keypressed(key)
-    if key == 'p' then
-        paused = not paused
-    end
 
     love.keyboard.keysPressed[key] = true
 end
@@ -91,13 +86,8 @@ function love.mouse.wasReleased(key)
 end
 
 function love.update(dt)
-    if not paused then
-        gStateMachine:update(dt)
-
-        love.keyboard.keysPressed = {}
-        love.mouse.keysPressed = {}
-        love.mouse.keysReleased = {}
-    end
+    gStateMachine:update(dt)
+    love.keyboard.keysPressed = {}
 end
 
 function love.draw()
