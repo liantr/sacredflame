@@ -9,7 +9,7 @@
 Class = require 'lib/class'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
-
+STI = require 'lib/sti'
 require 'src/constants'
 
 require 'src/defs/entity_defs'
