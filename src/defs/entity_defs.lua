@@ -24,7 +24,7 @@ ENTITY_DEFS = {
                 texture = 'player-jump'
             },
             ['falling'] = {
-                frames = {1, 3},
+                frames = {3, 5},
                 interval = 0.15,
                 looping = false,
                 texture = 'player-falling'

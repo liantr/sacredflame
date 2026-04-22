@@ -62,7 +62,7 @@ gFrames = {
     ['player-jump'] = GenerateQuadsFromRegion(gTextures['player-jump'],
         TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
     ['player-falling'] = GenerateQuadsFromRegion(gTextures['player-falling'],
-        TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+        TILE_SIZE, TILE_SIZE, TILE_SIZE*5, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
 }
 
 gSounds = {
