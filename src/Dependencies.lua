@@ -10,6 +10,13 @@ Class = require 'lib/class'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
 
+require 'src/constants'
+
+require 'src/defs/entity_defs'
+
+require 'src/Animation'
+require 'src/Util'
+
 require 'src/StateMachine'
 require 'src/states/BaseState'
 require 'src/states/StartState'
@@ -21,10 +28,17 @@ require 'src/states/RespawnState'
 require 'src/states/TorchLightingState'
 require 'src/states/VictoryState'
 
+require 'src/Entity'
+require 'src/Player'
 
-require 'src/constants'
+require 'src/states/entity/EntityWalkState'
+require 'src/states/entity/EntityIdleState'
 
-require 'src/Util'
+require 'src/states/player/PlayerWalkState'
+require 'src/states/player/PlayerIdleState'
+require 'src/states/player/PlayerJumpState'
+require 'src/states/player/PlayerFallingState'
+
 
 gTextures = {
     -- backgrounds
@@ -33,15 +47,22 @@ gTextures = {
     ['templeBg3'] = love.graphics.newImage('assets/graphics/ruinedTemple/background3.png'),
     ['templeBg4'] = love.graphics.newImage('assets/graphics/ruinedTemple/background4.png'),
 
-    -- aliens
-    --['aliens'] = love.graphics.newImage('graphics/aliens.png'),
+    -- player
+    ['player-idle'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-idle.png'),
+    ['player-walk'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-walk.png'),
+    ['player-jump'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-jump.png'),
+    ['player-falling'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-falling.png')
 }
 
 gFrames = {
-    --['aliens'] = GenerateQuads(gTextures['aliens'], 35, 35),
-    -- ['wood'] = {
-    --     love.graphics.newQuad(0, 35, 110, 35, gTextures['wood']:getDimensions()), 
-    -- }
+    ['player-idle'] = GenerateQuadsFromRegion(gTextures['player-idle'],
+        TILE_SIZE, TILE_SIZE, TILE_SIZE*13, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    ['player-walk'] = GenerateQuadsFromRegion(gTextures['player-walk'],
+        TILE_SIZE, TILE_SIZE, TILE_SIZE*15, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    ['player-jump'] = GenerateQuadsFromRegion(gTextures['player-jump'],
+        TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    ['player-falling'] = GenerateQuadsFromRegion(gTextures['player-falling'],
+        TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
 }
 
 gSounds = {

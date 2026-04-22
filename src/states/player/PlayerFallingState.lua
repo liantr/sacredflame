@@ -1,0 +1,17 @@
+PlayerFallingState = Class{__includes = BaseState}
+
+function PlayerFallingState:init(player)
+    self.player = player
+end
+
+function PlayerFallingState:enter()
+    self.player:changeAnimation('falling')
+    self.player.canJump = false
+end
+
+function PlayerFallingState:update(dt)
+    local _, yVel = self.player.body:getLinearVelocity()
+    if yVel == 0 then
+        self.player:changeState('idle')
+    end
+end
