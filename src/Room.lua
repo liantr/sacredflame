@@ -11,6 +11,19 @@ function Room:init(def, world)
     self:addCollision()
 end
 
+function Room:enter()
+    for _, tile in pairs(self.collidable) do
+        tile.body:setActive(true)
+    end
+end
+
+function Room:exit()
+
+    for _, tile in pairs(self.collidable) do
+        tile.body:setActive(false)
+    end
+end
+
 function Room:update(dt)
 end
 
@@ -28,6 +41,7 @@ function Room:addCollision()
                     local tile = layer.data[y][x]
                     if tile and tile ~= 0 then
                         local body = love.physics.newBody(self.world, (x-1)*TILE_SIZE+ TILE_SIZE/2,(y-1)*TILE_SIZE + TILE_SIZE/2, 'static')
+                        body:setActive(false)
                         local shape = love.physics.newRectangleShape(TILE_SIZE, TILE_SIZE)
                         local fixture = love.physics.newFixture(body, shape)
                         fixture:setRestitution(0)
