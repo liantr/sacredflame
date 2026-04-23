@@ -40,6 +40,7 @@ require 'src/states/player/PlayerWalkState'
 require 'src/states/player/PlayerIdleState'
 require 'src/states/player/PlayerJumpState'
 require 'src/states/player/PlayerFallingState'
+require 'src.states.player.PlayerDeathState'
 
 
 gTextures = {
@@ -53,7 +54,8 @@ gTextures = {
     ['player-idle'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-idle.png'),
     ['player-walk'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-walk.png'),
     ['player-jump'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-jump.png'),
-    ['player-falling'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-falling.png')
+    ['player-falling'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-falling.png'),
+    ['player-death'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-death.png')
 }
 
 gFrames = {
@@ -65,6 +67,8 @@ gFrames = {
         TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
     ['player-falling'] = GenerateQuadsFromRegion(gTextures['player-falling'],
         TILE_SIZE, TILE_SIZE, TILE_SIZE*5, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    ['player-death'] = GenerateQuadsFromRegion(gTextures['player-death'],
+        TILE_SIZE, TILE_SIZE, TILE_SIZE*11, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
 }
 
 gSounds = {

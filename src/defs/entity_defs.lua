@@ -29,6 +29,12 @@ ENTITY_DEFS = {
                 interval = 0.15,
                 looping = false,
                 texture = 'player-falling'
+            },
+            ['death'] = {
+                frames = {1, 3, 5},
+                interval = 0.5,
+                looping = false,
+                texture = 'player-death'
             }
         }
     }
