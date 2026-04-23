@@ -1,9 +1,6 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-    -- camera that follows the player
-    self.camX = 0
-    self.camY = 0
 
     -- Box2D world creation
     self.world = love.physics.newWorld(0, 800, true)
@@ -18,11 +15,7 @@ function PlayState:init()
     self.currentRoom = self.map['entry']
     self.currentRoom:enter()
 
-    -- for transitioning between rooms
-    self.transitioning = false
-    self.transitionAlpha = 0
-
-    -- create player
+     -- create player
     self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY)
 
     self.player.stateMachine = StateMachine {
@@ -33,6 +26,15 @@ function PlayState:init()
     }
 
     self.player:changeState('idle')
+
+    -- camera that follows the player
+    self.camX = 0
+    self.camY = 0
+    self:updateCamera()
+
+    -- for transitioning between rooms
+    self.transitioning = false
+    self.transitionAlpha = 0
 
     -- define collision callbacks for our world; the World object expects four,
     -- one for different stages of any given collision
@@ -59,6 +61,7 @@ function PlayState:enter(params)
 end
 
 function PlayState:update(dt)
+    self:updateCamera()
     Timer.update(dt)
     self.world:update(dt)
     self.player:update(dt)
@@ -74,14 +77,32 @@ function PlayState:update(dt)
 end
 
 function PlayState:updateCamera()
+    local x, y = self.player.body:getPosition()
     -- clamp movement of the camera's X between 0 and the map bounds - virtual width,
     -- setting it half the screen to the left of the player so they are in the center
-    self.camX = math.max(0,
-        math.min(TILE_SIZE * self.tileMap.width - VIRTUAL_WIDTH,
-        self.player.x - (VIRTUAL_WIDTH / 2 - 8)))
+
+    local roomWidth = self.currentRoom.map.width * TILE_SIZE
+    local roomHeight = self.currentRoom.map.height * TILE_SIZE
+
+    if roomHeight > VIRTUAL_HEIGHT then
+        self.camY = math.max(0,
+        math.min(roomHeight - VIRTUAL_HEIGHT,
+            y - (VIRTUAL_HEIGHT / 2)))
+    else
+        self.camY = 0
+    end
+
+    if roomWidth > VIRTUAL_WIDTH then
+        self.camX = math.max(0,
+            math.min(roomWidth - VIRTUAL_WIDTH,
+            x - (VIRTUAL_WIDTH / 2)))
+    else
+        self.camX = 0
+    end
+
 
     -- adjust background X to move a third the rate of the camera for parallax
-    self.backgroundX = (self.camX / 3) % 256
+    --self.backgroundX = (self.camX / 3) % 256
 end
 
 function PlayState:moveTo(connection)
@@ -105,7 +126,6 @@ function PlayState:transitionRooms()
     local x, y = self.player.body:getPosition()
     local connections = self.currentRoom.connectedRooms
     if y > self.currentRoom.map.height * TILE_SIZE and connections.south then
-        print("going down")
         self:moveTo(connections.south)
     elseif y < 0 and connections.north then
         self:moveTo(connections.north)
@@ -117,8 +137,9 @@ function PlayState:transitionRooms()
 end
 
 function PlayState:render()
+    love.graphics.push()
     -- translate the entire view of the scene to emulate a camera
-    --love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
+    love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
 
     -- draw the background
     if self.currentRoom.background == 'ruinedTemple' then
@@ -135,6 +156,8 @@ function PlayState:render()
 
     -- draw the foreground
     self.currentRoom:renderForeground()
+
+    love.graphics.pop()
 
     -- room transition fade in and out
     love.graphics.setColor(0,0,0,self.transitionAlpha)

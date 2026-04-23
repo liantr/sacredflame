@@ -33,20 +33,20 @@ ROOM_DEFS= {
         map = 'assets/graphics/map/main3.lua',
         connectedRooms = {
             north = { room = 'main2', spawnX = 16*6, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3},
+            south = { room = 'main4', spawnX = TILE_SIZE*80 - TILE_SIZE*3, spawnY = TILE_SIZE},
+            east = nil,
+            west = nil
+        }
+    },
+    ['main4'] = {
+        map = 'assets/graphics/map/main4.lua',
+        connectedRooms = {
+            north = nil,
             south = nil,
             east = nil,
             west = nil
         }
     },
-    -- ['main4'] = {
-    --     map = 'assets/graphics/map/main4.lua',
-    --     connectedRooms = {
-    --         north = nil,
-    --         south = nil,
-    --         east = nil,
-    --         west = nil
-    --     }
-    -- },
     -- ['main5'] = {
     --     map = 'assets/graphics/map/main5.lua',
     --     connectedRooms = {
