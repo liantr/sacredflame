@@ -25,9 +25,9 @@ ENTITY_DEFS = {
                 texture = 'player-jump'
             },
             ['falling'] = {
-                frames = {3, 5},
+                frames = {5},
                 interval = 0.15,
-                looping = false,
+                looping = true,
                 texture = 'player-falling'
             },
             ['death'] = {
@@ -35,7 +35,13 @@ ENTITY_DEFS = {
                 interval = 0.5,
                 looping = false,
                 texture = 'player-death'
-            }
+            },
+            ['swing-sword'] = {
+                frames = {1, 2, 3, 4, 5, 6},
+                interval = 0.05,
+                looping = false,
+                texture = 'player-attack'
+            },
         }
     }
 }

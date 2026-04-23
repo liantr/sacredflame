@@ -23,7 +23,8 @@ function PlayState:init()
         ['idle'] = function() return PlayerIdleState(self.player) end,
         ['jump'] = function() return PlayerJumpState(self.player) end,
         ['falling'] = function() return PlayerFallingState(self.player) end,
-        ['death'] = function() return PlayerDeathState(self.player) end
+        ['death'] = function() return PlayerDeathState(self.player) end,
+        ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
     }
 
     self.player:changeState('idle')
@@ -79,7 +80,7 @@ function PlayState:update(dt)
 
 
     -- ! [DEBUG] Press d to enter player death state
-     if love.keyboard.isDown('d')then
+     if love.keyboard.wasPressed('d')then
         self.player:changeState('death')
      end
 end

@@ -17,4 +17,8 @@ function PlayerFallingState:update(dt)
     if yVel == 0 then
         self.player:changeState('idle')
     end
+
+    if love.keyboard.isDown('x') then
+        self.player:changeState('swing-sword')
+    end
 end

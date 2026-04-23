@@ -18,4 +18,8 @@ function PlayerJumpState:update(dt)
     if yVel >= 0 then
         self.player:changeState('falling')
     end
+
+    if love.keyboard.wasPressed('x') then
+        self.player:changeState('swing-sword')
+    end
 end

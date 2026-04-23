@@ -15,4 +15,8 @@ function PlayerWalkState:update(dt)
     if love.keyboard.wasPressed('space') and self.entity.canJump then
         self.entity:changeState('jump')
     end
+
+    if love.keyboard.wasPressed('x') then
+        self.entity:changeState('swing-sword')
+    end
 end

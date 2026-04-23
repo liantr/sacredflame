@@ -13,7 +13,11 @@ function PlayerIdleState:update(dt)
         self.entity:changeState('walk')
     end
 
-    if love.keyboard.isDown('space') and self.entity.canJump then
+    if love.keyboard.wasPressed('space') and self.entity.canJump then
         self.entity:changeState('jump')
+    end
+
+    if love.keyboard.wasPressed('x') then
+        self.entity:changeState('swing-sword')
     end
 end
