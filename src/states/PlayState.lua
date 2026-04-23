@@ -1,16 +1,24 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
+    -- camera that follows the player
     self.camX = 0
     self.camY = 0
 
     -- Box2D world creation
     self.world = love.physics.newWorld(0, 800, true)
 
-    self.room = Room(ROOM_DEFS['entry'], self.world)
+    -- Create the map of rooms
+    self.map = {}
+    for name, def in pairs(ROOM_DEFS) do
+        self.map[name] = Room(def, self.world)
+    end
+
+    -- initialize the current room to entry
+    self.currentRoom = Room(ROOM_DEFS['entry'], self.world)
 
     -- create player
-    self.player = Player(ENTITY_DEFS['player'], self.world, self.room.spawnX, self.room.spawnY)
+    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY)
 
     self.player.stateMachine = StateMachine {
         ['walk'] = function() return PlayerWalkState(self.player) end,
@@ -65,25 +73,28 @@ function PlayState:updateCamera()
     self.backgroundX = (self.camX / 3) % 256
 end
 
+function PlayState:changeRooms()
+end
+
 function PlayState:render()
     -- translate the entire view of the scene to emulate a camera
     --love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
 
     -- draw the background
-    if self.room.background == 'ruinedTemple' then
+    if self.currentRoom.background == 'ruinedTemple' then
         love.graphics.draw(gTextures['templeBg1'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
         love.graphics.draw(gTextures['templeBg2'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
         love.graphics.draw(gTextures['templeBg3'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
         love.graphics.draw(gTextures['templeBg4'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
     end
 
-    self.room:renderBackground()
+    self.currentRoom:renderBackground()
 
     -- draw player
     self.player:render()
 
     -- draw the foreground
-    self.room:renderForeground()
+    self.currentRoom:renderForeground()
 
     love.graphics.setColor(1, 1, 1, 1)
 end

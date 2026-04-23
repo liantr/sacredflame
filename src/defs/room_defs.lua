@@ -22,112 +22,112 @@ ROOM_DEFS= {
             west = nil
         }
     },
-    ['main2'] = {
-        map = 'assets/graphics/map/main2.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main3'] = {
-        map = 'assets/graphics/map/main3.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main4'] = {
-        map = 'assets/graphics/map/main4.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main5'] = {
-        map = 'assets/graphics/map/main5.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main1-right'] = {
-        map = 'assets/graphics/map/main1-right.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main2-left'] = {
-        map = 'assets/graphics/map/main2-left.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main3-left'] = {
-        map = 'assets/graphics/map/main3-left.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main3-right'] = {
-        map = 'assets/graphics/map/main3-right.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main4-right'] = {
-        map = 'assets/graphics/map/main4-right.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main5-right'] = {
-        map = 'assets/graphics/map/main5-right.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['main5-left'] = {
-        map = 'assets/graphics/map/main5-left.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
-    ['boss-room'] = {
-        map = 'assets/graphics/map/boss.lua',
-        connectedRooms = {
-            north = nil,
-            south = nil,
-            east = nil,
-            west = nil
-        }
-    },
+    -- ['main2'] = {
+    --     map = 'assets/graphics/map/main2.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main3'] = {
+    --     map = 'assets/graphics/map/main3.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main4'] = {
+    --     map = 'assets/graphics/map/main4.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main5'] = {
+    --     map = 'assets/graphics/map/main5.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main1-right'] = {
+    --     map = 'assets/graphics/map/main1-right.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main2-left'] = {
+    --     map = 'assets/graphics/map/main2-left.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main3-left'] = {
+    --     map = 'assets/graphics/map/main3-left.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main3-right'] = {
+    --     map = 'assets/graphics/map/main3-right.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main4-right'] = {
+    --     map = 'assets/graphics/map/main4-right.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main5-right'] = {
+    --     map = 'assets/graphics/map/main5-right.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['main5-left'] = {
+    --     map = 'assets/graphics/map/main5-left.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
+    -- ['boss-room'] = {
+    --     map = 'assets/graphics/map/boss.lua',
+    --     connectedRooms = {
+    --         north = nil,
+    --         south = nil,
+    --         east = nil,
+    --         west = nil
+    --     }
+    -- },
 }
