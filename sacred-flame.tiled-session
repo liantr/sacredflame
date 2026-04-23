@@ -63,11 +63,11 @@
             }
         },
         "main4-miniboss.tmx": {
-            "scale": 1,
+            "scale": 1.1084,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 721,
-                "y": 305
+                "x": 319.83038614218685,
+                "y": 283.2912306026705
             }
         },
         "tiled/blood temple.tsx": {

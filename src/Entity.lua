@@ -85,8 +85,8 @@ function Entity:render()
     local x, y = self:getPosition()
 
     -- debug rectangle
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.circle('line', x, y, self.shape:getRadius())
+    -- love.graphics.setColor(1,1,1,1)
+    -- love.graphics.circle('line', x, y, self.shape:getRadius())
 
    self.stateMachine:render()
 

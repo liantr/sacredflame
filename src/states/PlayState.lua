@@ -3,7 +3,7 @@ PlayState = Class{__includes = BaseState}
 function PlayState:init()
 
     -- Box2D world creation
-    self.world = love.physics.newWorld(0, 800, true)
+    self.world = love.physics.newWorld(0, GRAVITY, true)
 
     -- Create the map of rooms
     self.map = {}
@@ -61,7 +61,6 @@ function PlayState:enter(params)
 end
 
 function PlayState:update(dt)
-    self:updateCamera()
     Timer.update(dt)
     self.world:update(dt)
     self.player:update(dt)
@@ -74,32 +73,39 @@ function PlayState:update(dt)
     if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then
         gStateMachine:change('pause', {playState = self})
     end
+
+    self:updateCamera()
 end
 
 function PlayState:updateCamera()
     local x, y = self.player.body:getPosition()
-    -- clamp movement of the camera's X between 0 and the map bounds - virtual width,
-    -- setting it half the screen to the left of the player so they are in the center
 
     local roomWidth = self.currentRoom.map.width * TILE_SIZE
     local roomHeight = self.currentRoom.map.height * TILE_SIZE
 
-    if roomHeight > VIRTUAL_HEIGHT then
-        self.camY = math.max(0,
-        math.min(roomHeight - VIRTUAL_HEIGHT,
-            y - (VIRTUAL_HEIGHT / 2)))
+    if USE_ZOOM then
+        local visibleWidth = VIRTUAL_WIDTH / CAMERA_ZOOM
+        local visibleHeight = VIRTUAL_HEIGHT / CAMERA_ZOOM
+        self.camX = math.max(0, math.min(roomWidth - visibleWidth, x - visibleWidth/2))
+        self.camY = math.max(0, math.min(roomHeight - visibleHeight, y - visibleHeight/2))
     else
-        self.camY = 0
-    end
 
-    if roomWidth > VIRTUAL_WIDTH then
-        self.camX = math.max(0,
-            math.min(roomWidth - VIRTUAL_WIDTH,
-            x - (VIRTUAL_WIDTH / 2)))
-    else
-        self.camX = 0
-    end
+        if roomHeight > VIRTUAL_HEIGHT then
+            self.camY = math.max(0,
+            math.min(roomHeight - VIRTUAL_HEIGHT,
+                y - (VIRTUAL_HEIGHT / 2)))
+        else
+            self.camY = 0
+        end
 
+        if roomWidth > VIRTUAL_WIDTH then
+            self.camX = math.max(0,
+                math.min(roomWidth - VIRTUAL_WIDTH,
+                x - (VIRTUAL_WIDTH / 2)))
+        else
+            self.camX = 0
+        end
+    end
 
     -- adjust background X to move a third the rate of the camera for parallax
     --self.backgroundX = (self.camX / 3) % 256
@@ -113,7 +119,6 @@ function PlayState:moveTo(connection)
         self.currentRoom = self.map[connection.room]
 
         self.currentRoom:enter()
-        print("Spawning player at x: " ..tostring(connection.spawnX) ..tostring(connection.spawnY))
         self.player.body:setPosition(connection.spawnX, connection.spawnY)
         self.player.body:setLinearVelocity(0, 0)
         Timer.tween(1, {[self] = {transitionAlpha = 0}}):finish(function ()
@@ -138,6 +143,12 @@ end
 
 function PlayState:render()
     love.graphics.push()
+
+    -- zoom in around the player
+    if USE_ZOOM then
+        love.graphics.scale(CAMERA_ZOOM, CAMERA_ZOOM)
+    end
+    
     -- translate the entire view of the scene to emulate a camera
     love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
 

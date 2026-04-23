@@ -60,7 +60,7 @@ function handleMovementInput(player)
     local _, yVel = player.body:getLinearVelocity()
     if love.keyboard.isDown('left')then
         player.direction = 'left'
-        if love.keyboard.isDown('x') then
+        if love.keyboard.isDown('z') then
             player.body:setLinearVelocity(-player.runSpeed, yVel)
         else
             player.body:setLinearVelocity(-player.moveSpeed, yVel)
@@ -68,7 +68,7 @@ function handleMovementInput(player)
         return true
     elseif love.keyboard.isDown("right") then
         player.direction = 'right'
-        if love.keyboard.isDown('x') then
+        if love.keyboard.isDown('z') then
             player.body:setLinearVelocity(player.runSpeed, yVel)
         else
             player.body:setLinearVelocity(player.moveSpeed, yVel)
