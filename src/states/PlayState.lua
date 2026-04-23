@@ -89,11 +89,10 @@ function PlayState:moveTo(connection)
     Timer.tween(0.5, {[self] = {transitionAlpha = 1}}):finish(function()
         self.currentRoom:exit()
 
-        local newRoom = self.map[connection.room]
         self.currentRoom = self.map[connection.room]
 
         self.currentRoom:enter()
-
+        print("Spawning player at x: " ..tostring(connection.spawnX) ..tostring(connection.spawnY))
         self.player.body:setPosition(connection.spawnX, connection.spawnY)
         self.player.body:setLinearVelocity(0, 0)
         Timer.tween(1, {[self] = {transitionAlpha = 0}}):finish(function ()

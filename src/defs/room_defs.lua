@@ -15,29 +15,29 @@ ROOM_DEFS= {
         map = 'assets/graphics/map/main1.lua',
         connectedRooms = {
             north = { room = 'entry', spawnX = TILE_SIZE * 5, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 5},
-            south = { room = 'main2'},
-            east = { room = 'main1-right'},
+            south = { room = 'main2', spawnX = TILE_SIZE * 22, spawnY = 0},
+            east = { room = 'main1-right', spawnX = 0, spawnY = TILE_SIZE * 7 },
             west = nil
         }
     },
-    -- ['main2'] = {
-    --     map = 'assets/graphics/map/main2.lua',
-    --     connectedRooms = {
-    --         north = nil,
-    --         south = nil,
-    --         east = nil,
-    --         west = nil
-    --     }
-    -- },
-    -- ['main3'] = {
-    --     map = 'assets/graphics/map/main3.lua',
-    --     connectedRooms = {
-    --         north = nil,
-    --         south = nil,
-    --         east = nil,
-    --         west = nil
-    --     }
-    -- },
+    ['main2'] = {
+        map = 'assets/graphics/map/main2.lua',
+        connectedRooms = {
+            north = { room = 'main1', spawnX = TILE_SIZE*24, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3},
+            south = { room = 'main3', spawnX = TILE_SIZE*4, spawnY = 0},
+            east = nil,
+            west = { room = 'main2-left', spawnX = VIRTUAL_WIDTH-TILE_SIZE, spawnY = TILE_SIZE * 7}
+        }
+    },
+    ['main3'] = {
+        map = 'assets/graphics/map/main3.lua',
+        connectedRooms = {
+            north = { room = 'main2', spawnX = 16*6, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3},
+            south = nil,
+            east = nil,
+            west = nil
+        }
+    },
     -- ['main4'] = {
     --     map = 'assets/graphics/map/main4.lua',
     --     connectedRooms = {
@@ -56,24 +56,24 @@ ROOM_DEFS= {
     --         west = nil
     --     }
     -- },
-    -- ['main1-right'] = {
-    --     map = 'assets/graphics/map/main1-right.lua',
-    --     connectedRooms = {
-    --         north = nil,
-    --         south = nil,
-    --         east = nil,
-    --         west = nil
-    --     }
-    -- },
-    -- ['main2-left'] = {
-    --     map = 'assets/graphics/map/main2-left.lua',
-    --     connectedRooms = {
-    --         north = nil,
-    --         south = nil,
-    --         east = nil,
-    --         west = nil
-    --     }
-    -- },
+    ['main1-right'] = {
+        map = 'assets/graphics/map/main1-right.lua',
+        connectedRooms = {
+            north = nil,
+            south = nil,
+            east = nil,
+            west = { room = 'main1', spawnX = VIRTUAL_WIDTH - TILE_SIZE, spawnY = TILE_SIZE*6}
+        }
+    },
+    ['main2-left'] = {
+        map = 'assets/graphics/map/main2-left.lua',
+        connectedRooms = {
+            north = nil,
+            south = nil,
+            east = { room = 'main2', spawnX = TILE_SIZE, spawnY = TILE_SIZE * 8},
+            west = nil
+        }
+    },
     -- ['main3-left'] = {
     --     map = 'assets/graphics/map/main3-left.lua',
     --     connectedRooms = {

@@ -6,6 +6,10 @@
         "": {
             "scaleInDock": 1
         },
+        "blood temple.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "entry.tmx": {
             "scale": 1.5,
             "selectedLayer": 0,
@@ -14,17 +18,69 @@
                 "y": 270.6666666666667
             }
         },
+        "high temple.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 5.5
+        },
+        "main1-right.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 286,
+                "y": 22
+            }
+        },
         "main1.tmx": {
             "scale": 1.5,
-            "selectedLayer": 4,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 292,
                 "y": 263.33333333333326
             }
+        },
+        "main2-left.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 354.66666666666663,
+                "y": 144.66666666666669
+            }
+        },
+        "main2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 269.33333333333337,
+                "y": 100.66666666666669
+            }
+        },
+        "main3.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 260.66666666666663,
+                "y": 72
+            }
+        },
+        "tiled/blood temple.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "tiled/high temple.tsx": {
+            "scaleInEditor": 1
+        },
+        "tiled/main2.tmx": {
+            "scale": 1.6996093749999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.07354631119284,
+                "y": 217.69708113077454
+            }
         }
     },
     "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/map",
-    "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/AncientTemple/Tileset",
+    "last.externalTilesetPath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/The Dark Series/tilesets/29- Sacred Temple Tileset",
+    "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/The Dark Series/tilesets/29- Sacred Temple Tileset",
     "map.height": 23,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
@@ -35,7 +91,18 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
+        "main3.tmx",
+        "tiled/high temple.tsx",
+        "tiled/blood temple.tsx",
+        "blood temple.tsx",
+        "main2.tmx",
+        "main2-left.tmx",
+        "main1.tmx",
+        "main1-right.tmx",
+        "high temple.tsx",
+        "entry.tmx"
     ],
+    "tileset.lastUsedFilter": "All Files (*)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 16,
