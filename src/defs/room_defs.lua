@@ -6,17 +6,15 @@ ROOM_DEFS= {
         spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 7,
         connectedRooms = {
             north = nil,
-            south = { room = 'main1' },
+            south = { room = 'main1', spawnX = 28, spawnY = 8},
             east = nil,
             west = nil
         }
     },
     ['main1'] = {
         map = 'assets/graphics/map/main1.lua',
-        spawnX = 28,
-        spawnY = 8,
         connectedRooms = {
-            north = { room = 'entry'},
+            north = { room = 'entry', spawnX = TILE_SIZE * 5, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 5},
             south = { room = 'main2'},
             east = { room = 'main1-right'},
             west = nil

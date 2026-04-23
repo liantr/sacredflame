@@ -94,7 +94,7 @@ function PlayState:moveTo(connection)
 
         self.currentRoom:enter()
 
-        self.player.body:setPosition(newRoom.spawnX, newRoom.spawnY)
+        self.player.body:setPosition(connection.spawnX, connection.spawnY)
         self.player.body:setLinearVelocity(0, 0)
         Timer.tween(1, {[self] = {transitionAlpha = 0}}):finish(function ()
             self.transitioning = false
