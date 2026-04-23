@@ -8,13 +8,7 @@ end
 
 function PlayerWalkState:update(dt)
     local _, yVel = self.entity.body:getLinearVelocity()
-    if love.keyboard.isDown('left') then
-        self.entity.direction = 'left'
-        self.entity.body:setLinearVelocity(-self.entity.moveSpeed, yVel)
-    elseif love.keyboard.isDown('right') then
-        self.entity.direction = 'right'
-        self.entity.body:setLinearVelocity(self.entity.moveSpeed, yVel)
-    else
+    if not handleMovementInput(self.entity) then
         self.entity:changeState('idle')
     end
 

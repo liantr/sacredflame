@@ -1,13 +1,14 @@
 Entity = Class{}
 
-function Entity:init(def, world)
+function Entity:init(def, world, startX, startY)
 
     -- create entity body
-    self.body = love.physics.newBody(world, def.x, def.y, 'dynamic')
+    self.body = love.physics.newBody(world, startX, startY, 'dynamic')
     self.body:setFixedRotation(true)
-    self.shape = love.physics.newRectangleShape(TILE_SIZE, TILE_SIZE)
+    self.shape = love.physics.newCircleShape(TILE_SIZE/2)
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setRestitution(0)
+    self.fixture:setFriction(0)
 
     self.animations = createAnimations(def.animations)
     self.moveSpeed = def.moveSpeed
@@ -85,8 +86,7 @@ function Entity:render()
 
     -- debug rectangle
     love.graphics.setColor(1,1,1,1)
-    love.graphics.polygon('line', self.body:getWorldPoints(
-        self.shape:getPoints()))
+    love.graphics.circle('line', x, y, self.shape:getRadius())
 
    self.stateMachine:render()
 

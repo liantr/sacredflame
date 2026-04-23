@@ -11,6 +11,9 @@ end
 
 function PlayerFallingState:update(dt)
     local _, yVel = self.player.body:getLinearVelocity()
+
+    handleMovementInput(self.player)
+
     if yVel == 0 then
         self.player:changeState('idle')
     end

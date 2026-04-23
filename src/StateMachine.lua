@@ -15,7 +15,6 @@ end
 function StateMachine:change(stateName, enterParams)
 	assert(self.states[stateName]) -- state must exist!
 	self.currentStateName = stateName
-	print(gStateMachine.currentStateName)
 	self.current:exit()
 	self.current = self.states[stateName]()
 	self.current:enter(enterParams)

@@ -9,14 +9,16 @@
 Class = require 'lib/class'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
-STI = require 'lib/sti'
+STI = require 'lib/sti/sti'
+
 require 'src/constants'
 
+require 'src/defs/room_defs'
 require 'src/defs/entity_defs'
 
 require 'src/Animation'
 require 'src/Util'
-
+require 'src/Room'
 require 'src/StateMachine'
 require 'src/states/BaseState'
 require 'src/states/StartState'

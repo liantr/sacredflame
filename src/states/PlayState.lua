@@ -7,31 +7,10 @@ function PlayState:init()
     -- Box2D world creation
     self.world = love.physics.newWorld(0, 800, true)
 
-    -- TODO: temp code
-    -- create floor
-    self.groundBody = love.physics.newBody(self.world,
-        VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT - (TILE_SIZE*4.5)/2, 'static')
-    self.groundShape = love.physics.newRectangleShape(VIRTUAL_WIDTH, TILE_SIZE * 4.5)
-    self.groundFixture = love.physics.newFixture(self.groundBody, self.groundShape)
-    self.groundFixture:setUserData({type='ground'})
-    
-    -- create left wall
-    self.leftBody = love.physics.newBody(self.world, TILE_SIZE/2, VIRTUAL_HEIGHT / 2, 'static')
-    self.leftShape = love.physics.newRectangleShape(TILE_SIZE, VIRTUAL_HEIGHT)
-    self.leftFixture = love.physics.newFixture(self.leftBody, self.leftShape)
-    self.leftFixture:setUserData({type='wall'})
-
-    
-    -- create right wall
-    self.rightBody = love.physics.newBody(self.world, VIRTUAL_WIDTH - TILE_SIZE/2, VIRTUAL_HEIGHT / 2, 'static')
-    self.rightShape = love.physics.newRectangleShape(TILE_SIZE, VIRTUAL_HEIGHT)
-    self.rightFixture = love.physics.newFixture(self.rightBody, self.rightShape)
-    self.rightFixture:setUserData({type='wall'})
-
-    -- TODO: end temp code
+    self.room = Room(ROOM_DEFS['entry'], self.world)
 
     -- create player
-    self.player = Player(ENTITY_DEFS['player'], self.world)
+    self.player = Player(ENTITY_DEFS['player'], self.world, self.room.spawnX, self.room.spawnY)
 
     self.player.stateMachine = StateMachine {
         ['walk'] = function() return PlayerWalkState(self.player) end,
@@ -87,30 +66,24 @@ function PlayState:updateCamera()
 end
 
 function PlayState:render()
-    -- draw the background
-    --love.graphics.setColor(255/255, 150/255, 50/255, 1)
-    love.graphics.draw(gTextures['templeBg1'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
-    love.graphics.draw(gTextures['templeBg2'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
-    love.graphics.draw(gTextures['templeBg3'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
-
     -- translate the entire view of the scene to emulate a camera
     --love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
 
+    -- draw the background
+    if self.room.background == 'ruinedTemple' then
+        love.graphics.draw(gTextures['templeBg1'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
+        love.graphics.draw(gTextures['templeBg2'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
+        love.graphics.draw(gTextures['templeBg3'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
+        love.graphics.draw(gTextures['templeBg4'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
+    end
 
-    -- TODO: update this : draw floor and walls for debugging
-    love.graphics.setColor(1, 1, 1, 0)
-    love.graphics.polygon('fill', self.groundBody:getWorldPoints(
-        self.groundShape:getPoints()))
-    love.graphics.polygon('fill', self.leftBody:getWorldPoints(
-        self.leftShape:getPoints()))
-    love.graphics.polygon('fill', self.rightBody:getWorldPoints(
-        self.rightShape:getPoints()))
+    self.room:renderBackground()
 
     -- draw player
     self.player:render()
 
-    --foreground
-    love.graphics.draw(gTextures['templeBg4'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
+    -- draw the foreground
+    self.room:renderForeground()
 
     love.graphics.setColor(1, 1, 1, 1)
 end

@@ -55,3 +55,18 @@ function createAnimations(animations)
 
     return animationsReturned
 end
+
+function handleMovementInput(player)
+    local _, yVel = player.body:getLinearVelocity()
+    if love.keyboard.isDown('left')then
+        player.direction = 'left'
+        player.body:setLinearVelocity(-player.moveSpeed, yVel)
+        return true
+    elseif love.keyboard.isDown("right") then
+        player.direction = 'right'
+        player.body:setLinearVelocity(player.moveSpeed, yVel)
+        return true
+    end
+
+    return false
+end

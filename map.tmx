@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.12.1" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
+ <editorsettings>
+  <export target="main1.lua" format="lua"/>
+ </editorsettings>
  <tileset firstgid="1" source="high temple.tsx"/>
  <layer id="4" name="collision" width="40" height="23">
   <data encoding="csv">
@@ -28,7 +31,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="3" name="Tile Layer 3" width="40" height="23">
+ <layer id="3" name="background" width="40" height="23">
   <data encoding="csv">
 41,10,10,41,0,0,0,0,0,0,0,0,0,0,34,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 41,10,10,41,0,0,34,34,34,34,34,34,34,34,0,34,34,34,34,34,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

@@ -1,7 +1,7 @@
 Player = Class{__includes=Entity}
 
-function Player:init(def, world)
-    Entity.init(self, def, world)
+function Player:init(def, world, startX, startY)
+    Entity.init(self, def, world, startX, startY)
     self.fixture:setUserData({type='player'})
     self.canJump = true
 end

@@ -3,8 +3,27 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "entry.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 309.33333333333337,
+                "y": 270.6666666666667
+            }
+        },
+        "main1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 292,
+                "y": 263.33333333333326
+            }
+        }
     },
-    "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame",
+    "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/map",
     "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/AncientTemple/Tileset",
     "map.height": 23,
     "map.lastUsedExportFilter": "All Files (*)",
