@@ -15,7 +15,12 @@ function PlayState:init()
     end
 
     -- initialize the current room to entry
-    self.currentRoom = Room(ROOM_DEFS['entry'], self.world)
+    self.currentRoom = self.map['entry']
+    self.currentRoom:enter()
+
+    -- for transitioning between rooms
+    self.transitioning = false
+    self.transitionAlpha = 0
 
     -- create player
     self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY)
@@ -54,8 +59,14 @@ function PlayState:enter(params)
 end
 
 function PlayState:update(dt)
+    Timer.update(dt)
     self.world:update(dt)
     self.player:update(dt)
+
+    -- check for room change
+    if not self.transitioning then
+        self:transitionRooms()
+    end
 
     if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then
         gStateMachine:change('pause', {playState = self})
@@ -73,7 +84,37 @@ function PlayState:updateCamera()
     self.backgroundX = (self.camX / 3) % 256
 end
 
-function PlayState:changeRooms()
+function PlayState:moveTo(connection)
+    self.transitioning = true
+    Timer.tween(0.5, {[self] = {transitionAlpha = 1}}):finish(function()
+        self.currentRoom:exit()
+
+        local newRoom = self.map[connection.room]
+        self.currentRoom = self.map[connection.room]
+
+        self.currentRoom:enter()
+
+        self.player.body:setPosition(newRoom.spawnX, newRoom.spawnY)
+        self.player.body:setLinearVelocity(0, 0)
+        Timer.tween(1, {[self] = {transitionAlpha = 0}}):finish(function ()
+            self.transitioning = false
+        end)
+    end)
+end
+
+function PlayState:transitionRooms()
+    local x, y = self.player.body:getPosition()
+    local connections = self.currentRoom.connectedRooms
+    if y > self.currentRoom.map.height * TILE_SIZE and connections.south then
+        print("going down")
+        self:moveTo(connections.south)
+    elseif y < 0 and connections.north then
+        self:moveTo(connections.north)
+    elseif x > self.currentRoom.map.width * TILE_SIZE and connections.east then
+        self:moveTo(connections.east)
+    elseif x < 0 and connections.west then
+        self:moveTo(connections.west)
+    end
 end
 
 function PlayState:render()
@@ -96,5 +137,9 @@ function PlayState:render()
     -- draw the foreground
     self.currentRoom:renderForeground()
 
+    -- room transition fade in and out
+    love.graphics.setColor(0,0,0,self.transitionAlpha)
+    love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
+    
     love.graphics.setColor(1, 1, 1, 1)
 end
