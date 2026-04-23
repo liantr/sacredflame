@@ -62,12 +62,12 @@ end
 
 function PlayState:update(dt)
     Timer.update(dt)
-    self.world:update(dt)
-    self.player:update(dt)
 
     -- check for room change
     if not self.transitioning then
         self:transitionRooms()
+        self.world:update(dt)
+        self.player:update(dt)
     end
 
     if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then
@@ -115,15 +115,14 @@ function PlayState:moveTo(connection)
     self.transitioning = true
     Timer.tween(0.5, {[self] = {transitionAlpha = 1}}):finish(function()
         self.currentRoom:exit()
-
         self.currentRoom = self.map[connection.room]
-
         self.currentRoom:enter()
+
         self.player.body:setPosition(connection.spawnX, connection.spawnY)
-        self.player.body:setLinearVelocity(0, 0)
-        Timer.tween(1, {[self] = {transitionAlpha = 0}}):finish(function ()
-            self.transitioning = false
-        end)
+        
+        self.transitioning = false
+
+        Timer.tween(0.5, {[self] = {transitionAlpha = 0}})
     end)
 end
 
@@ -148,7 +147,7 @@ function PlayState:render()
     if USE_ZOOM then
         love.graphics.scale(CAMERA_ZOOM, CAMERA_ZOOM)
     end
-    
+
     -- translate the entire view of the scene to emulate a camera
     love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
 
