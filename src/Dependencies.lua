@@ -30,11 +30,14 @@ require 'src/states/RespawnState'
 require 'src/states/TorchLightingState'
 require 'src/states/VictoryState'
 
-require 'src/Entity'
-require 'src/Player'
+require 'src.entities.Entity'
+require 'src.entities.Player'
+require 'src.entities.Flame'
 
 require 'src/states/entity/EntityWalkState'
 require 'src/states/entity/EntityIdleState'
+
+require 'src/states/flame/FlameFollowingState'
 
 require 'src/states/player/PlayerWalkState'
 require 'src/states/player/PlayerIdleState'
@@ -52,13 +55,15 @@ gTextures = {
     ['templeBg4'] = love.graphics.newImage('assets/graphics/ruinedTemple/background4.png'),
 
     -- player
-    ['player-idle'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-idle.png'),
-    ['player-walk'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-walk.png'),
-    ['player-jump'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-jump.png'),
-    ['player-falling'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-falling.png'),
-    ['player-death'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-death.png'),
-    ['player-attack'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-attack.png'),
-    ['player-attack-combo'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-attack-combo.png')
+    ['player-idle'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-idle.png'),
+    ['player-walk'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-walk.png'),
+    ['player-jump'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-jump.png'),
+    ['player-falling'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-falling.png'),
+    ['player-death'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-death.png'),
+    ['player-attack'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-attack.png'),
+    ['player-attack-combo'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-attack-combo.png'),
+
+    ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png')
 }
 
 gFrames = {
@@ -76,6 +81,9 @@ gFrames = {
         TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2*6, TILE_SIZE, 0, TILE_SIZE),
     ['player-attack-combo'] = GenerateQuadsFromRegion(gTextures['player-attack-combo'],
         TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*17*2, TILE_SIZE*2, 0, 0),
+
+    ['flame-idle'] = GenerateQuadsFromRegion(gTextures['flame-idle'],
+        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*11, TILE_SIZE*1.5, TILE_SIZE/2, 0),
 }
 
 gSounds = {

@@ -15,19 +15,7 @@ function PlayState:init()
     self.currentRoom = self.map['entry']
     self.currentRoom:enter()
 
-     -- create player
-    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY)
-
-    self.player.stateMachine = StateMachine {
-        ['walk'] = function() return PlayerWalkState(self.player) end,
-        ['idle'] = function() return PlayerIdleState(self.player) end,
-        ['jump'] = function() return PlayerJumpState(self.player) end,
-        ['falling'] = function() return PlayerFallingState(self.player) end,
-        ['death'] = function() return PlayerDeathState(self.player) end,
-        ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
-    }
-
-    self.player:changeState('idle')
+    self:spawnEntities()
 
     -- camera that follows the player
     self.camX = 0
@@ -56,6 +44,31 @@ function PlayState:init()
     self.world:setCallbacks(beginContact)
 end
 
+function PlayState:spawnEntities()
+    -- create player
+    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY, 'dynamic')
+
+    self.player.stateMachine = StateMachine {
+        ['walk'] = function() return PlayerWalkState(self.player) end,
+        ['idle'] = function() return PlayerIdleState(self.player) end,
+        ['jump'] = function() return PlayerJumpState(self.player) end,
+        ['falling'] = function() return PlayerFallingState(self.player) end,
+        ['death'] = function() return PlayerDeathState(self.player) end,
+        ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
+    }
+
+    self.player:changeState('idle')
+
+    -- create flame companion
+    self.flame = Flame(ENTITY_DEFS['flame'], self.world, self.player, 'kinematic')
+
+    self.flame.stateMachine = StateMachine {
+        ['idle'] = function() return FlameFollowingState(self.flame) end
+    }
+
+    self.flame:changeState('idle')
+end
+
 function PlayState:enter(params)
     if params then
         self = params.playState
@@ -70,6 +83,7 @@ function PlayState:update(dt)
         self:transitionRooms()
         self.world:update(dt)
         self.player:update(dt)
+        self.flame:update(dt)
     end
 
     if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then
@@ -128,6 +142,11 @@ function PlayState:moveTo(connection)
 
         self.player.body:setPosition(connection.spawnX, connection.spawnY)
         
+        local px, py = self.player.body:getPosition()
+        self.flame.body:setPosition(px, py)
+        self.flame.body:setLinearVelocity(0,0)
+        self.flame.body:setAngularVelocity(0)
+        
         self.transitioning = false
 
         Timer.tween(0.5, {[self] = {transitionAlpha = 0}})
@@ -171,6 +190,8 @@ function PlayState:render()
 
     -- draw player
     self.player:render()
+
+    self.flame:render()
 
     -- draw the foreground
     self.currentRoom:renderForeground()

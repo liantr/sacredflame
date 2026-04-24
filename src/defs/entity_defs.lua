@@ -55,5 +55,17 @@ ENTITY_DEFS = {
                 texture = 'player-attack-combo'
             },
         }
+    },
+    ['flame'] = {
+        height = TILE_SIZE*1.5,
+        width = TILE_SIZE*1.5,
+        moveSpeed = FLAME_MOVE_SPEED,
+        animations = {
+            ['idle'] = {
+                frames = {1, 3, 5, 7, 9, 11},
+                interval = 0.5,
+                texture = 'flame-idle'
+            }
+        }
     }
 }
