@@ -38,9 +38,21 @@ ENTITY_DEFS = {
             },
             ['swing-sword'] = {
                 frames = {1, 2, 3, 4, 5, 6},
-                interval = 0.05,
+                interval = 0.08,
                 looping = false,
                 texture = 'player-attack'
+            },
+            ['swing-sword-combo'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,17 do
+                        table.insert(frames, i)
+                    end
+                    return frames
+                end)(),
+                interval = 0.08,
+                looping = false,
+                texture = 'player-attack-combo'
             },
         }
     }

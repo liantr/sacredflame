@@ -57,7 +57,8 @@ gTextures = {
     ['player-jump'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-jump.png'),
     ['player-falling'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-falling.png'),
     ['player-death'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-death.png'),
-    ['player-attack'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-attack.png')
+    ['player-attack'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-attack.png'),
+    ['player-attack-combo'] = love.graphics.newImage('assets/graphics/The Dark Series/Character/Tiny Swordmaster/swordsman-attack-combo.png')
 }
 
 gFrames = {
@@ -72,7 +73,9 @@ gFrames = {
     ['player-death'] = GenerateQuadsFromRegion(gTextures['player-death'],
         TILE_SIZE, TILE_SIZE, TILE_SIZE*11, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
     ['player-attack'] = GenerateQuadsFromRegion(gTextures['player-attack'],
-        TILE_SIZE*2, TILE_SIZE, TILE_SIZE*12, TILE_SIZE, 0, TILE_SIZE),
+        TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2*6, TILE_SIZE, 0, TILE_SIZE),
+    ['player-attack-combo'] = GenerateQuadsFromRegion(gTextures['player-attack-combo'],
+        TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*17*2, TILE_SIZE*2, 0, 0),
 }
 
 gSounds = {

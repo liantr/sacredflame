@@ -4,8 +4,17 @@ function PlayerSwordSwingState:init(player)
     self.player = player
 end
 
-function PlayerSwordSwingState:enter()
-    self.player:changeAnimation('swing-sword')
+function PlayerSwordSwingState:enter(params)
+    if params and params.combo then
+        self.player.offsetY = -TILE_SIZE
+        self.player:changeAnimation('swing-sword-combo')
+    else
+        self.player:changeAnimation('swing-sword')
+    end
+end
+
+function PlayerSwordSwingState:exit()
+    self.player.offsetY = 0
 end
 
 function PlayerSwordSwingState:update(dt)
@@ -16,14 +25,7 @@ function PlayerSwordSwingState:update(dt)
     end
 
     if love.keyboard.wasPressed('x') then
-        print("swing from swing state")
         self.player:changeState('swing-sword')
     end
 
 end
-
--- function PlayerSwordSwingState:render()
---     local x, y = self.player.body:getPosition()
---     local anim = self.player.currentAnimation
---     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()], x, y)
--- end

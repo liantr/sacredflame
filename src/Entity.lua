@@ -90,10 +90,11 @@ function Entity:render()
 
    self.stateMachine:render()
 
+
     if self.currentAnimation then
         local texture = self.currentAnimation.texture
         love.graphics.draw(gTextures[texture], gFrames[texture][self.currentAnimation:getCurrentFrame()],
-            math.floor(x), math.floor(y),
+            math.floor(x), math.floor(y) + (self.offsetY or 0),
             0, self.direction == 'right' and 1 or -1, 1,
             TILE_SIZE / 2, TILE_SIZE / 2)
     end

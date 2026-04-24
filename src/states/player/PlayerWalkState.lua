@@ -18,5 +18,7 @@ function PlayerWalkState:update(dt)
 
     if love.keyboard.wasPressed('x') then
         self.entity:changeState('swing-sword')
+    elseif love.keyboard.wasPressed('s') then
+        self.entity:changeState('swing-sword', {combo = true})
     end
 end
