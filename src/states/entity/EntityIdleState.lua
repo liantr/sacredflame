@@ -18,21 +18,22 @@ function EntityIdleState:init(entity)
 end
 
 function EntityIdleState:update(dt)
-
+    local evx, evy = self.entity.body:getLinearVelocity()
+    self.entity.body:setLinearVelocity(0, evy)
 end
 
 --[[
     We can call this function if we want to use this state on an agent in our game; otherwise,
     we can use this same state in our Player class and have it not take action.
 ]]
--- function EntityIdleState:processAI(params, dt)
---     if self.waitDuration == 0 then
---         self.waitDuration = math.random(5)
---     else
---         self.waitTimer = self.waitTimer + dt
+function EntityIdleState:processAI(params, dt)
+    if self.waitDuration == 0 then
+        self.waitDuration = math.random(5)
+    else
+        self.waitTimer = self.waitTimer + dt
 
---         if self.waitTimer > self.waitDuration then
---             self.entity:changeState('walk')
---         end
---     end
--- end
+        if self.waitTimer > self.waitDuration then
+            self.entity:changeState('walk')
+        end
+    end
+end

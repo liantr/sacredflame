@@ -67,5 +67,22 @@ ENTITY_DEFS = {
                 texture = 'flame-idle'
             }
         }
+    },
+    ['archer-bandit'] = {
+        height = TILE_SIZE*1.5,
+        width = TILE_SIZE*1.5,
+        moveSpeed = 50,
+        animations = {
+            ['idle'] = {
+                frames = {1, 3, 5, 7, 9, 11,13, 15},
+                interval = 0.15,
+                texture = 'archer-bandit-idle'
+            },
+            ['walk'] = {
+                frames = {1, 3, 5, 7, 9, 11, 13, 15},
+                interval = 0.15,
+                texture = 'archer-bandit-run'
+            }
+        }
     }
 }

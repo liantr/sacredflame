@@ -34,14 +34,25 @@ function PlayState:init()
         types[b:getUserData().type] = true
 
         if types['player'] and types['ground'] then
-            local playerFixture = a:getUserData().type == 'Player' and a or b
+            local playerFixture = a:getUserData().type == 'player' and a or b
             local groundFixture = a:getUserData().type == 'ground' and a or b
             self.player.canJump = true
             self.player:changeState('idle')
         end
+
+        if types['player'] and types['enemy'] then
+            local playerFixture = a:getUserData().type == 'player' and a or b
+            local enemyFixture = a:getUserData().type == 'enemy' and a or b
+
+            local _, evy = enemyFixture:getBody():getLinearVelocity()
+            enemyFixture:getBody():setLinearVelocity(0, evy)
+        end
     end
 
-    self.world:setCallbacks(beginContact)
+    function endContact(a, b, coll)
+    end
+
+    self.world:setCallbacks(beginContact, nil, nil)
 end
 
 function PlayState:spawnEntities()
@@ -67,6 +78,9 @@ function PlayState:spawnEntities()
     }
 
     self.flame:changeState('idle')
+
+    self.currentRoom.player = self.player
+    self.currentRoom.flame = self.flame
 end
 
 function PlayState:enter(params)
@@ -84,6 +98,11 @@ function PlayState:update(dt)
         self.world:update(dt)
         self.player:update(dt)
         self.flame:update(dt)
+
+        for _,enemy in pairs(self.currentRoom.enemies) do
+            enemy:update(dt)
+            enemy:processAI({}, dt)
+        end
     end
 
     if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then
@@ -141,7 +160,9 @@ function PlayState:moveTo(connection)
         self.currentRoom:enter()
 
         self.player.body:setPosition(connection.spawnX, connection.spawnY)
-        
+        self.currentRoom.player = self.player
+        self.currentRoom.flame = self.flame
+
         local px, py = self.player.body:getPosition()
         self.flame.body:setPosition(px, py)
         self.flame.body:setLinearVelocity(0,0)
@@ -186,15 +207,7 @@ function PlayState:render()
         love.graphics.draw(gTextures['templeBg4'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
     end
 
-    self.currentRoom:renderBackground()
-
-    -- draw player
-    self.player:render()
-
-    self.flame:render()
-
-    -- draw the foreground
-    self.currentRoom:renderForeground()
+    self.currentRoom:render()
 
     love.graphics.pop()
 

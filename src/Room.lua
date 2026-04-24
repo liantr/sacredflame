@@ -9,11 +9,39 @@ function Room:init(def, world)
     self.spawnY = def.spawnY
     self.collidable = {}
     self:addCollision()
+    self.player = nil
+    self.flame = nil
+    self.enemies = {}
+
+    
+end
+
+function Room:spawnEnemies()
+    local archerBandit = Entity(ENTITY_DEFS['archer-bandit'], self.world, VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT -TILE_SIZE*5, 'dynamic')
+    archerBandit.stateMachine = StateMachine {
+        ['idle'] = function() return EntityIdleState(archerBandit) end,
+        ['walk'] = function() return EntityWalkState(archerBandit) end
+    }
+    archerBandit:changeState('idle')
+    archerBandit.body:setMass(1000)
+    archerBandit.fixture:setCategory(2)
+    archerBandit.fixture:setMask(4)
+    archerBandit.fixture:setUserData({type='enemy'})
+
+    table.insert(self.enemies, archerBandit)
 end
 
 function Room:enter()
     for _, tile in pairs(self.collidable) do
         tile.body:setActive(true)
+    end
+
+    if #self.enemies == 0 then
+        self:spawnEnemies()
+    else
+        for _, enemy in pairs(self.enemies) do
+            enemy.body:setActive(true)
+        end
     end
 end
 
@@ -22,6 +50,12 @@ function Room:exit()
     for _, tile in pairs(self.collidable) do
         tile.body:setActive(false)
     end
+
+    for _, enemy in pairs(self.enemies) do
+        enemy.body:setActive(false)
+    end
+
+    self.player = nil
 end
 
 function Room:update(dt)
@@ -53,6 +87,22 @@ function Room:addCollision()
             end
         end
     end
+end
+
+function Room:render()
+
+    self:renderBackground()
+    if self.player then
+        self.player:render()
+    end
+    if self.flame then
+        self.flame:render()
+    end
+    for _, enemy in pairs(self.enemies) do
+        enemy:render()
+    end
+
+    self:renderForeground()
 end
 
 function Room:renderForeground()

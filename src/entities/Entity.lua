@@ -12,7 +12,7 @@ function Entity:init(def, world, startX, startY, bodyType)
     self.shape = love.physics.newCircleShape(math.max(self.width/2, self.height/2))
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setRestitution(0)
-    self.fixture:setFriction(0)
+    self.fixture:setFriction(1)
 
     self.animations = createAnimations(def.animations)
     self.moveSpeed = def.moveSpeed
@@ -75,9 +75,9 @@ function Entity:collides(entity)
                 y > entityY + entity.height or entityY > y + self.height)
 end
 
--- function Entity:processAI(params, dt)
---     self.stateMachine:processAI(params, dt)
--- end
+function Entity:processAI(params, dt)
+    self.stateMachine:processAI(params, dt)
+end
 
 function Entity:render()
 
@@ -92,7 +92,7 @@ function Entity:render()
         love.graphics.draw(gTextures[texture], gFrames[texture][self.currentAnimation:getCurrentFrame()],
             math.floor(x), math.floor(y) + (self.offsetY or 0),
             0, self.direction == 'right' and 1 or -1, 1,
-            TILE_SIZE / 2, TILE_SIZE / 2)
+            self.width / 2, self.height / 2)
     end
 end
 

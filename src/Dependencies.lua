@@ -63,7 +63,11 @@ gTextures = {
     ['player-attack'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-attack.png'),
     ['player-attack-combo'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-attack-combo.png'),
 
-    ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png')
+    ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png'),
+
+    ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/bandits/Archer Bandit/archer-idle.png'),
+    ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/bandits/Archer Bandit/archer-run.png'),
+
 }
 
 gFrames = {
@@ -84,6 +88,11 @@ gFrames = {
 
     ['flame-idle'] = GenerateQuadsFromRegion(gTextures['flame-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*11, TILE_SIZE*1.5, TILE_SIZE/2, 0),
+
+    ['archer-bandit-idle'] = GenerateQuadsFromRegion(gTextures['archer-bandit-idle'],
+        TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*23, TILE_SIZE*1.5, 0, TILE_SIZE/2*11),
+    ['archer-bandit-run'] = GenerateQuadsFromRegion(gTextures['archer-bandit-run'],
+        TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*25, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 11),
 }
 
 gSounds = {
