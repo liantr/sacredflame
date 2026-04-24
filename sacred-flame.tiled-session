@@ -75,8 +75,32 @@
             "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
+        "tiled/entry.tmx": {
+            "scale": 1.6996093749999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.07354631119284,
+                "y": 273.59227763732474
+            }
+        },
         "tiled/high temple.tsx": {
             "scaleInEditor": 1
+        },
+        "tiled/main1-right.tmx": {
+            "scale": 1.387890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 390.52068674359697,
+                "y": 180.84998592738526
+            }
+        },
+        "tiled/main1.tmx": {
+            "scale": 1.6996093749999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.07354631119284,
+                "y": 184.1599632268444
+            }
         },
         "tiled/main2-left.tmx": {
             "scale": 1.6996093749999999,
@@ -102,6 +126,22 @@
                 "y": 176
             }
         },
+        "tiled/main4-miniboss.tmx": {
+            "scale": 0.8498046874999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.1470926223857,
+                "y": 183.5715927373018
+            }
+        },
+        "tiled/map.tmx": {
+            "scale": 1.6996093749999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.07354631119284,
+                "y": 273.59227763732474
+            }
+        },
         "tiled/tiled/blood temple.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 1
@@ -110,7 +150,7 @@
             "scaleInDock": 1
         }
     },
-    "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/map",
+    "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/map",
     "last.externalTilesetPath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/tiled",
     "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/The Dark Series/tilesets/29- Sacred Temple Tileset",
     "map.height": 23,
