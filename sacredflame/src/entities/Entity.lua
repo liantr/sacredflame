@@ -99,3 +99,7 @@ end
 function Entity:getPosition()
     return self.body:getPosition()
 end
+
+function  Entity:reverseDirection()
+    self.direction = self.direction == 'right' and 'left' or 'right'
+end

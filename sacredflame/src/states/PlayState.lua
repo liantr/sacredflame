@@ -47,6 +47,14 @@ function PlayState:init()
             local _, evy = enemyFixture:getBody():getLinearVelocity()
             enemyFixture:getBody():setLinearVelocity(0, evy)
         end
+
+        if types['enemy'] and types['wall'] then
+            local walLFixture = a:getUserData().type == 'wall' and a or b
+            local enemyFixture = a:getUserData().type == 'enemy' and a or b
+            local entity = a:getUserData().entity
+            entity:reverseDirection()
+            entity:changeState('walk')
+        end
     end
 
     function endContact(a, b, coll)

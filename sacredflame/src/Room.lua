@@ -17,7 +17,7 @@ function Room:init(def, world)
 end
 
 function Room:spawnEnemies()
-    local archerBandit = Entity(ENTITY_DEFS['archer-bandit'], self.world, TILE_SIZE*8, VIRTUAL_HEIGHT -TILE_SIZE*5, 'dynamic')
+    local archerBandit = Entity(ENTITY_DEFS['archer-bandit'], self.world, VIRTUAL_WIDTH - TILE_SIZE*3, VIRTUAL_HEIGHT -TILE_SIZE*5, 'dynamic')
     archerBandit.stateMachine = StateMachine {
         ['idle'] = function() return EntityIdleState(archerBandit) end,
         ['walk'] = function() return EntityWalkState(archerBandit) end
@@ -26,7 +26,7 @@ function Room:spawnEnemies()
     archerBandit.body:setMass(1000)
     archerBandit.fixture:setCategory(2)
     archerBandit.fixture:setMask(4)
-    archerBandit.fixture:setUserData({type='enemy'})
+    archerBandit.fixture:setUserData({type='enemy', entity = archerBandit})
 
     table.insert(self.enemies, archerBandit)
 end

@@ -19,7 +19,7 @@ function EntityWalkState:update(dt)
         self.entity.body:setLinearVelocity(speed, evy)
     else
         self.movementTimer = 0
-        self.entity.direction = self.entity.direction == 'right' and 'left' or 'right'
+        self.entity:reverseDirection()
         self.entity:changeState('idle')
     end
 end
