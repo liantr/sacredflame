@@ -65,7 +65,7 @@ end
 
 function PlayState:spawnEntities()
     -- create player
-    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY, 'dynamic')
+    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY)
 
     self.player.stateMachine = StateMachine {
         ['walk'] = function() return PlayerWalkState(self.player) end,
@@ -79,7 +79,7 @@ function PlayState:spawnEntities()
     self.player:changeState('idle')
 
     -- create flame companion
-    self.flame = Flame(ENTITY_DEFS['flame'], self.world, self.player, 'kinematic')
+    self.flame = Flame(ENTITY_DEFS['flame'], self.world, self.player)
 
     self.flame.stateMachine = StateMachine {
         ['idle'] = function() return FlameFollowingState(self.flame) end

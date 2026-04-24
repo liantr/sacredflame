@@ -11,24 +11,28 @@ function Room:init(def, world)
     self:addCollision()
     self.player = nil
     self.flame = nil
-    self.enemies = {}
 
-    
+    self.def = def
+    self.enemies = {}
 end
 
 function Room:spawnEnemies()
-    local archerBandit = Entity(ENTITY_DEFS['archer-bandit'], self.world, VIRTUAL_WIDTH - TILE_SIZE*3, VIRTUAL_HEIGHT -TILE_SIZE*5, 'dynamic')
-    archerBandit.stateMachine = StateMachine {
-        ['idle'] = function() return EntityIdleState(archerBandit) end,
-        ['walk'] = function() return EntityWalkState(archerBandit) end
-    }
-    archerBandit:changeState('idle')
-    archerBandit.body:setMass(1000)
-    archerBandit.fixture:setCategory(2)
-    archerBandit.fixture:setMask(4)
-    archerBandit.fixture:setUserData({type='enemy', entity = archerBandit})
+    assert(self.def.enemies, "Room enemies is nil!")
+    for _, enemy in pairs(self.def.enemies) do
+        local enemyDef = ENTITY_DEFS[enemy.type]
+        local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY, enemyDef.bodyType)
 
-    table.insert(self.enemies, archerBandit)
+        enemy.stateMachine = StateMachine {
+            ['idle'] = function() return EntityIdleState(enemy) end,
+            ['walk'] = function() return EntityWalkState(enemy) end
+        }
+        enemy:changeState('idle')
+
+        enemy.fixture:setMask(PLAYER_CATEGORY)
+        enemy.fixture:setUserData({type='enemy', entity = enemy})
+
+        table.insert(self.enemies, enemy)
+    end
 end
 
 function Room:enter()

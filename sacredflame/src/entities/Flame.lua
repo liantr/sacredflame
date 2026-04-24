@@ -1,10 +1,10 @@
 Flame = Class{__includes=Entity}
 
-function Flame:init(def, world, player, bodyType)
+function Flame:init(def, world, player)
     self.player = player
     local playerX, playerY = player.body:getPosition()
 
-    Entity.init(self, def, world, playerX + FLAME_TARGET_X_FROM_PLAYER, playerY - FLAME_TARGET_Y_FROM_PLAYER, bodyType)
+    Entity.init(self, def, world, playerX + FLAME_TARGET_X_FROM_PLAYER, playerY - FLAME_TARGET_Y_FROM_PLAYER)
 
     self.fixture:setUserData({type='flame'})
     self.fixture:setSensor(true) -- no collision

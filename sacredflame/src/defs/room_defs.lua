@@ -9,6 +9,13 @@ ROOM_DEFS= {
             south = { room = 'main1', spawnX = 28, spawnY = 8},
             east = nil,
             west = nil
+        },
+        enemies = {
+            {
+                type = 'archer-bandit',
+                spawnX = VIRTUAL_WIDTH - TILE_SIZE*3,
+                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
+            }
         }
     },
     ['main1'] = {
