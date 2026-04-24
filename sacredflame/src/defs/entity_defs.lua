@@ -109,5 +109,24 @@ ENTITY_DEFS = {
                 texture = 'dagger-bandit-run'
             }
         }
+    },
+    ['spitter'] = {
+        height = TILE_SIZE*2,
+        width = TILE_SIZE,
+        moveSpeed = 50,
+        bodyType = 'dynamic',
+        category = SPITTER_CATEGORY,
+        animations = {
+            ['idle'] = {
+                frames = {1, 3, 5, 7, 9, 11},
+                interval = 0.15,
+                texture = 'spitter-idle'
+            },
+            ['walk'] = {
+                frames = {1, 3, 5, 7, 9, 11, 13},
+                interval = 0.15,
+                texture = 'spitter-walk'
+            }
+        }
     }
 }

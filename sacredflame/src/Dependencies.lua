@@ -65,11 +65,14 @@ gTextures = {
 
     ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png'),
 
-    ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/bandits/Archer Bandit/archer-idle.png'),
-    ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/bandits/Archer Bandit/archer-run.png'),
+    ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-idle.png'),
+    ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-run.png'),
 
-    ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/bandits/Dagger Bandit/dagger-bandit-idle.png'),
-    ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/bandits/Dagger Bandit/dagger-bandit-run.png'),
+    ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-idle.png'),
+    ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-run.png'),
+
+    ['spitter-idle'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-idle.png'),
+    ['spitter-walk'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-walk.png'),
 }
 
 gFrames = {
@@ -100,6 +103,11 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2*7),
     ['dagger-bandit-run'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-run'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 7),
+
+    ['spitter-idle'] = GenerateQuadsFromRegion(gTextures['spitter-idle'],
+        TILE_SIZE, TILE_SIZE*2, TILE_SIZE*11, TILE_SIZE*2, 0, TILE_SIZE/2),
+    ['spitter-walk'] = GenerateQuadsFromRegion(gTextures['spitter-walk'],
+        TILE_SIZE, TILE_SIZE*2, TILE_SIZE*13, TILE_SIZE*2, 0, TILE_SIZE/2),
 }
 
 gSounds = {

@@ -20,6 +20,11 @@ ROOM_DEFS= {
                 type = 'dagger-bandit',
                 spawnX = TILE_SIZE*10,
                 spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
+            },
+            {
+                type = 'spitter',
+                spawnX = TILE_SIZE*15,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
             }
         },
     },
