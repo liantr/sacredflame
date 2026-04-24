@@ -1,6 +1,11 @@
 {
-    "activeFile": "",
+    "activeFile": "tiled/main4-miniboss.tmx",
     "expandedProjectPaths": [
+        "tiled",
+        "lib/sti",
+        "lib/sti/tests",
+        "sacredflame/lib",
+        "."
     ],
     "fileStates": {
         "": {
@@ -84,6 +89,7 @@
             }
         },
         "tiled/high temple.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tiled/main1-right.tmx": {
@@ -128,10 +134,10 @@
         },
         "tiled/main4-miniboss.tmx": {
             "scale": 0.8498046874999999,
-            "selectedLayer": 0,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 640.1470926223857,
-                "y": 183.5715927373018
+                "x": 216.5203401516893,
+                "y": 138.8554355320616
             }
         },
         "tiled/map.tmx": {
@@ -160,20 +166,33 @@
     "map.tileWidth": 16,
     "map.width": 80,
     "openFiles": [
+        "tiled/main2.tmx",
+        "main2-left.tmx",
+        "tiled/main2-left.tmx",
+        "main4-miniboss.tmx",
+        "tiled/main3.tmx",
+        "tiled/main1-right.tmx",
+        "tiled/blood temple.tsx",
+        "tiled/entry.tmx",
+        "tiled/high temple.tsx",
+        "tiled/main1.tmx",
+        "tiled/main4-miniboss.tmx",
+        "tiled/map.tmx"
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
-        "main3.tmx",
-        "tiled/main3.tmx",
-        "tiled/high temple.tsx",
-        "tiled/blood temple.tsx",
-        "blood temple.tsx",
-        "main2.tmx",
+        "tiled/main2.tmx",
         "main2-left.tmx",
-        "main1.tmx",
-        "main1-right.tmx",
-        "high temple.tsx",
-        "entry.tmx"
+        "tiled/main2-left.tmx",
+        "main4-miniboss.tmx",
+        "tiled/main3.tmx",
+        "tiled/main1-right.tmx",
+        "tiled/blood temple.tsx",
+        "tiled/entry.tmx",
+        "tiled/high temple.tsx",
+        "tiled/main1.tmx",
+        "tiled/map.tmx",
+        "tiled/main4-miniboss.tmx"
     ],
     "tileset.lastUsedFilter": "All Files (*)",
     "tileset.lastUsedFormat": "tsx",

@@ -36,6 +36,7 @@ require 'src.entities.Flame'
 
 require 'src/states/entity/EntityWalkState'
 require 'src/states/entity/EntityIdleState'
+require 'src/states/entity/EntitySleepState'
 
 require 'src/states/flame/FlameFollowingState'
 
@@ -73,6 +74,8 @@ gTextures = {
 
     ['spitter-idle'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-idle.png'),
     ['spitter-walk'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-walk.png'),
+
+    ['ghoul-sleep'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-sleep.png'),
 }
 
 gFrames = {
@@ -108,6 +111,9 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE*11, TILE_SIZE*2, 0, TILE_SIZE/2),
     ['spitter-walk'] = GenerateQuadsFromRegion(gTextures['spitter-walk'],
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE*13, TILE_SIZE*2, 0, TILE_SIZE/2),
+
+    ['ghoul-sleep'] = GenerateQuadsFromRegion(gTextures['ghoul-sleep'],
+        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE/2),
 }
 
 gSounds = {

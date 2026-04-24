@@ -8,6 +8,8 @@ function Entity:init(def, world, startX, startY)
 
     self.category = def.category
 
+    self.sleep = def.sleep or false
+
     -- create entity body
     self.bodyType = def.bodyType or 'static'
     self.body = love.physics.newBody(world, startX, startY, self.bodyType)

@@ -25,6 +25,11 @@ ROOM_DEFS= {
                 type = 'spitter',
                 spawnX = TILE_SIZE*15,
                 spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
+            },
+            {
+                type = 'ghoul',
+                spawnX = TILE_SIZE*18,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
             }
         },
     },
