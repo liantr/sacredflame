@@ -15,8 +15,13 @@ ROOM_DEFS= {
                 type = 'archer-bandit',
                 spawnX = VIRTUAL_WIDTH - TILE_SIZE*3,
                 spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
+            },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE*10,
+                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
             }
-        }
+        },
     },
     ['main1'] = {
         map = 'assets/graphics/map/main1.lua',

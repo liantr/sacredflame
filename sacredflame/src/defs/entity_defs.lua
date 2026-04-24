@@ -90,5 +90,24 @@ ENTITY_DEFS = {
                 texture = 'archer-bandit-run'
             }
         }
+    },
+    ['dagger-bandit'] = {
+        height = TILE_SIZE*1.5,
+        width = TILE_SIZE,
+        moveSpeed = 50,
+        bodyType = 'dynamic',
+        category = DAGGER_BANDIT_CATEGORY,
+        animations = {
+            ['idle'] = {
+                frames = {1, 3, 5, 7, 9, 11,13, 15},
+                interval = 0.15,
+                texture = 'dagger-bandit-idle'
+            },
+            ['walk'] = {
+                frames = {1, 3, 5, 7, 9, 11, 13, 15},
+                interval = 0.15,
+                texture = 'dagger-bandit-run'
+            }
+        }
     }
 }

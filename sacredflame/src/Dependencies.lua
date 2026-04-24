@@ -68,6 +68,8 @@ gTextures = {
     ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/bandits/Archer Bandit/archer-idle.png'),
     ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/bandits/Archer Bandit/archer-run.png'),
 
+    ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/bandits/Dagger Bandit/dagger-bandit-idle.png'),
+    ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/bandits/Dagger Bandit/dagger-bandit-run.png'),
 }
 
 gFrames = {
@@ -93,6 +95,11 @@ gFrames = {
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*23, TILE_SIZE*1.5, 0, TILE_SIZE/2*11),
     ['archer-bandit-run'] = GenerateQuadsFromRegion(gTextures['archer-bandit-run'],
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*25, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 11),
+
+    ['dagger-bandit-idle'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-idle'],
+        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2*7),
+    ['dagger-bandit-run'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-run'],
+        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 7),
 }
 
 gSounds = {
