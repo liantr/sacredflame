@@ -17,6 +17,12 @@ function PlayState:init()
 
     self:spawnEntities()
 
+    self.torchesLit = 0
+    self.totalTorches = 12
+
+    self.HUD = HUD(self)
+
+
     -- camera that follows the player
     self.camX = 0
     self.camY = 0
@@ -63,9 +69,13 @@ function PlayState:init()
     self.world:setCallbacks(beginContact, nil, nil)
 end
 
+function PlayState:lightTorch()
+    self.torchesLit = self.torchesLit + 1
+end
+
 function PlayState:spawnEntities()
     -- create player
-    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY)
+    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY, self.HUD)
 
     self.player.stateMachine = StateMachine {
         ['walk'] = function() return PlayerWalkState(self.player) end,
@@ -95,6 +105,7 @@ function PlayState:enter(params)
     if params then
         self = params.playState
     end
+    self.HUD = HUD(self)
 end
 
 function PlayState:update(dt)
@@ -219,7 +230,7 @@ function PlayState:render()
     self.currentRoom:render()
 
 
-    self.player.HUD:render()
+    self.HUD:render()
 
     love.graphics.pop()
 

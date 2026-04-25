@@ -19,24 +19,25 @@ function Room:init(def, world)
 end
 
 function Room:spawnEnemies()
-    assert(self.def.enemies, "Room enemies is nil!")
-    for _, enemy in pairs(self.def.enemies) do
-        local enemyDef = ENTITY_DEFS[enemy.type]
-        local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY, self)
+    if self.def.enemies then
+        for _, enemy in pairs(self.def.enemies) do
+            local enemyDef = ENTITY_DEFS[enemy.type]
+            local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY, self)
 
-        enemy.stateMachine = StateMachine {
-            ['idle'] = function() return EntityIdleState(enemy) end,
-            ['walk'] = function() return EntityWalkState(enemy) end,
-            ['chase'] = function() return EnemyChaseState(enemy) end,
-            ['attack'] = function() return EnemyAttackState(enemy) end
-        }
-        enemy:changeState('idle')
-      
+            enemy.stateMachine = StateMachine {
+                ['idle'] = function() return EntityIdleState(enemy) end,
+                ['walk'] = function() return EntityWalkState(enemy) end,
+                ['chase'] = function() return EnemyChaseState(enemy) end,
+                ['attack'] = function() return EnemyAttackState(enemy) end
+            }
+            enemy:changeState('idle')
+        
 
-        enemy.fixture:setMask(PLAYER_CATEGORY)
-        enemy.fixture:setUserData({type='enemy', entity = enemy})
+            enemy.fixture:setMask(PLAYER_CATEGORY)
+            enemy.fixture:setUserData({type='enemy', entity = enemy})
 
-        table.insert(self.enemies, enemy)
+            table.insert(self.enemies, enemy)
+        end
     end
 end
 
