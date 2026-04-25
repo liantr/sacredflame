@@ -86,6 +86,14 @@ gTextures = {
     ['ghoul-idle'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-wake.png'),
     ['ghoul-walk'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-walk.png'),
     ['ghoul-attack'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-attack.png'),
+
+    ['boss-idle'] = love.graphics.newImage('assets/graphics/characters/boss/boss-idle.png'),
+    ['boss-walk'] = love.graphics.newImage('assets/graphics/characters/boss/boss-walk.png'),
+    --['boss-hit'] = love.graphics.newImage('assets/graphics/characters/boss/boss-hit.png'),
+    ['boss-attack1'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack1.png'),
+    ['boss-attack2'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack2.png'),
+    ['boss-attack3'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack3.png'),
+    --['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
 }
 
 gFrames = {
@@ -136,9 +144,28 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*9*2, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['ghoul-attack'] = GenerateQuadsFromRegion(gTextures['ghoul-attack'],
         TILE_SIZE*3, TILE_SIZE*2, TILE_SIZE*7*6, TILE_SIZE*2, 0, 0),
+
+    ['boss-idle'] = GenerateQuadsFromRegion(gTextures['boss-idle'],
+        TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*9*5, TILE_SIZE*4, 0, 0),
+    ['boss-walk'] = GenerateQuadsFromRegion(gTextures['boss-walk'],
+        TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*2*5, TILE_SIZE*4, 0, 0),
+    -- ['boss-hit'] = GenerateQuadsFromRegion(gTextures['boss-hit'],
+    --     TILE_SIZE*4, TILE_SIZE*3.5, TILE_SIZE*2*4, TILE_SIZE*3.5, 0, 0),
+    -- ['boss-death'] = GenerateQuadsFromRegion(gTextures['boss-death'],
+    --     TILE_SIZE*4, TILE_SIZE*3.5, TILE_SIZE*2*4, TILE_SIZE*3.5, 0, 0),
+    ['boss-attack1'] = GenerateQuadsFromRegion(gTextures['boss-attack1'],
+        TILE_SIZE*15  - TILE_SIZE/2, TILE_SIZE*3, (TILE_SIZE*15 -TILE_SIZE/2)*5, TILE_SIZE*3*2, 0, 0),
+    ['boss-attack2'] = GenerateQuadsFromRegion(gTextures['boss-attack2'],
+        (TILE_SIZE)*14-TILE_SIZE/2, TILE_SIZE*3, (TILE_SIZE*14)*16 - TILE_SIZE/2, TILE_SIZE*3, 0, 0),
+    ['boss-attack3'] = GenerateQuadsFromRegion(gTextures['boss-attack3'],
+        (TILE_SIZE*16), TILE_SIZE*7.5, (TILE_SIZE*16)*30, TILE_SIZE*7.5, 0, 0),
 }
 
-print("total frames:" ..tostring(#gFrames['ghoul-idle']))
+gTextures['boss-attack1']:setFilter('nearest', 'nearest')
+gTextures['boss-attack2']:setFilter('nearest', 'nearest')
+gTextures['boss-attack3']:setFilter('nearest', 'nearest')
+
+print("total frames:" ..tostring(#gFrames['boss-attack3']))
 
 
 gSounds = {

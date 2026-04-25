@@ -26,8 +26,13 @@ ROOM_DEFS= {
             --     spawnX = TILE_SIZE*18, --TILE_SIZE*15,
             --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
             -- },
+            -- {
+            --     type = 'ghoul',
+            --     spawnX = TILE_SIZE*30,
+            --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
+            -- },
             {
-                type = 'ghoul',
+                type = 'boss',
                 spawnX = TILE_SIZE*30,
                 spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
             }

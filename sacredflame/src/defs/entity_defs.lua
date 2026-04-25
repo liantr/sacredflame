@@ -108,7 +108,7 @@ ENTITY_DEFS = {
         }
     },
     ['dagger-bandit'] = {
-        -- TODO fix animation rndering and end position
+        -- TODO fix animation rendering and end position
         height = TILE_SIZE*1.5,
         width = TILE_SIZE,
         moveSpeed = 50,
@@ -194,6 +194,59 @@ ENTITY_DEFS = {
                 interval = 0.08,
                 texture = 'ghoul-attack'
             }
+        }
+    },
+    ['boss'] = {
+        height = TILE_SIZE*5,
+        width = TILE_SIZE*5,
+        moveSpeed = 100,
+        bodyType = 'dynamic',
+        category = BOSS_CATEGORY,
+        chaseSpeed = 100,
+        attackDistance = TILE_SIZE*5,
+        animations = {
+            ['idle'] = {
+                frames = {1,2,3,4,5,6,7,8,9},
+                interval = 0.15,
+                texture = 'boss-idle'
+            },
+            ['walk'] = {
+                frames = {1,2},
+                interval = 0.15,
+                texture = 'boss-walk'
+            },
+            ['attack1'] = {
+                frames = {1,2,3,4,5,6,7,8,9},
+                interval = 0.05,
+                looping = false,
+                texture = 'boss-attack1'
+            },
+            ['attack2'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,16 do
+                        table.insert(frames, i)
+                    end
+
+                    return frames
+                end)(),
+                looping = false,
+                interval = 0.05,
+                texture = 'boss-attack2'
+            },
+            ['attack'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,30 do
+                        table.insert(frames, i)
+                    end
+
+                    return frames
+                end)(),
+                looping = false,
+                interval = 0.05,
+                texture = 'boss-attack3'
+            },
         }
     }
 }
