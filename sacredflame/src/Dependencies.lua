@@ -37,6 +37,7 @@ require 'src.entities.Flame'
 require 'src/states/entity/EntityWalkState'
 require 'src/states/entity/EntityIdleState'
 require 'src.states.enemy.EnemyChaseState'
+require 'src.states.enemy.EnemyAttackState'
 require 'src.states.enemy.GhoulSleepState'
 
 require 'src/states/flame/FlameFollowingState'
@@ -69,6 +70,7 @@ gTextures = {
 
     ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-idle.png'),
     ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-run.png'),
+    ['archer-bandit-attack'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-attack.png'),
 
     ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-idle.png'),
     ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-run.png'),
@@ -102,6 +104,8 @@ gFrames = {
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*23, TILE_SIZE*1.5, 0, TILE_SIZE/2*11),
     ['archer-bandit-run'] = GenerateQuadsFromRegion(gTextures['archer-bandit-run'],
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*25, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 11),
+    ['archer-bandit-attack'] = GenerateQuadsFromRegion(gTextures['archer-bandit-attack'],
+        TILE_SIZE*2, TILE_SIZE*7, TILE_SIZE*2*2*19, TILE_SIZE*7, 0, 0),
 
     ['dagger-bandit-idle'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2*7),
@@ -116,6 +120,9 @@ gFrames = {
     ['ghoul-sleep'] = GenerateQuadsFromRegion(gTextures['ghoul-sleep'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE/2),
 }
+
+--print("total frames:" ..tostring(#gFrames['archer-bandit-attack']))
+
 
 gSounds = {
     --['music'] = love.audio.newSource('sounds/music.wav', 'static')

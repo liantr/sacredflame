@@ -20,9 +20,9 @@ function EnemyChaseState:update(dt)
 
     local distFromPlayer = getDistanceFromPlayer(self.entity, self.player)
 
-    if math.abs(distFromPlayer) < self.entity.attackDistance then
+    if math.abs(distFromPlayer) < self.entity.attackDistance and self.entity.canAttack then
         -- enemy within attack range
-        --self.entity:changeState('attack')
+        self.entity:changeState('attack', {player = self.player})
     elseif math.abs(distFromPlayer) > ENEMY_CHASE_MIN_DISTANCE then
         -- player too far, return to idle state
         self.entity:changeState('idle')

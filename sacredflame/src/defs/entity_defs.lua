@@ -90,6 +90,20 @@ ENTITY_DEFS = {
                 frames = {1, 3, 5, 7, 9, 11, 13, 15},
                 interval = 0.15,
                 texture = 'archer-bandit-run'
+            },
+            ['attack'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=0,37,2 do
+                        print(tostring(i+1))
+                        table.insert(frames, i + 1)
+                    end
+
+                    return frames
+                end)(),
+                looping = false,
+                interval = 0.05,
+                texture = 'archer-bandit-attack'
             }
         }
     },

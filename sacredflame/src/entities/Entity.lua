@@ -29,6 +29,7 @@ function Entity:init(def, world, startX, startY)
 
     self.dead = false
     self.health = def.health
+    self.canAttack = true
 
     -- flags for flashing the entity when hit
     self.invulnerable = false
@@ -97,10 +98,20 @@ function Entity:render()
 
     if self.currentAnimation then
         local texture = self.currentAnimation.texture
-        love.graphics.draw(gTextures[texture], gFrames[texture][self.currentAnimation:getCurrentFrame()],
-            math.floor(x), math.floor(y) + (self.offsetY or 0),
-            0, self.direction == 'right' and 1 or -1, 1,
-            self.width / 2, self.height / 2)
+        local frame = self.currentAnimation:getCurrentFrame()
+
+        local quad = gFrames[texture][frame]
+        local _, _, w, h = quad:getViewport()
+
+        love.graphics.draw(
+            gTextures[texture],
+            quad,
+            math.floor(x),
+            math.floor(y) + self.height/2 + (self.offsetY or 0),
+            0,
+            self.direction == 'right' and 1 or -1, 1,
+            w / 2,
+            h)
     end
 end
 

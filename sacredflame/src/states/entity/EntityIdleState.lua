@@ -34,9 +34,8 @@ function EntityIdleState:processAI(params, dt)
     local distFromPlayer = getDistanceFromPlayer(self.entity, player)
     local absDistFromPlayer = math.abs(distFromPlayer)
 
-    print("dist from player: " ..tostring(absDistFromPlayer) ..", min dist: " ..tostring(ENEMY_CHASE_MIN_DISTANCE))
 
-    if math.abs(distFromPlayer) < ENEMY_CHASE_MIN_DISTANCE then
+    if math.abs(distFromPlayer) < ENEMY_CHASE_MIN_DISTANCE and self.entity.canAttack then
         if distFromPlayer > 0 then
             self.entity.direction = 'right'
         else

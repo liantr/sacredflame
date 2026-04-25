@@ -62,7 +62,7 @@ function EntityWalkState:processAI(params, dt)
     local player = params.player
     local distFromPlayer = getDistanceFromPlayer(self.entity, player)
 
-    if math.abs(distFromPlayer) < ENEMY_CHASE_MIN_DISTANCE then
+    if math.abs(distFromPlayer) < ENEMY_CHASE_MIN_DISTANCE and self.entity.canAttack then
         if distFromPlayer > 0 then
             self.entity.direction = 'right'
         else

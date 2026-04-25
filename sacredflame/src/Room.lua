@@ -26,7 +26,8 @@ function Room:spawnEnemies()
             enemy.stateMachine = StateMachine {
                 ['idle'] = function() return EntityIdleState(enemy) end,
                 ['walk'] = function() return EntityWalkState(enemy) end,
-                ['chase'] = function() return EnemyChaseState(enemy) end
+                ['chase'] = function() return EnemyChaseState(enemy) end,
+                ['attack'] = function() return EnemyAttackState(enemy) end
             }
             enemy:changeState('idle')
         else
@@ -34,7 +35,8 @@ function Room:spawnEnemies()
                 ['idle'] = function() return EntityIdleState(enemy) end,
                 ['walk'] = function() return EntityWalkState(enemy) end,
                 ['chase'] = function() return EnemyChaseState(enemy) end,
-                ['sleep'] = function() return GhoulSleepState(enemy) end
+                ['sleep'] = function() return GhoulSleepState(enemy) end,
+                ['attack'] = function() return EnemyAttackState(enemy) end
             }
             enemy:changeState('sleep')
         end
