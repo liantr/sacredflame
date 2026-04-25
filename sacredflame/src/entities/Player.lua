@@ -6,4 +6,8 @@ function Player:init(def, world, startX, startY)
     self.fixture:setMask()
     self.canJump = true
     self.runSpeed = def.runSpeed
+    self.maxHealth = self.health
+
+    -- create HUD
+    self.HUD = HUD(self)
 end

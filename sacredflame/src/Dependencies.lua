@@ -23,6 +23,8 @@ require 'src/StateMachine'
 
 require 'src.VolleyAttack'
 
+require 'src.HUD'
+
 require 'src/states/BaseState'
 require 'src/states/StartState'
 require 'src/states/PlayState'
@@ -58,6 +60,10 @@ gTextures = {
     ['templeBg2'] = love.graphics.newImage('assets/graphics/ruinedTemple/background2.png'),
     ['templeBg3'] = love.graphics.newImage('assets/graphics/ruinedTemple/background3.png'),
     ['templeBg4'] = love.graphics.newImage('assets/graphics/ruinedTemple/background4.png'),
+
+    -- health bars
+    ['player-health-box'] = love.graphics.newImage('assets/graphics/Hearts/PNG/health_bar/health_bar_decoration.png'),
+    ['player-health-bar'] = love.graphics.newImage('assets/graphics/Hearts/PNG/health_bar/health_bar.png'),
 
     -- player
     ['player-idle'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-idle.png'),
@@ -97,6 +103,10 @@ gTextures = {
 }
 
 gFrames = {
+    ['player-health-box'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
+    TILE_SIZE, TILE_SIZE+1, TILE_SIZE*4, TILE_SIZE+1,0,0),
+    ['player-health-bar'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
+    TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE,0,0),
     ['player-idle'] = GenerateQuadsFromRegion(gTextures['player-idle'],
         TILE_SIZE, TILE_SIZE, TILE_SIZE*13, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
     ['player-walk'] = GenerateQuadsFromRegion(gTextures['player-walk'],

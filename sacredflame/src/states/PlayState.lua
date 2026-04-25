@@ -218,6 +218,9 @@ function PlayState:render()
 
     self.currentRoom:render()
 
+
+    self.player.HUD:render()
+
     love.graphics.pop()
 
     -- room transition fade in and out
