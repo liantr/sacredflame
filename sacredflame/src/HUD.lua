@@ -4,7 +4,7 @@ HUD = Class{}
 function HUD:init(playState)
     self.playState = playState
 
-    self.boxX = 0
+    self.boxX = TILE_SIZE
 
     self.barWidth = TILE_SIZE * 3
     self.barHeight = TILE_SIZE
@@ -12,8 +12,15 @@ function HUD:init(playState)
 
     self.y = TILE_SIZE
 
-    self.torchX = self.barX + self.barWidth + TILE_SIZE*2 + 5
-    self.torchY = 0
+    self.torchX = self.barX + 40
+    self.torchY = self.y * 2
+
+    self.flameX = self.boxX
+    self.flameY = self.y * 2.5
+
+    self.torchText1X = self.torchX - 28
+    self.torchText2X = self.torchX + 13
+    self.torchTextY = self.torchY + 22
 end
 
 function HUD:update(dt)
@@ -38,9 +45,10 @@ function HUD:render()
 
     local torchesLit = self.playState.torchesLit
     local totalTorches = self.playState.totalTorches
-    love.graphics.printf(tostring(torchesLit) .." of " ..tostring(totalTorches), self.torchX - 28, self.torchY + 22, 100)
-    love.graphics.printf(" lit", self.torchX + TILE_SIZE/2 + 5, self.torchY + 22, 100)
+    love.graphics.printf(tostring(torchesLit) .." of " ..tostring(totalTorches), self.torchText1X, self.torchTextY, 100)
+    love.graphics.printf(" lit", self.torchText2X, self.torchTextY, 100)
 
     love.graphics.draw(gTextures['small-torches'], gFrames['torch-hud'][1], self.torchX, self.torchY)
+    love.graphics.draw(gTextures['flame-idle'], gFrames['flame-idle'][3], self.flameX, self.flameY)
 
 end
