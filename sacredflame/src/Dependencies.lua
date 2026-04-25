@@ -62,9 +62,13 @@ gTextures = {
     ['templeBg4'] = love.graphics.newImage('assets/graphics/ruinedTemple/background4.png'),
 
     -- health bars
-    ['player-health-box'] = love.graphics.newImage('assets/graphics/Hearts/PNG/health_bar/health_bar_decoration.png'),
-    ['player-health-bar'] = love.graphics.newImage('assets/graphics/Hearts/PNG/health_bar/health_bar.png'),
+    ['player-health-box'] = love.graphics.newImage('assets/graphics/health/health_bar_decoration.png'),
+    ['player-health-bar'] = love.graphics.newImage('assets/graphics/health//health_bar.png'),
 
+    -- objects
+    ['heart'] = love.graphics.newImage('assets/graphics/objects/heart.png'),
+    ['torches'] = love.graphics.newImage('assets/graphics/objects/torches.png'),
+    ['small-torches'] = love.graphics.newImage('assets/graphics/objects/small-torches.png'),
     -- player
     ['player-idle'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-idle.png'),
     ['player-walk'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-walk.png'),
@@ -103,6 +107,14 @@ gTextures = {
 }
 
 gFrames = {
+    ['heart'] = GenerateQuads(gTextures['heart'], TILE_SIZE, TILE_SIZE),
+    ['torch-unlit'] = GenerateQuadsFromRegion(gTextures['torches'],
+    TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE*3, 0, 0),
+    ['torch-lit'] = GenerateQuadsFromRegion(gTextures['torches'],
+    TILE_SIZE, TILE_SIZE*3, TILE_SIZE*4, TILE_SIZE*3, 0, TILE_SIZE),
+    ['torch-hud'] = GenerateQuadsFromRegion(gTextures['small-torches'],
+    TILE_SIZE, TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2, TILE_SIZE, 0),
+
     ['player-health-box'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
     TILE_SIZE, TILE_SIZE+1, TILE_SIZE*4, TILE_SIZE+1,0,0),
     ['player-health-bar'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
@@ -184,7 +196,7 @@ gSounds = {
 
 gFonts = {
     ['title'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 64),
---     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
+    ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
     ['medium'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 16),
     ['large'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 32),
 --     ['huge'] = love.graphics.newFont('fonts/font.ttf', 64)
