@@ -1,7 +1,6 @@
 Entity = Class{}
 
 function Entity:init(def, world, startX, startY)
-
     -- dimensions
     self.width = def.width
     self.height = def.height
@@ -24,6 +23,7 @@ function Entity:init(def, world, startX, startY)
     self.moveSpeed = def.moveSpeed
     self.chaseSpeed = def.chaseSpeed or self.moveSpeed
     self.attackDistance = def.attackDistance or 0
+    self.rangedAttack = def.rangedAttack
     
     self.direction = 'right'
 
@@ -86,6 +86,13 @@ end
 
 function Entity:processAI(params, dt)
     self.stateMachine:processAI(params, dt)
+end
+
+function EnemyAttackState:spawnRangedAttack(targetX, targetY)
+    if self.rangedAttack then
+        local attack = VolleyAttack(targetX, targetY)
+        table.insert(self.attacks, attack)
+    end
 end
 
 function Entity:render()

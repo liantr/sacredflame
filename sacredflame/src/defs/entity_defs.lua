@@ -80,6 +80,7 @@ ENTITY_DEFS = {
         attackDistance = TILE_SIZE * 3,
         bodyType = 'dynamic',
         category = ARCHER_BANDIT_CATEGORY,
+        rangedAttack = true,
         animations = {
             ['idle'] = {
                 frames = {1, 3, 5, 7, 9, 11,13, 15},
@@ -95,7 +96,6 @@ ENTITY_DEFS = {
                 frames = (function()
                     local frames = {}
                     for i=0,37,2 do
-                        print(tostring(i+1))
                         table.insert(frames, i + 1)
                     end
 

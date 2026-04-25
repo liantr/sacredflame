@@ -104,6 +104,7 @@ function PlayState:update(dt)
     if not self.transitioning then
         self:transitionRooms()
         self.world:update(dt)
+        self.currentRoom:update(dt)
         self.player:update(dt)
         self.flame:update(dt)
 

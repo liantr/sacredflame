@@ -20,6 +20,9 @@ require 'src/Animation'
 require 'src/Util'
 require 'src/Room'
 require 'src/StateMachine'
+
+require 'src.VolleyAttack'
+
 require 'src/states/BaseState'
 require 'src/states/StartState'
 require 'src/states/PlayState'
@@ -71,6 +74,7 @@ gTextures = {
     ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-idle.png'),
     ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-run.png'),
     ['archer-bandit-attack'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-attack.png'),
+    ['archer-bandit-attack-volley'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/attack-volley.png'),
 
     ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-idle.png'),
     ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-run.png'),
@@ -106,6 +110,8 @@ gFrames = {
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*25, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 11),
     ['archer-bandit-attack'] = GenerateQuadsFromRegion(gTextures['archer-bandit-attack'],
         TILE_SIZE*2, TILE_SIZE*7, TILE_SIZE*2*2*19, TILE_SIZE*7, 0, 0),
+    ['archer-bandit-attack-volley'] = GenerateQuadsFromRegion(gTextures['archer-bandit-attack-volley'],
+        TILE_SIZE*4, TILE_SIZE*7, TILE_SIZE*2*16, TILE_SIZE*7, 0, 0),
 
     ['dagger-bandit-idle'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2*7),

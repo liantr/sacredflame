@@ -14,13 +14,15 @@ function Room:init(def, world)
 
     self.def = def
     self.enemies = {}
+
+    self.attacks = {}
 end
 
 function Room:spawnEnemies()
     assert(self.def.enemies, "Room enemies is nil!")
     for _, enemy in pairs(self.def.enemies) do
         local enemyDef = ENTITY_DEFS[enemy.type]
-        local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY, enemyDef.bodyType)
+        local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY)
 
         if not enemy.sleep then
             enemy.stateMachine = StateMachine {
@@ -76,6 +78,13 @@ function Room:exit()
 end
 
 function Room:update(dt)
+    for i=#self.attacks,1,-1 do
+        local attack = self.attacks[i]
+        attack:update(dt)
+        if attack.complete then
+            table.remove(self.attacks, i)
+        end
+    end
 end
 
 function Room:addCollision()
@@ -117,6 +126,10 @@ function Room:render()
     end
     for _, enemy in pairs(self.enemies) do
         enemy:render()
+    end
+
+    for _,attack in pairs(self.attacks) do
+        attack:render()
     end
 
     self:renderForeground()
