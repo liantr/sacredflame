@@ -78,3 +78,9 @@ function handleMovementInput(player)
 
     return false
 end
+
+function getDistanceFromPlayer(entity, player)
+    local ex, _ = entity:getPosition()
+    local px, _ = player:getPosition()
+    return px - ex
+end

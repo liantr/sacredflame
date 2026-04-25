@@ -36,14 +36,15 @@ require 'src.entities.Flame'
 
 require 'src/states/entity/EntityWalkState'
 require 'src/states/entity/EntityIdleState'
-require 'src/states/entity/EntitySleepState'
+require 'src.states.enemy.EnemyChaseState'
+require 'src.states.enemy.GhoulSleepState'
 
 require 'src/states/flame/FlameFollowingState'
 
-require 'src/states/player/PlayerWalkState'
-require 'src/states/player/PlayerIdleState'
-require 'src/states/player/PlayerJumpState'
-require 'src/states/player/PlayerFallingState'
+require 'src.states.player.PlayerWalkState'
+require 'src.states.player.PlayerIdleState'
+require 'src.states.player.PlayerJumpState'
+require 'src.states.player.PlayerFallingState'
 require 'src.states.player.PlayerDeathState'
 require 'src.states.player.PlayerSwordSwingState'
 

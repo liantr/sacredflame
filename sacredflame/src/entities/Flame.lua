@@ -6,7 +6,7 @@ function Flame:init(def, world, player)
 
     Entity.init(self, def, world, playerX + FLAME_TARGET_X_FROM_PLAYER, playerY - FLAME_TARGET_Y_FROM_PLAYER)
 
-    self.fixture:setUserData({type='flame'})
+    self.fixture:setUserData({type='flame', entity = self})
     self.fixture:setSensor(true) -- no collision
     self.body:setLinearDamping(5)
     self.body:setAngularDamping(5)

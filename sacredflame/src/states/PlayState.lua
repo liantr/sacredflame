@@ -51,7 +51,7 @@ function PlayState:init()
         if types['enemy'] and types['wall'] then
             local walLFixture = a:getUserData().type == 'wall' and a or b
             local enemyFixture = a:getUserData().type == 'enemy' and a or b
-            local entity = a:getUserData().entity
+            local entity = enemyFixture:getUserData().entity
             entity:reverseDirection()
             entity:changeState('walk')
         end
@@ -110,7 +110,7 @@ function PlayState:update(dt)
         for _,enemy in pairs(self.currentRoom.enemies) do
             enemy:update(dt)
             if not enemy.sleep then
-                enemy:processAI({}, dt)
+                enemy:processAI({player = self.player}, dt)
             end
         end
     end

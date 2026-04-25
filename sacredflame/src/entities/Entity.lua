@@ -22,7 +22,9 @@ function Entity:init(def, world, startX, startY)
 
     self.animations = createAnimations(def.animations)
     self.moveSpeed = def.moveSpeed
-
+    self.chaseSpeed = def.chaseSpeed or self.moveSpeed
+    self.attackDistance = def.attackDistance or 0
+    
     self.direction = 'right'
 
     self.dead = false

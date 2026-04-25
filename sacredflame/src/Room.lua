@@ -25,14 +25,16 @@ function Room:spawnEnemies()
         if not enemy.sleep then
             enemy.stateMachine = StateMachine {
                 ['idle'] = function() return EntityIdleState(enemy) end,
-                ['walk'] = function() return EntityWalkState(enemy) end
+                ['walk'] = function() return EntityWalkState(enemy) end,
+                ['chase'] = function() return EnemyChaseState(enemy) end
             }
             enemy:changeState('idle')
         else
             enemy.stateMachine = StateMachine {
                 ['idle'] = function() return EntityIdleState(enemy) end,
                 ['walk'] = function() return EntityWalkState(enemy) end,
-                ['sleep'] = function() return EntitySleepState(enemy) end
+                ['chase'] = function() return EnemyChaseState(enemy) end,
+                ['sleep'] = function() return GhoulSleepState(enemy) end
             }
             enemy:changeState('sleep')
         end

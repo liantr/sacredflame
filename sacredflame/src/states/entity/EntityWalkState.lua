@@ -2,11 +2,14 @@ EntityWalkState = Class{__includes = BaseState}
 
 function EntityWalkState:init(entity)
     self.entity = entity
-    self.entity:changeAnimation('walk')
-
+    
     -- used for AI control
     self.moveDuration = 0
     self.movementTimer = 0
+end
+
+function EntityWalkState:enter(params)
+    self.entity:changeAnimation('walk')
 end
 
 function EntityWalkState:update(dt)
@@ -55,10 +58,19 @@ end
 
 function EntityWalkState:processAI(params, dt)
     local directions = {'left', 'right'}
+    
+    local player = params.player
+    local distFromPlayer = getDistanceFromPlayer(self.entity, player)
 
-    if self.moveDuration == 0 then
+    if math.abs(distFromPlayer) < ENEMY_CHASE_MIN_DISTANCE then
+        if distFromPlayer > 0 then
+            self.entity.direction = 'right'
+        else
+            self.entity.direction = 'left'
+        end
+        self.entity:changeState('chase', {player=player})
+    elseif self.moveDuration == 0 then
         self:changeWalkDirection(directions)
-
     elseif self.movementTimer > self.moveDuration then
         self.movementTimer = 0
         self.entity:changeState('idle')
