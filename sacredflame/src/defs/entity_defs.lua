@@ -176,19 +176,24 @@ ENTITY_DEFS = {
         bodyType = 'dynamic',
         category = GHOUL_CATEGORY,
         chaseSpeed = 100,
-        attackDistance = TILE_SIZE * 2,
+        attackDistance = TILE_SIZE,
         animations = {
             ['idle'] = {
-                frames = {1,2,3,4},
-                looping = false,
+                frames = {1,3,5,7},
                 interval = 3,
                 texture = 'ghoul-idle'
+            },
+            ['walk'] = {
+                frames = {1, 3, 5, 7, 9, 11, 13, 15, 17},
+                interval = 0.15,
+                texture = 'ghoul-walk'
+            },
+            ['attack'] = {
+                frames = {1,3,5,7,9,11,13},
+                looping = false,
+                interval = 0.08,
+                texture = 'ghoul-attack'
             }
-            -- ['walk'] = {
-            --     frames = {1, 3, 5, 7, 9, 11, 13},
-            --     interval = 0.15,
-            --     texture = 'ghoul-walk'
-            -- }
         }
     }
 }

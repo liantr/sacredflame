@@ -84,6 +84,8 @@ gTextures = {
     ['spitter-attack'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-attack.png'),
 
     ['ghoul-idle'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-wake.png'),
+    ['ghoul-walk'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-walk.png'),
+    ['ghoul-attack'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-attack.png'),
 }
 
 gFrames = {
@@ -129,7 +131,11 @@ gFrames = {
         TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*27, TILE_SIZE*2, 0, 0),
 
     ['ghoul-idle'] = GenerateQuadsFromRegion(gTextures['ghoul-idle'],
-        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*4, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*4*2, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['ghoul-walk'] = GenerateQuadsFromRegion(gTextures['ghoul-walk'],
+        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*9*2, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['ghoul-attack'] = GenerateQuadsFromRegion(gTextures['ghoul-attack'],
+        TILE_SIZE*3, TILE_SIZE*2, TILE_SIZE*7*6, TILE_SIZE*2, 0, 0),
 }
 
 print("total frames:" ..tostring(#gFrames['ghoul-idle']))
