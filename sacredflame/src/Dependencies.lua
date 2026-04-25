@@ -89,11 +89,11 @@ gTextures = {
 
     ['boss-idle'] = love.graphics.newImage('assets/graphics/characters/boss/boss-idle.png'),
     ['boss-walk'] = love.graphics.newImage('assets/graphics/characters/boss/boss-walk.png'),
-    --['boss-hit'] = love.graphics.newImage('assets/graphics/characters/boss/boss-hit.png'),
+    ['boss-hit'] = love.graphics.newImage('assets/graphics/characters/boss/boss-hit.png'),
     ['boss-attack1'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack1.png'),
     ['boss-attack2'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack2.png'),
     ['boss-attack3'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack3.png'),
-    --['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
+    ['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
 }
 
 gFrames = {
