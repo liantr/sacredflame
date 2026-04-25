@@ -49,6 +49,14 @@ function HUD:render()
     love.graphics.printf(" lit", self.torchText2X, self.torchTextY, 100)
 
     love.graphics.draw(gTextures['small-torches'], gFrames['torch-hud'][1], self.torchX, self.torchY)
+
+    local flameAvailable = self.playState.flameAvailable
+
+    if not flameAvailable then
+        love.graphics.setColor(1, 1, 1, 0.5)
+    end
+
     love.graphics.draw(gTextures['flame-idle'], gFrames['flame-idle'][3], self.flameX, self.flameY)
 
+    love.graphics.setColor(1, 1, 1, 1)
 end

@@ -67,6 +67,8 @@ function PlayState:init()
     end
 
     self.world:setCallbacks(beginContact, nil, nil)
+
+    self.flameAvailable = true
 end
 
 function PlayState:lightTorch()
