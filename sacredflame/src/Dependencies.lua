@@ -78,6 +78,7 @@ gTextures = {
 
     ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-idle.png'),
     ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-run.png'),
+    ['dagger-bandit-attack'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-attack.png'),
 
     ['spitter-idle'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-idle.png'),
     ['spitter-walk'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-walk.png'),
@@ -117,6 +118,8 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2*7),
     ['dagger-bandit-run'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-run'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 7),
+    ['dagger-bandit-attack'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-attack'],
+        TILE_SIZE*4, TILE_SIZE*1.5, TILE_SIZE*28, TILE_SIZE*1.5, 0, TILE_SIZE * 3.5),
 
     ['spitter-idle'] = GenerateQuadsFromRegion(gTextures['spitter-idle'],
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE*11, TILE_SIZE*2, 0, TILE_SIZE/2),
@@ -127,7 +130,7 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE/2),
 }
 
---print("total frames:" ..tostring(#gFrames['archer-bandit-attack']))
+--print("total frames:" ..tostring(#gFrames['dagger-bandit-attack']))
 
 
 gSounds = {

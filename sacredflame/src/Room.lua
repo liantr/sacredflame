@@ -22,7 +22,7 @@ function Room:spawnEnemies()
     assert(self.def.enemies, "Room enemies is nil!")
     for _, enemy in pairs(self.def.enemies) do
         local enemyDef = ENTITY_DEFS[enemy.type]
-        local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY)
+        local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY, self)
 
         if not enemy.sleep then
             enemy.stateMachine = StateMachine {

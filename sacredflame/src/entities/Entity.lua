@@ -1,6 +1,7 @@
 Entity = Class{}
 
-function Entity:init(def, world, startX, startY)
+function Entity:init(def, world, startX, startY,room)
+    self.room = room
     -- dimensions
     self.width = def.width
     self.height = def.height
@@ -88,10 +89,10 @@ function Entity:processAI(params, dt)
     self.stateMachine:processAI(params, dt)
 end
 
-function EnemyAttackState:spawnRangedAttack(targetX, targetY)
+function Entity:spawnRangedAttack(targetX, targetY)
     if self.rangedAttack then
         local attack = VolleyAttack(targetX, targetY)
-        table.insert(self.attacks, attack)
+        table.insert(self.room.attacks, attack)
     end
 end
 

@@ -15,7 +15,6 @@ end
 
 function VolleyAttack:update(dt)
     self.animation:update(dt)
-    print(tostring(self.animation.timesPlayed))
     if self.animation.timesPlayed > 0 then
         self.animation.timesPlayed = 0
         self.complete = true

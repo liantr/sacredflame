@@ -11,16 +11,16 @@ ROOM_DEFS= {
             west = nil
         },
         enemies = {
-            {
-                type = 'archer-bandit',
-                spawnX = VIRTUAL_WIDTH - TILE_SIZE*3,
-                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
-            },
             -- {
-            --     type = 'dagger-bandit',
-            --     spawnX = TILE_SIZE*10,
+            --     type = 'archer-bandit',
+            --     spawnX = TILE_SIZE*18, --VIRTUAL_WIDTH - TILE_SIZE*3,
             --     spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
             -- },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE*18, --TILE_SIZE*10,
+                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
+            },
             -- {
             --     type = 'spitter',
             --     spawnX = TILE_SIZE*15,
