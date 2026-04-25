@@ -20,12 +20,14 @@ end
 
 function EnemyAttackState:update(dt)
     local currentAnimation = self.entity.currentAnimation
+    local ex, ey = self.entity.body:getPosition()
+    local px, py = self.player:getPosition()
+    self.entity.direction = px - ex > 0 and 'right' or 'left'
 
     if self.entity.rangedAttack and
         not self.rangedAttackSpawned and
         currentAnimation:getCurrentFrame() == currentAnimation.frames[#currentAnimation.frames] then
         self.rangedAttackSpawned = true
-        local px, py = self.player:getPosition()
         self.entity:spawnRangedAttack(px, py)
     end
 

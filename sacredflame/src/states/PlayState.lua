@@ -110,9 +110,7 @@ function PlayState:update(dt)
 
         for _,enemy in pairs(self.currentRoom.enemies) do
             enemy:update(dt)
-            if not enemy.sleep then
-                enemy:processAI({player = self.player}, dt)
-            end
+            enemy:processAI({player = self.player}, dt)
         end
     end
 

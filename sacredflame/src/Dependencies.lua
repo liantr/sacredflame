@@ -41,7 +41,6 @@ require 'src/states/entity/EntityWalkState'
 require 'src/states/entity/EntityIdleState'
 require 'src.states.enemy.EnemyChaseState'
 require 'src.states.enemy.EnemyAttackState'
-require 'src.states.enemy.GhoulSleepState'
 
 require 'src/states/flame/FlameFollowingState'
 
@@ -82,8 +81,9 @@ gTextures = {
 
     ['spitter-idle'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-idle.png'),
     ['spitter-walk'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-walk.png'),
+    ['spitter-attack'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-attack.png'),
 
-    ['ghoul-sleep'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-sleep.png'),
+    ['ghoul-idle'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-wake.png'),
 }
 
 gFrames = {
@@ -125,12 +125,14 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE*11, TILE_SIZE*2, 0, TILE_SIZE/2),
     ['spitter-walk'] = GenerateQuadsFromRegion(gTextures['spitter-walk'],
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE*13, TILE_SIZE*2, 0, TILE_SIZE/2),
+    ['spitter-attack'] = GenerateQuadsFromRegion(gTextures['spitter-attack'],
+        TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*27, TILE_SIZE*2, 0, 0),
 
-    ['ghoul-sleep'] = GenerateQuadsFromRegion(gTextures['ghoul-sleep'],
-        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE/2),
+    ['ghoul-idle'] = GenerateQuadsFromRegion(gTextures['ghoul-idle'],
+        TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*4, TILE_SIZE*1.5, 0, TILE_SIZE/2),
 }
 
---print("total frames:" ..tostring(#gFrames['dagger-bandit-attack']))
+print("total frames:" ..tostring(#gFrames['ghoul-idle']))
 
 
 gSounds = {

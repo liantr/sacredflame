@@ -24,24 +24,14 @@ function Room:spawnEnemies()
         local enemyDef = ENTITY_DEFS[enemy.type]
         local enemy = Entity(enemyDef, self.world, enemy.spawnX, enemy.spawnY, self)
 
-        if not enemy.sleep then
-            enemy.stateMachine = StateMachine {
-                ['idle'] = function() return EntityIdleState(enemy) end,
-                ['walk'] = function() return EntityWalkState(enemy) end,
-                ['chase'] = function() return EnemyChaseState(enemy) end,
-                ['attack'] = function() return EnemyAttackState(enemy) end
-            }
-            enemy:changeState('idle')
-        else
-            enemy.stateMachine = StateMachine {
-                ['idle'] = function() return EntityIdleState(enemy) end,
-                ['walk'] = function() return EntityWalkState(enemy) end,
-                ['chase'] = function() return EnemyChaseState(enemy) end,
-                ['sleep'] = function() return GhoulSleepState(enemy) end,
-                ['attack'] = function() return EnemyAttackState(enemy) end
-            }
-            enemy:changeState('sleep')
-        end
+        enemy.stateMachine = StateMachine {
+            ['idle'] = function() return EntityIdleState(enemy) end,
+            ['walk'] = function() return EntityWalkState(enemy) end,
+            ['chase'] = function() return EnemyChaseState(enemy) end,
+            ['attack'] = function() return EnemyAttackState(enemy) end
+        }
+        enemy:changeState('idle')
+      
 
         enemy.fixture:setMask(PLAYER_CATEGORY)
         enemy.fixture:setUserData({type='enemy', entity = enemy})

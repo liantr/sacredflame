@@ -148,6 +148,8 @@ ENTITY_DEFS = {
         moveSpeed = 50,
         bodyType = 'dynamic',
         category = SPITTER_CATEGORY,
+        chaseSpeed = 100,
+        attackDistance = TILE_SIZE*1.5,
         animations = {
             ['idle'] = {
                 frames = {1, 3, 5, 7, 9, 11},
@@ -158,6 +160,12 @@ ENTITY_DEFS = {
                 frames = {1, 3, 5, 7, 9, 11, 13},
                 interval = 0.15,
                 texture = 'spitter-walk'
+            },
+            ['attack'] = {
+                frames = {1,3,5,7,9,11},
+                looping = false,
+                interval = 0.08,
+                texture = 'spitter-attack'
             }
         }
     },
@@ -167,18 +175,15 @@ ENTITY_DEFS = {
         moveSpeed = 50,
         bodyType = 'dynamic',
         category = GHOUL_CATEGORY,
-        sleep = true,
+        chaseSpeed = 100,
+        attackDistance = TILE_SIZE * 2,
         animations = {
-            ['sleep'] = {
-                frames = {1},
-                interval = 1,
-                texture = 'ghoul-sleep'
+            ['idle'] = {
+                frames = {1,2,3,4},
+                looping = false,
+                interval = 3,
+                texture = 'ghoul-idle'
             }
-            -- ['idle'] = {
-            --     frames = {1, 3, 5, 7, 9, 11},
-            --     interval = 0.15,
-            --     texture = 'ghoul-idle'
-            -- },
             -- ['walk'] = {
             --     frames = {1, 3, 5, 7, 9, 11, 13},
             --     interval = 0.15,

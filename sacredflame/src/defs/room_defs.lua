@@ -16,21 +16,21 @@ ROOM_DEFS= {
             --     spawnX = TILE_SIZE*18, --VIRTUAL_WIDTH - TILE_SIZE*3,
             --     spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
             -- },
-            {
-                type = 'dagger-bandit',
-                spawnX = TILE_SIZE*18, --TILE_SIZE*10,
-                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
-            },
             -- {
-            --     type = 'spitter',
-            --     spawnX = TILE_SIZE*15,
-            --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
+            --     type = 'dagger-bandit',
+            --     spawnX = TILE_SIZE*18, --TILE_SIZE*10,
+            --     spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
             -- },
             -- {
-            --     type = 'ghoul',
-            --     spawnX = TILE_SIZE*18,
+            --     type = 'spitter',
+            --     spawnX = TILE_SIZE*18, --TILE_SIZE*15,
             --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
-            -- }
+            -- },
+            {
+                type = 'ghoul',
+                spawnX = TILE_SIZE*30,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
+            }
         },
     },
     ['main1'] = {
