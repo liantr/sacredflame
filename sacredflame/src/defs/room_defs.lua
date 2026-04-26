@@ -38,11 +38,11 @@ ROOM_DEFS= {
             --     spawnX = TILE_SIZE*30,
             --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
             -- },
-            -- {
-            --     type = 'boss',
-            --     spawnX = TILE_SIZE*30,
-            --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
-            -- }
+            {
+                type = 'boss',
+                spawnX = TILE_SIZE*30,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
+            }
         },
     },
     ['main1'] = {
