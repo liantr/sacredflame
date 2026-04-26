@@ -52,6 +52,13 @@ function PlayState:init()
 
             local _, evy = enemyFixture:getBody():getLinearVelocity()
             enemyFixture:getBody():setLinearVelocity(0, evy)
+
+            -- player takes damage and goes invulnerable for a short period
+            if not self.player.invulnerable then
+                gSounds['hit-player']:play()
+                playerFixture:getUserData().entity:damage()
+                self.player:goInvulnerable(1.5)
+            end
         end
 
         if types['enemy'] and types['wall'] then

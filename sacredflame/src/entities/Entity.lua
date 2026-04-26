@@ -113,6 +113,12 @@ function Entity:render()
         local quad = gFrames[texture][frame]
         local _, _, w, h = quad:getViewport()
 
+        -- draw sprite slightly transparent if invulnerable every 0.1 seconds
+        if self.invulnerable and self.flashTimer > 0.1 then
+            self.flashTimer = 0
+            love.graphics.setColor(1, 1, 1, 64/255)
+        end
+
         love.graphics.draw(
             gTextures[texture],
             quad,

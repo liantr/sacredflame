@@ -44,7 +44,10 @@ ENTITY_DEFS = {
                 looping = false,
                 texture = 'player-attack',
                 offsetY = 0,
-                offsetX = TILE_SIZE*0.5
+                offsetX = TILE_SIZE*0.5,
+                hitboxes = {
+                    { x = 0, y = 0, width = 0, height = 0}
+                }
             },
             ['swing-sword-combo'] = {
                 frames = (function()

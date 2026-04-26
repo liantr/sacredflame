@@ -104,6 +104,8 @@ gTextures = {
     ['boss-attack2'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack2.png'),
     ['boss-attack3'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack3.png'),
     ['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
+
+    -- sounds
 }
 
 gFrames = {
@@ -192,6 +194,7 @@ print("total frames:" ..tostring(#gFrames['boss-attack3']))
 
 gSounds = {
     --['music'] = love.audio.newSource('sounds/music.wav', 'static')
+    ['hit-player'] = love.audio.newSource('assets/sounds/hit_player.wav', 'static'),
 }
 
 gFonts = {
