@@ -6,6 +6,7 @@ function Torch:init(def, world, x, y)
     self.lit = false
     self.playerInRange = false
     self.fixture:setUserData({type='torch', entity = self})
+    self.lightRadius = 10
 end
 
 function Torch:changeAnimation(name)
@@ -23,6 +24,10 @@ function Torch:update(dt)
     end
     if love.keyboard.wasPressed('l') and self.playerInRange and not self.lit then
         self:changeState('lit')
+    end
+
+    if self.lit and self.lightRadius < VIRTUAL_WIDTH + self.x then
+        self.lightRadius = self.lightRadius + dt*150 -- speed
     end
 end
 

@@ -150,6 +150,25 @@ function Room:render()
         object:render()
     end
     self:renderForeground()
+    self:renderDarkness()
+end
+
+function Room:renderDarkness()
+    love.graphics.stencil(function()
+        for _, object in pairs(self.objects) do
+            if object.lit then
+                local tx, ty = object.body:getPosition()
+                love.graphics.setColor(0,0,0,0)
+                love.graphics.circle('fill', tx, ty, object.lightRadius)  -- light radius
+            end
+        end
+    end)
+
+    love.graphics.setStencilTest('notequal', 1)
+    love.graphics.setColor(0,0,0,0.5)
+    love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
+    love.graphics.setStencilTest()
+    love.graphics.setColor(1, 1, 1, 1)
 end
 
 function Room:renderForeground()
