@@ -7,4 +7,14 @@ function Player:init(def, world, startX, startY)
     self.canJump = true
     self.runSpeed = def.runSpeed
     self.maxHealth = self.health
+    self.timesDied = 0
+end
+
+function Player:update(dt)
+    Entity.update(self, dt)
+
+    if self.health == 0 then
+        self.timesDied = self.timesDied + 1
+        self:changeState('death')
+    end
 end

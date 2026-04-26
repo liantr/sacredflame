@@ -49,7 +49,9 @@ function createAnimations(animations)
             texture = animationDef.texture or 'entities',
             frames = animationDef.frames,
             interval = animationDef.interval,
-            looping = animationDef.looping
+            looping = animationDef.looping,
+            offsetX = animationDef.offsetX,
+            offsetY = animationDef.offsetY
         }
     end
 

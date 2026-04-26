@@ -42,7 +42,9 @@ ENTITY_DEFS = {
                 frames = {1, 2, 3, 4, 5, 6},
                 interval = 0.08,
                 looping = false,
-                texture = 'player-attack'
+                texture = 'player-attack',
+                offsetY = 0,
+                offsetX = TILE_SIZE*0.5
             },
             ['swing-sword-combo'] = {
                 frames = (function()
@@ -54,7 +56,9 @@ ENTITY_DEFS = {
                 end)(),
                 interval = 0.08,
                 looping = false,
-                texture = 'player-attack-combo'
+                texture = 'player-attack-combo',
+                offsetY = 0,
+                offsetX = TILE_SIZE*0.5
             },
         }
     },
@@ -140,6 +144,8 @@ ENTITY_DEFS = {
                 end)(),
                 looping = false,
                 interval = 0.08,
+                offsetX = TILE_SIZE*1.5,
+                offsetY = 0,
                 texture = 'dagger-bandit-attack'
             }
         }
@@ -168,7 +174,9 @@ ENTITY_DEFS = {
                 frames = {1,3,5,7,9,11},
                 looping = false,
                 interval = 0.08,
-                texture = 'spitter-attack'
+                texture = 'spitter-attack',
+                offsetX = TILE_SIZE*0.5,
+                offsetY = 0,
             }
         }
     },
@@ -196,13 +204,15 @@ ENTITY_DEFS = {
                 frames = {1,3,5,7,9,11,13},
                 looping = false,
                 interval = 0.08,
-                texture = 'ghoul-attack'
+                texture = 'ghoul-attack',
+                offsetX = TILE_SIZE,
+                offsetY = 0,
             }
         }
     },
     ['boss'] = {
-        height = TILE_SIZE*5,
-        width = TILE_SIZE*5,
+        height = TILE_SIZE*4,
+        width = TILE_SIZE*2,
         moveSpeed = 100,
         bodyType = 'dynamic',
         category = BOSS_CATEGORY,
@@ -217,14 +227,17 @@ ENTITY_DEFS = {
             },
             ['walk'] = {
                 frames = {1,2},
+                looping = true,
                 interval = 0.15,
                 texture = 'boss-walk'
             },
             ['attack1'] = {
                 frames = {1,2,3,4,5,6,7,8,9},
-                interval = 0.05,
+                interval = 0.08,
                 looping = false,
-                texture = 'boss-attack1'
+                texture = 'boss-attack1',
+                offsetX = 0,
+                offsetY = TILE_SIZE
             },
             ['attack2'] = {
                 frames = (function()
@@ -237,7 +250,9 @@ ENTITY_DEFS = {
                 end)(),
                 looping = false,
                 interval = 0.05,
-                texture = 'boss-attack2'
+                texture = 'boss-attack2',
+                offsetX = TILE_SIZE * 4.5,
+                offsetY = 0
             },
             ['attack'] = {
                 frames = (function()
@@ -250,7 +265,9 @@ ENTITY_DEFS = {
                 end)(),
                 looping = false,
                 interval = 0.05,
-                texture = 'boss-attack3'
+                texture = 'boss-attack3',
+                offsetX = 0,
+                offsetY = 0
             },
         }
     }

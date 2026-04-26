@@ -47,8 +47,8 @@ function Entity:changeAnimation(name)
     self.currentAnimation = self.animations[name]
 end
 
-function Entity:damage(dmg)
-    self.health = self.health - dmg
+function Entity:damage()
+    self.health = self.health - 1
 end
 
 function Entity:goInvulnerable(duration)
@@ -100,11 +100,13 @@ function Entity:render()
 
     -- ? debug rectangle
     love.graphics.setColor(1,1,1,1)
-    love.graphics.circle('line', x, y, self.shape:getRadius())
+    love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
 
     if self.currentAnimation then
         local texture = self.currentAnimation.texture
         local frame = self.currentAnimation:getCurrentFrame()
+        local animOffsetX = self.direction == 'right' and self.currentAnimation.offsetX or -self.currentAnimation.offsetX
+        local animOffsetY = self.currentAnimation.offsetY
 
         local quad = gFrames[texture][frame]
         local _, _, w, h = quad:getViewport()
@@ -112,8 +114,8 @@ function Entity:render()
         love.graphics.draw(
             gTextures[texture],
             quad,
-            math.floor(x),
-            math.floor(y) + self.height/2 + (self.offsetY or 0),
+            math.floor(x) + animOffsetX,
+            math.floor(y) + self.height/2 + animOffsetY,
             0,
             self.direction == 'right' and 1 or -1, 1,
             w / 2,

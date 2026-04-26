@@ -6,7 +6,6 @@ end
 
 function PlayerSwordSwingState:enter(params)
     if params and params.combo then
-        self.player.offsetY = -TILE_SIZE
         self.player:changeAnimation('swing-sword-combo')
     else
         self.player:changeAnimation('swing-sword')
@@ -14,7 +13,6 @@ function PlayerSwordSwingState:enter(params)
 end
 
 function PlayerSwordSwingState:exit()
-    self.player.offsetY = 0
 end
 
 function PlayerSwordSwingState:update(dt)

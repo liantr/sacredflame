@@ -9,7 +9,12 @@ function PlayerDeathState:enter()
     self.player:changeAnimation('death')
 
     Timer.after(1.5, function()
-        gStateMachine:change('start')
+        if self.player.timesDied >= 2 then
+            gStateMachine:change('start')
+        else
+            -- TODO : update to Respawn/saved state after learning state stacks and implementing torch system
+            self.player:changeState('idle')
+        end
     end)
 end
 
