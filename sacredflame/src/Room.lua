@@ -31,12 +31,8 @@ function Room:spawnEnemies()
                 ['attack'] = function() return EnemyAttackState(enemy) end
             }
             enemy:changeState('idle')
-            if roomDefEnemy.type == 'boss' then
-               
-                 enemy.fixture:setUserData({type='boss', entity = enemy})
-            else
-                enemy.fixture:setUserData({type='enemy', entity = enemy})
-            end
+            enemy.fixture:setUserData({type='enemy', entity = enemy})
+
 
             table.insert(self.enemies, enemy)
         end
