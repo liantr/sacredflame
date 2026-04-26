@@ -1,6 +1,7 @@
 OBJECT_DEFS = {
     ['torch'] = {
         width = TILE_SIZE,
+        type = 'torch',
         height = TILE_SIZE * 3,
         bodyType = 'static',
         category = TORCH_CATEGORY,

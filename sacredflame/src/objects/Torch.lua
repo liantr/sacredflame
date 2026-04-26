@@ -4,7 +4,7 @@ function Torch:init(def, world, x, y)
     Object.init(self, def, world, x, y)
     self.animations = createAnimations(def.animations)
     self.lit = false
-
+    self.playerInRange = false
     self.fixture:setUserData({type='torch', entity = self})
 end
 
@@ -18,9 +18,11 @@ end
 
 function Torch:update(dt)
     self.stateMachine:update(dt)
-
     if self.currentAnimation then
         self.currentAnimation:update(dt)
+    end
+    if love.keyboard.wasPressed('l') and self.playerInRange and not self.lit then
+        self:changeState('lit')
     end
 end
 
@@ -35,8 +37,6 @@ function Torch:render()
         local frame = self.currentAnimation:getCurrentFrame()
         local quad = gFrames[frameTex][frame]
 
-        print("texture: " ..self.texture ..", frameTex: " ..frameTex ..", frame: " ..tostring(frame))
-
         love.graphics.draw(
             gTextures[self.texture],
             quad,
@@ -47,5 +47,10 @@ function Torch:render()
             1,
             self.width / 2,
             self.height)
+
+        if self.playerInRange and not self.lit then
+            love.graphics.setFont(gFonts['small'])
+            love.graphics.printf('Press [L] to light', math.floor(x)-45, math.floor(y)-40, 100, 'center')
         end
+    end
 end

@@ -46,6 +46,13 @@ function PlayState:init()
             self.player:changeState('idle')
         end
 
+        if types['player'] and types['torch'] then
+            local playerFixture = a:getUserData().type == 'player' and a or b
+            local torchFixture = a:getUserData().type == 'torch' and a or b
+
+            local torch = torchFixture:getUserData().entity
+            torch.playerInRange = true
+        end
         if types['player'] and types['enemy'] then
             local playerFixture = a:getUserData().type == 'player' and a or b
             local enemyFixture = a:getUserData().type == 'enemy' and a or b
@@ -71,6 +78,17 @@ function PlayState:init()
     end
 
     function endContact(a, b, coll)
+        local types = {}
+        types[a:getUserData().type] = true
+        types[b:getUserData().type] = true
+
+        if types['player'] and types['torch'] then
+            local playerFixture = a:getUserData().type == 'player' and a or b
+            local torchFixture = a:getUserData().type == 'torch' and a or b
+
+            local torch = torchFixture:getUserData().entity
+            torch.playerInRange = false
+        end
     end
 
     function preSolve(a, b, coll)
@@ -144,11 +162,13 @@ function PlayState:update(dt)
         end
 
         local torchesLit = 0
-        for _,room in pairs(self.map) do
-            local torch = room.torch
-
-            if torch and torch.lit then
-                torchesLit = torchesLit + 1
+        for _, room in pairs(self.map) do
+            if room.objects then
+                for _, object in pairs(room.objects) do
+                    if object.type =='torch' and object.lit then
+                        torchesLit = torchesLit + 1
+                    end
+                end
             end
         end
 

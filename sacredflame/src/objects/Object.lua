@@ -2,6 +2,7 @@ Object = Class{}
 
 function Object:init(def, world, x, y)
     self.def = def
+    self.type = def.type
     self.x = x
     self.y = y
     self.width = def.width

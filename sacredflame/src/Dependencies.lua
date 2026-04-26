@@ -56,6 +56,7 @@ require 'src.states.player.PlayerFallingState'
 require 'src.states.player.PlayerDeathState'
 require 'src.states.player.PlayerSwordSwingState'
 require 'src.states.objects.TorchUnlitState'
+require 'src.states.objects.TorchLitState'
 
 gTextures = {
     -- backgrounds
@@ -116,7 +117,7 @@ gFrames = {
     ['torch-unlit'] = GenerateQuadsFromRegion(gTextures['torches'],
     TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE*3, 0, 0),
     ['torch-lit'] = GenerateQuadsFromRegion(gTextures['torches'],
-    TILE_SIZE, TILE_SIZE*3, TILE_SIZE*4, TILE_SIZE*3, 0, TILE_SIZE),
+    TILE_SIZE, TILE_SIZE*3, TILE_SIZE*4, TILE_SIZE*3, TILE_SIZE, 0),
     ['torch-hud'] = GenerateQuadsFromRegion(gTextures['small-torches'],
     TILE_SIZE, TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2, TILE_SIZE, 0),
 
@@ -192,7 +193,7 @@ gTextures['boss-attack1']:setFilter('nearest', 'nearest')
 gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 
-print("total frames:" ..tostring(#gFrames['boss-attack3']))
+--print("total frames:" ..tostring(#gFrames['boss-attack3']))
 
 
 gSounds = {

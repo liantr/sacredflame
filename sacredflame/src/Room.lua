@@ -46,7 +46,8 @@ function Room:spawnObjects()
         
             if defObject.type == 'torch' then
                 roomObject.stateMachine = StateMachine {
-                    ['unlit'] = function() return TorchUnlitState(roomObject) end
+                    ['unlit'] = function() return TorchUnlitState(roomObject) end,
+                    ['lit'] = function() return TorchLitState(roomObject) end
                 }
                 roomObject:changeState('unlit')
             end

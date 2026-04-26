@@ -7,6 +7,3 @@ end
 function TorchUnlitState:enter()
     self.torch:changeAnimation('unlit')
 end
-
-function TorchUnlitState:update(dt)
-end
