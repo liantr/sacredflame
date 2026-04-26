@@ -6,7 +6,7 @@ function PlayerDeathState:init(player, world)
 end
 
 function PlayerDeathState:enter()
-    self.timesDied = self.timesDied + 1
+    self.player.timesDied = self.player.timesDied + 1
     self.player:changeAnimation('death')
 
     Timer.after(1.5, function()

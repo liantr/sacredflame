@@ -85,8 +85,10 @@ end
 
 function Entity:collides(hitBox)
     local x, y = self.body:getPosition()
-    return not (x > hitBox.x + hitBox.width or hitBox.x > x + self.width or
-                y > hitBox.y + hitBox.height or hitBox.y > y + self.height)
+    local ex = x - self.width/2
+    local ey = y - self.height/2
+    return not (ex > hitBox.x + hitBox.width or hitBox.x > ex + self.width or
+                ey > hitBox.y + hitBox.height or hitBox.y > ey + self.height)
 end
 
 function Entity:processAI(params, dt)

@@ -14,7 +14,6 @@ function Player:update(dt)
     Entity.update(self, dt)
 
     if self.health == 0 then
-        self.timesDied = self.timesDied + 1
         self:changeState('death')
     end
 end

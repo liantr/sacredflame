@@ -101,6 +101,19 @@ ENTITY_DEFS = {
                 interval = 0.15,
                 texture = 'archer-bandit-run'
             },
+            ['death'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,16 do
+                        table.insert(frames, i)
+                    end
+
+                    return frames
+                end)(),
+                interval = 0.15,
+                looping = false,
+                texture = 'archer-bandit-death'
+            },
             ['attack'] = {
                 frames = (function()
                     local frames = {}
@@ -117,7 +130,6 @@ ENTITY_DEFS = {
         }
     },
     ['dagger-bandit'] = {
-        -- TODO fix animation rendering and end position
         height = TILE_SIZE*1.5,
         width = TILE_SIZE,
         moveSpeed = 50,
@@ -136,6 +148,19 @@ ENTITY_DEFS = {
                 frames = {1, 3, 5, 7, 9, 11, 13, 15},
                 interval = 0.15,
                 texture = 'dagger-bandit-run'
+            },
+            ['death'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,16 do
+                        table.insert(frames, i)
+                    end
+
+                    return frames
+                end)(),
+                interval = 0.15,
+                looping = false,
+                texture = 'dagger-bandit-death'
             },
             ['attack'] = {
                 frames = (function()
@@ -174,6 +199,19 @@ ENTITY_DEFS = {
                 interval = 0.15,
                 texture = 'spitter-walk'
             },
+            ['death'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,8 do
+                        table.insert(frames, i)
+                    end
+
+                    return frames
+                end)(),
+                interval = 0.15,
+                looping = false,
+                texture = 'spitter-death'
+            },
             ['attack'] = {
                 frames = {1,3,5,7,9,11},
                 looping = false,
@@ -203,6 +241,19 @@ ENTITY_DEFS = {
                 frames = {1, 3, 5, 7, 9, 11, 13, 15, 17},
                 interval = 0.15,
                 texture = 'ghoul-walk'
+            },
+            ['death'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,8 do
+                        table.insert(frames, i)
+                    end
+
+                    return frames
+                end)(),
+                interval = 0.15,
+                looping = false,
+                texture = 'ghoul-death'
             },
             ['attack'] = {
                 frames = {1,3,5,7,9,11,13},

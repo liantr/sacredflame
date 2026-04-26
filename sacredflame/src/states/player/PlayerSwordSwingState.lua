@@ -54,6 +54,7 @@ end
 function PlayerSwordSwingState:update(dt)
     self:createHitBoxes()
     local hitBox = self:getHitBox()
+    --TODO: combo should deal 3 hit points
     if hitBox and not self.hitEnemy then
         self.hitEnemy = damageEnemy(self.player.room, self:getHitBox())
     end

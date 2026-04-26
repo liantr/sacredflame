@@ -85,22 +85,26 @@ gTextures = {
 
     ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png'),
 
-    ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-idle.png'),
-    ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-run.png'),
-    ['archer-bandit-attack'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/archer-attack.png'),
-    ['archer-bandit-attack-volley'] = love.graphics.newImage('assets/graphics/characters/Archer Bandit/attack-volley.png'),
+    ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-idle.png'),
+    ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-run.png'),
+    ['archer-bandit-death'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-death.png'),
+    ['archer-bandit-attack'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-attack.png'),
+    ['archer-bandit-attack-volley'] = love.graphics.newImage('assets/graphics/characters/archer bandit/attack-volley.png'),
 
-    ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-idle.png'),
-    ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-run.png'),
-    ['dagger-bandit-attack'] = love.graphics.newImage('assets/graphics/characters/Dagger Bandit/dagger-bandit-attack.png'),
+    ['dagger-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/dagger bandit/dagger-bandit-idle.png'),
+    ['dagger-bandit-run'] = love.graphics.newImage('assets/graphics/characters/dagger bandit/dagger-bandit-run.png'),
+    ['dagger-bandit-attack'] = love.graphics.newImage('assets/graphics/characters/dagger bandit/dagger-bandit-attack.png'),
+    ['dagger-bandit-death'] = love.graphics.newImage('assets/graphics/characters/dagger bandit/dagger-bandit-death.png'),
 
     ['spitter-idle'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-idle.png'),
     ['spitter-walk'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-walk.png'),
     ['spitter-attack'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-attack.png'),
+    ['spitter-death'] = love.graphics.newImage('assets/graphics/characters/Spitter/spitter-death.png'),
 
     ['ghoul-idle'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-wake.png'),
     ['ghoul-walk'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-walk.png'),
     ['ghoul-attack'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-attack.png'),
+    ['ghoul-death'] = love.graphics.newImage('assets/graphics/characters/Ghoul/ghoul-death.png'),
 
     ['boss-idle'] = love.graphics.newImage('assets/graphics/characters/boss/boss-idle.png'),
     ['boss-walk'] = love.graphics.newImage('assets/graphics/characters/boss/boss-walk.png'),
@@ -148,6 +152,8 @@ gFrames = {
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*23, TILE_SIZE*1.5, 0, TILE_SIZE/2*11),
     ['archer-bandit-run'] = GenerateQuadsFromRegion(gTextures['archer-bandit-run'],
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*25, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 11),
+    ['archer-bandit-death'] = GenerateQuadsFromRegion(gTextures['archer-bandit-death'],
+        TILE_SIZE*4, TILE_SIZE*2, TILE_SIZE*4*16, TILE_SIZE*2, 0, 0),
     ['archer-bandit-attack'] = GenerateQuadsFromRegion(gTextures['archer-bandit-attack'],
         TILE_SIZE*2, TILE_SIZE*7, TILE_SIZE*2*2*19, TILE_SIZE*7, 0, 0),
     ['archer-bandit-attack-volley'] = GenerateQuadsFromRegion(gTextures['archer-bandit-attack-volley'],
@@ -159,6 +165,8 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*16, TILE_SIZE*1.5, 0, TILE_SIZE/2 * 7),
     ['dagger-bandit-attack'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-attack'],
         TILE_SIZE*4, TILE_SIZE*1.5, TILE_SIZE*28, TILE_SIZE*1.5, 0, TILE_SIZE * 3.5),
+    ['dagger-bandit-death'] = GenerateQuadsFromRegion(gTextures['dagger-bandit-death'],
+        TILE_SIZE*5, TILE_SIZE*1.5, TILE_SIZE*5*16, TILE_SIZE*1.5, 0, TILE_SIZE / 2),
 
     ['spitter-idle'] = GenerateQuadsFromRegion(gTextures['spitter-idle'],
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE*11, TILE_SIZE*2, 0, TILE_SIZE/2),
@@ -166,6 +174,8 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE*13, TILE_SIZE*2, 0, TILE_SIZE/2),
     ['spitter-attack'] = GenerateQuadsFromRegion(gTextures['spitter-attack'],
         TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*27, TILE_SIZE*2, 0, 0),
+    ['spitter-death'] = GenerateQuadsFromRegion(gTextures['spitter-death'],
+        TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*2*8, TILE_SIZE*2, 0, 0),
 
     ['ghoul-idle'] = GenerateQuadsFromRegion(gTextures['ghoul-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*4*2, TILE_SIZE*1.5, 0, TILE_SIZE/2),
@@ -173,6 +183,8 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*9*2, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['ghoul-attack'] = GenerateQuadsFromRegion(gTextures['ghoul-attack'],
         TILE_SIZE*3, TILE_SIZE*2, TILE_SIZE*7*6, TILE_SIZE*2, 0, 0),
+    ['ghoul-death'] = GenerateQuadsFromRegion(gTextures['ghoul-death'],
+        TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*2*8, TILE_SIZE*2, 0, 0),
 
     ['boss-idle'] = GenerateQuadsFromRegion(gTextures['boss-idle'],
         TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*9*5, TILE_SIZE*4, 0, 0),
@@ -194,7 +206,7 @@ gTextures['boss-attack1']:setFilter('nearest', 'nearest')
 gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 
---print("total frames:" ..tostring(#gFrames['boss-attack3']))
+print("total frames:" ..tostring(#gFrames['spitter-death']))
 
 
 gSounds = {

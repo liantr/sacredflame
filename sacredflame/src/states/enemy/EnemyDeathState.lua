@@ -6,6 +6,7 @@ function EnemyDeathState:init(entity)
 end
 
 function EnemyDeathState:enter(params)
+    self.entity.body:setActive(false)
     self.entity:changeAnimation('death')
 end
 
@@ -14,7 +15,7 @@ end
 
 function EnemyDeathState:update(dt)
     local anim = self.entity.currentAnimation
-    if anim and anim.timesPlayed > 0 then
+    if anim.timesPlayed > 0 then
         anim.timesPlayed = 0
         self.entity.dead = true
     end

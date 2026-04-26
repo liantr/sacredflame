@@ -181,12 +181,6 @@ function PlayState:update(dt)
     end
 
     self:updateCamera()
-
-
-    -- ! [DEBUG] Press d to enter player death state
-     if love.keyboard.wasPressed('d')then
-        self.player:changeState('death')
-     end
 end
 
 function PlayState:updateCamera()
