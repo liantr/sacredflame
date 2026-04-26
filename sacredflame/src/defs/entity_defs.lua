@@ -286,6 +286,19 @@ ENTITY_DEFS = {
                 interval = 0.15,
                 texture = 'boss-walk'
             },
+             ['death'] = {
+                frames = (function()
+                    local frames = {}
+                    for i=1,36 do
+                        table.insert(frames, i)
+                    end
+
+                    return frames
+                end)(),
+                interval = 0.15,
+                looping = false,
+                texture = 'boss-death'
+            },
             ['attack1'] = {
                 frames = {1,2,3,4,5,6,7,8,9},
                 interval = 0.08,

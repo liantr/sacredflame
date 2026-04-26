@@ -192,8 +192,8 @@ gFrames = {
         TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*2*5, TILE_SIZE*4, 0, 0),
     -- ['boss-hit'] = GenerateQuadsFromRegion(gTextures['boss-hit'],
     --     TILE_SIZE*4, TILE_SIZE*3.5, TILE_SIZE*2*4, TILE_SIZE*3.5, 0, 0),
-    -- ['boss-death'] = GenerateQuadsFromRegion(gTextures['boss-death'],
-    --     TILE_SIZE*4, TILE_SIZE*3.5, TILE_SIZE*2*4, TILE_SIZE*3.5, 0, 0),
+    ['boss-death'] = GenerateQuadsFromRegion(gTextures['boss-death'],
+        TILE_SIZE*6, TILE_SIZE*3, TILE_SIZE*6*36, TILE_SIZE*3, 0, 0),
     ['boss-attack1'] = GenerateQuadsFromRegion(gTextures['boss-attack1'],
         TILE_SIZE*15  - TILE_SIZE/2, TILE_SIZE*3, (TILE_SIZE*15 -TILE_SIZE/2)*5, TILE_SIZE*3*2, 0, 0),
     ['boss-attack2'] = GenerateQuadsFromRegion(gTextures['boss-attack2'],
@@ -206,7 +206,7 @@ gTextures['boss-attack1']:setFilter('nearest', 'nearest')
 gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 
-print("total frames:" ..tostring(#gFrames['spitter-death']))
+print("total frames:" ..tostring(#gFrames['boss-death']))
 
 
 gSounds = {
