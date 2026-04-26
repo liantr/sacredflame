@@ -81,15 +81,15 @@ function PlayState:init()
         if types['player'] and types['enemy'] then
             coll:setEnabled(false)
         end
+
+        if types['player'] and types['torch'] then
+            coll:setEnabled(false)
+        end
     end
 
     self.world:setCallbacks(beginContact, endContact, preSolve)
 
     self.flameAvailable = true
-end
-
-function PlayState:lightTorch()
-    self.torchesLit = self.torchesLit + 1
 end
 
 function PlayState:spawnEntities()
@@ -142,6 +142,17 @@ function PlayState:update(dt)
             enemy:update(dt)
             enemy:processAI({player = self.player}, dt)
         end
+
+        local torchesLit = 0
+        for _,room in pairs(self.map) do
+            local torch = room.torch
+
+            if torch and torch.lit then
+                torchesLit = torchesLit + 1
+            end
+        end
+
+        self.torchesLit = torchesLit
     end
 
     if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then

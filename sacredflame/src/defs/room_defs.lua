@@ -10,6 +10,13 @@ ROOM_DEFS= {
             east = nil,
             west = nil
         },
+        objects = {
+            {
+                type = 'torch',
+                spawnX = TILE_SIZE*17,
+                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*6.5
+            },
+        },
         enemies = {
             --  {
             --      type = 'archer-bandit',

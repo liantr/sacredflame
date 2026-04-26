@@ -15,12 +15,15 @@ require 'src/constants'
 
 require 'src/defs/room_defs'
 require 'src/defs/entity_defs'
+require 'src/defs/object_defs'
 
 require 'src/Animation'
 require 'src/Util'
 require 'src/Room'
 require 'src/StateMachine'
 
+require 'src.objects.Object'
+require 'src.objects.Torch'
 require 'src.VolleyAttack'
 
 require 'src.HUD'
@@ -52,7 +55,7 @@ require 'src.states.player.PlayerJumpState'
 require 'src.states.player.PlayerFallingState'
 require 'src.states.player.PlayerDeathState'
 require 'src.states.player.PlayerSwordSwingState'
-
+require 'src.states.objects.TorchUnlitState'
 
 gTextures = {
     -- backgrounds

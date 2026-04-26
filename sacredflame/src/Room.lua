@@ -14,7 +14,7 @@ function Room:init(def, world)
 
     self.def = def
     self.enemies = {}
-
+    self.objects = {}
     self.attacks = {}
 end
 
@@ -39,6 +39,22 @@ function Room:spawnEnemies()
     end
 end
 
+function Room:spawnObjects()
+    if self.def.objects then
+        for _, defObject in pairs(self.def.objects) do
+            local roomObject = Torch(OBJECT_DEFS[defObject.type], self.world, defObject.spawnX, defObject.spawnY)
+        
+            if defObject.type == 'torch' then
+                roomObject.stateMachine = StateMachine {
+                    ['unlit'] = function() return TorchUnlitState(roomObject) end
+                }
+                roomObject:changeState('unlit')
+            end
+            table.insert(self.objects, roomObject)
+        end
+    end
+end
+
 function Room:enter()
     for _, tile in pairs(self.collidable) do
         tile.body:setActive(true)
@@ -50,6 +66,10 @@ function Room:enter()
         for _, enemy in pairs(self.enemies) do
             enemy.body:setActive(true)
         end
+    end
+
+    if #self.objects == 0 then
+        self:spawnObjects()
     end
 end
 
@@ -73,6 +93,10 @@ function Room:update(dt)
         if attack.complete then
             table.remove(self.attacks, i)
         end
+    end
+
+    for _,o in pairs(self.objects) do
+        o:update(dt)
     end
 end
 
@@ -121,6 +145,9 @@ function Room:render()
         attack:render()
     end
 
+    for _, object in pairs(self.objects) do
+        object:render()
+    end
     self:renderForeground()
 end
 
