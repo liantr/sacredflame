@@ -51,7 +51,8 @@ function createAnimations(animations)
             interval = animationDef.interval,
             looping = animationDef.looping,
             offsetX = animationDef.offsetX,
-            offsetY = animationDef.offsetY
+            offsetY = animationDef.offsetY,
+            name = k
         }
     end
 
@@ -85,4 +86,15 @@ function getDistanceFromPlayer(entity, player)
     local ex, _ = entity:getPosition()
     local px, _ = player:getPosition()
     return px - ex
+end
+
+function damageEnemy(room, hitBox)
+    for k, enemy in pairs(room.enemies) do
+        if enemy:collides(hitBox) and enemy.health > 0 then
+            enemy:damage(1)
+            gSounds['hit-enemy']:play()
+            return true
+        end
+    end
+    return false
 end

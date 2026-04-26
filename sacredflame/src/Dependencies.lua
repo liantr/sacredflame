@@ -25,7 +25,7 @@ require 'src/StateMachine'
 require 'src.objects.Object'
 require 'src.objects.Torch'
 require 'src.VolleyAttack'
-
+require 'src.HitBox'
 require 'src.HUD'
 
 require 'src/states/BaseState'
@@ -46,6 +46,7 @@ require 'src/states/entity/EntityWalkState'
 require 'src/states/entity/EntityIdleState'
 require 'src.states.enemy.EnemyChaseState'
 require 'src.states.enemy.EnemyAttackState'
+require 'src.states.enemy.EnemyDeathState'
 
 require 'src/states/flame/FlameFollowingState'
 
@@ -199,6 +200,7 @@ gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 gSounds = {
     --['music'] = love.audio.newSource('sounds/music.wav', 'static')
     ['hit-player'] = love.audio.newSource('assets/sounds/hit_player.wav', 'static'),
+    ['hit-enemy'] = love.audio.newSource('assets/sounds/hit_enemy.wav', 'static'),
 }
 
 gFonts = {

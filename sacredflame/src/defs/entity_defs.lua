@@ -9,6 +9,10 @@ ENTITY_DEFS = {
         health = 6,
         bodyType = 'dynamic',
         category = PLAYER_CATEGORY,
+        hitBoxes = {
+            { animation='swing-sword', width = TILE_SIZE, height = TILE_SIZE, directional=true },
+            { animation='swing-sword-combo', width = TILE_SIZE*1.5, height = TILE_SIZE*2, offsetX = -TILE_SIZE/2, offsetY = -TILE_SIZE, directional=true },
+        },
         animations = {
             ['idle'] = {
                 frames = {1, 3, 5, 7, 9, 11, 13},
@@ -45,9 +49,6 @@ ENTITY_DEFS = {
                 texture = 'player-attack',
                 offsetY = 0,
                 offsetX = TILE_SIZE*0.5,
-                hitboxes = {
-                    { x = 0, y = 0, width = 0, height = 0}
-                }
             },
             ['swing-sword-combo'] = {
                 frames = (function()

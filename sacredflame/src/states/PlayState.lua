@@ -136,6 +136,7 @@ function PlayState:spawnEntities()
 
     self.currentRoom.player = self.player
     self.currentRoom.flame = self.flame
+    self.player.room = self.currentRoom
 end
 
 function PlayState:enter(params)
@@ -232,6 +233,7 @@ function PlayState:moveTo(connection)
         self.player.body:setPosition(connection.spawnX, connection.spawnY)
         self.currentRoom.player = self.player
         self.currentRoom.flame = self.flame
+        self.player.room = self.currentRoom
 
         local px, py = self.player.body:getPosition()
         self.flame.body:setPosition(px, py)

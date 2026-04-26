@@ -24,6 +24,8 @@ function Animation:init(def)
 
     self.offsetX = def.offsetX or 0
     self.offsetY = def.offsetY or 0
+
+    self.name = def.name
 end
 
 function Animation:refresh()

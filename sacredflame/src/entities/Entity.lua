@@ -6,6 +6,8 @@ function Entity:init(def, world, startX, startY,room)
     self.width = def.width
     self.height = def.height
 
+    self.hitBoxes = def.hitBoxes
+
     self.category = def.category
 
     -- create entity body (this is the hurt box)
@@ -18,8 +20,6 @@ function Entity:init(def, world, startX, startY,room)
     self.fixture:setRestitution(0)
     self.fixture:setFriction(1)
     self.fixture:setCategory(def.category)
-
-    -- create hitbox
 
     self.animations = createAnimations(def.animations)
     self.moveSpeed = def.moveSpeed
@@ -79,11 +79,10 @@ function Entity:update(dt)
     end
 end
 
-function Entity:collides(entity)
+function Entity:collides(hitBox)
     local x, y = self.body:getPosition()
-    local entityX, entityY = entity.body:getPosition()
-    return not (x > entityX + entity.width or entityX > x + self.width or
-                y > entityY + entity.height or entityY > y + self.height)
+    return not (x > hitBox.x + hitBox.width or hitBox.x > x + self.width or
+                y > hitBox.y + hitBox.height or hitBox.y > y + self.height)
 end
 
 function Entity:processAI(params, dt)
@@ -100,6 +99,7 @@ end
 function Entity:render()
 
     local x, y = self:getPosition()
+    self.stateMachine:render()
 
     -- ? debug rectangle
     love.graphics.setColor(1,1,1,1)
