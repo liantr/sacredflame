@@ -77,6 +77,10 @@ function Entity:update(dt)
     if self.currentAnimation then
         self.currentAnimation:update(dt)
     end
+
+    if self.health == 0 and not self.dead then
+        self:changeState('death')
+    end
 end
 
 function Entity:collides(hitBox)

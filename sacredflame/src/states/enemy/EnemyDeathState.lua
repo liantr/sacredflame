@@ -9,10 +9,13 @@ function EnemyDeathState:enter(params)
     self.entity:changeAnimation('death')
 end
 
+function EnemyDeathState:processAI(params, dt)
+end
+
 function EnemyDeathState:update(dt)
-    self.animation:update(dt)
-    if self.animation.timesPlayed > 0 then
-        self.animation.timesPlayed = 0
-        self.entity.body:destroy()
+    local anim = self.entity.currentAnimation
+    if anim and anim.timesPlayed > 0 then
+        anim.timesPlayed = 0
+        self.entity.dead = true
     end
 end

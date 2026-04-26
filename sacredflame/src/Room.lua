@@ -29,7 +29,7 @@ function Room:spawnEnemies()
                 ['walk'] = function() return EntityWalkState(enemy) end,
                 ['chase'] = function() return EnemyChaseState(enemy) end,
                 ['attack'] = function() return EnemyAttackState(enemy) end,
-                ['death'] = function() return EnemyAttackState(enemy) end
+                ['death'] = function() return EnemyDeathState(enemy) end
             }
             enemy:changeState('idle')
             enemy.fixture:setUserData({type='enemy', entity = enemy})
@@ -104,13 +104,8 @@ function Room:update(dt)
     for i=#self.enemies,1,-1  do
         local enemy = self.enemies[i]
 
-        if enemy.health <= 0 then
-            enemy.dead = true
-        end
-
         if enemy.dead then
             enemy.body:destroy()
-            --enemy:changeState('death')
             table.remove(self.enemies, i)
         end
     end
