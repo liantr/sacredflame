@@ -32,8 +32,6 @@ function Room:spawnEnemies()
             }
             enemy:changeState('idle')
         
-
-            enemy.fixture:setMask(PLAYER_CATEGORY)
             enemy.fixture:setUserData({type='enemy', entity = enemy})
 
             table.insert(self.enemies, enemy)

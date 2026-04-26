@@ -66,7 +66,17 @@ function PlayState:init()
     function endContact(a, b, coll)
     end
 
-    self.world:setCallbacks(beginContact, nil, nil)
+    function preSolve(a, b, coll)
+        local types = {}
+        types[a:getUserData().type] = true
+        types[b:getUserData().type] = true
+
+        if types['player'] and types['enemy'] then
+            coll:setEnabled(false)
+        end
+    end
+
+    self.world:setCallbacks(beginContact, endContact, preSolve)
 
     self.flameAvailable = true
 end

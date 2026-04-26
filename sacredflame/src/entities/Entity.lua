@@ -8,15 +8,18 @@ function Entity:init(def, world, startX, startY,room)
 
     self.category = def.category
 
-    -- create entity body
+    -- create entity body (this is the hurt box)
     self.bodyType = def.bodyType or 'static'
     self.body = love.physics.newBody(world, startX, startY, self.bodyType)
     self.body:setFixedRotation(true)
+    -- setting circle shape, rectangle doesn't detect the ground
     self.shape = love.physics.newCircleShape(math.max(self.width/2, self.height/2))
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setRestitution(0)
     self.fixture:setFriction(1)
     self.fixture:setCategory(def.category)
+
+    -- create hitbox
 
     self.animations = createAnimations(def.animations)
     self.moveSpeed = def.moveSpeed
@@ -101,7 +104,6 @@ function Entity:render()
     -- ? debug rectangle
     love.graphics.setColor(1,1,1,1)
     love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
-
     if self.currentAnimation then
         local texture = self.currentAnimation.texture
         local frame = self.currentAnimation:getCurrentFrame()
