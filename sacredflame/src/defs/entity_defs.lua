@@ -11,7 +11,7 @@ ENTITY_DEFS = {
         category = PLAYER_CATEGORY,
         hitBoxes = {
             { animation='swing-sword', width = TILE_SIZE, height = TILE_SIZE, directional=true },
-            { animation='swing-sword-combo', width = TILE_SIZE*1.5, height = TILE_SIZE*2, offsetX = -TILE_SIZE/2, offsetY = -TILE_SIZE, directional=true },
+            { animation='swing-sword-combo', width = TILE_SIZE*1.5, height = TILE_SIZE, offsetX = -TILE_SIZE/2, offsetY = -TILE_SIZE, directional=true },
         },
         animations = {
             ['idle'] = {
@@ -90,6 +90,9 @@ ENTITY_DEFS = {
         category = ARCHER_BANDIT_CATEGORY,
         rangedAttack = true,
         health = 3,
+        hitBoxes = {
+            { animation='attack', width = TILE_SIZE*1.5, height = TILE_SIZE*4, offsetX = -TILE_SIZE*1.5, offsetY = -TILE_SIZE*4.5 },
+        },
         animations = {
             ['idle'] = {
                 frames = {1, 3, 5, 7, 9, 11,13, 15},
@@ -138,6 +141,9 @@ ENTITY_DEFS = {
         chaseSpeed = 100,
         attackDistance = TILE_SIZE * 2,
         health = 3,
+        hitBoxes = {
+            { animation='attack', width = TILE_SIZE*2, height = TILE_SIZE, offsetX = 0, offsetY = 0, directional=true },
+        },
         animations = {
             ['idle'] = {
                 frames = {1, 3, 5, 7, 9, 11,13, 15},
@@ -188,6 +194,9 @@ ENTITY_DEFS = {
         chaseSpeed = 100,
         attackDistance = TILE_SIZE*1.5,
         health = 4,
+        hitBoxes = {
+            { animation='attack', width = TILE_SIZE, height = TILE_SIZE*2, offsetX = 0, offsetY = -TILE_SIZE, directional=true },
+        },
         animations = {
             ['idle'] = {
                 frames = {1, 3, 5, 7, 9, 11},
@@ -265,7 +274,7 @@ ENTITY_DEFS = {
                 looping = false,
                 interval = 0.08,
                 texture = 'ghoul-attack',
-                offsetX = 0,
+                offsetX = TILE_SIZE*2,
                 offsetY = 0,
             }
         }

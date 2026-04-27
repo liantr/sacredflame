@@ -1,9 +1,14 @@
 VolleyAttack = Class{}
 
-function VolleyAttack:init(targetX, targetY)
+function VolleyAttack:init(targetX, targetY, room)
     self.targetX = targetX
     self.targetY = targetY
+    self.room = room
     self.complete = false
+    self.width = TILE_SIZE * 1.5
+    self.height = TILE_SIZE * 4
+    self.offsetY = -TILE_SIZE*3
+    self.hitPlayer = false
 
     self.animation = Animation({
         frames = {1,2,3,4,5},
@@ -11,9 +16,21 @@ function VolleyAttack:init(targetX, targetY)
         looping = false,
         texture = 'archer-bandit-attack-volley'
     })
+
+    local offsetX = -TILE_SIZE * 0.75
+    local offsetY = TILE_SIZE/2
+    local hitBoxX = self.targetX + offsetX
+    local hitBoxY = self.targetY - self.height + offsetY
+
+    self.hitBox = HitBox(hitBoxX, hitBoxY, self.width, self.height)
+
 end
 
 function VolleyAttack:update(dt)
+    if self.hitBox and not self.hitPlayer then
+        self.hitPlayer = damagePlayer(self.room, self.hitBox)
+    end
+
     self.animation:update(dt)
     if self.animation.timesPlayed > 0 then
         self.animation.timesPlayed = 0
@@ -32,7 +49,15 @@ function VolleyAttack:render()
         love.graphics.draw(gTextures[self.animation.texture],
             quad,
             math.floor(self.targetX),
-            math.floor(self.targetY),
+            math.floor(self.targetY + self.offsetY),
             0,1,1,w/2,h/2)
+    end
+
+    love.graphics.setColor(1, 0, 1, 1)
+
+    if self.hitBox then
+        love.graphics.rectangle('line', self.hitBox.x, self.hitBox.y,
+            self.hitBox.width, self.hitBox.height)
+        love.graphics.setColor(255, 255, 255, 255)
     end
 end

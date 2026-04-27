@@ -3,7 +3,7 @@ EnemyAttackState = Class{__includes=BaseState}
 function EnemyAttackState:init(entity)
     self.entity = entity
     self.rangedAttackSpawned = false
-    self.hitBoxes = createHitBoxes(self.entity)
+    self.hitBoxes = createEntityHitboxes(self.entity)
 end
 
 function EnemyAttackState:enter(params)
@@ -24,7 +24,7 @@ end
 
 
 function EnemyAttackState:update(dt)
-    self.hitBoxes = createHitBoxes(self.entity)
+    self.hitBoxes = createEntityHitboxes(self.entity)
     local hitBox = getHitBox(self)
     if hitBox and not self.hitPlayer then
         self.hitPlayer = damagePlayer(self.entity.room, hitBox)

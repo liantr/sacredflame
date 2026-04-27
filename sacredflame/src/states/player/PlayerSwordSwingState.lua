@@ -3,7 +3,7 @@ PlayerSwordSwingState = Class{__includes = BaseState}
 function PlayerSwordSwingState:init(player)
     self.entity = player
 
-    self.hitBoxes = createHitBoxes(self.entity)
+    self.hitBoxes = createEntityHitboxes(self.entity)
 end
 
 function PlayerSwordSwingState:enter(params)
@@ -21,7 +21,7 @@ function PlayerSwordSwingState:exit()
 end
 
 function PlayerSwordSwingState:update(dt)
-    createHitBoxes(self.entity)
+    createEntityHitboxes(self.entity)
     local hitBox = getHitBox(self)
     --TODO: combo should deal 3 hit points
     if hitBox and not self.hitEnemy then

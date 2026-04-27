@@ -175,7 +175,7 @@ function Room:renderDarkness()
     end)
 
     love.graphics.setStencilTest('notequal', 1)
-    love.graphics.setColor(0,0,0,0.5)
+    love.graphics.setColor(0,0,0,0.3)
     love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
     love.graphics.setStencilTest()
     love.graphics.setColor(1, 1, 1, 1)

@@ -109,10 +109,10 @@ function damagePlayer(room, hitBox)
     return false
 end
 
-function createHitBoxes(entity)
+function createEntityHitboxes(entity)
     local hitBoxes = {}
 
-    -- create hitbox based on where the player is and facing
+    -- create hitbox based on the direction
     if entity.hitBoxes then
         local direction = entity.direction
         local hitBoxX, hitBoxY

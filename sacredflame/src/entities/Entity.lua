@@ -15,10 +15,10 @@ function Entity:init(def, world, startX, startY,room)
     self.body = love.physics.newBody(world, startX, startY, self.bodyType)
     self.body:setFixedRotation(true)
     -- setting circle shape, rectangle doesn't detect the ground
-    self.shape = love.physics.newCircleShape(math.max(self.width/2, self.height/2))
+    self.shape = love.physics.newRectangleShape(self.width, self.height)
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setRestitution(0)
-    self.fixture:setFriction(1)
+    self.fixture:setFriction(0)
     self.fixture:setCategory(def.category)
 
     self.animations = createAnimations(def.animations)
@@ -97,7 +97,7 @@ end
 
 function Entity:spawnRangedAttack(targetX, targetY)
     if self.rangedAttack then
-        local attack = VolleyAttack(targetX, targetY)
+        local attack = VolleyAttack(targetX, targetY, self.room)
         table.insert(self.room.attacks, attack)
     end
 end
