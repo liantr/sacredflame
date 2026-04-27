@@ -10,6 +10,7 @@ Ruined temple background: https://szadiart.itch.io/background-ruined-temple
 Music:
 https://madmakingmistery.itch.io/temple-of-comfort
 https://gerytsch.itch.io/darkmusicpack
+https://megumi-ryu.itch.io/free-epic-battle-music-asset-dark-queen-battle-bgm
 Torch asset: https://carloszepter.itch.io/cat-fantasy-asset-pack-torches
 Dark Series assets: https://itch.io/s/145923/dark-series-bundle
 Ancient temple asset: https://aamatniekss.itch.io/ancient-temple-tileset
