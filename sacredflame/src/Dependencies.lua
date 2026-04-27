@@ -113,8 +113,6 @@ gTextures = {
     ['boss-attack2'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack2.png'),
     ['boss-attack3'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack3.png'),
     ['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
-
-    -- sounds
 }
 
 gFrames = {

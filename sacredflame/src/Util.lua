@@ -98,3 +98,48 @@ function damageEnemy(room, hitBox)
     end
     return false
 end
+
+function damagePlayer(room, hitBox)
+    local player = room.player
+    if player:collides(hitBox) and player.health > 0 then
+        player:damage(1)
+        gSounds['hit-player']:play()
+        return true
+    end
+    return false
+end
+
+function createHitBoxes(entity)
+    local hitBoxes = {}
+
+    -- create hitbox based on where the player is and facing
+    if entity.hitBoxes then
+        local direction = entity.direction
+        local hitBoxX, hitBoxY
+        local px, py = entity:getPosition()
+        for _, hitBox in pairs(entity.hitBoxes) do
+            
+            local offsetX = hitBox.offsetX or 0
+            local offsetY = hitBox.offsetY or 0
+            if direction == 'left' then
+                hitBoxX = px - hitBox.width - entity.width/2 - offsetX
+                hitBoxY = py + offsetY
+            elseif direction == 'right' then
+                hitBoxX = px + entity.width/2 + offsetX
+                hitBoxY = py + offsetY
+            end
+            hitBoxes[hitBox.animation] = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
+        end
+    end
+
+    return hitBoxes
+end
+
+function getHitBox(state)
+    local animation = state.entity.currentAnimation
+    if animation and state.hitBoxes then
+        return state.hitBoxes[animation.name]
+    end
+
+    return nil
+end
