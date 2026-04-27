@@ -18,11 +18,11 @@ ROOM_DEFS= {
             },
         },
         enemies = {
-             {
-                 type = 'archer-bandit',
-                 spawnX = TILE_SIZE*10, --VIRTUAL_WIDTH - TILE_SIZE*3,
-                 spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
-             },
+            --  {
+            --      type = 'archer-bandit',
+            --      spawnX = TILE_SIZE*10, --VIRTUAL_WIDTH - TILE_SIZE*3,
+            --      spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
+            --  },
             -- {
             --     type = 'dagger-bandit',
             --     spawnX = TILE_SIZE*20, --TILE_SIZE*10,
@@ -38,11 +38,11 @@ ROOM_DEFS= {
             --     spawnX = TILE_SIZE*16,
             --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*6
             -- },
-            -- {
-            --     type = 'boss',
-            --     spawnX = TILE_SIZE*30,
-            --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*5
-            -- }
+            {
+                type = 'boss',
+                spawnX = TILE_SIZE*30,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*7
+            }
         },
     },
     ['main1'] = {

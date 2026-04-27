@@ -288,17 +288,23 @@ ENTITY_DEFS = {
         chaseSpeed = 100,
         attackDistance = TILE_SIZE*5,
         health = 22,
+        hitBoxes = {
+            { animation='attack1', width = TILE_SIZE*7*2 + TILE_SIZE*2, height = TILE_SIZE*2, offsetX = -TILE_SIZE * 9, offsetY = 0, directional=true },
+            { animation='attack', width = TILE_SIZE*2, height = TILE_SIZE*2, offsetX = 0, offsetY = 0, directional=true },
+        },
         animations = {
             ['idle'] = {
                 frames = {1,2,3,4,5,6,7,8,9},
                 interval = 0.15,
-                texture = 'boss-idle'
+                texture = 'boss-idle',
+                offsetX = TILE_SIZE/2
             },
             ['walk'] = {
                 frames = {1,2},
                 looping = true,
                 interval = 0.15,
-                texture = 'boss-walk'
+                texture = 'boss-walk',
+                offsetX = TILE_SIZE/2
             },
              ['death'] = {
                 frames = (function()
@@ -321,7 +327,7 @@ ENTITY_DEFS = {
                 offsetX = 0,
                 offsetY = TILE_SIZE
             },
-            ['attack2'] = {
+            ['attack'] = {
                 frames = (function()
                     local frames = {}
                     for i=1,16 do
@@ -336,7 +342,7 @@ ENTITY_DEFS = {
                 offsetX = TILE_SIZE * 4.5,
                 offsetY = 0
             },
-            ['attack'] = {
+            ['attack3'] = {
                 frames = (function()
                     local frames = {}
                     for i=1,30 do

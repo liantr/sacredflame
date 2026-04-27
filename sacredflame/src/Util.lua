@@ -116,17 +116,17 @@ function createEntityHitboxes(entity)
     if entity.hitBoxes then
         local direction = entity.direction
         local hitBoxX, hitBoxY
-        local px, py = entity:getPosition()
+        local ex, ey = entity:getPosition()
         for _, hitBox in pairs(entity.hitBoxes) do
             
             local offsetX = hitBox.offsetX or 0
             local offsetY = hitBox.offsetY or 0
             if direction == 'left' then
-                hitBoxX = px - hitBox.width - entity.width/2 - offsetX
-                hitBoxY = py + offsetY
+                hitBoxX = ex - hitBox.width - entity.width/2 - offsetX
+                hitBoxY = ey + offsetY
             elseif direction == 'right' then
-                hitBoxX = px + entity.width/2 + offsetX
-                hitBoxY = py + offsetY
+                hitBoxX = ex + entity.width/2 + offsetX
+                hitBoxY = ey + offsetY
             end
             hitBoxes[hitBox.animation] = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
         end

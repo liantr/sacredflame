@@ -4,6 +4,17 @@
 **Genre:** Metroidvania Platformer
 **Version:** 0.1 (Design Document)
 
+
+credits:
+Ruined temple background: https://szadiart.itch.io/background-ruined-temple
+Music:
+https://madmakingmistery.itch.io/temple-of-comfort
+https://gerytsch.itch.io/darkmusicpack
+Torch asset: https://carloszepter.itch.io/cat-fantasy-asset-pack-torches
+Dark Series assets: https://itch.io/s/145923/dark-series-bundle
+Ancient temple asset: https://aamatniekss.itch.io/ancient-temple-tileset
+Fire: https://stealthix.itch.io/fire-animations
+SFX: CS50
 ---
 
 ## Overview

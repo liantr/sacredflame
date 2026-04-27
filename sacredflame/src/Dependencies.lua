@@ -208,7 +208,8 @@ print("total frames:" ..tostring(#gFrames['boss-death']))
 
 
 gSounds = {
-    --['music'] = love.audio.newSource('sounds/music.wav', 'static')
+    ['music'] = love.audio.newSource('assets/sounds/temple-background.wav', 'static'),
+    ['depths'] = love.audio.newSource('assets/sounds/depths-background.wav', 'static'),
     ['hit-player'] = love.audio.newSource('assets/sounds/hit_player.wav', 'static'),
     ['hit-enemy'] = love.audio.newSource('assets/sounds/hit_enemy.wav', 'static'),
 }
