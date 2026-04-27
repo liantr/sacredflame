@@ -116,6 +116,7 @@ function PlayState:spawnEntities()
 
     self.player.stateMachine = StateMachine {
         ['walk'] = function() return PlayerWalkState(self.player) end,
+        ['run'] = function() return PlayerRunState(self.player) end,
         ['idle'] = function() return PlayerIdleState(self.player) end,
         ['jump'] = function() return PlayerJumpState(self.player) end,
         ['falling'] = function() return PlayerFallingState(self.player) end,

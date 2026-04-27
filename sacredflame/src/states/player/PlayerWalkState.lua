@@ -6,9 +6,10 @@ function PlayerWalkState:init(player)
     EntityWalkState.init(self, player)
 end
 
-function PlayerWalkState:update(dt)
-    local _, yVel = self.entity.body:getLinearVelocity()
-    if not handleMovementInput(self.entity) then
+function PlayerWalkState:update(dt, run)
+
+    local v = run and PLAYER_RUN_SPEED or PLAYER_WALK_SPEED
+    if not handleMovementInput(self.entity, v) then
         self.entity:changeState('idle')
     end
 

@@ -2,8 +2,8 @@ ENTITY_DEFS = {
     ['player'] = {
         x = VIRTUAL_WIDTH / 2,
         y = VIRTUAL_HEIGHT / 2,
-        height = TILE_SIZE,
-        width = TILE_SIZE,
+        height = TILE_SIZE*1.5,
+        width = TILE_SIZE/2,
         moveSpeed = PLAYER_WALK_SPEED,
         runSpeed = PLAYER_RUN_SPEED,
         health = 6,
@@ -15,32 +15,49 @@ ENTITY_DEFS = {
         },
         animations = {
             ['idle'] = {
-                frames = {1, 3, 5, 7, 9, 11, 13},
+                frames = generateFramesList(9),
                 interval = 0.15,
-                texture = 'player-idle'
+                texture = 'swordmaster-idle',
+                offsetX = TILE_SIZE - 3,
+                offsetY = 0
             },
             ['walk'] = {
-                frames = {1, 3, 5, 7, 9, 11, 13, 15},
+                frames = generateFramesList(8),
                 interval = 0.15,
-                texture = 'player-walk'
+                texture = 'swordmaster-walk',
+                offsetX = TILE_SIZE - 3,
+                offsetY = 0
+            },
+            ['run'] = {
+                frames = generateFramesList(8),
+                interval = 0.15,
+                texture = 'swordmaster-run',
+                offsetX = TILE_SIZE,
+                offsetY = 0
             },
             ['jump'] = {
-                frames = {1, 3},
+                frames = generateFramesList(3),
                 interval = 0.15,
                 looping = false,
-                texture = 'player-jump'
+                texture = 'swordmaster-jump',
+                offsetX = TILE_SIZE + 3,
+                offsetY = 0
             },
             ['falling'] = {
-                frames = {5},
+                frames = generateFramesList(7),
                 interval = 0.15,
-                looping = true,
-                texture = 'player-falling'
+                looping = false,
+                texture = 'swordmaster-falling',
+                offsetX = TILE_SIZE - 3,
+                offsetY = 0
             },
             ['death'] = {
                 frames = {1, 3, 5},
                 interval = 0.5,
                 looping = false,
-                texture = 'player-death'
+                texture = 'swordmaster-death',
+                offsetX = TILE_SIZE - 3,
+                offsetY = 0
             },
             ['swing-sword'] = {
                 frames = {1, 2, 3, 4, 5, 6},

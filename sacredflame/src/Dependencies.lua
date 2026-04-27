@@ -12,13 +12,13 @@ Timer = require 'lib/knife.timer'
 STI = require 'lib/sti/sti'
 
 require 'src/constants'
+require 'src/Util'
 
 require 'src/defs/room_defs'
 require 'src/defs/entity_defs'
 require 'src/defs/object_defs'
 
 require 'src/Animation'
-require 'src/Util'
 require 'src/Room'
 require 'src/StateMachine'
 
@@ -51,6 +51,7 @@ require 'src.states.enemy.EnemyDeathState'
 require 'src/states/flame/FlameFollowingState'
 
 require 'src.states.player.PlayerWalkState'
+require 'src.states.player.PlayerRunState'
 require 'src.states.player.PlayerIdleState'
 require 'src.states.player.PlayerJumpState'
 require 'src.states.player.PlayerFallingState'
@@ -75,6 +76,13 @@ gTextures = {
     ['torches'] = love.graphics.newImage('assets/graphics/objects/torches.png'),
     ['small-torches'] = love.graphics.newImage('assets/graphics/objects/small-torches.png'),
     -- player
+    ['swordmaster-idle'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-idle.png'),
+    ['swordmaster-walk'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-walk.png'),
+    ['swordmaster-jump'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-jump.png'),
+    ['swordmaster-falling'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-fall.png'),
+    ['swordmaster-death'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-death.png'),
+    ['swordmaster-run'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-run.png'),
+
     ['player-idle'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-idle.png'),
     ['player-walk'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-walk.png'),
     ['player-jump'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-jump.png'),
@@ -128,20 +136,34 @@ gFrames = {
     TILE_SIZE, TILE_SIZE+1, TILE_SIZE*4, TILE_SIZE+1,0,0),
     ['player-health-bar'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
     TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE,0,0),
-    ['player-idle'] = GenerateQuadsFromRegion(gTextures['player-idle'],
-        TILE_SIZE, TILE_SIZE, TILE_SIZE*13, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    ['player-walk'] = GenerateQuadsFromRegion(gTextures['player-walk'],
-        TILE_SIZE, TILE_SIZE, TILE_SIZE*15, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    ['player-jump'] = GenerateQuadsFromRegion(gTextures['player-jump'],
-        TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    ['player-falling'] = GenerateQuadsFromRegion(gTextures['player-falling'],
-        TILE_SIZE, TILE_SIZE, TILE_SIZE*5, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    ['player-death'] = GenerateQuadsFromRegion(gTextures['player-death'],
-        TILE_SIZE, TILE_SIZE, TILE_SIZE*11, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+
+    -- ['player-idle'] = GenerateQuadsFromRegion(gTextures['player-idle'],
+    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*13, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    -- ['player-walk'] = GenerateQuadsFromRegion(gTextures['player-walk'],
+    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*15, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    -- ['player-jump'] = GenerateQuadsFromRegion(gTextures['player-jump'],
+    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    -- ['player-falling'] = GenerateQuadsFromRegion(gTextures['player-falling'],
+    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*5, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
+    -- ['player-death'] = GenerateQuadsFromRegion(gTextures['player-death'],
+    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*11, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
     ['player-attack'] = GenerateQuadsFromRegion(gTextures['player-attack'],
         TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2*6, TILE_SIZE, 0, TILE_SIZE),
     ['player-attack-combo'] = GenerateQuadsFromRegion(gTextures['player-attack-combo'],
         TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*17*2, TILE_SIZE*2, 0, 0),
+
+    ['swordmaster-idle'] = GenerateQuadsFromRegion(gTextures['swordmaster-idle'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*9, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['swordmaster-walk'] = GenerateQuadsFromRegion(gTextures['swordmaster-walk'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*8, TILE_SIZE*1.5, 0, 0),
+    ['swordmaster-jump'] = GenerateQuadsFromRegion(gTextures['swordmaster-jump'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*3, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['swordmaster-falling'] = GenerateQuadsFromRegion(gTextures['swordmaster-falling'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*7, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['swordmaster-death'] = GenerateQuadsFromRegion(gTextures['swordmaster-death'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*6, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+[   'swordmaster-run'] = GenerateQuadsFromRegion(gTextures['swordmaster-run'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*8, TILE_SIZE*1.5, 0, TILE_SIZE/2),
 
     ['flame-idle'] = GenerateQuadsFromRegion(gTextures['flame-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*11, TILE_SIZE*1.5, TILE_SIZE/2, 0),
@@ -204,7 +226,7 @@ gTextures['boss-attack1']:setFilter('nearest', 'nearest')
 gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 
-print("total frames:" ..tostring(#gFrames['boss-death']))
+print("total frames:" ..tostring(#gFrames['swordmaster-falling']))
 
 
 gSounds = {

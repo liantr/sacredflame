@@ -59,23 +59,15 @@ function createAnimations(animations)
     return animationsReturned
 end
 
-function handleMovementInput(player)
+function handleMovementInput(player, speed)
     local _, yVel = player.body:getLinearVelocity()
     if love.keyboard.isDown('left')then
         player.direction = 'left'
-        if love.keyboard.isDown('z') then
-            player.body:setLinearVelocity(-player.runSpeed, yVel)
-        else
-            player.body:setLinearVelocity(-player.moveSpeed, yVel)
-        end
+        player.body:setLinearVelocity(-speed, yVel)
         return true
     elseif love.keyboard.isDown("right") then
         player.direction = 'right'
-        if love.keyboard.isDown('z') then
-            player.body:setLinearVelocity(player.runSpeed, yVel)
-        else
-            player.body:setLinearVelocity(player.moveSpeed, yVel)
-        end
+        player.body:setLinearVelocity(speed, yVel)
         return true
     end
 
@@ -142,4 +134,13 @@ function getHitBox(state)
     end
 
     return nil
+end
+
+function generateFramesList(n)
+    local frames = {}
+    for i=1,n do
+        table.insert(frames, i)
+    end
+
+    return frames
 end

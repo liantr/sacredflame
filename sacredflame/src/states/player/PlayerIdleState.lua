@@ -10,7 +10,11 @@ function PlayerIdleState:update(dt)
     self.entity.body:setLinearVelocity(0, yVel)
 
     if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
-        self.entity:changeState('walk')
+        if love.keyboard.isDown('z') then
+            self.entity:changeState('run')
+        else
+            self.entity:changeState('walk')
+        end
     end
 
     if love.keyboard.wasPressed('space') and self.entity.canJump then
