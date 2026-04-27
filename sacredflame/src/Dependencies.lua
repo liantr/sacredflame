@@ -221,6 +221,3 @@ gFonts = {
     ['large'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 32),
 --     ['huge'] = love.graphics.newFont('fonts/font.ttf', 64)
 }
-
--- tweak circular alien quad
---gFrames['aliens'][9]:setViewport(105.5, 35.5, 35, 34.2)
