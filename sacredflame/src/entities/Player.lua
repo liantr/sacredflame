@@ -8,6 +8,7 @@ function Player:init(def, world, startX, startY)
     self.maxHealth = self.health
     self.timesDied = 0
     self.dashing = false
+    self.wallHold = false
 end
 
 function Player:update(dt)
