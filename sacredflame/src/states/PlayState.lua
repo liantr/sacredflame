@@ -121,6 +121,7 @@ function PlayState:spawnEntities()
         ['jump'] = function() return PlayerJumpState(self.player) end,
         ['falling'] = function() return PlayerFallingState(self.player) end,
         ['death'] = function() return PlayerDeathState(self.player) end,
+        ['dash'] = function() return PlayerDashState(self.player) end,
         ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
     }
 

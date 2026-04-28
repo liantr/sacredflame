@@ -7,6 +7,7 @@ function Player:init(def, world, startX, startY)
     self.runSpeed = def.runSpeed
     self.maxHealth = self.health
     self.timesDied = 0
+    self.dashing = false
 end
 
 function Player:update(dt)

@@ -35,6 +35,14 @@ ENTITY_DEFS = {
                 offsetX = TILE_SIZE,
                 offsetY = 0
             },
+            ['dash'] = {
+                frames = generateFramesList(6),
+                interval = 0.05,
+                looping = false,
+                texture = 'swordmaster-dash',
+                offsetX = TILE_SIZE,
+                offsetY = 0
+            },
             ['jump'] = {
                 frames = generateFramesList(3),
                 interval = 0.15,

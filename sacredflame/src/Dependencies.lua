@@ -56,6 +56,7 @@ require 'src.states.player.PlayerIdleState'
 require 'src.states.player.PlayerJumpState'
 require 'src.states.player.PlayerFallingState'
 require 'src.states.player.PlayerDeathState'
+require 'src.states.player.PlayerDashState'
 require 'src.states.player.PlayerSwordSwingState'
 require 'src.states.objects.TorchUnlitState'
 require 'src.states.objects.TorchLitState'
@@ -82,6 +83,7 @@ gTextures = {
     ['swordmaster-falling'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-fall.png'),
     ['swordmaster-death'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-death.png'),
     ['swordmaster-run'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-run.png'),
+    ['swordmaster-dash'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-dash.png'),
 
     ['player-idle'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-idle.png'),
     ['player-walk'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-walk.png'),
@@ -162,8 +164,10 @@ gFrames = {
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*7, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['swordmaster-death'] = GenerateQuadsFromRegion(gTextures['swordmaster-death'],
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*6, TILE_SIZE*1.5, 0, TILE_SIZE/2),
-[   'swordmaster-run'] = GenerateQuadsFromRegion(gTextures['swordmaster-run'],
+    ['swordmaster-run'] = GenerateQuadsFromRegion(gTextures['swordmaster-run'],
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*8, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['swordmaster-dash'] = GenerateQuadsFromRegion(gTextures['swordmaster-dash'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*6, TILE_SIZE*1.5, 0, TILE_SIZE/2),
 
     ['flame-idle'] = GenerateQuadsFromRegion(gTextures['flame-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*11, TILE_SIZE*1.5, TILE_SIZE/2, 0),

@@ -105,6 +105,10 @@ end
 function Entity:render()
 
     local x, y = self:getPosition()
+    if self.dashing then
+        x, y = self:getPosition()
+    end
+
     self.stateMachine:render()
 
     -- ? debug rectangle
