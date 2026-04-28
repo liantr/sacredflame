@@ -10,8 +10,8 @@ ENTITY_DEFS = {
         bodyType = 'dynamic',
         category = PLAYER_CATEGORY,
         hitBoxes = {
-            { animation='swing-sword', width = TILE_SIZE, height = TILE_SIZE, directional=true },
-            { animation='swing-sword-combo', width = TILE_SIZE*1.5, height = TILE_SIZE, offsetX = -TILE_SIZE/2, offsetY = -TILE_SIZE, directional=true },
+            { animation='swing-sword', width = TILE_SIZE*3, height = TILE_SIZE, directional=true },
+            { animation='swing-sword-combo', width = TILE_SIZE*4, height = TILE_SIZE*2.5, offsetX = -TILE_SIZE, offsetY = -TILE_SIZE*1.5, directional=true },
         },
         animations = {
             ['idle'] = {
@@ -60,7 +60,7 @@ ENTITY_DEFS = {
                 offsetY = 0
             },
             ['death'] = {
-                frames = {1, 3, 5},
+                frames = generateFramesList(6),
                 interval = 0.5,
                 looping = false,
                 texture = 'swordmaster-death',
@@ -68,26 +68,20 @@ ENTITY_DEFS = {
                 offsetY = 0
             },
             ['swing-sword'] = {
-                frames = {1, 2, 3, 4, 5, 6},
+                frames = generateFramesList(7),
                 interval = 0.08,
                 looping = false,
-                texture = 'player-attack',
+                texture = 'swordmaster-attack',
                 offsetY = 0,
-                offsetX = TILE_SIZE*0.5,
+                offsetX = TILE_SIZE*1.5,
             },
             ['swing-sword-combo'] = {
-                frames = (function()
-                    local frames = {}
-                    for i=1,17 do
-                        table.insert(frames, i)
-                    end
-                    return frames
-                end)(),
+                frames = generateFramesList(11),
                 interval = 0.08,
                 looping = false,
-                texture = 'player-attack-combo',
+                texture = 'swordmaster-attack-combo',
                 offsetY = 0,
-                offsetX = TILE_SIZE*0.5
+                offsetX = TILE_SIZE
             },
         }
     },

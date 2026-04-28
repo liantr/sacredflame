@@ -16,7 +16,7 @@ function PlayerDashState:enter(params)
     self.entity.invulnerable = true
     self.entity.dashing = true
 
-    local dashStartX, dashStartY = self.entity.body:getPosition()
+    local dashStartX, _ = self.entity.body:getPosition()
     local interval = anim.interval * #anim.frames
     local dashDirection = self.entity.direction == 'right' and 1 or -1
     local dashDistance = TILE_SIZE * 2.5 * dashDirection + TILE_SIZE

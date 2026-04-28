@@ -84,15 +84,9 @@ gTextures = {
     ['swordmaster-death'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-death.png'),
     ['swordmaster-run'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-run.png'),
     ['swordmaster-dash'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-dash.png'),
-
-    ['player-idle'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-idle.png'),
-    ['player-walk'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-walk.png'),
-    ['player-jump'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-jump.png'),
-    ['player-falling'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-falling.png'),
-    ['player-death'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-death.png'),
-    ['player-attack'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-attack.png'),
-    ['player-attack-combo'] = love.graphics.newImage('assets/graphics/characters/Tiny Swordmaster/swordsman-attack-combo.png'),
-
+    ['swordmaster-attack'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack.png'),
+    ['swordmaster-attack-combo'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack-combo.png'),
+    
     ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png'),
 
     ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-idle.png'),
@@ -139,21 +133,6 @@ gFrames = {
     ['player-health-bar'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
     TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE,0,0),
 
-    -- ['player-idle'] = GenerateQuadsFromRegion(gTextures['player-idle'],
-    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*13, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    -- ['player-walk'] = GenerateQuadsFromRegion(gTextures['player-walk'],
-    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*15, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    -- ['player-jump'] = GenerateQuadsFromRegion(gTextures['player-jump'],
-    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    -- ['player-falling'] = GenerateQuadsFromRegion(gTextures['player-falling'],
-    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*5, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    -- ['player-death'] = GenerateQuadsFromRegion(gTextures['player-death'],
-    --     TILE_SIZE, TILE_SIZE, TILE_SIZE*11, TILE_SIZE, TILE_SIZE/2, TILE_SIZE),
-    ['player-attack'] = GenerateQuadsFromRegion(gTextures['player-attack'],
-        TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2*6, TILE_SIZE, 0, TILE_SIZE),
-    ['player-attack-combo'] = GenerateQuadsFromRegion(gTextures['player-attack-combo'],
-        TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*17*2, TILE_SIZE*2, 0, 0),
-
     ['swordmaster-idle'] = GenerateQuadsFromRegion(gTextures['swordmaster-idle'],
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*9, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['swordmaster-walk'] = GenerateQuadsFromRegion(gTextures['swordmaster-walk'],
@@ -168,6 +147,10 @@ gFrames = {
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*8, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['swordmaster-dash'] = GenerateQuadsFromRegion(gTextures['swordmaster-dash'],
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*6, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['swordmaster-attack'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack'],
+        TILE_SIZE*5, TILE_SIZE*1.5, TILE_SIZE*5*7, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+    ['swordmaster-attack-combo'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack-combo'],
+        TILE_SIZE*6, TILE_SIZE*2, TILE_SIZE*6*11, TILE_SIZE*2, 0, 0),
 
     ['flame-idle'] = GenerateQuadsFromRegion(gTextures['flame-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*11, TILE_SIZE*1.5, TILE_SIZE/2, 0),
