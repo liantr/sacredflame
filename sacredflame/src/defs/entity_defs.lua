@@ -41,7 +41,7 @@ ENTITY_DEFS = {
                 interval = 0.05,
                 looping = false,
                 texture = 'swordmaster-dash',
-                offsetX = TILE_SIZE,
+                offsetX = 0,
                 offsetY = 0
             },
             ['jump'] = {

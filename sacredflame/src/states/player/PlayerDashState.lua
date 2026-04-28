@@ -9,32 +9,22 @@ function PlayerDashState:enter(params)
     local anim = self.entity.currentAnimation
     anim:refresh()
 
-    if params then
-        self.nextState = params.nextState
-    end
-
+    self.nextState = params and params.nextState or 'idle'
     self.entity.invulnerable = true
     self.entity.dashing = true
 
     local dashStartX, _ = self.entity.body:getPosition()
-    local interval = anim.interval * #anim.frames
     local dashDirection = self.entity.direction == 'right' and 1 or -1
-    local dashDistance = TILE_SIZE * 2.5 * dashDirection + TILE_SIZE
-    local dashDuration = interval * #anim.frames
+    local dashDistance = PLAYER_DASH_DIST * dashDirection
+    local dashDuration = anim.interval * #anim.frames
 
-    self.dashEndX = dashStartX+dashDistance
-
-    Timer.tween(dashDuration,
-    {
-        [self] = {
-            dashEndX = dashStartX + dashDistance
-        }
-    })
+    local _, pvy = self.entity.body:getLinearVelocity()
+    local dashSpeed = PLAYER_DASH_DIST/dashDuration * dashDirection
+    self.entity.body:setLinearVelocity(dashSpeed, pvy)
 
     Timer.after(dashDuration, function()
-        local _, pvy = self.entity.body:getLinearVelocity()
-
-        self.entity.body:setLinearVelocity(0, pvy)
+        local _, pvy2 = self.entity.body:getLinearVelocity()
+        self.entity.body:setLinearVelocity(0, pvy2)
         self.entity.invulnerable = false
         self.entity.dashing = false
         self.entity:changeState(self.nextState)
@@ -42,8 +32,6 @@ function PlayerDashState:enter(params)
 end
 
 function PlayerDashState:update(dt)
-    local _, py = self.entity.body:getPosition()
-    self.entity.body:setPosition(math.max(0, math.min(self.dashEndX, VIRTUAL_WIDTH)), py)
 end
 
 function PlayerDashState:render()

@@ -43,7 +43,7 @@ function PlayState:init()
             local playerFixture = a:getUserData().type == 'player' and a or b
             local groundFixture = a:getUserData().type == 'ground' and a or b
             self.player.canJump = true
-            self.player:changeState('idle')
+            --self.player:changeState('idle')
         end
 
         if types['player'] and types['torch'] then
@@ -191,28 +191,27 @@ function PlayState:updateCamera()
     local roomWidth = self.currentRoom.map.width * TILE_SIZE
     local roomHeight = self.currentRoom.map.height * TILE_SIZE
 
+    local camSpeed = self.player.dashing and 0.2 or 1
+
     if USE_ZOOM then
         local visibleWidth = VIRTUAL_WIDTH / CAMERA_ZOOM
         local visibleHeight = VIRTUAL_HEIGHT / CAMERA_ZOOM
-        self.camX = math.max(0, math.min(roomWidth - visibleWidth, x - visibleWidth/2))
-        self.camY = math.max(0, math.min(roomHeight - visibleHeight, y - visibleHeight/2))
+        local targetX = math.max(0, math.min(roomWidth - visibleWidth, x - visibleWidth/2))
+        local targetY = math.max(0, math.min(roomHeight - visibleHeight, y - visibleHeight/2))
+
+        self.camX = self.camX + (targetX - self.camX) * camSpeed
+        self.camY = self.camY + (targetY - self.camY) * camSpeed
     else
-
-        if roomHeight > VIRTUAL_HEIGHT then
-            self.camY = math.max(0,
-            math.min(roomHeight - VIRTUAL_HEIGHT,
-                y - (VIRTUAL_HEIGHT / 2)))
-        else
-            self.camY = 0
-        end
-
-        if roomWidth > VIRTUAL_WIDTH then
-            self.camX = math.max(0,
+        local targetX = roomWidth > VIRTUAL_WIDTH and math.max(0,
                 math.min(roomWidth - VIRTUAL_WIDTH,
-                x - (VIRTUAL_WIDTH / 2)))
-        else
-            self.camX = 0
-        end
+                x - (VIRTUAL_WIDTH / 2))) or 0
+
+        local targetY = ath.max(0,
+            math.min(roomHeight - VIRTUAL_HEIGHT,
+                y - (VIRTUAL_HEIGHT / 2))) or 0
+
+        self.camX = self.camX + (targetX - self.camX) * camSpeed
+        self.camY = self.camY + (targetY - self.camY) * camSpeed
     end
 
     -- adjust background X to move a third the rate of the camera for parallax
