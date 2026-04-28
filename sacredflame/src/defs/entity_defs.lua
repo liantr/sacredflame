@@ -92,6 +92,13 @@ ENTITY_DEFS = {
                 offsetY = 0,
                 offsetX = TILE_SIZE
             },
+            ['wall-hold'] = {
+                frames = generateFramesList(2),
+                interval = 0.08,
+                texture = 'swordmaster-wall-hold',
+                offsetY = 0,
+                offsetX = TILE_SIZE
+            },
         }
     },
     ['flame'] = {

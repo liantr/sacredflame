@@ -87,6 +87,7 @@ gTextures = {
     ['swordmaster-attack'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack.png'),
     ['swordmaster-attack-combo'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack-combo.png'),
     ['swordmaster-attack-down'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack-down.png'),
+    ['swordmaster-wall-hold'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-wall-hold.png'),
 
     ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png'),
 
@@ -154,6 +155,8 @@ gFrames = {
         TILE_SIZE*6, TILE_SIZE*2, TILE_SIZE*6*11, TILE_SIZE*2, 0, 0),
     ['swordmaster-attack-down'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack-down'],
         TILE_SIZE*3, TILE_SIZE*2, TILE_SIZE*3*9, TILE_SIZE*2, 0, 0),
+    ['swordmaster-wall-hold'] = GenerateQuadsFromRegion(gTextures['swordmaster-wall-hold'],
+        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*2, TILE_SIZE*1.5, 0, TILE_SIZE/2),
 
     ['flame-idle'] = GenerateQuadsFromRegion(gTextures['flame-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*11, TILE_SIZE*1.5, TILE_SIZE/2, 0),
