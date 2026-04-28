@@ -11,6 +11,7 @@ ENTITY_DEFS = {
         category = PLAYER_CATEGORY,
         hitBoxes = {
             { animation='swing-sword', width = TILE_SIZE*3, height = TILE_SIZE, directional=true },
+            { animation='swing-sword-down', width = TILE_SIZE*2, height = TILE_SIZE/2, offsetX = -TILE_SIZE, offsetY = TILE_SIZE/2, directional=true },
             { animation='swing-sword-combo', width = TILE_SIZE*4, height = TILE_SIZE*2.5, offsetX = -TILE_SIZE, offsetY = -TILE_SIZE*1.5, directional=true },
         },
         animations = {
@@ -74,6 +75,14 @@ ENTITY_DEFS = {
                 texture = 'swordmaster-attack',
                 offsetY = 0,
                 offsetX = TILE_SIZE*1.5,
+            },
+            ['swing-sword-down'] = {
+                frames = generateFramesList(9),
+                interval = 0.08,
+                looping = false,
+                texture = 'swordmaster-attack-down',
+                offsetY = 0,
+                offsetX = TILE_SIZE,
             },
             ['swing-sword-combo'] = {
                 frames = generateFramesList(11),

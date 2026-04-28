@@ -22,6 +22,10 @@ function PlayerJumpState:update(dt)
     if love.keyboard.wasPressed('x') then
         self.player:changeState('dash', {nextState='falling'})
     elseif love.keyboard.wasPressed('s') then
-        self.player:changeState('swing-sword')
+        if love.keyboard.isDown('down') then
+            self.player:changeState('swing-sword',{downStrike = true})
+        else
+            self.player:changeState('swing-sword')
+        end
     end
 end

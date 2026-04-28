@@ -8,8 +8,12 @@ end
 
 function PlayerSwordSwingState:enter(params)
     self.hitEnemy = false
-    if params and params.combo then
-        self.entity:changeAnimation('swing-sword-combo')
+    if params then
+        if params.combo then
+            self.entity:changeAnimation('swing-sword-combo')
+        elseif params.downStrike then
+            self.entity:changeAnimation('swing-sword-down')
+        end
     else
         self.entity:changeAnimation('swing-sword')
     end
@@ -34,7 +38,11 @@ function PlayerSwordSwingState:update(dt)
     end
 
     if love.keyboard.wasPressed('s') then
-        self.entity:changeState('swing-sword')
+        if love.keyboard.isDown('down') then
+            self.entity:changeState('swing-sword',{downStrike = true})
+        else
+            self.entity:changeState('swing-sword')
+        end
     end
 
 end
