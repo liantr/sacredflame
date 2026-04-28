@@ -9,6 +9,10 @@ end
 function PlayerWalkState:update(dt, run)
 
     local v = run and PLAYER_RUN_SPEED or PLAYER_WALK_SPEED
+
+    if love.keyboard.isDown('z') and not run then
+        self.entity:changeState('run')
+    end
     if not handleMovementInput(self.entity, v) then
         self.entity:changeState('idle')
     end

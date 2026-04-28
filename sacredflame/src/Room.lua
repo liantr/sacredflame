@@ -142,9 +142,7 @@ end
 function Room:render()
 
     self:renderBackground()
-    if self.player then
-        self.player:render()
-    end
+
     if self.flame then
         self.flame:render()
     end
@@ -158,6 +156,10 @@ function Room:render()
 
     for _, object in pairs(self.objects) do
         object:render()
+    end
+
+    if self.player then
+        self.player:render()
     end
     self:renderForeground()
     self:renderDarkness()
