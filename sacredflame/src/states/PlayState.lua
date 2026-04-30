@@ -51,19 +51,9 @@ function PlayState:init()
             local playerFixture = a:getUserData().type == 'player' and a or b
             local wallFixture = a:getUserData().type == 'wall' and a or b
 
+            self.player.touchingWall = true
             local wallX, _ = wallFixture:getBody():getPosition()
-            local playerX, _ = playerFixture:getUserData().entity.body:getPosition()
-            local playerFacingWall = (wallX > playerX and self.player.direction == 'right')
-                or (wallX < playerX and self.player.direction == 'left')
-
-
-            if self.player.canHoldWall and
-                self.player.wallHoldAllowed and
-                playerFacingWall and
-                (love.keyboard.isDown('left') or love.keyboard.isDown('right')) and
-                self.player.stateMachine.current ~= 'wall-hold' then
-                self.player:changeState('wall-hold')
-            end
+            self.player.wallX = wallX
         end
 
         if types['player'] and types['torch'] then
@@ -109,6 +99,10 @@ function PlayState:init()
             local torch = torchFixture:getUserData().entity
             torch.playerInRange = false
         end
+
+        if types['player'] and types['wall'] then
+            self.player.touchingWall = false
+        end
     end
 
     function preSolve(a, b, coll)
@@ -124,7 +118,7 @@ function PlayState:init()
             coll:setEnabled(false)
         end
         if types['player'] and types['wall'] then
-            if self.player.stateMachine.current == 'wall-hold' then
+            if self.player.stateMachine.currentStateName == 'wall-hold' then
                 coll:setEnabled(false)
             end
         end

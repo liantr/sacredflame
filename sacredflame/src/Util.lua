@@ -59,6 +59,20 @@ function createAnimations(animations)
     return animationsReturned
 end
 
+function grabWall(player)
+    if player.touchingWall and
+        player.canHoldWall and
+        player.wallHoldAllowed and
+        (love.keyboard.isDown('left') or love.keyboard.isDown('right')) then
+            local playerX, _ = player.body:getPosition()
+            local playerFacingWall = (player.wallX > playerX and player.direction == 'right')
+                or (player.wallX < playerX and player.direction == 'left')
+                if playerFacingWall then
+                    player:changeState('wall-hold')
+                end
+    end
+end
+
 function handleMovementInput(player, speed)
     local _, yVel = player.body:getLinearVelocity()
     if love.keyboard.isDown('left')then

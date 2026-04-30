@@ -7,8 +7,6 @@ end
 function PlayerFallingState:enter()
     self.player:changeAnimation('falling')
     self.player.canJump = self.player.doubleJumpAllowed and (self.player.timesJumped < 2 and true or false) or false
-        print("can jump fall state: " ..tostring(self.player.timesJumped))
-
     self.player.canHoldWall = true
 end
 
@@ -20,6 +18,8 @@ function PlayerFallingState:update(dt)
     if self:scanForGroundBelow(dt) then
         self.player:changeState('idle')
     end
+
+    grabWall(self.player)
 
     if love.keyboard.wasPressed('space') and self.player.canJump then
         self.player:changeState('jump')
