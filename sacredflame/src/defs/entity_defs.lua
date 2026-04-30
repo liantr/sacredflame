@@ -78,7 +78,7 @@ ENTITY_DEFS = {
             },
             ['swing-sword-down'] = {
                 frames = generateFramesList(9),
-                interval = 0.08,
+                interval = 0.06,
                 looping = false,
                 texture = 'swordmaster-attack-down',
                 offsetY = 0,
@@ -86,7 +86,7 @@ ENTITY_DEFS = {
             },
             ['swing-sword-combo'] = {
                 frames = generateFramesList(11),
-                interval = 0.08,
+                interval = 0.06,
                 looping = false,
                 texture = 'swordmaster-attack-combo',
                 offsetY = 0,
