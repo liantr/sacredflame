@@ -43,7 +43,27 @@ function PlayState:init()
             local playerFixture = a:getUserData().type == 'player' and a or b
             local groundFixture = a:getUserData().type == 'ground' and a or b
             self.player.canJump = true
+            self.player.canHoldWall = false
             --self.player:changeState('idle')
+        end
+
+        if types['player'] and types['wall'] then
+            local playerFixture = a:getUserData().type == 'player' and a or b
+            local wallFixture = a:getUserData().type == 'wall' and a or b
+
+            local wallX, _ = wallFixture:getBody():getPosition()
+            local playerX, _ = playerFixture:getUserData().entity.body:getPosition()
+            local playerFacingWall = (wallX > playerX and self.player.direction == 'right')
+                or (wallX < playerX and self.player.direction == 'left')
+
+
+            if self.player.canHoldWall and
+                self.player.wallHoldAllowed and
+                playerFacingWall and
+                (love.keyboard.isDown('left') or love.keyboard.isDown('right')) and
+                self.player.stateMachine.current ~= 'wall-hold' then
+                self.player:changeState('wall-hold')
+            end
         end
 
         if types['player'] and types['torch'] then
@@ -89,6 +109,13 @@ function PlayState:init()
             local torch = torchFixture:getUserData().entity
             torch.playerInRange = false
         end
+
+         if types['player'] and types['wall'] then
+            local playerFixture = a:getUserData().type == 'player' and a or b
+            local wallFixture = a:getUserData().type == 'wall' and a or b
+
+            self.player:changeState('idle')
+        end
     end
 
     function preSolve(a, b, coll)
@@ -103,9 +130,17 @@ function PlayState:init()
         if types['player'] and types['torch'] then
             coll:setEnabled(false)
         end
+        if types['player'] and types['wall'] then
+            if self.player.stateMachine.current == 'wall-hold' then
+                coll:setEnabled(false)
+            end
+        end
     end
 
-    self.world:setCallbacks(beginContact, endContact, preSolve)
+    function postSolve(a, b, coll)
+    end
+
+    self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
     self.flameAvailable = true
 end
@@ -123,6 +158,7 @@ function PlayState:spawnEntities()
         ['death'] = function() return PlayerDeathState(self.player) end,
         ['dash'] = function() return PlayerDashState(self.player) end,
         ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
+        ['wall-hold'] = function() return PlayerWallHoldState(self.player) end,
     }
 
     self.player:changeState('idle')

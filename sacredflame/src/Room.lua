@@ -8,7 +8,7 @@ function Room:init(def, world)
     self.spawnX = def.spawnX
     self.spawnY = def.spawnY
     self.collidable = {}
-    self:addCollision()
+    self:addCollisionBodies()
     self.player = nil
     self.flame = nil
 
@@ -111,30 +111,24 @@ function Room:update(dt)
     end
 end
 
-function Room:addCollision()
-    local collisionLayers = {
-        ['collision-ground'] = 'ground',
-        ['collision-wall'] = 'wall',
-        ['collision-ceiling'] = 'ceiling'
-    }
-    for name, collisionType in pairs(collisionLayers) do
-        local layer = self.map.layers[name]
-        if layer then
-            for y = 1, self.map.height do
-                for x = 1, self.map.width do
-                    local tile = layer.data[y][x]
-                    if tile and tile ~= 0 then
-                        local body = love.physics.newBody(self.world, (x-1)*TILE_SIZE+ TILE_SIZE/2,(y-1)*TILE_SIZE + TILE_SIZE/2, 'static')
-                        body:setActive(false)
-                        local shape = love.physics.newRectangleShape(TILE_SIZE, TILE_SIZE)
-                        local fixture = love.physics.newFixture(body, shape)
-                        fixture:setRestitution(0)
-                        fixture:setFriction(0)
-                        fixture:setUserData({type=collisionType})
-                        table.insert(self.collidable, {body=body,shape=shape})
-                    end
-                end
-            end
+function Room:addCollisionBodies()
+    local layer = self.map.layers["collisions"]
+
+    if layer and layer.objects then
+        for _, object in pairs(layer.objects) do
+            local bodyX = object.x + ( object.width / 2)
+            local bodyY = object.y + ( object.height / 2)
+
+            local body = love.physics.newBody(self.world, bodyX, bodyY, 'static')
+            local shape = love.physics.newRectangleShape(object.width, object.height)
+            local fixture = love.physics.newFixture(body, shape)
+            fixture:setRestitution(0)
+            fixture:setFriction(2)
+            fixture:setUserData({type=object.type or 'ground'})
+            table.insert(self.collidable, {
+                body = body,
+                shape = shape
+            })
         end
     end
 end

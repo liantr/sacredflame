@@ -7,6 +7,7 @@ end
 function PlayerJumpState:enter()
     self.player:changeAnimation('jump')
     self.player.canJump = false
+    self.player.canHoldWall = true
     local xVel, _ = self.player.body:getLinearVelocity()
     self.player.body:setLinearVelocity(xVel, PLAYER_JUMP_VELOCITY)
 end

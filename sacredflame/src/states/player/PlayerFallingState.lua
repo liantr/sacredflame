@@ -7,6 +7,7 @@ end
 function PlayerFallingState:enter()
     self.player:changeAnimation('falling')
     self.player.canJump = false
+    self.player.canHoldWall = true
 end
 
 function PlayerFallingState:update(dt)

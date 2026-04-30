@@ -58,6 +58,8 @@ require 'src.states.player.PlayerFallingState'
 require 'src.states.player.PlayerDeathState'
 require 'src.states.player.PlayerDashState'
 require 'src.states.player.PlayerSwordSwingState'
+require 'src.states.player.PlayerWallHoldState'
+
 require 'src.states.objects.TorchUnlitState'
 require 'src.states.objects.TorchLitState'
 
@@ -156,7 +158,7 @@ gFrames = {
     ['swordmaster-attack-down'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack-down'],
         TILE_SIZE*3, TILE_SIZE*2, TILE_SIZE*3*9, TILE_SIZE*2, 0, 0),
     ['swordmaster-wall-hold'] = GenerateQuadsFromRegion(gTextures['swordmaster-wall-hold'],
-        TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*2, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+        TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*1.5, 0, TILE_SIZE/2),
 
     ['flame-idle'] = GenerateQuadsFromRegion(gTextures['flame-idle'],
         TILE_SIZE, TILE_SIZE*1.5, TILE_SIZE*11, TILE_SIZE*1.5, TILE_SIZE/2, 0),
