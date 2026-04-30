@@ -152,7 +152,7 @@ gFrames = {
     ['swordmaster-dash'] = GenerateQuadsFromRegion(gTextures['swordmaster-dash'],
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*6, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['swordmaster-attack'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack'],
-        TILE_SIZE*5, TILE_SIZE*1.5, TILE_SIZE*5*7, TILE_SIZE*1.5, 0, TILE_SIZE/2),
+        TILE_SIZE*7, TILE_SIZE*1.5, TILE_SIZE*7*7, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['swordmaster-attack-combo'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack-combo'],
         TILE_SIZE*6, TILE_SIZE*2, TILE_SIZE*6*11, TILE_SIZE*2, 0, 0),
     ['swordmaster-attack-down'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack-down'],
