@@ -299,10 +299,9 @@ function PlayState:render()
 
     self.currentRoom:render()
 
+    love.graphics.pop()
 
     self.HUD:render()
-
-    love.graphics.pop()
 
     -- room transition fade in and out
     love.graphics.setColor(0,0,0,self.transitionAlpha)
