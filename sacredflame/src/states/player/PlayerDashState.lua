@@ -10,7 +10,7 @@ function PlayerDashState:enter(params)
     anim:refresh()
 
     self.nextState = params and params.nextState or 'idle'
-    self.entity.invulnerable = true
+    self.entity:goInvulnerable(2)
     self.entity.dashing = true
 
     local dashStartX, _ = self.entity.body:getPosition()
