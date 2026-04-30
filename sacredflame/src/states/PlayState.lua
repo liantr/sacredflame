@@ -44,7 +44,6 @@ function PlayState:init()
             local groundFixture = a:getUserData().type == 'ground' and a or b
             self.player.canJump = true
             self.player.canHoldWall = false
-            --self.player:changeState('idle')
         end
 
         if types['player'] and types['wall'] then
@@ -108,13 +107,6 @@ function PlayState:init()
 
             local torch = torchFixture:getUserData().entity
             torch.playerInRange = false
-        end
-
-         if types['player'] and types['wall'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
-            local wallFixture = a:getUserData().type == 'wall' and a or b
-
-            self.player:changeState('idle')
         end
     end
 

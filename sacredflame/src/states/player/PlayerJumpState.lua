@@ -16,6 +16,7 @@ function PlayerJumpState:update(dt)
     local _, yVel = self.player.body:getLinearVelocity()
 
     handleMovementInput(self.player, PLAYER_WALK_SPEED)
+
     if yVel >= 0 then
         self.player:changeState('falling')
     end

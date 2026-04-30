@@ -15,7 +15,7 @@ function PlayerFallingState:update(dt)
 
     handleMovementInput(self.player, PLAYER_WALK_SPEED)
 
-    if yVel == 0 then
+    if self:scanForGroundBelow(dt) then
         self.player:changeState('idle')
     end
 
@@ -28,4 +28,33 @@ function PlayerFallingState:update(dt)
             self.player:changeState('swing-sword')
         end
     end
+end
+
+function PlayerFallingState:scanForGroundBelow(dt)
+    local world = self.player.body:getWorld()
+
+    local rayHeight = self.player.height + 1
+
+    local ex, ey = self.player.body:getPosition()
+
+    local x1 = ex
+    local y1 = ey - self.player.height/2 -- top of body
+
+    local x2 = x1
+    local y2 = y1 + rayHeight  -- into ground
+
+
+    local groundDetected = false
+
+    world:rayCast(x1, y1, x2, y2, function(fixture, x, y, xn, yn, fraction)
+
+        if fixture:getUserData().type == 'ground' then
+            groundDetected = true
+        end
+
+        return 0
+    end)
+
+
+    return groundDetected
 end
