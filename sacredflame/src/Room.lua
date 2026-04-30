@@ -157,6 +157,15 @@ function Room:render()
     end
     self:renderForeground()
     self:renderDarkness()
+
+     -- ? debug rectangle
+    love.graphics.setColor(1, 0, 0, 1) -- Red outline
+    love.graphics.setLineWidth(1)
+    for _,o in pairs(self.collidable) do
+        local x, y = o.body:getPosition()
+        love.graphics.polygon('line',o.body:getWorldPoints(o.shape:getPoints()))
+    end
+    love.graphics.setColor(1,1,1,1)
 end
 
 function Room:renderDarkness()
