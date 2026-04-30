@@ -28,10 +28,11 @@ end
 
 function Object:render()
     local x, y = self.body:getPosition()
-    -- ? debug rectangle
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
 
+    if DEBUG then
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
+    end
     love.graphics.draw(
         gTextures[def.texture],
         quad,

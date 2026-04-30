@@ -48,13 +48,15 @@ function PlayerSwordSwingState:update(dt)
 end
 
 function PlayerSwordSwingState:render()
-    love.graphics.setColor(1, 0, 1, 1)
-    local hitBox = getHitBox(self)
+    if DEBUG then
+        love.graphics.setColor(1, 0, 1, 1)
+        local hitBox = getHitBox(self)
 
-    if hitBox then
-        --love.graphics.rectangle('line', px, py, self.player.width, self.player.height)
-        love.graphics.rectangle('line', hitBox.x, hitBox.y,
-            hitBox.width, hitBox.height)
-        love.graphics.setColor(255, 255, 255, 255)
+        if hitBox then
+            --love.graphics.rectangle('line', px, py, self.player.width, self.player.height)
+            love.graphics.rectangle('line', hitBox.x, hitBox.y,
+                hitBox.width, hitBox.height)
+            love.graphics.setColor(255, 255, 255, 255)
+        end
     end
 end

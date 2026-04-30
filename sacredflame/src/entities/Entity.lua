@@ -111,9 +111,11 @@ function Entity:render()
 
     self.stateMachine:render()
 
-    -- ? debug rectangle
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
+    if DEBUG then
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
+    end
+    
     if self.currentAnimation then
         local texture = self.currentAnimation.texture
         local frame = self.currentAnimation:getCurrentFrame()
