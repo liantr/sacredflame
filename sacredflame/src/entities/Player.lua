@@ -9,6 +9,8 @@ function Player:init(def, world, startX, startY)
     self.timesDied = 0
     self.dashing = false
     self.wallHoldAllowed = true
+    self.doubleJumpAllowed = true
+    self.timesJumped = 0
     self.canHoldWall = true
 end
 

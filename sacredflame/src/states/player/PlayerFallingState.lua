@@ -6,7 +6,9 @@ end
 
 function PlayerFallingState:enter()
     self.player:changeAnimation('falling')
-    self.player.canJump = false
+    self.player.canJump = self.player.doubleJumpAllowed and (self.player.timesJumped < 2 and true or false) or false
+        print("can jump fall state: " ..tostring(self.player.timesJumped))
+
     self.player.canHoldWall = true
 end
 
@@ -19,7 +21,9 @@ function PlayerFallingState:update(dt)
         self.player:changeState('idle')
     end
 
-    if love.keyboard.wasPressed('x') then
+    if love.keyboard.wasPressed('space') and self.player.canJump then
+        self.player:changeState('jump')
+    elseif love.keyboard.wasPressed('x') then
         self.player:changeState('dash', {nextState='falling'})
     elseif love.keyboard.wasPressed('s') then
         if love.keyboard.isDown('down') then

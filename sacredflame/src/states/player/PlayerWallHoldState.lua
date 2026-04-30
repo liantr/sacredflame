@@ -6,6 +6,7 @@ end
 
 function PlayerWallHoldState:enter()
     self.player:changeAnimation('wall-hold')
+    self.player.timesJumped = 0
     self.player.canJump = true
 end
 

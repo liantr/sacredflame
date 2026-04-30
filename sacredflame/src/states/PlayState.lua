@@ -44,6 +44,7 @@ function PlayState:init()
             local groundFixture = a:getUserData().type == 'ground' and a or b
             self.player.canJump = true
             self.player.canHoldWall = false
+            self.player.timesJumped = 0
         end
 
         if types['player'] and types['wall'] then
