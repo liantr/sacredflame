@@ -11,16 +11,17 @@ push = require 'lib/push'
 Timer = require 'lib/knife.timer'
 STI = require 'lib/sti/sti'
 
-require 'src/constants'
-require 'src/Util'
+require 'src.constants'
+require 'src.Util'
 
 require 'src/defs/room_defs'
 require 'src/defs/entity_defs'
 require 'src/defs/object_defs'
 
-require 'src/Animation'
-require 'src/Room'
-require 'src/StateMachine'
+require 'src.Animation'
+require 'src.Room'
+require 'src.states.StateMachine'
+require 'src.states.StateStack'
 
 require 'src.objects.Object'
 require 'src.objects.Torch'

@@ -201,8 +201,8 @@ function PlayState:update(dt)
         self.torchesLit = torchesLit
     end
 
-    if love.keyboard.wasPressed('p') and gStateMachine.currentStateName ~= 'start' then
-        gStateMachine:change('pause', {playState = self})
+    if love.keyboard.wasPressed('p') and gStateStack.name ~= 'start' then
+        gStateStack:push(PauseState())
     end
 
     self:updateCamera()

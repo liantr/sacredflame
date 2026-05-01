@@ -6,7 +6,8 @@ end
 
 function StartState:update(dt)
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
-        gStateMachine:change('play')
+        gStateStack:pop()
+        gStateStack:push(PlayState())
     end
 end
 

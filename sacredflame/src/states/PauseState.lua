@@ -4,14 +4,13 @@ function PauseState:init()
 
     self.options = { 'Resume Game', 'Quit' }
     self.selectedOption = 1
+    self.name = 'pause'
 end
 
 function PauseState:enter(params)
     love.keyboard.keysPressed = {}
     love.mouse.keysPressed = {}
     love.mouse.keysReleased = {}
-
-    self.playState = params.playState
 end
 
 function PauseState:update(dt)
@@ -26,20 +25,17 @@ function PauseState:update(dt)
 
     if love.keyboard.wasPressed('return') then
         if self.selectedOption == 1 then
-            gStateMachine:change('play', {playState = self.playState})
+            gStateStack:pop()
         elseif self.selectedOption == 2 then
             love.event.quit()
         end
     end
     if love.keyboard.wasPressed('p') then
-        gStateMachine:change('play', {playState = self.playState})
+        gStateStack:pop()
     end
-
-    print(tostring(self.selectedOption))
 end
 
 function PauseState:render()
-    self.playState:render()
     love.graphics.setColor(0,0,0,0.5)
     love.graphics.rectangle('fill',0,0,VIRTUAL_WIDTH,VIRTUAL_HEIGHT)
 

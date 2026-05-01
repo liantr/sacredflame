@@ -36,17 +36,17 @@ function love.load()
 
     push.setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, { upscale = 'normal' })
 
-    gStateMachine = StateMachine {
-        ['start'] = function() return StartState() end,
-        ['play'] = function() return PlayState() end,
-        ['boss'] = function() return BossBattleState() end,
-        ['gameOver'] = function() return GameOverState() end,
-        ['pause'] = function() return PauseState() end,
-        ['respawn'] = function() return RespawnState() end,
-        ['torchLighting'] = function() return TorchLightingState() end,
-        ['victory'] = function() return VictoryState() end
-    }
-    gStateMachine:change('start')
+    -- gStateMachine = StateMachine {
+    --     ['play'] = function() return PlayState() end,
+    --     ['boss'] = function() return BossBattleState() end,
+    --     ['gameOver'] = function() return GameOverState() end,
+    --     ['respawn'] = function() return RespawnState() end,
+    --     ['torchLighting'] = function() return TorchLightingState() end,
+    --     ['victory'] = function() return VictoryState() end
+    -- }
+
+    gStateStack = StateStack()
+    gStateStack:push(StartState())
 
     gSounds['music']:setLooping(true)
     gSounds['music']:play()
@@ -86,12 +86,13 @@ function love.mouse.wasReleased(key)
 end
 
 function love.update(dt)
-    gStateMachine:update(dt)
+    Timer.update(dt)
+    gStateStack:update(dt)
     love.keyboard.keysPressed = {}
 end
 
 function love.draw()
     push.start()
-    gStateMachine:render()
+    gStateStack:render()
     push.finish()
 end
