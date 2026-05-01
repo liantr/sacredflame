@@ -1,12 +1,14 @@
 Torch = Class{__includes=Object}
 
-function Torch:init(def, world, x, y)
+function Torch:init(def, world, x, y, room)
     Object.init(self, def, world, x, y)
     self.animations = createAnimations(def.animations)
     self.lit = false
     self.playerInRange = false
     self.fixture:setUserData({type='torch', entity = self})
     self.lightRadius = 10
+    self.room = room
+    self.playState = room.playState
 end
 
 function Torch:changeAnimation(name)
@@ -24,6 +26,16 @@ function Torch:update(dt)
     end
     if love.keyboard.wasPressed('l') and self.playerInRange and not self.lit then
         self:changeState('lit')
+
+        local x, y = self.body:getPosition()
+        local saveData = {
+            spawnX = x,
+            spawnY = y,
+            room = self.room.name,
+            health = PLAYER_MAX_HEALTH  -- restore to full health
+        }
+
+        self.playState:save(saveData)
     end
 
     if self.lit and self.lightRadius < VIRTUAL_WIDTH + self.x then

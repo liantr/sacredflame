@@ -8,7 +8,7 @@ function PlayState:init()
     -- Create the map of rooms
     self.map = {}
     for name, def in pairs(ROOM_DEFS) do
-        self.map[name] = Room(def, self.world)
+        self.map[name] = Room(def, self.world, self, name)
     end
 
     -- initialize the current room to entry
@@ -31,6 +31,9 @@ function PlayState:init()
     -- for transitioning between rooms
     self.transitioning = false
     self.transitionAlpha = 0
+
+    -- for respawning
+    self.savData = nil
 
     -- define collision callbacks for our world; the World object expects four,
     -- one for different stages of any given collision
@@ -142,7 +145,7 @@ function PlayState:spawnEntities()
         ['idle'] = function() return PlayerIdleState(self.player) end,
         ['jump'] = function() return PlayerJumpState(self.player) end,
         ['falling'] = function() return PlayerFallingState(self.player) end,
-        ['death'] = function() return PlayerDeathState(self.player) end,
+        ['death'] = function() return PlayerDeathState(self.player, self) end,
         ['dash'] = function() return PlayerDashState(self.player) end,
         ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
         ['wall-hold'] = function() return PlayerWallHoldState(self.player) end,
@@ -276,6 +279,30 @@ function PlayState:transitionRooms()
     elseif x < 0 and connections.west then
         self:moveTo(connections.west)
     end
+end
+
+function PlayState:reSpawn()
+    if self.saveData then
+        self.currentRoom:exit()
+        self.currentRoom = self.map[self.saveData.room]
+        self.currentRoom:enter()
+
+        self.player.health = self.saveData.health
+        self.player.dead = false
+        self.player.body:setPosition(self.saveData.spawnX, self.saveData.spawnY)
+        self.currentRoom.player = self.player
+        self.currentRoom.flame = self.flame
+        self.player.room = self.currentRoom
+
+        local px, py = self.player.body:getPosition()
+        self.flame.body:setPosition(px, py)
+        self.flame.body:setLinearVelocity(0,0)
+        self.flame.body:setAngularVelocity(0)
+    end
+end
+
+function PlayState:save(data)
+    self.saveData = data
 end
 
 function PlayState:render()

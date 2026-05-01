@@ -1,6 +1,7 @@
 Room = Class{}
 
-function Room:init(def, world)
+function Room:init(def, world, playState, name)
+    self.playState = playState
     self.world = world
     self.map = STI(def.map)
     self.background = def.background
@@ -11,6 +12,7 @@ function Room:init(def, world)
     self:addCollisionBodies()
     self.player = nil
     self.flame = nil
+    self.name = name
 
     self.def = def
     self.enemies = {}
@@ -43,7 +45,7 @@ end
 function Room:spawnObjects()
     if self.def.objects then
         for _, defObject in pairs(self.def.objects) do
-            local roomObject = Torch(OBJECT_DEFS[defObject.type], self.world, defObject.spawnX, defObject.spawnY)
+            local roomObject = Torch(OBJECT_DEFS[defObject.type], self.world, defObject.spawnX, defObject.spawnY, self)
         
             if defObject.type == 'torch' then
                 roomObject.stateMachine = StateMachine {

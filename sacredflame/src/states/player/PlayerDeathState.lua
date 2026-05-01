@@ -1,8 +1,8 @@
 PlayerDeathState = Class{__includes = BaseState}
 
-function PlayerDeathState:init(player, world)
+function PlayerDeathState:init(player, playState)
     self.player = player
-    self.world = world
+    self.playState = playState
 end
 
 function PlayerDeathState:enter()
@@ -20,12 +20,8 @@ function PlayerDeathState:enter()
             gStateStack:pop()
             gStateStack:push(StartState())
         else
-            -- TODO respawn at last torch position
-            -- local room = self.room
-            -- local _, y = self.player.body:getPosition()
-            -- self.player.body:setPosition(, y)
-            self.player.health = 6
             self.player:changeState('idle')
+            self.playState:reSpawn()
         end
     end)
 end
