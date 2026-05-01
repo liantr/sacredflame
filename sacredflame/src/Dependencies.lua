@@ -211,7 +211,7 @@ gFrames = {
     ['boss-death'] = GenerateQuadsFromRegion(gTextures['boss-death'],
         TILE_SIZE*6, TILE_SIZE*3, TILE_SIZE*6*36, TILE_SIZE*3, 0, 0),
     ['boss-attack1'] = GenerateQuadsFromRegion(gTextures['boss-attack1'],
-        TILE_SIZE*15  - TILE_SIZE/2, TILE_SIZE*3, (TILE_SIZE*15 -TILE_SIZE/2)*5, TILE_SIZE*3*2, 0, 0),
+        TILE_SIZE*18, TILE_SIZE*3, (TILE_SIZE*18)*8, TILE_SIZE*3, 0, 0),
     ['boss-attack2'] = GenerateQuadsFromRegion(gTextures['boss-attack2'],
         (TILE_SIZE)*14-TILE_SIZE/2, TILE_SIZE*3, (TILE_SIZE*14)*16 - TILE_SIZE/2, TILE_SIZE*3, 0, 0),
     ['boss-attack3'] = GenerateQuadsFromRegion(gTextures['boss-attack3'],
@@ -222,7 +222,7 @@ gTextures['boss-attack1']:setFilter('nearest', 'nearest')
 gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 
-print("total frames:" ..tostring(#gFrames['swordmaster-falling']))
+print("total frames:" ..tostring(#gFrames['swordmaster-death']))
 
 
 gSounds = {

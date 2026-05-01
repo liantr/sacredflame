@@ -5,6 +5,11 @@ function PlayerIdleState:init(player)
     self.entity = player
 end
 
+function PlayerIdleState:enter()
+    self.dead = false
+    self.entity:changeAnimation('idle')
+end
+
 function PlayerIdleState:update(dt)
     local _, yVel = self.entity.body:getLinearVelocity()
     self.entity.body:setLinearVelocity(0, yVel)

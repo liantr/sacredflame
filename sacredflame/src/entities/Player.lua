@@ -20,11 +20,3 @@ function Player:init(def, world, startX, startY)
 
      self.dashing = false
 end
-
-function Player:update(dt)
-    Entity.update(self, dt)
-
-    if self.health == 0 then
-        self:changeState('death')
-    end
-end
