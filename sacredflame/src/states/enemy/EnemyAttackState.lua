@@ -3,11 +3,11 @@ EnemyAttackState = Class{__includes=BaseState}
 function EnemyAttackState:init(entity)
     self.entity = entity
     self.rangedAttackSpawned = false
-    self.hitBoxes = createEntityHitboxes(self.entity)
+    self.hitBoxes = createEntityHitBoxes(self.entity)
 end
 
 function EnemyAttackState:enter(params)
-    self.hitPlayer = false
+   self.hitFrames = {}
 
     if params then
         self.player = params.player
@@ -24,10 +24,17 @@ end
 
 
 function EnemyAttackState:update(dt)
-    self.hitBoxes = createEntityHitboxes(self.entity)
-    local hitBox = getHitBox(self)
-    if hitBox and not self.hitPlayer then
-        self.hitPlayer = damagePlayer(self.entity.room, hitBox)
+    local _, vy = self.entity.body:getLinearVelocity()
+    self.entity.body:setLinearVelocity(0,vy)
+    
+    self.hitBoxes = createEntityHitBoxes(self.entity)
+    local hitBoxEntry = getHitBox(self)
+    local currFrame = self.entity.currentAnimation:getCurrentFrame()
+
+    if hitBoxEntry and not self.hitFrames[currFrame] then
+        if damagePlayer(self.entity.room, hitBoxEntry.hitBox) then
+            self.hitFrames[currFrame] = true
+        end
     end
     
     local currentAnimation = self.entity.currentAnimation
@@ -57,9 +64,10 @@ end
 function EnemyAttackState:render()
     if DEBUG then
         love.graphics.setColor(1, 0, 1, 1)
-        local hitBox = getHitBox(self)
+        local hitBoxEntry = getHitBox(self)
 
-        if hitBox then
+        if hitBoxEntry and hitBoxEntry.hitBox then
+            local hitBox = hitBoxEntry.hitBox
             --love.graphics.rectangle('line', px, py, self.player.width, self.player.height)
             love.graphics.rectangle('line', hitBox.x, hitBox.y,
                 hitBox.width, hitBox.height)

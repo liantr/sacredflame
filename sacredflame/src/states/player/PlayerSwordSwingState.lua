@@ -3,11 +3,11 @@ PlayerSwordSwingState = Class{__includes = BaseState}
 function PlayerSwordSwingState:init(player)
     self.entity = player
 
-    self.hitBoxes = createEntityHitboxes(self.entity)
+    self.hitBoxes = createEntityHitBoxes(self.entity)
 end
 
 function PlayerSwordSwingState:enter(params)
-    self.hitEnemy = false
+    self.hitFrames = {}
     if params then
         self.entity:changeAnimation('swing-sword-combo')
     else
@@ -21,11 +21,16 @@ function PlayerSwordSwingState:exit()
 end
 
 function PlayerSwordSwingState:update(dt)
-    createEntityHitboxes(self.entity)
-    local hitBox = getHitBox(self)
-    --TODO: combo should deal 3 hit points
-    if hitBox and not self.hitEnemy then
-        self.hitEnemy = damageEnemy(self.entity.room, hitBox)
+    local _, vy = self.entity.body:getLinearVelocity()
+    self.entity.body:setLinearVelocity(0,vy)
+    self.hitBoxes = createEntityHitBoxes(self.entity)
+    local hitBoxEntry = getHitBox(self)
+    local currFrame = self.entity.currentAnimation:getCurrentFrame()
+
+    if hitBoxEntry and not self.hitFrames[currFrame] then
+        if damageEnemy(self.entity.room, hitBoxEntry.hitBox) then
+            self.hitFrames[currFrame] = true
+        end
     end
 
     if self.entity.currentAnimation.timesPlayed > 0 then
@@ -42,9 +47,10 @@ end
 function PlayerSwordSwingState:render()
     if DEBUG then
         love.graphics.setColor(1, 0, 1, 1)
-        local hitBox = getHitBox(self)
+        local hitBoxEntry = getHitBox(self)
 
-        if hitBox then
+        if hitBoxEntry and hitBoxEntry.hitBox then
+            local hitBox = hitBoxEntry.hitBox
             --love.graphics.rectangle('line', px, py, self.player.width, self.player.height)
             love.graphics.rectangle('line', hitBox.x, hitBox.y,
                 hitBox.width, hitBox.height)

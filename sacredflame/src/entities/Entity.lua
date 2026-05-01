@@ -140,6 +140,8 @@ function Entity:render()
             self.direction == 'right' and 1 or -1, 1,
             w / 2,
             h)
+
+        love.graphics.setColor(1,1,1,1)
     end
 end
 

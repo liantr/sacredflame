@@ -6,7 +6,7 @@ function VolleyAttack:init(targetX, targetY, room)
     self.room = room
     self.complete = false
     self.width = TILE_SIZE * 1.5
-    self.height = TILE_SIZE * 4
+    self.height = TILE_SIZE * 7
     self.offsetY = -TILE_SIZE*3
     self.hitPlayer = false
 
@@ -18,7 +18,7 @@ function VolleyAttack:init(targetX, targetY, room)
     })
 
     local offsetX = -TILE_SIZE * 0.75
-    local offsetY = TILE_SIZE/2
+    local offsetY = TILE_SIZE*.75
     local hitBoxX = self.targetX + offsetX
     local hitBoxY = self.targetY - self.height + offsetY
 

@@ -115,38 +115,55 @@ function damagePlayer(room, hitBox)
     return false
 end
 
-function createEntityHitboxes(entity)
-    local hitBoxes = {}
+function createEntityHitBoxes(entity)
+    local result = {}
 
     -- create hitbox based on the direction
     if entity.hitBoxes then
         local direction = entity.direction
         local hitBoxX, hitBoxY
         local ex, ey = entity:getPosition()
-        for _, hitBox in pairs(entity.hitBoxes) do
-            
-            local offsetX = hitBox.offsetX or 0
-            local offsetY = hitBox.offsetY or 0
-            if direction == 'left' then
-                hitBoxX = ex - hitBox.width - entity.width/2 - offsetX
-                hitBoxY = ey + offsetY
-            elseif direction == 'right' then
-                hitBoxX = ex + entity.width/2 + offsetX
-                hitBoxY = ey + offsetY
+        for animName, hitBoxes in pairs(entity.hitBoxes) do
+
+            result[animName] = {}
+            for _, hitBox in pairs(hitBoxes) do
+                local offsetX = hitBox.offsetX or 0
+                local offsetY = hitBox.offsetY or 0
+                if direction == 'left' then
+                    hitBoxX = ex - hitBox.width - entity.width/2 - offsetX
+                    hitBoxY = ey + offsetY
+                elseif direction == 'right' then
+                    hitBoxX = ex + entity.width/2 + offsetX
+                    hitBoxY = ey + offsetY
+                end
+                table.insert(result[animName], {
+                    frames = hitBox.frames,
+                    hitBox = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
+                })
             end
-            hitBoxes[hitBox.animation] = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
         end
     end
 
-    return hitBoxes
+    return result
 end
 
 function getHitBox(state)
     local animation = state.entity.currentAnimation
-    if animation and state.hitBoxes then
-        return state.hitBoxes[animation.name]
-    end
+    if not animation or not state.hitBoxes then return nil end
 
+    local hitBoxes = state.hitBoxes[animation.name]
+
+    if not hitBoxes then return nil end
+    local currFrame = animation:getCurrentFrame()
+
+    for _, hitBox in pairs(hitBoxes) do
+        for _,frame in pairs(hitBox.frames) do
+            if frame == currFrame then
+                return hitBox
+            end
+        end
+    end
+    
     return nil
 end
 

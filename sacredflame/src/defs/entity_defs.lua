@@ -1,3 +1,4 @@
+
 ENTITY_DEFS = {
     ['player'] = {
         x = VIRTUAL_WIDTH / 2,
@@ -10,8 +11,31 @@ ENTITY_DEFS = {
         bodyType = 'dynamic',
         category = PLAYER_CATEGORY,
         hitBoxes = {
-            { animation='swing-sword', width = TILE_SIZE*3, height = TILE_SIZE, frames={} },
-            { animation='swing-sword-combo', width = TILE_SIZE*4, height = TILE_SIZE*2.5, offsetX = -TILE_SIZE, offsetY = -TILE_SIZE*1.5, directional=true },
+            ['swing-sword'] = {
+                {
+                    width = TILE_SIZE*3,
+                    height = TILE_SIZE,
+                    offsetX = 0,
+                    offsetY = 0,
+                    frames={2}
+                }
+            },
+            ['swing-sword-combo'] = {
+                {
+                    width = TILE_SIZE*4,
+                    height = TILE_SIZE*2.5,
+                    offsetX = -TILE_SIZE,
+                    offsetY = -TILE_SIZE*1.5,
+                    frames={2}
+                },
+                {
+                    width = TILE_SIZE*5.5,
+                    height = TILE_SIZE,
+                    offsetX = -TILE_SIZE*2.25,
+                    offsetY = 0,
+                    frames={6}
+                }
+            }
         },
         animations = {
             ['idle'] = {
@@ -117,7 +141,15 @@ ENTITY_DEFS = {
         rangedAttack = true,
         health = 3,
         hitBoxes = {
-            { animation='attack', width = TILE_SIZE*1.5, height = TILE_SIZE*4, offsetX = -TILE_SIZE*1.5, offsetY = -TILE_SIZE*4.5 },
+            ['attack'] = {
+                {
+                    width = TILE_SIZE*1.5,
+                    height = TILE_SIZE*6,
+                    offsetX = -TILE_SIZE*1.5,
+                    offsetY = -TILE_SIZE*6.5,
+                    frames = {25}
+                }
+            }
         },
         animations = {
             ['idle'] = {
@@ -153,7 +185,7 @@ ENTITY_DEFS = {
                     return frames
                 end)(),
                 looping = false,
-                interval = 0.05,
+                interval = 0.08,
                 texture = 'archer-bandit-attack'
             }
         }
@@ -168,7 +200,15 @@ ENTITY_DEFS = {
         attackDistance = TILE_SIZE * 2,
         health = 3,
         hitBoxes = {
-            { animation='attack', width = TILE_SIZE*2, height = TILE_SIZE, offsetX = 0, offsetY = 0, directional=true },
+            ['attack'] = {
+                {
+                    width = TILE_SIZE*2,
+                    height = TILE_SIZE,
+                    offsetX = 0,
+                    offsetY = 0,
+                    frames = {2,5}
+                }
+            }
         },
         animations = {
             ['idle'] = {
@@ -182,29 +222,15 @@ ENTITY_DEFS = {
                 texture = 'dagger-bandit-run'
             },
             ['death'] = {
-                frames = (function()
-                    local frames = {}
-                    for i=1,16 do
-                        table.insert(frames, i)
-                    end
-
-                    return frames
-                end)(),
+                frames = generateFramesList(16),
                 interval = 0.15,
                 looping = false,
                 texture = 'dagger-bandit-death'
             },
             ['attack'] = {
-                frames = (function()
-                    local frames = {}
-                    for i=1,7 do
-                        table.insert(frames, i)
-                    end
-
-                    return frames
-                end)(),
+                frames = generateFramesList(7),
                 looping = false,
-                interval = 0.08,
+                interval = 0.06,
                 offsetX = TILE_SIZE*1.5,
                 offsetY = 0,
                 texture = 'dagger-bandit-attack'
@@ -221,7 +247,15 @@ ENTITY_DEFS = {
         attackDistance = TILE_SIZE*1.5,
         health = 4,
         hitBoxes = {
-            { animation='attack', width = TILE_SIZE, height = TILE_SIZE*2, offsetX = 0, offsetY = -TILE_SIZE, directional=true },
+            ['attack'] = {
+                {
+                    width = TILE_SIZE,
+                    height = TILE_SIZE*2,
+                    offsetX = 0,
+                    offsetY = -TILE_SIZE,
+                    frames={5}
+                }
+            }
         },
         animations = {
             ['idle'] = {
@@ -235,14 +269,7 @@ ENTITY_DEFS = {
                 texture = 'spitter-walk'
             },
             ['death'] = {
-                frames = (function()
-                    local frames = {}
-                    for i=1,8 do
-                        table.insert(frames, i)
-                    end
-
-                    return frames
-                end)(),
+                frames = generateFramesList(8),
                 interval = 0.15,
                 looping = false,
                 texture = 'spitter-death'
@@ -267,7 +294,15 @@ ENTITY_DEFS = {
         attackDistance = TILE_SIZE,
         health = 4,
         hitBoxes = {
-            { animation='attack', width = TILE_SIZE, height = TILE_SIZE*2, offsetX = 0, offsetY = 0, directional=true },
+            ['attack'] = { 
+                {
+                    width = TILE_SIZE,
+                    height = TILE_SIZE*2,
+                    offsetX = 0,
+                    offsetY = 0,
+                    frames={3}
+                }
+            },
         },
         animations = {
             ['idle'] = {
@@ -300,7 +335,7 @@ ENTITY_DEFS = {
                 looping = false,
                 interval = 0.08,
                 texture = 'ghoul-attack',
-                offsetX = TILE_SIZE*2,
+                offsetX = TILE_SIZE,
                 offsetY = 0,
             }
         }
