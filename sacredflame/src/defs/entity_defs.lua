@@ -385,7 +385,10 @@ ENTITY_DEFS = {
                 }
             },
             ['attack2'] = {
-
+                {
+                    frames = generateFramesList(16),
+                    offsetX = 0
+                }
             },
             ['attack3'] = {
                 {
@@ -458,7 +461,7 @@ ENTITY_DEFS = {
                 looping = false,
                 interval = 1,
                 texture = 'boss-attack2',
-                offsetX = TILE_SIZE * 4.5,
+                offsetX = TILE_SIZE,
                 offsetY = 0
             },
             ['attack3'] = {

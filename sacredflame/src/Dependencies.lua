@@ -230,7 +230,7 @@ gFrames = {
     ['boss-attack1'] = GenerateQuadsFromRegion(gTextures['boss-attack1'],
         TILE_SIZE*18, TILE_SIZE*3, (TILE_SIZE*18)*5, TILE_SIZE*3*2, 0, 0),
     ['boss-attack2'] = GenerateQuadsFromRegion(gTextures['boss-attack2'],
-        (TILE_SIZE)*14-TILE_SIZE/2, TILE_SIZE*3, (TILE_SIZE*14)*16 - TILE_SIZE/2, TILE_SIZE*3, 0, 0),
+        TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*5*16, TILE_SIZE*4, 0, 0),
     ['boss-attack3'] = GenerateQuadsFromRegion(gTextures['boss-attack3'],
         (TILE_SIZE*16), TILE_SIZE*7.5, (TILE_SIZE*16)*30, TILE_SIZE*7.5, 0, 0),
 }
