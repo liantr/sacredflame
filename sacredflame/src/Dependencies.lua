@@ -35,7 +35,6 @@ require 'src/states/PlayState'
 require 'src/states/BossBattleState'
 require 'src/states/GameOverState'
 require 'src/states/PauseState'
-require 'src/states/RespawnState'
 require 'src/states/VictoryState'
 
 require 'src.entities.Entity'
