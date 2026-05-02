@@ -1,9 +1,30 @@
 BossChaseState = Class{__includes=EnemyChaseState}
 
-function BossChaseState:init(entity)
+function BossChaseState:init(entity, room)
     EnemyChaseState.init(self, entity)
+    self.room = room
 end
 
 function BossChaseState:processAI(params, dt)
+    if self.room.player then
+        local distFromPlayer = getDistanceFromPlayer(self.entity, self.room.player)
 
+        if math.abs(distFromPlayer) < self.entity.attackDistance and self.entity.canAttack then
+            -- enemy within attack range
+            local attackOptions = {'attack1', 'attack3'}
+            local attack = attackOptions[math.random(#attackOptions)]
+            print("Boss [chase] -> [" ..attack .."]")
+
+            self.entity:changeState(attack, {animation = attack, player = self.player})
+        elseif math.abs(distFromPlayer) > ENEMY_CHASE_MIN_DISTANCE then
+            print("Boss [appear] -> [disappear]")
+            self.entity:changeState('disappear')
+        else
+            -- run towards player
+            local _, vy = self.entity.body:getLinearVelocity()
+            self.entity.direction = distFromPlayer > 0 and 'right' or 'left'
+            local speed = self.entity.direction == 'right' and self.entity.chaseSpeed or -self.entity.chaseSpeed
+            self.entity.body:setLinearVelocity(speed, vy)
+        end
+    end
 end

@@ -30,14 +30,15 @@ function Room:spawnEnemies()
                 enemy.stateMachine = StateMachine {
                     ['idle'] = function() return BossIdleState(enemy) end,
                     ['walk'] = function() return BossWalkState(enemy) end,
-                    ['chase'] = function() return BossChaseState(enemy) end,
+                    ['chase'] = function() return BossChaseState(enemy, self) end,
                     ['attack1'] = function() return BossAttackState(enemy) end,
                     ['attack2'] = function() return BossAttackState(enemy) end,
                     ['attack3'] = function() return BossAttackState(enemy) end,
-                    ['appear'] = function() return BossAppearState(enemy) end,
+                    ['appear'] = function() return BossAppearState(enemy, self) end,
                     ['disappear'] = function() return BossDisappearState(enemy) end,
                     ['death'] = function() return EnemyDeathState(enemy) end
                 }
+                enemy:changeState('disappear')
             else
                 enemy = Entity(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
                 enemy.stateMachine = StateMachine {
@@ -47,9 +48,9 @@ function Room:spawnEnemies()
                     ['attack'] = function() return EnemyAttackState(enemy) end,
                     ['death'] = function() return EnemyDeathState(enemy) end
                 }
+                enemy:changeState('idle')
             end
 
-            enemy:changeState('idle')
 
             if roomDefEnemy.type ~= 'boss' then
             enemy.fixture:setUserData({type='enemy', entity = enemy})

@@ -5,12 +5,20 @@ function BossDisappearState:init(entity)
 end
 
 function BossDisappearState:enter()
+    self.timerStarted = false
     self.entity:changeAnimation('disappear')
+    self.entity.currentAnimation:refresh()
 end
 
 function BossDisappearState:update(dt)
 end
 
 function BossDisappearState:processAI(params, dt)
-
+    if not self.timerStarted then
+        self.timerStarted = true
+        Timer.after(1, function ()
+            print("Boss [disappear] -> [appear]")
+            self.entity:changeState('appear')
+        end)
+    end
 end

@@ -222,7 +222,7 @@ gFrames = {
     ['boss-walk'] = GenerateQuadsFromRegion(gTextures['boss-walk'],
         TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*2*5, TILE_SIZE*4, 0, 0),
     ['boss-disappear'] = GenerateQuadsFromRegion(gTextures['boss-disappear'],
-        TILE_SIZE*6, TILE_SIZE*4, TILE_SIZE*6*4, TILE_SIZE*4, 0, 0),
+        TILE_SIZE*6, TILE_SIZE*4, TILE_SIZE*6*5, TILE_SIZE*4, 0, 0),
     ['boss-appear'] = GenerateQuadsFromRegion(gTextures['boss-appear'],
         TILE_SIZE*6, TILE_SIZE*4, TILE_SIZE*6*9, TILE_SIZE*4, 0, 0),
     ['boss-death'] = GenerateQuadsFromRegion(gTextures['boss-death'],

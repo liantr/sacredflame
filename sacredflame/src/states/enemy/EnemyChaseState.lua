@@ -17,6 +17,9 @@ end
 
 function EnemyChaseState:update(dt)
     EntityWalkState.update(self, dt)
+end
+
+function EnemyChaseState:processAI(params, dt)
 
     local distFromPlayer = getDistanceFromPlayer(self.entity, self.player)
 

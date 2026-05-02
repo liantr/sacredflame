@@ -62,20 +62,19 @@ function Boss:update(dt)
 end
 
 function Boss:getHurtBoxPosition()
-    local x, y = self.body:getPosition()
-    local ex = x - self.width/2 + self.currentHurtBox.offsetX
-    local ey = y - self.height/2 + self.currentHurtBox.offsetY
+    if self.currentHurtBox then
+        local x, y = self.body:getPosition()
+        local ex = x - self.width/2 + self.currentHurtBox.offsetX
+        local ey = y - self.height/2 + self.currentHurtBox.offsetY
 
-    return ex, ey
+        return ex, ey
+    end
+    return nil
 end
-
--- function Boss:processAI(params, dt)
--- TODO update once all states are ready
--- end
 
 function Boss:render()
     Entity.render(self)
-    if DEBUG then
+    if DEBUG  and self.currentHurtBox then
         local x, y = self.body:getPosition()
         local offsetX = self.currentHurtBox and self.currentHurtBox.offsetX or 0
         local offsetY = self.currentHurtBox and self.currentHurtBox.offsetY or 0

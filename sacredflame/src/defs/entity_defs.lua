@@ -363,9 +363,17 @@ ENTITY_DEFS = {
                     offsetX = 0
                 }
             },
+            ['appear'] = {
+                {
+                    frames = {9},
+                    offsetX = 0
+                }
+            },
+            ['disappear'] = {
+            },
             ['attack1'] = {
                 {
-                    frames = generateFramesList(9),
+                    frames = {generateFramesList(9)},
                     height = TILE_SIZE*2,
                     offsetY = TILE_SIZE
                 }
@@ -458,13 +466,13 @@ ENTITY_DEFS = {
             ['appear'] = {
                 frames = generateFramesList(9),
                 looping = false,
-                interval = 0.05,
+                interval = 0.03,
                 texture = 'boss-appear',
-                offsetX = 0,
+                offsetX = TILE_SIZE,
                 offsetY = 0
             },
             ['disappear'] = {
-                frames = generateFramesList(4),
+                frames = generateFramesList(5),
                 looping = false,
                 interval = 0.05,
                 texture = 'boss-disappear',

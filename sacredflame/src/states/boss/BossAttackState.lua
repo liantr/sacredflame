@@ -4,10 +4,20 @@ function BossAttackState:init(entity)
     EnemyAttackState.init(self, entity)
 end
 
--- function BossAttackState:enter()
+function BossAttackState:enter(params)
+    self.hitFrames = {}
+    local animation = 'attack1' -- default
+    if params then
+        self.player = params.player
+        animation = params.animation
+    end
+    local _, evy = self.entity.body:getLinearVelocity()
+    self.entity.body:setLinearVelocity(0, evy)
 
--- end
+    self.entity:changeAnimation(animation)
 
--- function BossAttackState:update()
+    self.entity.currentAnimation:refresh()
+end
 
--- end
+function BossAttackState:processAI(params, dt)
+end
