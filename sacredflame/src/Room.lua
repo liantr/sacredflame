@@ -24,7 +24,12 @@ function Room:spawnEnemies()
     if self.def.enemies then
         for _, roomDefEnemy in pairs(self.def.enemies) do
             local enemyDef = ENTITY_DEFS[roomDefEnemy.type]
-            local enemy = Entity(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
+            local enemy
+            if roomDefEnemy.type == 'boss' then
+                enemy = Boss(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
+            else
+                enemy = Entity(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
+            end
 
             enemy.stateMachine = StateMachine {
                 ['idle'] = function() return EntityIdleState(enemy) end,
@@ -34,8 +39,10 @@ function Room:spawnEnemies()
                 ['death'] = function() return EnemyDeathState(enemy) end
             }
             enemy:changeState('idle')
-            enemy.fixture:setUserData({type='enemy', entity = enemy})
 
+            if roomDefEnemy.type ~= 'boss' then
+            enemy.fixture:setUserData({type='enemy', entity = enemy})
+            end
 
             table.insert(self.enemies, enemy)
         end

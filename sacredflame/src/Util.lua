@@ -167,9 +167,11 @@ function getHitBox(state)
     return nil
 end
 
-function generateFramesList(n)
+function generateFramesList(n, start)
+    if not start then start = 1 end
+
     local frames = {}
-    for i=1,n do
+    for i=start,n do
         table.insert(frames, i)
     end
 

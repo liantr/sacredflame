@@ -349,72 +349,130 @@ ENTITY_DEFS = {
         chaseSpeed = 100,
         attackDistance = TILE_SIZE*5,
         health = 22,
+        hurtBoxes = {
+            ['idle'] = {
+                {
+                    frames = generateFramesList(9),
+                    offsetX = 0
+                }
+            }
+            ,
+            ['walk'] = {
+                {
+                    frames = generateFramesList(2),
+                    offsetX = 0
+                }
+            },
+            ['attack1'] = {
+                {
+                    frames = generateFramesList(9),
+                    height = TILE_SIZE*2,
+                    offsetY = TILE_SIZE
+                }
+            },
+            ['attack'] = {
+                {
+                    height = TILE_SIZE*4,
+                    width = TILE_SIZE*2,
+                    offsetX = 0,
+                    offsetY = -TILE_SIZE*4,
+                    frames = generateFramesList(6)
+                },
+                {
+                    height = TILE_SIZE*2,
+                    width = TILE_SIZE*2,
+                    offsetX = 0,
+                    offsetY = TILE_SIZE,
+                    frames = generateFramesList(30, 7)
+                }
+            }
+        },
         hitBoxes = {
-            { animation='attack1', width = TILE_SIZE*7*2 + TILE_SIZE*2, height = TILE_SIZE*2, offsetX = -TILE_SIZE * 9, offsetY = 0, directional=true },
-            { animation='attack', width = TILE_SIZE*2, height = TILE_SIZE*2, offsetX = 0, offsetY = 0, directional=true },
+            ['attack1'] = {
+                {
+                    width = TILE_SIZE*7*2 + TILE_SIZE*2,
+                    height = TILE_SIZE*2,
+                    offsetX = -TILE_SIZE * 9,
+                    offsetY = 0,
+                    frames = {4}
+                }
+            },
+            ['attack2'] = {
+                {
+                    width = TILE_SIZE*2,
+                    height = TILE_SIZE*2,
+                    offsetX = 0,
+                    offsetY = 0,
+                    frames = {1}
+                }
+            },
+            ['attack'] = {
+                {
+                    width = TILE_SIZE*2,
+                    height = TILE_SIZE*2,
+                    offsetX = 0,
+                    offsetY = 0,
+                    frames = {1}
+                }
+            }
         },
         animations = {
             ['idle'] = {
-                frames = {1,2,3,4,5,6,7,8,9},
+                frames = generateFramesList(9),
                 interval = 0.15,
                 texture = 'boss-idle',
                 offsetX = TILE_SIZE/2
             },
             ['walk'] = {
-                frames = {1,2},
+                frames = generateFramesList(2),
                 looping = true,
                 interval = 0.15,
                 texture = 'boss-walk',
                 offsetX = TILE_SIZE/2
             },
              ['death'] = {
-                frames = (function()
-                    local frames = {}
-                    for i=1,36 do
-                        table.insert(frames, i)
-                    end
-
-                    return frames
-                end)(),
+                frames = generateFramesList(36),
                 interval = 0.15,
                 looping = false,
                 texture = 'boss-death'
             },
             ['attack1'] = {
-                frames = {1,2,3,4,5,6,7,8,9},
-                interval = 0.08,
+                frames = generateFramesList(9),
+                interval = 0.5,
                 looping = false,
                 texture = 'boss-attack1',
-                offsetX = 0,
+                offsetX = TILE_SIZE,
                 offsetY = TILE_SIZE
             },
-            ['attack'] = {
-                frames = (function()
-                    local frames = {}
-                    for i=1,16 do
-                        table.insert(frames, i)
-                    end
-
-                    return frames
-                end)(),
+            ['attack2'] = {
+                frames = generateFramesList(16),
                 looping = false,
                 interval = 0.05,
                 texture = 'boss-attack2',
                 offsetX = TILE_SIZE * 4.5,
                 offsetY = 0
             },
-            ['attack3'] = {
-                frames = (function()
-                    local frames = {}
-                    for i=1,30 do
-                        table.insert(frames, i)
-                    end
-
-                    return frames
-                end)(),
+            ['attack'] = {
+                frames = generateFramesList(30),
+                looping = false,
+                interval = 0.5,
+                texture = 'boss-attack3',
+                offsetX = TILE_SIZE*1.5,
+                offsetY = 0
+            },
+            ['appear'] = {
+                frames = generateFramesList(9),
                 looping = false,
                 interval = 0.05,
-                texture = 'boss-attack3',
+                texture = 'boss-appear',
+                offsetX = 0,
+                offsetY = 0
+            },
+            ['disappear'] = {
+                frames = generateFramesList(4),
+                looping = false,
+                interval = 0.05,
+                texture = 'boss-disappear',
                 offsetX = 0,
                 offsetY = 0
             },

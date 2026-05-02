@@ -47,6 +47,7 @@ require 'src.states.DialogueState'
 
 require 'src.entities.Entity'
 require 'src.entities.Player'
+require 'src.entities.Boss'
 require 'src.entities.Flame'
 
 require 'src/states/entity/EntityWalkState'
@@ -123,11 +124,12 @@ gTextures = {
 
     ['boss-idle'] = love.graphics.newImage('assets/graphics/characters/boss/boss-idle.png'),
     ['boss-walk'] = love.graphics.newImage('assets/graphics/characters/boss/boss-walk.png'),
-    ['boss-hit'] = love.graphics.newImage('assets/graphics/characters/boss/boss-hit.png'),
     ['boss-attack1'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack1.png'),
     ['boss-attack2'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack2.png'),
     ['boss-attack3'] = love.graphics.newImage('assets/graphics/characters/boss/boss-attack3.png'),
     ['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
+    ['boss-disappear'] = love.graphics.newImage('assets/graphics/characters/boss/boss-disappear.png'),
+    ['boss-appear'] = love.graphics.newImage('assets/graphics/characters/boss/boss-appear.png'),
 }
 
 gFrames = {
@@ -212,12 +214,14 @@ gFrames = {
         TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*9*5, TILE_SIZE*4, 0, 0),
     ['boss-walk'] = GenerateQuadsFromRegion(gTextures['boss-walk'],
         TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*2*5, TILE_SIZE*4, 0, 0),
-    -- ['boss-hit'] = GenerateQuadsFromRegion(gTextures['boss-hit'],
-    --     TILE_SIZE*4, TILE_SIZE*3.5, TILE_SIZE*2*4, TILE_SIZE*3.5, 0, 0),
+    ['boss-disappear'] = GenerateQuadsFromRegion(gTextures['boss-disappear'],
+        TILE_SIZE*6, TILE_SIZE*4, TILE_SIZE*6*4, TILE_SIZE*4, 0, 0),
+    ['boss-appear'] = GenerateQuadsFromRegion(gTextures['boss-appear'],
+        TILE_SIZE*6, TILE_SIZE*4, TILE_SIZE*6*9, TILE_SIZE*4, 0, 0),
     ['boss-death'] = GenerateQuadsFromRegion(gTextures['boss-death'],
         TILE_SIZE*6, TILE_SIZE*3, TILE_SIZE*6*36, TILE_SIZE*3, 0, 0),
     ['boss-attack1'] = GenerateQuadsFromRegion(gTextures['boss-attack1'],
-        TILE_SIZE*18, TILE_SIZE*3, (TILE_SIZE*18)*8, TILE_SIZE*3, 0, 0),
+        TILE_SIZE*18, TILE_SIZE*3, (TILE_SIZE*18)*5, TILE_SIZE*3*2, 0, 0),
     ['boss-attack2'] = GenerateQuadsFromRegion(gTextures['boss-attack2'],
         (TILE_SIZE)*14-TILE_SIZE/2, TILE_SIZE*3, (TILE_SIZE*14)*16 - TILE_SIZE/2, TILE_SIZE*3, 0, 0),
     ['boss-attack3'] = GenerateQuadsFromRegion(gTextures['boss-attack3'],
@@ -228,7 +232,7 @@ gTextures['boss-attack1']:setFilter('nearest', 'nearest')
 gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 
-print("total frames:" ..tostring(#gFrames['swordmaster-death']))
+print("total frames:" ..tostring(#gFrames['boss-attack1']))
 
 
 gSounds = {

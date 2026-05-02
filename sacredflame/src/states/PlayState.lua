@@ -117,9 +117,15 @@ function PlayState:init()
             coll:setEnabled(false)
         end
 
+        if types['player'] and types['boss'] then
+            coll:setEnabled(false)
+        end
+
+
         if types['player'] and types['torch'] then
             coll:setEnabled(false)
         end
+
         if types['player'] and types['wall'] then
             if self.player.stateMachine.currentStateName == 'wall-hold' then
                 coll:setEnabled(false)
