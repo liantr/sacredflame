@@ -20,11 +20,7 @@ function EnemyAttackState:enter(params)
 end
 
 function EnemyAttackState:processAI(params, dt)
-end
-
-
-function EnemyAttackState:update(dt)
-    local _, vy = self.entity.body:getLinearVelocity()
+        local _, vy = self.entity.body:getLinearVelocity()
     self.entity.body:setLinearVelocity(0,vy)
     
     self.hitBoxes = createEntityHitBoxes(self.entity)
@@ -61,7 +57,6 @@ function EnemyAttackState:update(dt)
         self.entity:changeState("idle")
     end
 end
-
 
 function EnemyAttackState:render()
     if DEBUG then

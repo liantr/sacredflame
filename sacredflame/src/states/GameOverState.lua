@@ -13,11 +13,7 @@ function GameOverState:enter()
 
                 
                 gStateStack:pop() -- pops the game over state
-                gStateStack:pop() -- pops the play state                -- gStateStack:push(DialogueState("" .. 
-                --     "Welcome to the world of 50Mon! To start fighting monsters with your own randomly assigned" ..
-                --     " monster, just walk in the tall grass! If you need to heal, just press 'P' in the field! " ..
-                --     "Good luck! (Press Enter to dismiss dialogues)"
-                -- ))
+                gStateStack:pop() -- pops the play state
                 gStateStack:push(FadeOutState({
                     r = 0, g = 0, b = 0
                 }, 1,
@@ -25,6 +21,7 @@ function GameOverState:enter()
             end))
     end)
 end
+
 function GameOverState:update(dt)
 end
 

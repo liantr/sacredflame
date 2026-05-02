@@ -64,24 +64,33 @@ end
 function Boss:getHurtBoxPosition()
     if self.currentHurtBox then
         local x, y = self.body:getPosition()
-        local ex = x - self.width/2 + self.currentHurtBox.offsetX
-        local ey = y - self.height/2 + self.currentHurtBox.offsetY
+        local ex = x + self.currentHurtBox.offsetX - self.currentHurtBox.width/2
+        local ey = y + self.currentHurtBox.offsetY - self.currentHurtBox.height /2
 
         return ex, ey
     end
     return nil
 end
 
+-- function Boss:getHitBoxPosition()
+--     if self.currentHurtBox then
+--         local x, y = self.body:getPosition()
+--         local ex = x - self.width/2 + self.currentHurtBox.offsetX
+--         local ey = y - self.height/2 + self.currentHurtBox.offsetY
+
+--         return ex, ey
+--     end
+--     return nil
+-- end
+
 function Boss:render()
     Entity.render(self)
     if DEBUG  and self.currentHurtBox then
-        local x, y = self.body:getPosition()
-        local offsetX = self.currentHurtBox and self.currentHurtBox.offsetX or 0
-        local offsetY = self.currentHurtBox and self.currentHurtBox.offsetY or 0
-        local w = self.currentHurtBox and self.currentHurtBox.width or self.width
-        local h = self.currentHurtBox and self.currentHurtBox.height or self.height
+        local x, y = self:getHurtBoxPosition()
+        local w = self.currentHurtBox.width
+        local h = self.currentHurtBox.height
         love.graphics.setColor(0, 1, 0, 1)
-        love.graphics.rectangle('line', x + offsetX - w/2, y + offsetY - h/2, w, h)
+        love.graphics.rectangle('line', x, y, w, h)
         love.graphics.setColor(1, 1, 1, 1)
     end
 end

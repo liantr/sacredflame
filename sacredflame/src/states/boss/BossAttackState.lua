@@ -19,5 +19,5 @@ function BossAttackState:enter(params)
     self.entity.currentAnimation:refresh()
 end
 
-function BossAttackState:processAI(params, dt)
-end
+-- function BossAttackState:processAI(params, dt)
+-- end

@@ -8,6 +8,22 @@ end
 function EnemyDeathState:enter(params)
     self.entity.body:setActive(false)
     self.entity:changeAnimation('death')
+
+    if self.entity.fixture:getUserData().type == 'boss' then
+        Timer.after(10, function()
+            gStateStack:push(FadeInState({
+                r = 0, g = 0, b = 0
+            }, 1,
+            function()
+                
+                gStateStack:push(VictoryState())
+                gStateStack:push(FadeOutState({
+                    r = 0, g = 0, b = 0
+                }, 1,
+                function() end))
+            end))
+    end)
+    end
 end
 
 function EnemyDeathState:processAI(params, dt)

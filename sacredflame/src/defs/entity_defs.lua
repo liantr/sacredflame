@@ -363,17 +363,23 @@ ENTITY_DEFS = {
                     offsetX = 0
                 }
             },
+            ['chase'] = {
+                {
+                    frames = generateFramesList(2),
+                    offsetX = 0
+                }
+            },
             ['appear'] = {
                 {
                     frames = {9},
                     offsetX = 0
                 }
             },
-            ['disappear'] = {
-            },
+            ['disappear'] = {},
+            ['death'] = {},
             ['attack1'] = {
                 {
-                    frames = {generateFramesList(9)},
+                    frames = generateFramesList(9),
                     height = TILE_SIZE*2,
                     offsetY = TILE_SIZE
                 }
