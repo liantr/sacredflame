@@ -1,8 +1,8 @@
 BossAttackState = Class{__includes=EnemyAttackState}
 
--- function BossAttackState:init(entity)
-    
--- end
+function BossAttackState:init(entity)
+    EnemyAttackState.init(self, entity)
+end
 
 -- function BossAttackState:enter()
 

@@ -17,10 +17,10 @@ function Boss:buildHurtBoxes(def)
                 for _, hurtBox in pairs(animHurtBoxes) do
                     for _, frame in ipairs(hurtBox.frames) do
                         hurtBoxes[name][frame] = {
-                            width = hurtBox.width,
-                            height = hurtBox.height,
-                            offsetX = hurtBox.offsetX,
-                            offsetY = hurtBox.offsetY
+                            width = hurtBox.width or self.width,
+                            height = hurtBox.height or self.height,
+                            offsetX = hurtBox.offsetX or 0,
+                            offsetY = hurtBox.offsetY or 0
                         }
                     end
                 end
@@ -34,19 +34,11 @@ end
 
 function Boss:collides(hitBox)
     local x, y = self.body:getPosition()
-    print("curr anim: " ..tostring(self.currentAnimation))
     if self.hurtBoxes and self.currentAnimation and self.currentHurtBox then
-        local hurtBoxWidth = self.currentHurtBox.width or self.width
-        local hurtBoxHeight = self.currentHurtBox.height or self.height
-        local offsetX = self.currentHurtBox.offsetX or 0
-        local offsetY = self.currentHurtBox.offsetY or 0
+        local ex, ey = self:getHurtBoxPosition()
 
-        print("offsetY: " ..tostring(offsetY))
-
-        local ex = x - self.width/2 + offsetX
-        local ey = y - self.height/2 + offsetY
-        return not (ex > hitBox.x + hitBox.width or hitBox.x > ex + hurtBoxWidth or
-                    ey > hitBox.y + hitBox.height or hitBox.y > ey + hurtBoxHeight)
+        return not (ex > hitBox.x + hitBox.width or hitBox.x > ex + self.currentHurtBox.width or
+                    ey > hitBox.y + hitBox.height or hitBox.y > ey + self.currentHurtBox.height)
     end
 
     return Entity.collides(self, hitBox)
@@ -58,6 +50,23 @@ function Boss:update(dt)
     if self.hurtBoxes and currAnimation then
         self.currentHurtBox = self.hurtBoxes[currAnimation.name][currAnimation:getCurrentFrame()] or nil
     end
+
+    if self.room.player and not self.room.player.invulnerable and self.currentHurtBox then
+        local ex, ey = self:getHurtBoxPosition()
+        local hitBox = HitBox(ex, ey, self.currentHurtBox.width, self.currentHurtBox.height)
+
+        if damagePlayer(self.room, hitBox) then
+            self.room.player:goInvulnerable(1.5)
+        end
+    end
+end
+
+function Boss:getHurtBoxPosition()
+    local x, y = self.body:getPosition()
+    local ex = x - self.width/2 + self.currentHurtBox.offsetX
+    local ey = y - self.height/2 + self.currentHurtBox.offsetY
+
+    return ex, ey
 end
 
 -- function Boss:processAI(params, dt)

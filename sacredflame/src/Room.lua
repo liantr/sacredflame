@@ -49,13 +49,6 @@ function Room:spawnEnemies()
                 }
             end
 
-            enemy.stateMachine = StateMachine {
-                ['idle'] = function() return EntityIdleState(enemy) end,
-                ['walk'] = function() return EntityWalkState(enemy) end,
-                ['chase'] = function() return EnemyChaseState(enemy) end,
-                ['attack'] = function() return EnemyAttackState(enemy) end,
-                ['death'] = function() return EnemyDeathState(enemy) end
-            }
             enemy:changeState('idle')
 
             if roomDefEnemy.type ~= 'boss' then
