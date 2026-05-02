@@ -129,17 +129,26 @@ function createEntityHitBoxes(entity)
             for _, hitBox in pairs(hitBoxes) do
                 local offsetX = hitBox.offsetX or 0
                 local offsetY = hitBox.offsetY or 0
-                if direction == 'left' then
+                if hitBox.bidirectional then
                     hitBoxX = ex - hitBox.width - entity.width/2 - offsetX
                     hitBoxY = ey + offsetY
-                elseif direction == 'right' then
-                    hitBoxX = ex + entity.width/2 + offsetX
-                    hitBoxY = ey + offsetY
-                end
-                table.insert(result[animName], {
-                    frames = hitBox.frames,
-                    hitBox = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
-                })
+                    table.insert(result[animName], {
+                        frames = hitBox.frames,
+                        hitBox = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
+                    })
+                else
+                    if direction == 'left' then
+                        hitBoxX = ex - hitBox.width - entity.width/2 - offsetX
+                        hitBoxY = ey + offsetY
+                    elseif direction == 'right' then
+                        hitBoxX = ex + entity.width/2 + offsetX
+                        hitBoxY = ey + offsetY
+                    end
+                    table.insert(result[animName], {
+                        frames = hitBox.frames,
+                        hitBox = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
+                    })
+                end      
             end
         end
     end
@@ -147,7 +156,7 @@ function createEntityHitBoxes(entity)
     return result
 end
 
-function getHitBox(state)
+function getHitBoxes(state)
     local animation = state.entity.currentAnimation
     if not animation or not state.hitBoxes then return nil end
 
@@ -155,20 +164,22 @@ function getHitBox(state)
 
     if not hitBoxes then return nil end
     local currFrame = animation:getCurrentFrame()
+    local results = {}
 
     for _, hitBox in pairs(hitBoxes) do
         for _,frame in pairs(hitBox.frames) do
             if frame == currFrame then
-                return hitBox
+                table.insert(results, hitBox)
             end
         end
     end
     
-    return nil
+    return results
 end
 
-function generateFramesList(n, start)
+function generateFramesList(n, start, endNum)
     if not start then start = 1 end
+    if endNum then n = endNum end
 
     local frames = {}
     for i=start,n do
