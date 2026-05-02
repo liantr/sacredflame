@@ -11,3 +11,7 @@ end
 function BossAppearState:update()
 
 end
+
+function BossAppearState:processAI(params, dt)
+
+end

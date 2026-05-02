@@ -28,9 +28,9 @@ function Room:spawnEnemies()
             if roomDefEnemy.type == 'boss' then
                 enemy = Boss(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
                 enemy.stateMachine = StateMachine {
-                    ['idle'] = function() return EntityIdleState(enemy) end,
-                    ['walk'] = function() return EntityWalkState(enemy) end,
-                    ['chase'] = function() return EnemyChaseState(enemy) end,
+                    ['idle'] = function() return BossIdleState(enemy) end,
+                    ['walk'] = function() return BossWalkState(enemy) end,
+                    ['chase'] = function() return BossChaseState(enemy) end,
                     ['attack1'] = function() return BossAttackState(enemy) end,
                     ['attack2'] = function() return BossAttackState(enemy) end,
                     ['attack3'] = function() return BossAttackState(enemy) end,

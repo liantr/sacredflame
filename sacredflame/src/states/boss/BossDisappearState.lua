@@ -10,3 +10,7 @@ end
 
 function BossDisappearState:update(dt)
 end
+
+function BossDisappearState:processAI(params, dt)
+
+end
