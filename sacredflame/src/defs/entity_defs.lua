@@ -371,6 +371,9 @@ ENTITY_DEFS = {
                 }
             },
             ['attack'] = {
+
+            },
+            ['attack3'] = {
                 {
                     height = TILE_SIZE*4,
                     width = TILE_SIZE*2,
@@ -397,7 +400,7 @@ ENTITY_DEFS = {
                     frames = {4}
                 }
             },
-            ['attack2'] = {
+            ['attack'] = {
                 {
                     width = TILE_SIZE*2,
                     height = TILE_SIZE*2,
@@ -406,73 +409,7 @@ ENTITY_DEFS = {
                     frames = {1}
                 }
             },
-            ['attack'] = {
-                {
-                    width = TILE_SIZE,
-                    height = TILE_SIZE*2.2,
-                    offsetX = 0,
-                    offsetY = -TILE_SIZE*4,
-                    frames = generateFramesList(14),
-                    bidirectional = true
-                },
-                {
-                    width = TILE_SIZE,
-                    height = TILE_SIZE*2.2,
-                    offsetX = -TILE_SIZE*3,
-                    offsetY = -TILE_SIZE*4,
-                    frames = generateFramesList(14),
-                    bidirectional = true
-                },
-                {
-                    width = TILE_SIZE*1.5,
-                    height = TILE_SIZE*2,
-                    offsetX = -TILE_SIZE/2,
-                    offsetY = -TILE_SIZE*4,
-                    frames = generateFramesList(30, 15, 17),
-                    bidirectional = true
-                },
-                {
-                    width = TILE_SIZE*1.5,
-                    height = TILE_SIZE*2,
-                    offsetX = -TILE_SIZE*3,
-                    offsetY = -TILE_SIZE*4,
-                    frames = generateFramesList(30, 15, 17),
-                    bidirectional = true
-                },
-                {
-                    width = TILE_SIZE*1.5,
-                    height = TILE_SIZE,
-                    offsetX = -TILE_SIZE/2,
-                    offsetY = -TILE_SIZE*3.5,
-                    frames = generateFramesList(30, 18, 19),
-                    bidirectional = true -- TODO need to do the moving ones
-                },
-                {
-                    width = TILE_SIZE*1.5,
-                    height = TILE_SIZE,
-                    offsetX = -TILE_SIZE*3,
-                    offsetY = -TILE_SIZE*3.5,
-                    frames = generateFramesList(30, 18, 19),
-                    bidirectional = true -- TODO need to do the moving ones
-                },
-                {
-                    width = TILE_SIZE,
-                    height = TILE_SIZE,
-                    offsetX = -TILE_SIZE/2,
-                    offsetY = -TILE_SIZE*4.5,
-                    frames = generateFramesList(30, 20, 21),
-                    bidirectional = true
-                },
-                {
-                    width = TILE_SIZE,
-                    height = TILE_SIZE,
-                    offsetX = -TILE_SIZE*2.5,
-                    offsetY = -TILE_SIZE*4.5,
-                    frames = generateFramesList(30, 20, 21),
-                    bidirectional = true 
-                }
-                -- TODO need to do the moving ones for the remaining
-            }
+            ['attack3'] = generateBossAttack3HitBoxesDef()
         },
         animations = {
             ['idle'] = {
@@ -496,24 +433,24 @@ ENTITY_DEFS = {
             },
             ['attack1'] = {
                 frames = generateFramesList(9),
-                interval = 0.5,
+                interval = 0.05,
                 looping = false,
                 texture = 'boss-attack1',
                 offsetX = TILE_SIZE,
                 offsetY = TILE_SIZE
             },
-            ['attack2'] = {
+            ['attack'] = {
                 frames = generateFramesList(16),
                 looping = false,
-                interval = 0.05,
+                interval = 1,
                 texture = 'boss-attack2',
                 offsetX = TILE_SIZE * 4.5,
                 offsetY = 0
             },
-            ['attack'] = {
-                frames = generateFramesList(30, 19),
+            ['attack3'] = {
+                frames = generateFramesList(30),
                 looping = false,
-                interval = 0.8,
+                interval = 0.05,
                 texture = 'boss-attack3',
                 offsetX = TILE_SIZE*1.5,
                 offsetY = 0

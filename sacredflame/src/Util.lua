@@ -188,3 +188,137 @@ function generateFramesList(n, start, endNum)
 
     return frames
 end
+
+function generateBossAttack3HitBoxesDef()
+    local defHitBoxes = {
+        {
+            width = TILE_SIZE,
+            height = TILE_SIZE*2.2,
+            offsetX = 0,
+            offsetY = -TILE_SIZE*4,
+            frames = generateFramesList(14),
+            bidirectional = true
+        },
+        {
+            width = TILE_SIZE,
+            height = TILE_SIZE*2.2,
+            offsetX = -TILE_SIZE*3,
+            offsetY = -TILE_SIZE*4,
+            frames = generateFramesList(14),
+            bidirectional = true
+        },
+        {
+            width = TILE_SIZE*1.5,
+            height = TILE_SIZE*2,
+            offsetX = -TILE_SIZE/2,
+            offsetY = -TILE_SIZE*4,
+            frames = generateFramesList(30, 15, 17),
+            bidirectional = true
+        },
+        {
+            width = TILE_SIZE*1.5,
+            height = TILE_SIZE*2,
+            offsetX = -TILE_SIZE*3,
+            offsetY = -TILE_SIZE*4,
+            frames = generateFramesList(30, 15, 17),
+            bidirectional = true
+        },
+        {
+            width = TILE_SIZE,
+            height = TILE_SIZE,
+            offsetX = -TILE_SIZE/2,
+            offsetY = -TILE_SIZE*4.5,
+            frames = generateFramesList(30, 20, 21),
+            bidirectional = true
+        },
+        {
+            width = TILE_SIZE,
+            height = TILE_SIZE,
+            offsetX = -TILE_SIZE*2.5,
+            offsetY = -TILE_SIZE*4.5,
+            frames = generateFramesList(30, 20, 21),
+            bidirectional = true 
+        },
+        {
+            width = TILE_SIZE*1.5,
+            height = TILE_SIZE,
+            offsetX = -TILE_SIZE/2,
+            offsetY = -TILE_SIZE*3.5,
+            frames = generateFramesList(30, 18, 19),
+            bidirectional = true
+        },
+        {
+            width = TILE_SIZE*1.5,
+            height = TILE_SIZE,
+            offsetX = -TILE_SIZE*3,
+            offsetY = -TILE_SIZE*3.5,
+            frames = generateFramesList(30, 18, 19),
+            bidirectional = true
+        }
+    }
+
+    -- start values for the first part of the attack
+    local offsetXLeft = 0
+    local offsetYLeft = -TILE_SIZE*2.5
+    local offsetXRight = -TILE_SIZE*2.5
+    local offsetYRight = -TILE_SIZE*2.5
+    
+    -- and for the second
+    local offsetXLeft2 = TILE_SIZE*0.5
+    local offsetYLeft2 = -TILE_SIZE*3.5
+    local offsetXRight2 = -TILE_SIZE*3
+    local offsetYRight2 = -TILE_SIZE*3.5
+    for i=1,12 do
+        if i <= 9 then
+            table.insert(defHitBoxes, {
+                width = TILE_SIZE/2,
+                height = TILE_SIZE/2,
+                offsetX = offsetXLeft,
+                offsetY = offsetYLeft,
+                frames = {18},
+                bidirectional = true
+            })
+
+            table.insert(defHitBoxes, {
+                width = TILE_SIZE/2,
+                height = TILE_SIZE/2,
+                offsetX = offsetXRight,
+                offsetY = offsetYRight,
+                frames = {18},
+                bidirectional = true
+            })
+
+            offsetXLeft = offsetXLeft + TILE_SIZE*0.5
+            offsetYLeft = offsetYLeft + TILE_SIZE*0.5
+
+            offsetXRight = offsetXRight - TILE_SIZE*0.5
+            offsetYRight = offsetYRight + TILE_SIZE*0.5
+        end
+
+        table.insert(defHitBoxes, {
+            width = TILE_SIZE/2,
+            height = TILE_SIZE/2,
+            offsetX = offsetXLeft2,
+            offsetY = offsetYLeft2,
+            frames = {22},
+            bidirectional = true
+        })
+
+        table.insert(defHitBoxes, {
+                width = TILE_SIZE/2,
+                height = TILE_SIZE/2,
+                offsetX = offsetXRight2,
+                offsetY = offsetYRight2,
+                frames = {22},
+                bidirectional = true
+            })
+
+        offsetXLeft2 = offsetXLeft2 + TILE_SIZE*0.5
+        offsetYLeft2 = offsetYLeft2 + TILE_SIZE*0.5
+
+        offsetXRight2 = offsetXRight2 - TILE_SIZE*0.5
+        offsetYRight2 = offsetYRight2 + TILE_SIZE*0.5
+    end
+
+    return defHitBoxes
+end
