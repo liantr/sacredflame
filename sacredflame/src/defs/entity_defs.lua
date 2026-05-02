@@ -422,8 +422,15 @@ ENTITY_DEFS = {
                     width = TILE_SIZE*2,
                     height = TILE_SIZE*2,
                     offsetX = 0,
-                    offsetY = 0,
-                    frames = {1}
+                    offsetY = TILE_SIZE*3,
+                    frames = {3}
+                },
+                {
+                    width = TILE_SIZE*2,
+                    height = TILE_SIZE*2,
+                    offsetX = 0,
+                    offsetY = TILE_SIZE*2,
+                    frames = {10}
                 }
             },
             ['attack3'] = generateBossAttack3HitBoxesDef()
@@ -458,8 +465,7 @@ ENTITY_DEFS = {
             },
             ['attack2'] = {
                 frames = generateFramesList(16),
-                looping = false,
-                interval = 1,
+                interval = 0.05,
                 texture = 'boss-attack2',
                 offsetX = TILE_SIZE,
                 offsetY = 0
