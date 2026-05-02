@@ -15,22 +15,22 @@ function PlayerIdleState:update(dt)
     self.entity.body:setLinearVelocity(0, yVel)
 
     if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
-        if love.keyboard.isDown('z') then
+        if love.keyboard.isDown('lshift') then
             self.entity:changeState('run')
         else
             self.entity:changeState('walk')
         end
     end
 
-    if love.keyboard.wasPressed('space') and self.entity.canJump then
+    if love.keyboard.wasPressed('z') and self.entity.canJump then
         self.entity:changeState('jump')
     end
 
-    if love.keyboard.wasPressed('x') then
+    if love.keyboard.wasPressed('v') then
         self.entity:changeState('dash', {nextState='idle'})
-    elseif love.keyboard.wasPressed('s') then
+    elseif love.keyboard.wasPressed('x') then
         self.entity:changeState('swing-sword')
-    elseif love.keyboard.wasPressed('d') then
+    elseif love.keyboard.wasPressed('c') then
         self.entity:changeState('swing-sword', {combo = true})
     end
 end

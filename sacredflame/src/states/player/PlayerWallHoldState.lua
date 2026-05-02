@@ -16,7 +16,7 @@ function PlayerWallHoldState:update(dt)
     end
     self.player.body:setLinearVelocity(0, 0)
 
-    if love.keyboard.wasPressed('space') then
+    if love.keyboard.wasPressed('z') then
         local px, py = self.player.body:getPosition()
         local vel = self.player.direction == 'right' and -30 or 30
         local shift = self.player.direction == 'right' and -10 or 10

@@ -21,11 +21,11 @@ function PlayerFallingState:update(dt)
 
     grabWall(self.player)
 
-    if love.keyboard.wasPressed('space') and self.player.canJump then
+    if love.keyboard.wasPressed('z') and self.player.canJump then
         self.player:changeState('jump')
-    elseif love.keyboard.wasPressed('x') then
+    elseif love.keyboard.wasPressed('v') then
         self.player:changeState('dash', {nextState='falling'})
-    elseif love.keyboard.wasPressed('s') then
+    elseif love.keyboard.wasPressed('x') then
         self.player:changeState('swing-sword')
     end
 end
