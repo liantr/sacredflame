@@ -6,6 +6,8 @@ end
 
 function BossDisappearState:enter()
     self.timerStarted = false
+    local _, evy = self.entity.body:getLinearVelocity()
+    self.entity.body:setLinearVelocity(0, evy)
     self.entity:changeAnimation('disappear')
     self.entity.currentAnimation:refresh()
 end

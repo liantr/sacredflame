@@ -38,7 +38,7 @@ function Room:spawnEnemies()
                     ['disappear'] = function() return BossDisappearState(enemy) end,
                     ['death'] = function() return EnemyDeathState(enemy) end
                 }
-                enemy:changeState('disappear')
+                enemy:changeState('appear')
             else
                 enemy = Entity(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
                 enemy.stateMachine = StateMachine {

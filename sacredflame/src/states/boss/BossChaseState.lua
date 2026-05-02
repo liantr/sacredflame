@@ -11,7 +11,7 @@ function BossChaseState:processAI(params, dt)
 
         if math.abs(distFromPlayer) < self.entity.attackDistance and self.entity.canAttack then
             -- enemy within attack range
-            local attackOptions = {'attack1', 'attack3'}
+            local attackOptions = {'attack1', 'attack2', 'attack3'}
             local attack = attackOptions[math.random(#attackOptions)]
             print("Boss [chase] -> [" ..attack .."]")
 
