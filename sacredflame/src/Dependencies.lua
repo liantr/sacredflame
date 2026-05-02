@@ -18,6 +18,10 @@ require 'src/defs/room_defs'
 require 'src/defs/entity_defs'
 require 'src/defs/object_defs'
 
+require 'src.gui.Panel'
+require 'src.gui.Textbox'
+
+
 require 'src.Animation'
 require 'src.Room'
 require 'src.states.StateMachine'
@@ -36,6 +40,10 @@ require 'src/states/BossBattleState'
 require 'src/states/GameOverState'
 require 'src/states/PauseState'
 require 'src/states/VictoryState'
+require 'src.states.FadeInState'
+require 'src.states.FadeOutState'
+require 'src.states.DialogueState'
+
 
 require 'src.entities.Entity'
 require 'src.entities.Player'

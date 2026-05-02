@@ -5,7 +5,27 @@ end
 
 function StartState:update(dt)
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
-        gStateStack:push(PlayState())
+        gStateStack:push(FadeInState({
+            r = 0, g = 0, b = 0
+        }, 1,
+        function()
+
+            
+            gStateStack:push(PlayState())
+            -- gStateStack:push(DialogueState("" .. 
+            --     "Brave warrior, you must descend to the temple depths and push back the dark dimension." ..
+            --     "The torches lit with the sacred flame with the power to keep the dark dimension contained " ..
+            --     "have been outed. You must light them along your path."
+            -- ))
+            -- gStateStack:push(DialogueState("" .. 
+            --    "Press [Space] to jump"
+            -- ))
+            gStateStack:push(FadeOutState({
+                r = 0, g = 0, b = 0
+            }, 1,
+            function() end))
+        end))
+        
     end
 end
 
