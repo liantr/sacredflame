@@ -56,6 +56,10 @@ require 'src.states.enemy.EnemyChaseState'
 require 'src.states.enemy.EnemyAttackState'
 require 'src.states.enemy.EnemyDeathState'
 
+require 'src.states.boss.BossAttackState'
+require 'src.states.boss.BossAppearState'
+require 'src.states.boss.BossDisappearState'
+
 require 'src/states/flame/FlameFollowingState'
 
 require 'src.states.player.PlayerWalkState'

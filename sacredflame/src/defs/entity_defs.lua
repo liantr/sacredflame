@@ -370,7 +370,7 @@ ENTITY_DEFS = {
                     offsetY = TILE_SIZE
                 }
             },
-            ['attack'] = {
+            ['attack2'] = {
 
             },
             ['attack3'] = {
@@ -400,7 +400,7 @@ ENTITY_DEFS = {
                     frames = {4}
                 }
             },
-            ['attack'] = {
+            ['attack2'] = {
                 {
                     width = TILE_SIZE*2,
                     height = TILE_SIZE*2,
@@ -439,7 +439,7 @@ ENTITY_DEFS = {
                 offsetX = TILE_SIZE,
                 offsetY = TILE_SIZE
             },
-            ['attack'] = {
+            ['attack2'] = {
                 frames = generateFramesList(16),
                 looping = false,
                 interval = 1,

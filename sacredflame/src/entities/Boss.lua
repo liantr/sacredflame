@@ -61,6 +61,7 @@ function Boss:update(dt)
 end
 
 -- function Boss:processAI(params, dt)
+-- TODO update once all states are ready
 -- end
 
 function Boss:render()
