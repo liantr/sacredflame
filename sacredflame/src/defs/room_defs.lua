@@ -2,8 +2,8 @@ ROOM_DEFS= {
     ['entry'] = {
         map = 'assets/graphics/map/entry.lua',
         background = 'ruinedTemple',
-        spawnX = VIRTUAL_WIDTH / 2 + TILE_SIZE*2,
-        spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 7,
+        spawnX = TILE_SIZE*3,
+        spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1,
         connectedRooms = {
             north = nil,
             south = { room = 'main1', spawnX = 28, spawnY = 8},
@@ -13,37 +13,10 @@ ROOM_DEFS= {
         objects = {
             {
                 type = 'torch',
-                spawnX = TILE_SIZE*17,
-                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*6.5
+                spawnX = TILE_SIZE*20,
+                spawnY = VIRTUAL_HEIGHT -TILE_SIZE*17.5
             },
-        },
-        enemies = {
-            --  {
-            --      type = 'archer-bandit',
-            --      spawnX = TILE_SIZE*10, --VIRTUAL_WIDTH - TILE_SIZE*3,
-            --      spawnY = VIRTUAL_HEIGHT -TILE_SIZE*5
-            --  },
-            -- {
-            --     type = 'dagger-bandit',
-            --     spawnX = TILE_SIZE*20, --TILE_SIZE*10,
-            --     spawnY = VIRTUAL_HEIGHT -TILE_SIZE*6
-            -- },
-            -- {
-            --     type = 'spitter',
-            --     spawnX = TILE_SIZE*18, --TILE_SIZE*15,
-            --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*6
-            -- },
-            -- {
-            --     type = 'ghoul',
-            --     spawnX = TILE_SIZE*16,
-            --     spawnY = VIRTUAL_HEIGHT - TILE_SIZE*6
-            -- },
-            {
-                type = 'boss',
-                spawnX = TILE_SIZE*30,
-                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*7
-            }
-        },
+        }
     },
     ['main1'] = {
         map = 'assets/graphics/map/main1.lua',

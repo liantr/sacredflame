@@ -1,11 +1,11 @@
 {
-    "activeFile": "tiled/main4-miniboss.tmx",
+    "activeFile": "tiled/entry.tmx",
     "expandedProjectPaths": [
-        "lib/sti",
-        "tiled",
         "lib/sti/tests",
+        ".",
+        "tiled",
         "sacredflame/lib",
-        "."
+        "lib/sti"
     ],
     "fileStates": {
         "": {
@@ -81,11 +81,11 @@
             "scaleInEditor": 1
         },
         "tiled/entry.tmx": {
-            "scale": 1.6996093749999999,
+            "scale": 64,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 319.77936106642153,
-                "y": 183.86577798207313
+                "x": 320.0078125,
+                "y": 184.0078125
             }
         },
         "tiled/high temple.tsx": {
@@ -136,8 +136,8 @@
             "scale": 0.8498046874999999,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 630.7331647897036,
-                "y": 353.0222937255803
+                "x": 639.5587221328431,
+                "y": 184.15996322684447
             }
         },
         "tiled/map.tmx": {
@@ -184,11 +184,11 @@
         "tiled/main3.tmx",
         "tiled/main1-right.tmx",
         "tiled/blood temple.tsx",
-        "tiled/entry.tmx",
-        "tiled/high temple.tsx",
-        "tiled/main1.tmx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
+        "tiled/main1.tmx",
+        "tiled/high temple.tsx",
+        "tiled/entry.tmx",
         "main2-left.tmx",
         "main4-miniboss.tmx"
     ],
