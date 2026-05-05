@@ -37,7 +37,7 @@
   <object id="91" name="wall" type="wall" x="269.85" y="161.139" width="2.16666" height="13.8566"/>
   <object id="92" name="wall" type="wall" x="224.023" y="161.064" width="4.86239" height="13.9069"/>
   <object id="93" x="225.005" y="175.046" width="9.04455" height="0.831393"/>
-  <object id="95" x="224.98" y="175.046" width="44.996" height="0.932168"/>
+  <object id="95" name="ceiling" type="ceiling" x="224.98" y="175.046" width="44.996" height="0.932168"/>
   <object id="96" name="ground" type="ground" x="367.991" y="159.985" width="48.0215" height="0.912213"/>
   <object id="97" name="ground" type="ground" x="480.007" y="192.022" width="47.9723" height="0.982885"/>
   <object id="108" name="wall" type="wall" x="432.013" y="240.766" width="3.03238" height="14.266"/>

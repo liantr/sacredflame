@@ -229,7 +229,10 @@ function Room:renderDarkness()
 
     love.graphics.setStencilTest('notequal', 1)
     love.graphics.setColor(0, 0, 0, 0.7)
-    love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
+
+    local w = self.map.width * TILE_SIZE
+    local h = self.map.height * TILE_SIZE
+    love.graphics.rectangle('fill', 0, 0, w, h)
     love.graphics.setStencilTest()
     love.graphics.setColor(1, 1, 1, 1)
 end

@@ -508,8 +508,8 @@ return {
         },
         {
           id = 95,
-          name = "",
-          type = "",
+          name = "ceiling",
+          type = "ceiling",
           shape = "rectangle",
           x = 224.98,
           y = 175.046,

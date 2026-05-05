@@ -250,7 +250,7 @@ function PlayState:updateCamera()
     --self.backgroundX = (self.camX / 3) % 256
 end
 
-function PlayState:moveTo(connection)
+function PlayState:moveTo(connection, verticalDirection)
     self.transitioning = true
     Timer.tween(0.5, {[self] = {transitionAlpha = 1}}):finish(function()
         self.currentRoom:exit()
@@ -263,6 +263,14 @@ function PlayState:moveTo(connection)
         self.player.room = self.currentRoom
 
         local px, py = self.player.body:getPosition()
+        if verticalDirection then
+            if verticalDirection == 'south' then
+                self.player:changeState('falling')
+            elseif verticalDirection == 'north' then
+                self.player:changeState('jump')
+            end
+        end
+
         self.flame.body:setPosition(px, py)
         self.flame.body:setLinearVelocity(0,0)
         self.flame.body:setAngularVelocity(0)
@@ -276,15 +284,45 @@ end
 function PlayState:transitionRooms()
     local x, y = self.player.body:getPosition()
     local connections = self.currentRoom.connectedRooms
+
+    local connectionPoints
+    local verticalDirection
     if y > self.currentRoom.map.height * TILE_SIZE and connections.south then
-        self:moveTo(connections.south)
+        connectionPoints = connections.south
+        verticalDirection = 'south'
     elseif y < 0 and connections.north then
-        self:moveTo(connections.north)
+        connectionPoints = connections.north
+        verticalDirection = 'north'
     elseif x > self.currentRoom.map.width * TILE_SIZE and connections.east then
-        self:moveTo(connections.east)
+        connectionPoints = connections.east
     elseif x < 0 and connections.west then
-        self:moveTo(connections.west)
+        connectionPoints = connections.west
     end
+
+    if connectionPoints then
+        local connection = self:getRoomConnection(connectionPoints)
+        if connection then
+            self:moveTo(connection, verticalDirection)
+        end
+    end
+end
+
+--[[
+    Gets the room connection the player's x is overlapping
+]]
+function PlayState:getRoomConnection(connections)
+    local overlappingConnection = nil
+    local px, _ = self.player.body:getPosition()
+    for _, connection in pairs(connections) do
+        print('px:', px, 'gapX:', connection.gapX, 'right edge:', connection.gapX + ROOM_CONNECTION_SIZE)
+
+        if px >= connection.gapX and px <= connection.gapX + ROOM_CONNECTION_SIZE then
+            overlappingConnection = connection
+            break
+        end
+    end
+
+    return overlappingConnection
 end
 
 function PlayState:reSpawn()

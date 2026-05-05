@@ -14,6 +14,10 @@ function PlayerIdleState:update(dt)
     local _, yVel = self.entity.body:getLinearVelocity()
     self.entity.body:setLinearVelocity(0, yVel)
 
+    if yVel > 10 then
+        self.entity:changeState('falling')
+    end
+
     if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
         if love.keyboard.isDown('lshift') then
             self.entity:changeState('run')

@@ -303,7 +303,7 @@ ENTITY_DEFS = {
             },
             ['death'] = {
                 frames = generateFramesList(16),
-                interval = 0.15,
+                interval = 0.08,
                 looping = false,
                 texture = 'archer-bandit-death'
             },
@@ -348,7 +348,7 @@ ENTITY_DEFS = {
             },
             ['death'] = {
                 frames = generateFramesList(16),
-                interval = 0.15,
+                interval = 0.08,
                 looping = false,
                 texture = 'dagger-bandit-death'
             },
@@ -395,7 +395,7 @@ ENTITY_DEFS = {
             },
             ['death'] = {
                 frames = generateFramesList(8),
-                interval = 0.15,
+                interval = 0.08,
                 looping = false,
                 texture = 'spitter-death'
             },
@@ -444,7 +444,7 @@ ENTITY_DEFS = {
             },
             ['death'] = {
                 frames = generateFramesList(8),
-                interval = 0.15,
+                interval = 0.08,
                 looping = false,
                 texture = 'ghoul-death'
             },
@@ -569,7 +569,7 @@ ENTITY_DEFS = {
             },
              ['death'] = {
                 frames = generateFramesList(36),
-                interval = 0.15,
+                interval = 0.08,
                 looping = false,
                 texture = 'boss-death'
             },
