@@ -7,6 +7,7 @@
         "sacredflame/lib",
         "lib/sti"
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
             "scaleInDock": 1
@@ -81,11 +82,14 @@
             "scaleInEditor": 1
         },
         "tiled/entry.tmx": {
-            "scale": 64,
+            "expandedObjectLayers": [
+                12
+            ],
+            "scale": 2.7276,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.0078125,
-                "y": 184.0078125
+                "x": 268.1844845285232,
+                "y": 353.424255755976
             }
         },
         "tiled/high temple.tsx": {
@@ -101,11 +105,14 @@
             }
         },
         "tiled/main1.tmx": {
-            "scale": 1.6996093749999999,
+            "expandedObjectLayers": [
+                8
+            ],
+            "scale": 6.5249,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 319.77936106642153,
-                "y": 183.86577798207313
+                "x": 443.4550721083848,
+                "y": 22.069303744118685
             }
         },
         "tiled/main2-left.tmx": {
@@ -164,7 +171,7 @@
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 80,
+    "map.width": 120,
     "openFiles": [
         "tiled/main2.tmx",
         "tiled/main2-left.tmx",
@@ -179,16 +186,16 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
-        "tiled/main2.tmx",
-        "tiled/main2-left.tmx",
-        "tiled/main3.tmx",
-        "tiled/main1-right.tmx",
-        "tiled/blood temple.tsx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
-        "tiled/main1.tmx",
         "tiled/high temple.tsx",
+        "tiled/blood temple.tsx",
+        "tiled/main1-right.tmx",
+        "tiled/main3.tmx",
+        "tiled/main2-left.tmx",
+        "tiled/main2.tmx",
         "tiled/entry.tmx",
+        "tiled/main1.tmx",
         "main2-left.tmx",
         "main4-miniboss.tmx"
     ],

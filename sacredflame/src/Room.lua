@@ -134,22 +134,26 @@ end
 
 function Room:addCollisionBodies()
     local layer = self.map.layers["collisions"]
-
+    
     if layer and layer.objects then
         for _, object in pairs(layer.objects) do
-            local bodyX = object.x + ( object.width / 2)
-            local bodyY = object.y + ( object.height / 2)
+            if object.type ~= "" then
+                local bodyX = object.x + ( object.width / 2)
+                local bodyY = object.y + ( object.height / 2)
 
-            local body = love.physics.newBody(self.world, bodyX, bodyY, 'static')
-            local shape = love.physics.newRectangleShape(object.width, object.height)
-            local fixture = love.physics.newFixture(body, shape)
-            fixture:setRestitution(0)
-            fixture:setFriction(2)
-            fixture:setUserData({type=object.type or 'ground'})
-            table.insert(self.collidable, {
-                body = body,
-                shape = shape
-            })
+                local body = love.physics.newBody(self.world, bodyX, bodyY, 'static')                
+                body:setActive(false)
+
+                local shape = love.physics.newRectangleShape(object.width, object.height)
+                local fixture = love.physics.newFixture(body, shape)
+                fixture:setRestitution(0)
+                fixture:setFriction(2)
+                fixture:setUserData({type=object.type})
+                table.insert(self.collidable, {
+                    body = body,
+                    shape = shape
+                })
+            end
         end
     end
 end
@@ -202,7 +206,7 @@ function Room:renderDarkness()
     end)
 
     love.graphics.setStencilTest('notequal', 1)
-    love.graphics.setColor(0,0,0,0.3)
+    love.graphics.setColor(0,0,0,0.6)
     love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
     love.graphics.setStencilTest()
     love.graphics.setColor(1, 1, 1, 1)

@@ -6,7 +6,7 @@ ROOM_DEFS= {
         spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1,
         connectedRooms = {
             north = nil,
-            south = { room = 'main1', spawnX = 28, spawnY = 8},
+            south = { room = 'main1', spawnX = TILE_SIZE*20, spawnY = 1},
             east = nil,
             west = nil
         },
@@ -25,6 +25,13 @@ ROOM_DEFS= {
             south = { room = 'main2', spawnX = TILE_SIZE * 22, spawnY = 8},
             east = { room = 'main1-right', spawnX = TILE_SIZE/2, spawnY = TILE_SIZE * 7 },
             west = nil
+        },
+        objects = {
+            {
+                type = 'torch',
+                spawnX = TILE_SIZE*4,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*11.5
+            },
         }
     },
     ['main2'] = {
