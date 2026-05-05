@@ -5,7 +5,7 @@ function Player:init(def, world, startX, startY)
     self.runSpeed = def.runSpeed
     self.maxHealth = self.health
     self.timesDied = 0
-    self.fixture:setUserData({type='player', entity = self})
+    self.fixture:setUserData({type = 'player', entity = self})
 
     -- jump related variables
     self.canJump = true
@@ -19,4 +19,34 @@ function Player:init(def, world, startX, startY)
     self.wallX = nil
 
      self.dashing = false
+end
+
+function Player:handleMovementInput(speed)
+    local _, yVel = self.body:getLinearVelocity()
+    if love.keyboard.isDown('left')then
+        self.direction = 'left'
+        self.body:setLinearVelocity(-speed, yVel)
+        return true
+    elseif love.keyboard.isDown("right") then
+        self.direction = 'right'
+        self.body:setLinearVelocity(speed, yVel)
+        return true
+    end
+
+    return false
+end
+
+
+function Player:grabWall()
+    if self.touchingWall and
+        self.canHoldWall and
+        self.wallHoldAllowed and
+        (love.keyboard.isDown('left') or love.keyboard.isDown('right')) then
+            local playerX, _ = self.body:getPosition()
+            local playerFacingWall = (self.wallX > playerX and self.direction == 'right')
+                or (self.wallX < playerX and self.direction == 'left')
+                if playerFacingWall then
+                    self:changeState('wall-hold')
+                end
+    end
 end

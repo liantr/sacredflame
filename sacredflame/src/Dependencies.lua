@@ -6,17 +6,17 @@
     lir140@g.harvard.edu
 ]]
 
-Class = require 'lib/class'
-push = require 'lib/push'
-Timer = require 'lib/knife.timer'
-STI = require 'lib/sti/sti'
+Class = require 'lib.class'
+push = require 'lib.push'
+Timer = require 'lib.knife.timer'
+STI = require 'lib.sti.sti'
 
 require 'src.constants'
 require 'src.Util'
 
-require 'src/defs/room_defs'
-require 'src/defs/entity_defs'
-require 'src/defs/object_defs'
+require 'src.defs.room_defs'
+require 'src.defs.entity_defs'
+require 'src.defs.object_defs'
 
 require 'src.gui.Panel'
 require 'src.gui.Textbox'
@@ -33,13 +33,13 @@ require 'src.VolleyAttack'
 require 'src.HitBox'
 require 'src.HUD'
 
-require 'src/states/BaseState'
-require 'src/states/StartState'
-require 'src/states/PlayState'
-require 'src/states/BossBattleState'
-require 'src/states/GameOverState'
-require 'src/states/PauseState'
-require 'src/states/VictoryState'
+require 'src.states.BaseState'
+require 'src.states.StartState'
+require 'src.states.PlayState'
+require 'src.states.BossBattleState'
+require 'src.states.GameOverState'
+require 'src.states.PauseState'
+require 'src.states.VictoryState'
 require 'src.states.FadeInState'
 require 'src.states.FadeOutState'
 require 'src.states.DialogueState'
@@ -50,8 +50,8 @@ require 'src.entities.Player'
 require 'src.entities.Boss'
 require 'src.entities.Flame'
 
-require 'src/states/entity/EntityWalkState'
-require 'src/states/entity/EntityIdleState'
+require 'src.states.entity.EntityWalkState'
+require 'src.states.entity.EntityIdleState'
 require 'src.states.enemy.EnemyChaseState'
 require 'src.states.enemy.EnemyAttackState'
 require 'src.states.enemy.EnemyDeathState'
@@ -63,7 +63,7 @@ require 'src.states.boss.BossAttackState'
 require 'src.states.boss.BossAppearState'
 require 'src.states.boss.BossDisappearState'
 
-require 'src/states/flame/FlameFollowingState'
+require 'src.states.flame.FlameFollowingState'
 
 require 'src.states.player.PlayerWalkState'
 require 'src.states.player.PlayerRunState'
@@ -103,7 +103,6 @@ gTextures = {
     ['swordmaster-dash'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-dash.png'),
     ['swordmaster-attack'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack.png'),
     ['swordmaster-attack-combo'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack-combo.png'),
-    ['swordmaster-attack-down'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack-down.png'),
     ['swordmaster-wall-hold'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-wall-hold.png'),
 
     ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png'),
@@ -150,7 +149,7 @@ gFrames = {
 
     ['player-health-box'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
     TILE_SIZE, TILE_SIZE+1, TILE_SIZE*4, TILE_SIZE+1,0,0),
-    ['player-health-bar'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
+    ['player-health-bar'] = GenerateQuadsFromRegion(gTextures['player-health-bar'],
     TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE,0,0),
 
     ['swordmaster-idle'] = GenerateQuadsFromRegion(gTextures['swordmaster-idle'],
@@ -171,8 +170,6 @@ gFrames = {
         TILE_SIZE*7, TILE_SIZE*1.5, TILE_SIZE*7*7, TILE_SIZE*1.5, 0, TILE_SIZE/2),
     ['swordmaster-attack-combo'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack-combo'],
         TILE_SIZE*6, TILE_SIZE*2, TILE_SIZE*6*11, TILE_SIZE*2, 0, 0),
-    ['swordmaster-attack-down'] = GenerateQuadsFromRegion(gTextures['swordmaster-attack-down'],
-        TILE_SIZE*3, TILE_SIZE*2, TILE_SIZE*3*9, TILE_SIZE*2, 0, 0),
     ['swordmaster-wall-hold'] = GenerateQuadsFromRegion(gTextures['swordmaster-wall-hold'],
         TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*1.5, TILE_SIZE*1.5, 0, TILE_SIZE/2),
 
@@ -232,15 +229,12 @@ gFrames = {
     ['boss-attack2'] = GenerateQuadsFromRegion(gTextures['boss-attack2'],
         TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*5*16, TILE_SIZE*4, 0, 0),
     ['boss-attack3'] = GenerateQuadsFromRegion(gTextures['boss-attack3'],
-        (TILE_SIZE*16), TILE_SIZE*7.5, (TILE_SIZE*16)*30, TILE_SIZE*7.5, 0, 0),
+        (TILE_SIZE*16), TILE_SIZE*7.5, (TILE_SIZE * 16) * 30, TILE_SIZE * 7.5, 0, 0),
 }
 
 gTextures['boss-attack1']:setFilter('nearest', 'nearest')
 gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
-
-print("total frames:" ..tostring(#gFrames['boss-attack1']))
-
 
 gSounds = {
     ['music'] = love.audio.newSource('assets/sounds/temple-background.wav', 'static'),

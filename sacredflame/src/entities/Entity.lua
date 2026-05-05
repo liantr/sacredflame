@@ -40,6 +40,8 @@ function Entity:init(def, world, startX, startY,room)
 
     -- timer for turning transparency on and off, flashing
     self.flashTimer = 0
+
+    self.droppedHealth = false
 end
 
 function Entity:changeState(state, params)
@@ -79,6 +81,19 @@ function Entity:update(dt)
     end
 
     if self.health == 0 and not self.dead then
+        local entityType = self.fixture:getUserData().type
+
+        -- regular enemies have a chance to drop health on death
+        if entityType == 'enemy' then
+            local chanceToDropHealth = math.random(1,25)
+            if chanceToDropHealth == 1 and
+            self.room.player.health < PLAYER_MAX_HEALTH and
+            not self.droppedHealth then
+                self.droppedHealth = true
+                self.room.player.health = self.room.player.health + 1
+            end
+        end
+
         self:changeState('death')
     end
 end

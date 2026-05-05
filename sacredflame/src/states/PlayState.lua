@@ -33,7 +33,7 @@ function PlayState:init()
     self.transitionAlpha = 0
 
     -- for respawning
-    self.savData = nil
+    self.saveData = nil
 
     -- define collision callbacks for our world; the World object expects four,
     -- one for different stages of any given collision

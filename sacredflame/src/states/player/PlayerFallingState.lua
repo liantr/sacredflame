@@ -6,20 +6,19 @@ end
 
 function PlayerFallingState:enter()
     self.player:changeAnimation('falling')
-    self.player.canJump = self.player.doubleJumpAllowed and (self.player.timesJumped < 2 and true or false) or false
+    self.player.canJump = self.player.doubleJumpAllowed and
+        (self.player.timesJumped < 2 and true or false) or false
     self.player.canHoldWall = true
 end
 
 function PlayerFallingState:update(dt)
-    local _, yVel = self.player.body:getLinearVelocity()
-
-    handleMovementInput(self.player, PLAYER_WALK_SPEED)
+    self.player:handleMovementInput(PLAYER_WALK_SPEED)
 
     if self:scanForGroundBelow(dt) then
         self.player:changeState('idle')
     end
 
-    grabWall(self.player)
+    self.player:grabWall()
 
     if love.keyboard.wasPressed('z') and self.player.canJump then
         self.player:changeState('jump')
@@ -33,12 +32,13 @@ end
 function PlayerFallingState:scanForGroundBelow(dt)
     local world = self.player.body:getWorld()
 
-    local rayHeight = self.player.height + 1
+    local rayHeight = self.player.height / 2 + 2
 
     local ex, ey = self.player.body:getPosition()
 
+    -- from the center of the body
     local x1 = ex
-    local y1 = ey - self.player.height/2 -- top of body
+    local y1 = ey
 
     local x2 = x1
     local y2 = y1 + rayHeight  -- into ground
@@ -50,9 +50,9 @@ function PlayerFallingState:scanForGroundBelow(dt)
 
         if fixture:getUserData().type == 'ground' then
             groundDetected = true
+            return 0
         end
-
-        return 0
+        return 1
     end)
 
 

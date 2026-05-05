@@ -6,7 +6,7 @@ ROOM_DEFS= {
         spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1,
         connectedRooms = {
             north = nil,
-            south = { room = 'main1', spawnX = TILE_SIZE*20, spawnY = 1},
+            south = { room = 'main1', spawnX = TILE_SIZE*20, spawnY = 1 },
             east = nil,
             west = nil
         },
@@ -21,7 +21,7 @@ ROOM_DEFS= {
     ['main1'] = {
         map = 'assets/graphics/map/main1.lua',
         connectedRooms = {
-            north = { room = 'entry', spawnX = TILE_SIZE * 5, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 7},
+            north = { room = 'entry', spawnX = TILE_SIZE * 21, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1},
             south = { room = 'main2', spawnX = TILE_SIZE * 22, spawnY = 8},
             east = { room = 'main1-right', spawnX = TILE_SIZE/2, spawnY = TILE_SIZE * 7 },
             west = nil
@@ -32,6 +32,38 @@ ROOM_DEFS= {
                 spawnX = TILE_SIZE*4,
                 spawnY = VIRTUAL_HEIGHT - TILE_SIZE*11.5
             },
+        },
+        enemies = {
+            {
+                type = 'dagger-bandit',
+                spawnX = VIRTUAL_WIDTH-TILE_SIZE*7,
+                spawnY = TILE_SIZE *4
+            },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE*20,
+                spawnY = TILE_SIZE * 6
+            },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE*17,
+                spawnY = TILE_SIZE * 6
+            },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE*15,
+                spawnY = TILE_SIZE * 10
+            },
+            {
+                type = 'archer-bandit',
+                spawnX = TILE_SIZE*18,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*3
+            },
+            {
+                type = 'archer-bandit',
+                spawnX = TILE_SIZE*4,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE*3
+            }
         }
     },
     ['main2'] = {

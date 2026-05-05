@@ -6,7 +6,8 @@ end
 
 function PlayerJumpState:enter()
     self.player:changeAnimation('jump')
-    self.player.canJump = self.player.doubleJumpAllowed and (self.player.timesJumped < 2 and true or false) or false
+    self.player.canJump = self.player.doubleJumpAllowed and
+        (self.player.timesJumped < 2 and true or false) or false
     self.player.canHoldWall = true
     self.player.timesJumped = self.player.timesJumped + 1
     local xVel, _ = self.player.body:getLinearVelocity()
@@ -16,9 +17,9 @@ end
 function PlayerJumpState:update(dt)
     local _, yVel = self.player.body:getLinearVelocity()
 
-    handleMovementInput(self.player, PLAYER_WALK_SPEED)
+    self.player:handleMovementInput(PLAYER_WALK_SPEED)
 
-    grabWall(self.player)
+    self.player:grabWall()
 
     if yVel >= 0 then
         self.player:changeState('falling')

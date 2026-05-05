@@ -8,12 +8,12 @@ OBJECT_DEFS = {
         texture = 'torches',
         animations = {
             ['unlit'] = {
-                frames = {1},
+                frames = { 1 },
                 interval = 0.5,
                 texture = 'torch-unlit'
             },
             ['lit'] = {
-                frames = {2,3,4},
+                frames = generateFramesList(4, 2),
                 interval = 0.5,
                 texture = 'torch-lit'
             }

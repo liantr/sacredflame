@@ -24,22 +24,28 @@ function Torch:update(dt)
     if self.currentAnimation then
         self.currentAnimation:update(dt)
     end
-    if love.keyboard.wasPressed('l') and self.playerInRange and not self.lit then
-        self:changeState('lit')
+    if love.keyboard.wasPressed('l') and
+        self.playerInRange and
+        not self.lit then
+        
+            self:changeState('lit')
 
-        local x, y = self.body:getPosition()
-        local saveData = {
-            spawnX = x,
-            spawnY = y,
-            room = self.room.name,
-            health = PLAYER_MAX_HEALTH  -- restore to full health
-        }
+            -- restore player to fullhealth
+            self.room.player.health = PLAYER_MAX_HEALTH
 
-        self.playState:save(saveData)
+            local x, y = self.body:getPosition()
+            local saveData = {
+                spawnX = x,
+                spawnY = y,
+                room = self.room.name,
+                health = PLAYER_MAX_HEALTH  -- restore to full health on respawn
+            }
+
+            self.playState:save(saveData)
     end
 
     if self.lit and self.lightRadius < VIRTUAL_WIDTH + self.x then
-        self.lightRadius = self.lightRadius + dt*150 -- speed
+        self.lightRadius = self.lightRadius + dt * TORCH_LIGHT_EXPANSION_SPEED
     end
 end
 
@@ -48,7 +54,11 @@ function Torch:render()
     
     if DEBUG then
         love.graphics.setColor(1,1,1,1)
-        love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
+        love.graphics.rectangle('line',
+            x - self.width / 2,
+            y - self.height / 2,
+            self.width,
+            self.height)
     end
 
     if self.currentAnimation then
@@ -60,7 +70,7 @@ function Torch:render()
             gTextures[self.texture],
             quad,
             math.floor(x),
-            math.floor(y) + self.height/2,
+            math.floor(y) + self.height / 2,
             0,
             1,
             1,
@@ -69,7 +79,12 @@ function Torch:render()
 
         if self.playerInRange and not self.lit then
             love.graphics.setFont(gFonts['small'])
-            love.graphics.printf('Press [L] to light', math.floor(x)-45, math.floor(y)-40, 100, 'center')
+            love.graphics.printf(
+                'Press [L] to light',
+                math.floor(x) - 45,
+                math.floor(y) - 40,
+                100,
+                'center')
         end
     end
 end

@@ -9,13 +9,12 @@ function Object:init(def, world, x, y)
     self.height = def.height
     self.texture = def.texture
 
-    -- create entity body
+    -- create body
     self.bodyType = def.bodyType or 'static'
     self.body = love.physics.newBody(world, x, y, self.bodyType)
     self.body:setFixedRotation(true)
 
-    -- setting circle shape, rectangle doesn't detect the ground
-    self.shape = love.physics.newCircleShape(math.max(self.width/2, self.height/2))
+    self.shape = love.physics.newRectangleShape(self.width, self.height)
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setRestitution(0)
     self.fixture:setFriction(1)
@@ -30,15 +29,24 @@ function Object:render()
     local x, y = self.body:getPosition()
 
     if DEBUG then
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.rectangle('line',x-self.width/2, y - self.height/2, self.width, self.height)
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.rectangle(
+            'line',
+            x - self.width / 2,
+            y - self.height / 2,
+            self.width,
+            self.height)
     end
+
+    local frame = self.currentAnimation and self.currentAnimation:getCurrentFrame() or 1
+
     love.graphics.draw(
-        gTextures[def.texture],
-        quad,
-        math.floor(self.x),
-        math.floor(self.y) + self.height/2,
+        gTextures[self.texture],
+        gFrames[self.texture][frame],
+        math.floor(x),
+        math.floor(y) + self.height / 2,
         0,
+        1,
         1,
         self.width / 2,
         self.height)

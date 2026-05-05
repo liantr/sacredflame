@@ -10,16 +10,14 @@ function PlayerDashState:enter(params)
     anim:refresh()
 
     self.nextState = params and params.nextState or 'idle'
-    self.entity:goInvulnerable(2)
+    self.entity:goInvulnerable(3)
     self.entity.dashing = true
 
-    local dashStartX, _ = self.entity.body:getPosition()
     local dashDirection = self.entity.direction == 'right' and 1 or -1
-    local dashDistance = PLAYER_DASH_DIST * dashDirection
     local dashDuration = anim.interval * #anim.frames
 
     local _, pvy = self.entity.body:getLinearVelocity()
-    local dashSpeed = PLAYER_DASH_DIST/dashDuration * dashDirection
+    local dashSpeed = (PLAYER_DASH_DIST / dashDuration) * dashDirection
     self.entity.body:setLinearVelocity(dashSpeed, pvy)
 
     Timer.after(dashDuration, function()

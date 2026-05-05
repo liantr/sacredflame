@@ -23,15 +23,12 @@ function HUD:init(playState)
     self.torchTextY = self.torchY + 22
 end
 
-function HUD:update(dt)
-end
-
 function HUD:render()
     love.graphics.draw(gTextures['player-health-box'], self.boxX, self.y)
 
     local scaleFactor = WINDOW_HEIGHT/VIRTUAL_HEIGHT
     local player = self.playState.player
-    local healthScaling = player.health == 0 and player.health or player.health/player.maxHealth
+    local healthScaling = player.health/player.maxHealth
 
     love.graphics.setScissor(self.barX * scaleFactor,
         self.y * scaleFactor,
@@ -45,7 +42,11 @@ function HUD:render()
 
     local torchesLit = self.playState.torchesLit
     local totalTorches = self.playState.totalTorches
-    love.graphics.printf(tostring(torchesLit) .." of " ..tostring(totalTorches), self.torchText1X, self.torchTextY, 100)
+    love.graphics.printf(
+        tostring(torchesLit) .." of " ..tostring(totalTorches),
+        self.torchText1X,
+        self.torchTextY,
+        100)
     love.graphics.printf(" lit", self.torchText2X, self.torchTextY, 100)
 
     love.graphics.draw(gTextures['small-torches'], gFrames['torch-hud'][1], self.torchX, self.torchY)

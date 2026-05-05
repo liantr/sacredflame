@@ -13,7 +13,7 @@ function PlayerWalkState:update(dt, run)
     if love.keyboard.isDown('lshift') and not run then
         self.entity:changeState('run')
     end
-    if not handleMovementInput(self.entity, v) then
+    if not self.entity:handleMovementInput(v) then
         self.entity:changeState('idle')
     end
 
