@@ -38,6 +38,7 @@ function Object:render()
             self.height)
     end
 
+    -- fallback to frame 1 is no animation is active
     local frame = self.currentAnimation and self.currentAnimation:getCurrentFrame() or 1
 
     love.graphics.draw(

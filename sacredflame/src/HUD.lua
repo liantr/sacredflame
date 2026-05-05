@@ -4,28 +4,33 @@ HUD = Class{}
 function HUD:init(playState)
     self.playState = playState
 
+    -- box holding the health bar
     self.boxX = TILE_SIZE
 
+    -- health bar layout
     self.barWidth = TILE_SIZE * 3
     self.barHeight = TILE_SIZE
-    self.barX = self.boxX + 14
+    self.barX = self.boxX + 14 -- offset to align bar inside the box. 
 
     self.y = TILE_SIZE
 
+    -- torch counter layout [text1][torch][text2]
     self.torchX = self.barX + 40
     self.torchY = self.y * 2
-
-    self.flameX = self.boxX
-    self.flameY = self.y * 2.5
-
     self.torchText1X = self.torchX - 28
     self.torchText2X = self.torchX + 13
     self.torchTextY = self.torchY + 22
+
+    -- flame attack availability indicator
+    self.flameX = self.boxX
+    self.flameY = self.y * 2.5
 end
 
 function HUD:render()
     love.graphics.draw(gTextures['player-health-box'], self.boxX, self.y)
 
+    -- scissor clips the health bar based on the current
+    -- percentage of max hp the player has
     local scaleFactor = WINDOW_HEIGHT/VIRTUAL_HEIGHT
     local player = self.playState.player
     local healthScaling = player.health/player.maxHealth
@@ -37,6 +42,7 @@ function HUD:render()
     love.graphics.draw(gTextures['player-health-bar'], self.barX, self.y)
     love.graphics.setScissor()
 
+    -- torch counter section
     love.graphics.setFont(gFonts['small'])
     love.graphics.setColor(1, 1, 1, 1)
 
@@ -53,6 +59,7 @@ function HUD:render()
 
     local flameAvailable = self.playState.flameAvailable
 
+    -- flame atatck availability indicator
     if not flameAvailable then
         love.graphics.setColor(1, 1, 1, 0.5)
     end

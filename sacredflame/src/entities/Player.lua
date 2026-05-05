@@ -21,6 +21,9 @@ function Player:init(def, world, startX, startY)
      self.dashing = false
 end
 
+--[[
+    Applies movement to the player based on user input
+]]
 function Player:handleMovementInput(speed)
     local _, yVel = self.body:getLinearVelocity()
     if love.keyboard.isDown('left')then
@@ -36,7 +39,9 @@ function Player:handleMovementInput(speed)
     return false
 end
 
-
+--[[
+    Transitions player to wall hold state if touching and facing a wall
+]]
 function Player:grabWall()
     if self.touchingWall and
         self.canHoldWall and

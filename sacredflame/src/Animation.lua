@@ -6,6 +6,8 @@
 
     Author: Colton Ogden
     cogden@cs50.harvard.edu
+
+    Extended with offsetX, offsetY and name fields for Sacred Flame.
 ]]
 
 Animation = Class{}

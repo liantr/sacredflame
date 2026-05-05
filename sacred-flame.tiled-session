@@ -108,11 +108,19 @@
             "expandedObjectLayers": [
                 8
             ],
-            "scale": 6.5249,
-            "selectedLayer": 0,
+            "scale": 1.3278,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 443.4550721083848,
-                "y": 22.069303744118685
+                "x": 419.49088718180445,
+                "y": 253.80328362705222
+            }
+        },
+        "tiled/main2-2.tmx": {
+            "scale": 1.1637,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 373.80768239236914,
+                "y": 316.2327060238893
             }
         },
         "tiled/main2-left.tmx": {
@@ -124,11 +132,11 @@
             }
         },
         "tiled/main2.tmx": {
-            "scale": 1.6996093749999999,
-            "selectedLayer": 0,
+            "scale": 0.8569,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 319.77936106642153,
-                "y": 180.33555504481728
+                "x": 315.0892752946668,
+                "y": 334.92822966507185
             }
         },
         "tiled/main3.tmx": {
@@ -136,7 +144,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 320.5,
-                "y": 183.5
+                "y": 183
             }
         },
         "tiled/main4-miniboss.tmx": {
@@ -166,12 +174,12 @@
     "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/map",
     "last.externalTilesetPath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/tiled",
     "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/The Dark Series/tilesets/29- Sacred Temple Tileset",
-    "map.height": 23,
+    "map.height": 50,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 120,
+    "map.width": 40,
     "openFiles": [
         "tiled/main2.tmx",
         "tiled/main2-left.tmx",
@@ -186,12 +194,12 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
+        "tiled/main3.tmx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
         "tiled/high temple.tsx",
         "tiled/blood temple.tsx",
         "tiled/main1-right.tmx",
-        "tiled/main3.tmx",
         "tiled/main2-left.tmx",
         "tiled/main2.tmx",
         "tiled/entry.tmx",

@@ -1,4 +1,9 @@
 
+--[[
+    Generates the hit boxes for the boss's attack pattern 3.
+    This is a long phased attack with diagonal motion on both sides.
+    The loop creates small hit boxes which form a diagonal line.
+]]
 function generateBossAttack3HitBoxesDef()
     local defHitBoxes = {
         {
@@ -72,7 +77,7 @@ function generateBossAttack3HitBoxesDef()
     local offsetYLeft = -TILE_SIZE*2.5
     local offsetXRight = -TILE_SIZE*2.5
     local offsetYRight = -TILE_SIZE*2.5
-    
+
     -- and for the second
     local offsetXLeft2 = TILE_SIZE*0.5
     local offsetYLeft2 = -TILE_SIZE*3.5

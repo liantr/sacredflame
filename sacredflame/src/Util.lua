@@ -17,6 +17,9 @@ function GenerateQuads(atlas, tilewidth, tileheight)
     return spritesheet
 end
 
+--[[
+    Generates quads from a specific region of the atlas
+]]
 function GenerateQuadsFromRegion(atlas, tile_width, tile_height, region_width, region_height, startX, startY)
 
     -- coordinates where we should start splitting the texture
@@ -41,6 +44,9 @@ function GenerateQuadsFromRegion(atlas, tile_width, tile_height, region_width, r
     return spritesheet
 end
 
+--[[
+    Initializes animation objects from the def file for an entity or object
+]]
 function createAnimations(animations)
     local animationsReturned = {}
 
@@ -59,17 +65,24 @@ function createAnimations(animations)
     return animationsReturned
 end
 
+--[[
+    Gets the horizontal distance of an enemy from the player
+]]
 function getXDistanceFromPlayer(entity, player)
     local ex, _ = entity:getPosition()
     local px, _ = player:getPosition()
     return px - ex
 end
 
+--[[
+    Gets the vertical distance of an enemy from the player
+]]
 function getYDistanceFromPlayer(entity, player)
     local _, ey = entity:getPosition()
     local _, py = player:getPosition()
     return py - ey
 end
+
 
 function damageEnemy(room, hitBox)
     for k, enemy in pairs(room.enemies) do
@@ -92,20 +105,27 @@ function damagePlayer(room, hitBox)
     return false
 end
 
+--[[
+    Creates a hit box table per attack animation from entity_defs
+    Returns { [animationName] = { frames, hitBox } }
+]]
 function createEntityHitBoxes(entity)
     local result = {}
 
-    -- create hitbox based on the direction
+    -- create hit box based on the direction
     if entity.hitBoxes then
         local direction = entity.direction
         local hitBoxX, hitBoxY
         local ex, ey = entity:getPosition()
+
         for animName, hitBoxes in pairs(entity.hitBoxes) do
 
             result[animName] = {}
             for _, hitBox in pairs(hitBoxes) do
                 local offsetX = hitBox.offsetX or 0
                 local offsetY = hitBox.offsetY or 0
+
+                -- bidirectional hit boxes aren't affected by direction
                 if hitBox.bidirectional then
                     hitBoxX = ex - hitBox.width - entity.width / 2 - offsetX
                     hitBoxY = ey + offsetY
@@ -125,7 +145,7 @@ function createEntityHitBoxes(entity)
                         frames = hitBox.frames,
                         hitBox = HitBox(hitBoxX, hitBoxY, hitBox.width, hitBox.height)
                     })
-                end      
+                end  
             end
         end
     end
@@ -133,6 +153,9 @@ function createEntityHitBoxes(entity)
     return result
 end
 
+--[[
+    Returns the current active hit boxes
+]]
 function getHitBoxes(state)
     local animation = state.entity.currentAnimation
     if not animation or not state.hitBoxes then return nil end
@@ -154,6 +177,9 @@ function getHitBoxes(state)
     return results
 end
 
+--[[
+    Generates a list of frame numbers
+]]
 function generateFramesList(endNum, start, step)
     if not start then start = 1 end
     if not step then step = 1 end

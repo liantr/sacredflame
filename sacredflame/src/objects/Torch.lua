@@ -6,13 +6,12 @@ function Torch:init(def, world, x, y, room)
     self.lit = false
     self.playerInRange = false
     self.fixture:setUserData({type='torch', entity = self})
+
+    -- Initial light radius around the torch once lit
     self.lightRadius = 10
+
     self.room = room
     self.playState = room.playState
-end
-
-function Torch:changeAnimation(name)
-    self.currentAnimation = self.animations[name]
 end
 
 function Torch:changeState(state, params)
@@ -24,26 +23,31 @@ function Torch:update(dt)
     if self.currentAnimation then
         self.currentAnimation:update(dt)
     end
+
+    -- If the player is in range, then the torch can be lit
     if love.keyboard.wasPressed('l') and
         self.playerInRange and
         not self.lit then
         
             self:changeState('lit')
 
-            -- restore player to fullhealth
+            -- restore player to full health on lighting
             self.room.player.health = PLAYER_MAX_HEALTH
 
             local x, y = self.body:getPosition()
+
+            -- saves the player position at this torch as a respawn point
             local saveData = {
                 spawnX = x,
                 spawnY = y,
                 room = self.room.name,
-                health = PLAYER_MAX_HEALTH  -- restore to full health on respawn
+                health = PLAYER_MAX_HEALTH
             }
 
             self.playState:save(saveData)
     end
 
+    -- light radius will expand once lit
     if self.lit and self.lightRadius < VIRTUAL_WIDTH + self.x then
         self.lightRadius = self.lightRadius + dt * TORCH_LIGHT_EXPANSION_SPEED
     end
