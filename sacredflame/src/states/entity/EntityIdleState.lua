@@ -31,16 +31,18 @@ end
 function EntityIdleState:processAI(params, dt)
 
     local player = params.player
-    local distFromPlayer = getDistanceFromPlayer(self.entity, player)
-    local absDistFromPlayer = math.abs(distFromPlayer)
+    local xDistFromPlayer = getXDistanceFromPlayer(self.entity, player)
+    local yDistFromPlayer = getYDistanceFromPlayer(self.entity, player)
 
-   if math.abs(distFromPlayer) < ENEMY_CHASE_MIN_DISTANCE and self.entity.canAttack then
-        if distFromPlayer > 0 then
+   if math.abs(xDistFromPlayer) < ENEMY_DETECTION_RANGE and
+   math.abs(yDistFromPlayer) < ENEMY_ATTACK_Y_RANGE and
+   self.entity.canAttack then
+        if xDistFromPlayer > 0 then
             self.entity.direction = 'right'
         else
             self.entity.direction = 'left'
         end
-        self.entity:changeState('chase', {player=player})
+        self.entity:changeState('chase', { player = player })
     elseif self.waitDuration == 0 then
         self.waitDuration = math.random(5)
     else

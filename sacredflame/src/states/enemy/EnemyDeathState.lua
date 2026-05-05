@@ -22,7 +22,7 @@ function EnemyDeathState:enter(params)
                 }, 1,
                 function() end))
             end))
-    end)
+        end)
     end
 end
 

@@ -21,18 +21,21 @@ end
 
 function EnemyChaseState:processAI(params, dt)
 
-    local distFromPlayer = getDistanceFromPlayer(self.entity, self.player)
+    local xDistFromPlayer = getXDistanceFromPlayer(self.entity, self.player)
+    local yDistFromPlayer = getYDistanceFromPlayer(self.entity, self.player)
 
-    if math.abs(distFromPlayer) < self.entity.attackDistance and self.entity.canAttack then
+    if math.abs(xDistFromPlayer) < self.entity.attackDistance and
+        math.abs(yDistFromPlayer) < ENEMY_ATTACK_Y_RANGE and
+    self.entity.canAttack then
         -- enemy within attack range
         self.entity:changeState('attack', {player = self.player})
-    elseif math.abs(distFromPlayer) > ENEMY_CHASE_MIN_DISTANCE then
+    elseif math.abs(xDistFromPlayer) > ENEMY_DETECTION_RANGE then
         -- player too far, return to idle state
         self.entity:changeState('idle')
     else
         -- run towards player
         local _, vy = self.entity.body:getLinearVelocity()
-        self.entity.direction = distFromPlayer > 0 and 'right' or 'left'
+        self.entity.direction = xDistFromPlayer > 0 and 'right' or 'left'
         local speed = self.entity.direction == 'right' and self.entity.chaseSpeed or -self.entity.chaseSpeed
         self.entity.body:setLinearVelocity(speed, vy)
     end
