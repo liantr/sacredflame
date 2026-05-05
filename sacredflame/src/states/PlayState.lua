@@ -66,6 +66,16 @@ function PlayState:init()
             local torch = torchFixture:getUserData().entity
             torch.playerInRange = true
         end
+
+        if types['player'] and types['powerup'] then
+            local playerFixture = a:getUserData().type == 'player' and a or b
+            local powerupFixture = a:getUserData().type == 'powerup' and a or b
+
+            local powerup = powerupFixture:getUserData().object
+            powerup.consumed = true
+            self.player.wallHoldAllowed = true
+        end
+
         if types['player'] and types['enemy'] then
             local playerFixture = a:getUserData().type == 'player' and a or b
             local enemyFixture = a:getUserData().type == 'enemy' and a or b

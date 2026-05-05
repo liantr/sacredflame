@@ -19,7 +19,6 @@ function Object:init(def, world, x, y)
     self.fixture:setRestitution(0)
     self.fixture:setFriction(1)
     self.fixture:setCategory(def.category)
-
 end
 
 function Object:update(dt)

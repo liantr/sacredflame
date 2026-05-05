@@ -102,18 +102,21 @@ end
 
 function Room:spawnObjects()
     if self.def.objects then
-        for _, defObject in pairs(self.def.objects) do
-            local roomObject
-            if defObject.type == 'torch' then
-                roomObject = Torch(OBJECT_DEFS[defObject.type], self.world, defObject.spawnX, defObject.spawnY, self)
-                roomObject.stateMachine = StateMachine {
-                    ['unlit'] = function() return TorchUnlitState(roomObject) end,
-                    ['lit'] = function() return TorchLitState(roomObject) end
+        for _, roomObjectDef in pairs(self.def.objects) do
+            local object
+            local objectDef = OBJECT_DEFS[roomObjectDef.type]
+            if objectDef.type == 'torch' then
+                object = Torch(objectDef, self.world, roomObjectDef.spawnX, roomObjectDef.spawnY, self)
+                object.stateMachine = StateMachine {
+                    ['unlit'] = function() return TorchUnlitState(object) end,
+                    ['lit'] = function() return TorchLitState(object) end
                 }
-                roomObject:changeState('unlit')
+                object:changeState('unlit')
+            elseif objectDef.type == 'powerup' then
+                object = Powerup(objectDef, self.world, roomObjectDef.spawnX, roomObjectDef.spawnY, self)
             end
 
-            table.insert(self.objects, roomObject)
+            table.insert(self.objects, object)
         end
     end
 end
@@ -154,7 +157,7 @@ function Room:addCollisionBodies()
 end
 
 function Room:update(dt)
-    for i=#self.attacks, 1, -1 do
+    for i = #self.attacks, 1, -1 do
         local attack = self.attacks[i]
         attack:update(dt)
         if attack.complete then
@@ -162,13 +165,17 @@ function Room:update(dt)
         end
     end
 
-    for _,o in pairs(self.objects) do
-        o:update(dt)
+    for i = #self.objects, 1, -1 do
+        local o = self.objects[i]
+        if o.consumed then
+            table.remove(self.objects, i)
+        else
+            o:update(dt)
+        end
     end
 
-    for i=#self.enemies,1,-1  do
+    for i = #self.enemies, 1, -1  do
         local enemy = self.enemies[i]
-
         if enemy.dead then
             enemy.body:destroy()
             table.remove(self.enemies, i)

@@ -13,7 +13,7 @@ function Player:init(def, world, startX, startY)
     self.timesJumped = 0
 
     -- wall hold related variables
-    self.wallHoldAllowed = true
+    self.wallHoldAllowed = false
     self.canHoldWall = true
     self.touchingWall = false
     self.wallX = nil

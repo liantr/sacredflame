@@ -89,6 +89,11 @@ ROOM_DEFS= {
                 type = 'torch',
                 spawnX = TILE_SIZE * 20,
                 spawnY = TILE_SIZE * 4
+            },
+            {
+                type = 'wall-hold',
+                spawnX = TILE_SIZE * 2,
+                spawnY = TILE_SIZE * 47
             }
         },
         enemies = {}

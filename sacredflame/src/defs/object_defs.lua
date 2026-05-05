@@ -18,5 +18,15 @@ OBJECT_DEFS = {
                 texture = 'torch-lit'
             }
         }
+    },
+    ['wall-hold'] = {
+        type = 'powerup',
+        name = 'wall-hold',
+        bodyType = 'kinematic',
+        texture = 'wall-hold',
+        category = POWERUP_CATEGORY,
+        width = TILE_SIZE * 0.75,
+        height = TILE_SIZE * 0.75,
+        animations = {}
     }
 }

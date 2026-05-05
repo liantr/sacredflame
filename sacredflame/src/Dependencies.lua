@@ -28,6 +28,7 @@ require 'src.states.StateMachine'
 require 'src.states.StateStack'
 
 require 'src.objects.Object'
+require 'src.objects.Powerup'
 require 'src.objects.Torch'
 require 'src.VolleyAttack'
 require 'src.HitBox'
@@ -90,9 +91,11 @@ gTextures = {
     ['player-health-bar'] = love.graphics.newImage('assets/graphics/health//health_bar.png'),
 
     -- objects
-    ['heart'] = love.graphics.newImage('assets/graphics/objects/heart.png'),
     ['torches'] = love.graphics.newImage('assets/graphics/objects/torches.png'),
     ['small-torches'] = love.graphics.newImage('assets/graphics/objects/small-torches.png'),
+    ['wall-hold'] = love.graphics.newImage('assets/graphics/powerups/wall-hold.png'),
+    ['double-jump'] = love.graphics.newImage('assets/graphics/powerups/double-jump.png'),
+
     -- player
     ['swordmaster-idle'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-idle.png'),
     ['swordmaster-walk'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-walk.png'),
@@ -139,13 +142,14 @@ gTextures = {
 }
 
 gFrames = {
-    ['heart'] = GenerateQuads(gTextures['heart'], TILE_SIZE, TILE_SIZE),
     ['torch-unlit'] = GenerateQuadsFromRegion(gTextures['torches'],
-    TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE*3, 0, 0),
+        TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE*3, 0, 0),
     ['torch-lit'] = GenerateQuadsFromRegion(gTextures['torches'],
-    TILE_SIZE, TILE_SIZE*3, TILE_SIZE*4, TILE_SIZE*3, TILE_SIZE, 0),
+        TILE_SIZE, TILE_SIZE*3, TILE_SIZE*4, TILE_SIZE*3, TILE_SIZE, 0),
     ['torch-hud'] = GenerateQuadsFromRegion(gTextures['small-torches'],
-    TILE_SIZE, TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2, TILE_SIZE, 0),
+        TILE_SIZE, TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2, TILE_SIZE, 0),
+    ['double-jump'] = GenerateQuads(gTextures['double-jump'], TILE_SIZE*1.5, TILE_SIZE*1.5),
+    ['wall-hold'] = GenerateQuads(gTextures['wall-hold'], TILE_SIZE*1.5, TILE_SIZE*1.5),
 
     ['player-health-box'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
     TILE_SIZE, TILE_SIZE+1, TILE_SIZE*4, TILE_SIZE+1,0,0),
