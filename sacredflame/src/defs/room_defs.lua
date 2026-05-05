@@ -75,7 +75,7 @@ ROOM_DEFS= {
         -- }
     },
     ['main2'] = {
-        map = 'assets/graphics/map/main2-2.lua',
+        map = 'assets/graphics/map/main2.lua',
         connectedRooms = {
             north = {
                 { room = 'main1', gapX = TILE_SIZE * 9, spawnX = TILE_SIZE * 10, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 },
@@ -89,7 +89,7 @@ ROOM_DEFS= {
             {
                 type = 'torch',
                 spawnX = TILE_SIZE * 20,
-                spawnY = TILE_SIZE * 6
+                spawnY = TILE_SIZE * 4
             }
         },
         enemies = {

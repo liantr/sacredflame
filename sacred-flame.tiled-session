@@ -85,11 +85,11 @@
             "expandedObjectLayers": [
                 12
             ],
-            "scale": 2.7276,
+            "scale": 16.6278,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 268.1844845285232,
-                "y": 353.424255755976
+                "x": 246.27431169487244,
+                "y": 180.66130215662923
             }
         },
         "tiled/high temple.tsx": {
@@ -111,16 +111,19 @@
             "scale": 1.3278,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 419.49088718180445,
-                "y": 253.80328362705222
+                "x": 360.74710046693775,
+                "y": 277.15017321885824
             }
         },
         "tiled/main2-2.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
             "scale": 1.1637,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 373.80768239236914,
-                "y": 316.2327060238893
+                "x": 244.0491535619146,
+                "y": 340.2938901778809
             }
         },
         "tiled/main2-left.tmx": {
@@ -194,6 +197,8 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
+        "tiled/main2.tmx",
+        "tiled/entry.tmx",
         "tiled/main3.tmx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
@@ -201,8 +206,6 @@
         "tiled/blood temple.tsx",
         "tiled/main1-right.tmx",
         "tiled/main2-left.tmx",
-        "tiled/main2.tmx",
-        "tiled/entry.tmx",
         "tiled/main1.tmx",
         "main2-left.tmx",
         "main4-miniboss.tmx"
