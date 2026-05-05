@@ -85,11 +85,11 @@
             "expandedObjectLayers": [
                 12
             ],
-            "scale": 16.6278,
+            "scale": 1.1333,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 246.27431169487244,
-                "y": 180.66130215662923
+                "x": 286.77314038648194,
+                "y": 294.7145504279538
             }
         },
         "tiled/high temple.tsx": {
@@ -119,11 +119,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 1.1637,
+            "scale": 0.9494,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 244.0491535619146,
-                "y": 340.2938901778809
+                "x": 262.27090794185807,
+                "y": 461.34400674109963
             }
         },
         "tiled/main2-left.tmx": {

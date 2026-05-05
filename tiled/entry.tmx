@@ -51,7 +51,7 @@
   <object id="119" name="wall" type="wall" x="413.666" y="160.974" width="2.36448" height="14.0214"/>
   <object id="126" name="ceiling" type="ceiling" x="368.999" y="175.015" width="45.0168" height="0.98326"/>
  </objectgroup>
- <layer id="7" name="background" width="40" height="23" visible="0">
+ <layer id="7" name="background" width="40" height="23">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

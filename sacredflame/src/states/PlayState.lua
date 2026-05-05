@@ -81,6 +81,18 @@ function PlayState:init()
             end
         end
 
+        if types['player'] and types['spike'] then
+            local playerFixture = a:getUserData().type == 'player' and a or b
+            local spikeFixture = a:getUserData().type == 'spike' and a or b
+
+            -- player takes damage and goes invulnerable for a short period
+            if not self.player.invulnerable then
+                gSounds['hit-player']:play()
+                playerFixture:getUserData().entity:damage()
+                self.player:goInvulnerable(1.5)
+            end
+        end
+
         if types['enemy'] and types['wall'] then
             local walLFixture = a:getUserData().type == 'wall' and a or b
             local enemyFixture = a:getUserData().type == 'enemy' and a or b

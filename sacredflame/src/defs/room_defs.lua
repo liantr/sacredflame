@@ -23,8 +23,7 @@ ROOM_DEFS= {
     ['main1'] = {
         map = 'assets/graphics/map/main1.lua',
         connectedRooms = {
-            north =
-            {
+            north = {
                 { room = 'entry', gapX = TILE_SIZE * 19,  spawnX = TILE_SIZE * 21, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1}
             },
             south = {
@@ -82,8 +81,8 @@ ROOM_DEFS= {
                 { room = 'main1', gapX = TILE_SIZE * 28, spawnX = VIRTUAL_WIDTH - TILE_SIZE * 10, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 }
             },
             --south = { room = 'main3', spawnX = TILE_SIZE*4, spawnY = 0},
-            --east = nil,
-            --west = { room = 'main2-left', spawnX = VIRTUAL_WIDTH-TILE_SIZE, spawnY = TILE_SIZE * 7}
+            east = nil,
+            west = nil
         },
         objects = {
             {
@@ -92,9 +91,7 @@ ROOM_DEFS= {
                 spawnY = TILE_SIZE * 4
             }
         },
-        enemies = {
-
-        }
+        enemies = {}
     },
     -- ['main3'] = {
     --     map = 'assets/graphics/map/main3.lua',
