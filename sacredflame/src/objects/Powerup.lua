@@ -6,14 +6,15 @@ function Powerup:init(def, world, x, y)
     self.angle = 0
     self.fixture:setUserData({type='powerup', object = self})
     self.consumed = false
+    self.baseY = self.y
 end
 
 function Powerup:update(dt)
     self.angle = self.angle + dt * - POWERUP_SIN_SPEED
 
-    local x, y = self.body:getPosition()
+    local x, _ = self.body:getPosition()
     local floatingY = math.sin(self.angle) * POWERUP_SIN_AMPLITUDE
-    self.body:setPosition(x, y + floatingY)
+    self.body:setPosition(x, self.baseY + floatingY)
 end
 
 function Powerup:render()

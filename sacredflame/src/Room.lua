@@ -168,6 +168,7 @@ function Room:update(dt)
     for i = #self.objects, 1, -1 do
         local o = self.objects[i]
         if o.consumed then
+            o.body:destroy()
             table.remove(self.objects, i)
         else
             o:update(dt)
