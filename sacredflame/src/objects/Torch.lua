@@ -18,6 +18,10 @@ function Torch:changeState(state, params)
     self.stateMachine:change(state, params)
 end
 
+function Torch:changeAnimation(name)
+    self.currentAnimation = self.animations[name]
+end
+
 function Torch:update(dt)
     self.stateMachine:update(dt)
     if self.currentAnimation then

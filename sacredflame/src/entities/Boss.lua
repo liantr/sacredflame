@@ -7,10 +7,15 @@ function Boss:init(def, world, startX, startY, room)
     self.fixture:setUserData({type='boss', entity = self})
 end
 
+--[[
+    Builds a hurt box lookup table of hurt box dimensions per animation name and frame.
+    The boss's shape changes based on the animation.
+    Not using Box2D here since the body shape isn't changeable after definition.
+]]
 function Boss:buildHurtBoxes(def)
     local hurtBoxes = {}
     if def.hurtBoxes then
-        for name, anim in pairs(self.animations) do
+        for name, _ in pairs(self.animations) do
             local animHurtBoxes = def.hurtBoxes[name]
             if animHurtBoxes then
                 hurtBoxes[name] = {}
@@ -47,10 +52,14 @@ end
 function Boss:update(dt)
     Entity.update(self, dt)
     local currAnimation = self.currentAnimation
+
+    -- Set the current hurt box
     if self.hurtBoxes and currAnimation then
         self.currentHurtBox = self.hurtBoxes[currAnimation.name][currAnimation:getCurrentFrame()] or nil
     end
 
+    -- Creates creates a hit box from the hurt box so player collision
+    -- with the body triggers damage to eht player
     if self.room.player and not self.room.player.invulnerable and self.currentHurtBox then
         local ex, ey = self:getHurtBoxPosition()
         local hitBox = HitBox(ex, ey, self.currentHurtBox.width, self.currentHurtBox.height)
@@ -71,17 +80,6 @@ function Boss:getHurtBoxPosition()
     end
     return nil
 end
-
--- function Boss:getHitBoxPosition()
---     if self.currentHurtBox then
---         local x, y = self.body:getPosition()
---         local ex = x - self.width/2 + self.currentHurtBox.offsetX
---         local ey = y - self.height/2 + self.currentHurtBox.offsetY
-
---         return ex, ey
---     end
---     return nil
--- end
 
 function Boss:render()
     Entity.render(self)

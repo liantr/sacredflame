@@ -10,11 +10,11 @@ function Entity:init(def, world, startX, startY,room)
 
     self.category = def.category
 
-    -- create entity body (this is the hurt box)
+    -- create entity body (this is the hurt box for regular enemies and player)
     self.bodyType = def.bodyType or 'static'
     self.body = love.physics.newBody(world, startX, startY, self.bodyType)
     self.body:setFixedRotation(true)
-    -- setting circle shape, rectangle doesn't detect the ground
+
     self.shape = love.physics.newRectangleShape(self.width, self.height)
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setRestitution(0)
@@ -82,19 +82,23 @@ function Entity:update(dt)
 
     if self.health == 0 and not self.dead then
         local entityType = self.fixture:getUserData().type
-
-        -- regular enemies have a chance to drop health on death
         if entityType == 'enemy' then
-            local chanceToDropHealth = math.random(1,25)
-            if chanceToDropHealth == 1 and
-            self.room.player.health < PLAYER_MAX_HEALTH and
-            not self.droppedHealth then
-                self.droppedHealth = true
-                self.room.player.health = self.room.player.health + 1
-            end
+            self:dropHealth()
         end
 
+        self:dropHealth()
         self:changeState('death')
+    end
+end
+
+function Entity:dropHealth()
+    -- regular enemies have a 20% chance to drop +1 health on death
+    local chanceToDropHealth = math.random(1,25)
+    if chanceToDropHealth == 1 and
+    self.room.player.health < PLAYER_MAX_HEALTH and
+    not self.droppedHealth then
+        self.droppedHealth = true
+        self.room.player.health = self.room.player.health + 1
     end
 end
 
@@ -110,17 +114,10 @@ function Entity:processAI(params, dt)
     self.stateMachine:processAI(params, dt)
 end
 
-function Entity:spawnRangedAttack(targetX, targetY)
-    if self.rangedAttack then
-        local attack = VolleyAttack(targetX, targetY, self.room)
-        table.insert(self.room.attacks, attack)
-    end
-end
-
 function Entity:render()
-    local x, y = self:getPosition()
+    local x, y = self.body:getPosition()
     if self.dashing then
-        x, y = self:getPosition()
+        x, y = self.body:getPosition()
     end
 
     self.stateMachine:render()
@@ -157,10 +154,6 @@ function Entity:render()
 
         love.graphics.setColor(1,1,1,1)
     end
-end
-
-function Entity:getPosition()
-    return self.body:getPosition()
 end
 
 function  Entity:reverseDirection()

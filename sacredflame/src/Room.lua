@@ -20,6 +20,45 @@ function Room:init(def, world, playState, name)
     self.attacks = {}
 end
 
+function Room:enter()
+    for _, tile in pairs(self.collidable) do
+        tile.body:setActive(true)
+    end
+
+    if #self.enemies == 0 then
+        self:spawnEnemies()
+    else
+        for _, enemy in pairs(self.enemies) do
+            enemy.body:setActive(true)
+        end
+    end
+
+    if #self.objects == 0 then
+        self:spawnObjects()
+    else
+         for _, object in pairs(self.objects) do
+            object.body:setActive(true)
+        end
+    end
+end
+
+function Room:exit()
+
+    for _, tile in pairs(self.collidable) do
+        tile.body:setActive(false)
+    end
+
+    for _, enemy in pairs(self.enemies) do
+        enemy.body:setActive(false)
+    end
+
+    for _, object in pairs(self.objects) do
+        object.body:setActive(false)
+    end
+
+    self.player = nil
+end
+
 function Room:spawnEnemies()
     if self.def.enemies then
         for _, roomDefEnemy in pairs(self.def.enemies) do
@@ -64,53 +103,58 @@ end
 function Room:spawnObjects()
     if self.def.objects then
         for _, defObject in pairs(self.def.objects) do
-            local roomObject = Torch(OBJECT_DEFS[defObject.type], self.world, defObject.spawnX, defObject.spawnY, self)
-        
+            local roomObject
             if defObject.type == 'torch' then
+                roomObject = Torch(OBJECT_DEFS[defObject.type], self.world, defObject.spawnX, defObject.spawnY, self)
                 roomObject.stateMachine = StateMachine {
                     ['unlit'] = function() return TorchUnlitState(roomObject) end,
                     ['lit'] = function() return TorchLitState(roomObject) end
                 }
                 roomObject:changeState('unlit')
             end
+
             table.insert(self.objects, roomObject)
         end
     end
 end
 
-function Room:enter()
-    for _, tile in pairs(self.collidable) do
-        tile.body:setActive(true)
-    end
+--[[
+    Each map has a collisions layer with types: ground, wall and ceiling.
+    These are created as static Box2D bodies.
+]]
+function Room:addCollisionBodies()
+    local layer = self.map.layers["collisions"]
 
-    if #self.enemies == 0 then
-        self:spawnEnemies()
-    else
-        for _, enemy in pairs(self.enemies) do
-            enemy.body:setActive(true)
+    if layer and layer.objects then
+        for _, object in pairs(layer.objects) do
+
+            -- ignore objects with no type assigned 
+            if object.type ~= "" then
+                local bodyX = object.x + ( object.width / 2)
+                local bodyY = object.y + ( object.height / 2)
+
+                local body = love.physics.newBody(self.world, bodyX, bodyY, 'static')
+
+                -- start as inactive until the room is entered otherwise
+                -- bodies from other rooms the player isn't currently in will be collidable
+                body:setActive(false)
+
+                local shape = love.physics.newRectangleShape(object.width, object.height)
+                local fixture = love.physics.newFixture(body, shape)
+                fixture:setRestitution(0)
+                fixture:setFriction(2)
+                fixture:setUserData({type=object.type})
+                table.insert(self.collidable, {
+                    body = body,
+                    shape = shape
+                })
+            end
         end
     end
-
-    if #self.objects == 0 then
-        self:spawnObjects()
-    end
-end
-
-function Room:exit()
-
-    for _, tile in pairs(self.collidable) do
-        tile.body:setActive(false)
-    end
-
-    for _, enemy in pairs(self.enemies) do
-        enemy.body:setActive(false)
-    end
-
-    self.player = nil
 end
 
 function Room:update(dt)
-    for i=#self.attacks,1,-1 do
+    for i=#self.attacks, 1, -1 do
         local attack = self.attacks[i]
         attack:update(dt)
         if attack.complete then
@@ -128,32 +172,6 @@ function Room:update(dt)
         if enemy.dead then
             enemy.body:destroy()
             table.remove(self.enemies, i)
-        end
-    end
-end
-
-function Room:addCollisionBodies()
-    local layer = self.map.layers["collisions"]
-    
-    if layer and layer.objects then
-        for _, object in pairs(layer.objects) do
-            if object.type ~= "" then
-                local bodyX = object.x + ( object.width / 2)
-                local bodyY = object.y + ( object.height / 2)
-
-                local body = love.physics.newBody(self.world, bodyX, bodyY, 'static')                
-                body:setActive(false)
-
-                local shape = love.physics.newRectangleShape(object.width, object.height)
-                local fixture = love.physics.newFixture(body, shape)
-                fixture:setRestitution(0)
-                fixture:setFriction(2)
-                fixture:setUserData({type=object.type})
-                table.insert(self.collidable, {
-                    body = body,
-                    shape = shape
-                })
-            end
         end
     end
 end
@@ -187,26 +205,30 @@ function Room:render()
         love.graphics.setColor(1, 0, 0, 1) -- Red outline
         love.graphics.setLineWidth(1)
         for _,o in pairs(self.collidable) do
-            local x, y = o.body:getPosition()
-            love.graphics.polygon('line',o.body:getWorldPoints(o.shape:getPoints()))
+            love.graphics.polygon('line', o.body:getWorldPoints(o.shape:getPoints()))
         end
         love.graphics.setColor(1,1,1,1)
     end
 end
 
+--[[
+    Creates a darkness overlay on the screen.
+    Once the room torch is lit, the stencil will punch a hole in the darkness
+    the size of the current light radius which is expanding effectively lighting the room
+]]
 function Room:renderDarkness()
     love.graphics.stencil(function()
         for _, object in pairs(self.objects) do
             if object.lit then
                 local tx, ty = object.body:getPosition()
-                love.graphics.setColor(0,0,0,0)
-                love.graphics.circle('fill', tx, ty, object.lightRadius)  -- light radius
+                love.graphics.setColor(0, 0 ,0, 0)
+                love.graphics.circle('fill', tx, ty, object.lightRadius)
             end
         end
     end)
 
     love.graphics.setStencilTest('notequal', 1)
-    love.graphics.setColor(0,0,0,0.6)
+    love.graphics.setColor(0, 0, 0, 0.7)
     love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
     love.graphics.setStencilTest()
     love.graphics.setColor(1, 1, 1, 1)

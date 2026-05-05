@@ -69,8 +69,8 @@ end
     Gets the horizontal distance of an enemy from the player
 ]]
 function getXDistanceFromPlayer(entity, player)
-    local ex, _ = entity:getPosition()
-    local px, _ = player:getPosition()
+    local ex, _ = entity.body:getPosition()
+    local px, _ = player.body:getPosition()
     return px - ex
 end
 
@@ -78,8 +78,8 @@ end
     Gets the vertical distance of an enemy from the player
 ]]
 function getYDistanceFromPlayer(entity, player)
-    local _, ey = entity:getPosition()
-    local _, py = player:getPosition()
+    local _, ey = entity.body:getPosition()
+    local _, py = player.body:getPosition()
     return py - ey
 end
 
@@ -116,7 +116,7 @@ function createEntityHitBoxes(entity)
     if entity.hitBoxes then
         local direction = entity.direction
         local hitBoxX, hitBoxY
-        local ex, ey = entity:getPosition()
+        local ex, ey = entity.body:getPosition()
 
         for animName, hitBoxes in pairs(entity.hitBoxes) do
 

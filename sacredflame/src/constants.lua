@@ -33,6 +33,7 @@ TORCH_LIGHT_EXPANSION_SPEED = 150
 USE_ZOOM = true
 DEBUG = true --TODO set to false before submission
 
+-- Box2D collision categories
 PLAYER_CATEGORY = 2
 FLAME_CATEGORY = 3
 ARCHER_BANDIT_CATEGORY = 4

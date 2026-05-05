@@ -1,5 +1,9 @@
 VolleyAttack = Class{}
 
+--[[
+    One shot ranged attack by Archer Bandits.
+    Damages player once on collision and is completed once the animation finishes.
+]]
 function VolleyAttack:init(targetX, targetY, room)
     self.targetX = targetX
     self.targetY = targetY
@@ -7,11 +11,11 @@ function VolleyAttack:init(targetX, targetY, room)
     self.complete = false
     self.width = TILE_SIZE * 1.5
     self.height = TILE_SIZE * 7
-    self.offsetY = -TILE_SIZE*3
+    self.offsetY = -TILE_SIZE * 3
     self.hitPlayer = false
 
     self.animation = Animation({
-        frames = {1,2,3,4,5},
+        frames = generateFramesList(5),
         interval = 0.08,
         looping = false,
         texture = 'archer-bandit-attack-volley'
@@ -24,10 +28,16 @@ function VolleyAttack:init(targetX, targetY, room)
 
     self.hitBox = HitBox(hitBoxX, hitBoxY, self.width, self.height)
 
+    -- give the player a chance to dodge
+    self.delay = 0.5
+    self.delayTimer = 0
+
 end
 
 function VolleyAttack:update(dt)
-    if self.hitBox and not self.hitPlayer then
+
+    self.delayTimer = self.delayTimer + dt
+    if self.hitBox and not self.hitPlayer and self.delayTimer >= self.delay then
         self.hitPlayer = damagePlayer(self.room, self.hitBox)
     end
 
@@ -53,11 +63,12 @@ function VolleyAttack:render()
             0,1,1,w/2,h/2)
     end
 
-    love.graphics.setColor(1, 0, 1, 1)
-
-    if self.hitBox then
-        love.graphics.rectangle('line', self.hitBox.x, self.hitBox.y,
-            self.hitBox.width, self.hitBox.height)
-        love.graphics.setColor(255, 255, 255, 255)
+    if DEBUG then
+        if self.hitBox then
+            love.graphics.setColor(1, 0, 1, 1)
+            love.graphics.rectangle('line', self.hitBox.x, self.hitBox.y,
+                self.hitBox.width, self.hitBox.height)
+            love.graphics.setColor(1, 1, 1, 1)
+        end
     end
 end
