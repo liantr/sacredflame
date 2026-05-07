@@ -10,20 +10,21 @@ function PlayerDashState:enter(params)
     anim:refresh()
 
     self.nextState = params and params.nextState or 'idle'
-    self.entity:goInvulnerable(3)
     self.entity.dashing = true
 
     local dashDirection = self.entity.direction == 'right' and 1 or -1
-    local dashDuration = anim.interval * #anim.frames
+    local dashDuration = anim.interval * #anim.frames -- total duration of the dash animation
+    local dashSpeed = (PLAYER_DASH_DIST / dashDuration) * dashDirection -- v = d/t, accounts for direction
+
+    self.entity:goInvulnerable(dashDuration) -- lets the player dash to avoid enemies
 
     local _, pvy = self.entity.body:getLinearVelocity()
-    local dashSpeed = (PLAYER_DASH_DIST / dashDuration) * dashDirection
     self.entity.body:setLinearVelocity(dashSpeed, pvy)
 
+    -- once the animation has played/player has dashed reset variables and exit the state
     Timer.after(dashDuration, function()
-        local _, pvy2 = self.entity.body:getLinearVelocity()
-        self.entity.body:setLinearVelocity(0, pvy2)
-        self.entity.invulnerable = false
+        _, pvy = self.entity.body:getLinearVelocity()
+        self.entity.body:setLinearVelocity(0, pvy)
         self.entity.dashing = false
         self.entity:changeState(self.nextState)
     end)

@@ -6,7 +6,7 @@ function PlayerIdleState:init(player)
 end
 
 function PlayerIdleState:enter()
-    self.dead = false
+    self.entity.dead = false
     self.entity:changeAnimation('idle')
 end
 

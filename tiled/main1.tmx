@@ -20,7 +20,7 @@
   <object id="21" x="461.827" y="175.985" width="1.19555" height="1.03614"/>
   <object id="23" name="wall" type="wall" x="140.916" y="336.932" width="2.09668" height="30.4744"/>
   <object id="24" name="wall" type="wall" x="29.0226" y="240.23" width="1.02427" height="94.8904"/>
-  <object id="25" name="wall" type="wall" x="193.852" y="272.071" width="1.07503" height="95.8452"/>
+  <object id="25" name="wall" type="wall" x="193.102" y="272.071" width="1.82503" height="95.8452"/>
   <object id="26" name="wall" type="wall" x="128.867" y="241.124" width="5.05676" height="28.9556"/>
   <object id="27" name="ceiling" type="ceiling" x="128.95" y="270.003" width="64.1292" height="0.952266"/>
   <object id="28" name="ceiling" type="ceiling" x="31.003" y="237.977" width="64.1301" height="1.11267"/>

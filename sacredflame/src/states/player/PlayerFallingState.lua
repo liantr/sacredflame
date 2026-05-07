@@ -12,9 +12,11 @@ function PlayerFallingState:enter()
 end
 
 function PlayerFallingState:update(dt)
+
+    local _, yVel = self.player.body:getLinearVelocity()
     self.player:handleMovementInput(PLAYER_WALK_SPEED)
 
-    if self:scanForGroundBelow(dt) then
+    if self:scanForGroundBelow(dt)  or yVel == 0 then
         self.player:changeState('idle')
     end
 

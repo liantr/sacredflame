@@ -27,7 +27,7 @@ ROOM_DEFS= {
                 { room = 'entry', gapX = TILE_SIZE * 19,  spawnX = TILE_SIZE * 21, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1}
             },
             south = {
-                { room = 'main2', gapX = TILE_SIZE * 8, spawnX = TILE_SIZE * 10, spawnY = 1 },
+                { room = 'main2', gapX = TILE_SIZE * 9, spawnX = TILE_SIZE * 10, spawnY = 1 },
                 { room = 'main2', gapX = TILE_SIZE * 28, spawnX = VIRTUAL_WIDTH - TILE_SIZE * 10, spawnY = 1 }
             },
             east = nil,

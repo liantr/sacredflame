@@ -119,11 +119,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.9896,
+            "scale": 1.4239,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 240.50121261115606,
-                "y": 366.81487469684726
+                "x": 307.25472294402704,
+                "y": 101.13069738043404
             }
         },
         "tiled/main2-left.tmx": {
@@ -143,11 +143,11 @@
             }
         },
         "tiled/main3.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 1.2475,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 320.5,
-                "y": 183
+                "x": 377.9559118236473,
+                "y": 170.74148296593185
             }
         },
         "tiled/main4-miniboss.tmx": {

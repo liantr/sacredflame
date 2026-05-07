@@ -54,9 +54,14 @@ function PlayState:init()
             local playerFixture = a:getUserData().type == 'player' and a or b
             local wallFixture = a:getUserData().type == 'wall' and a or b
 
-            self.player.touchingWall = true
-            local wallX, _ = wallFixture:getBody():getPosition()
-            self.player.wallX = wallX
+            local wallShape = wallFixture:getShape()
+            local _, y1, _, y2 = wallShape:computeAABB(wallFixture:getBody():getTransform())
+
+            if math.abs(y2 - y1) > TILE_SIZE then
+                self.player.touchingWall = true
+                local wallX, _ = wallFixture:getBody():getPosition()
+                self.player.wallX = wallX
+            end
         end
 
         if types['player'] and types['torch'] then
@@ -335,8 +340,8 @@ end
 function PlayState:getRoomConnection(connections)
     local overlappingConnection = nil
     local px, _ = self.player.body:getPosition()
-    for _, connection in pairs(connections) do
-        print('px:', px, 'gapX:', connection.gapX, 'right edge:', connection.gapX + ROOM_CONNECTION_SIZE)
+    for _, connection in ipairs(connections) do
+        print('px_l:', px - self.player.width/2, 'px_r:', px + self.player.width/2, 'gapX:', connection.gapX, 'right edge:', connection.gapX + ROOM_CONNECTION_SIZE)
 
         if px >= connection.gapX and px <= connection.gapX + ROOM_CONNECTION_SIZE then
             overlappingConnection = connection

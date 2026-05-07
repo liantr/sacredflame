@@ -2,12 +2,11 @@ PlayerSwordSwingState = Class{__includes = BaseState}
 
 function PlayerSwordSwingState:init(player)
     self.entity = player
-
-    self.hitBoxes = createEntityHitBoxes(self.entity)
 end
 
 function PlayerSwordSwingState:enter(params)
     self.hitFrames = {}
+    self.hitBoxes = createEntityHitBoxes(self.entity)
     if params then
         self.entity:changeAnimation('swing-sword-combo')
     else
@@ -17,13 +16,10 @@ function PlayerSwordSwingState:enter(params)
     self.entity.currentAnimation:refresh()
 end
 
-function PlayerSwordSwingState:exit()
-end
-
 function PlayerSwordSwingState:update(dt)
     local _, vy = self.entity.body:getLinearVelocity()
     self.entity.body:setLinearVelocity(0,vy)
-    self.hitBoxes = createEntityHitBoxes(self.entity)
+
     local hitBoxEntries = getHitBoxes(self)
     local currFrame = self.entity.currentAnimation:getCurrentFrame()
 
@@ -54,10 +50,12 @@ function PlayerSwordSwingState:render()
         if hitBoxEntries then
             for _, hitBoxEntry in pairs(hitBoxEntries) do
                 local hitBox = hitBoxEntry.hitBox
-                --love.graphics.rectangle('line', px, py, self.player.width, self.player.height)
-                love.graphics.rectangle('line', hitBox.x, hitBox.y,
-                    hitBox.width, hitBox.height)
-                love.graphics.setColor(255, 255, 255, 255)
+                love.graphics.rectangle('line',
+                    hitBox.x,
+                    hitBox.y,
+                    hitBox.width,
+                    hitBox.height)
+                love.graphics.setColor(1, 1, 1, 1)
             end
         end
     end

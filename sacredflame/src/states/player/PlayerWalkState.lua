@@ -12,6 +12,7 @@ function PlayerWalkState:update(dt, run)
 
     local _, vy = self.entity.body:getLinearVelocity()
 
+    -- if the player walks off a ledge, once y vel kicks in change to falling state
     if vy > 10 then
         self.entity:changeState('falling')
     end

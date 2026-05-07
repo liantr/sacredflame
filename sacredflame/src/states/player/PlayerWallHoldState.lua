@@ -11,21 +11,27 @@ function PlayerWallHoldState:enter()
 end
 
 function PlayerWallHoldState:update(dt)
-    if not self.player.canHoldWall then
+    if not self.player.canHoldWall or not self.player.touchingWall then
         self.player:changeState('idle')
     end
+
     self.player.body:setLinearVelocity(0, 0)
 
     if love.keyboard.wasPressed('z') then
         local px, py = self.player.body:getPosition()
-        local vel = self.player.direction == 'right' and -30 or 30
-        local shift = self.player.direction == 'right' and -10 or 10
+
+        -- set the horizontal jump velocity and direction away from the wall
+        -- also shift the player slightly off the wall once they've jumped
+        local vel = self.player.direction == 'right' and - PLAYER_WALL_JUMP_VELOCITY_X or PLAYER_WALL_JUMP_VELOCITY_X
+        local shift = self.player.direction == 'right' and - PLAYER_WALL_JUMP_SHIFT_X or PLAYER_WALL_JUMP_SHIFT_X
+
         if self.player.direction == 'right' then
             self.player.direction = 'left'
         else
             self.player.direction = 'right'
         end
-        self.player.body:setPosition(px+shift, py)
+
+        self.player.body:setPosition(px + shift, py)
         self.player.body:setLinearVelocity(vel, 0)
         self.player:changeState('jump')
     end
