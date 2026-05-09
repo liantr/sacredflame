@@ -80,7 +80,9 @@ ROOM_DEFS= {
                 { room = 'main1', gapX = TILE_SIZE * 9, spawnX = TILE_SIZE * 10, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 },
                 { room = 'main1', gapX = TILE_SIZE * 28, spawnX = VIRTUAL_WIDTH - TILE_SIZE * 10, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 }
             },
-            --south = { room = 'main3', spawnX = TILE_SIZE*4, spawnY = 0},
+            south = {
+                { room = 'main3', gapX = TILE_SIZE * 18, spawnX = TILE_SIZE * 21, spawnY = 1}
+            },
             east = nil,
             west = nil
         },
@@ -98,4 +100,27 @@ ROOM_DEFS= {
         },
         enemies = {}
     },
+    ['main3'] = {
+        map = 'assets/graphics/map/main3.lua',
+        connectedRooms = {
+            north = {
+                { room = 'main2', gapX = TILE_SIZE * 18, spawnX = TILE_SIZE * 20, spawnY = TILE_SIZE * 47 }
+            },
+            -- south = {
+            -- }
+        },
+        objects = {
+            {
+                type = 'double-jump',
+                spawnX = VIRTUAL_WIDTH - TILE_SIZE * 3,
+                spawnY = TILE_SIZE * 6
+            },
+            {
+                type = 'torch',
+                spawnX = TILE_SIZE * 15,
+                spawnY = TILE_SIZE * 15.5
+            }
+        },
+        enemies = {}
+    }
 }

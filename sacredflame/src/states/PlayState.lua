@@ -78,7 +78,14 @@ function PlayState:init()
 
             local powerup = powerupFixture:getUserData().object
             powerup.consumed = true
-            self.player.wallHoldAllowed = true
+
+            if powerup.name == 'wall-hold' then
+                self.player.wallHoldAllowed = true
+            end
+
+            if powerup.name == 'double-jump' then
+                self.player.doubleJumpAllowed = true
+            end
         end
 
         if types['player'] and types['enemy'] then

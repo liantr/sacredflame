@@ -6,10 +6,10 @@ end
 
 function PlayerJumpState:enter()
     self.player:changeAnimation('jump')
+    self.player.timesJumped = self.player.timesJumped + 1
     self.player.canJump = self.player.doubleJumpAllowed and
         (self.player.timesJumped < 2 and true or false) or false
     self.player.canHoldWall = true
-    self.player.timesJumped = self.player.timesJumped + 1
     local xVel, _ = self.player.body:getLinearVelocity()
     self.player.body:setLinearVelocity(xVel, PLAYER_JUMP_VELOCITY)
 end

@@ -28,5 +28,15 @@ OBJECT_DEFS = {
         width = TILE_SIZE * 0.75,
         height = TILE_SIZE * 0.75,
         animations = {}
+    },
+    ['double-jump'] = {
+        type = 'powerup',
+        name = 'double-jump',
+        bodyType = 'kinematic',
+        texture = 'double-jump',
+        category = POWERUP_CATEGORY,
+        width = TILE_SIZE * 0.75,
+        height = TILE_SIZE * 0.75,
+        animations = {}
     }
 }

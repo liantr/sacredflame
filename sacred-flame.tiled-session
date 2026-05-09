@@ -81,6 +81,20 @@
             "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
+        "tiled/boss.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 181.5,
+                "y": 82
+            }
+        },
+        "tiled/boss.tmx#beneath": {
+            "scaleInDock": 1
+        },
+        "tiled/boss.tmx#dark": {
+            "scaleInDock": 1
+        },
         "tiled/entry.tmx": {
             "expandedObjectLayers": [
                 12
@@ -88,7 +102,7 @@
             "scale": 1.1333,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 286.77314038648194,
+                "x": 286.3319509397336,
                 "y": 294.7145504279538
             }
         },
@@ -123,7 +137,7 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 359.66666666666663,
-                "y": 554.6666666666666
+                "y": 548.6666666666666
             }
         },
         "tiled/main2-left.tmx": {
@@ -131,37 +145,37 @@
             "selectedLayer": 3,
             "viewCenter": {
                 "x": 319.77936106642153,
-                "y": 183.86577798207313
+                "y": 184.1599632268444
             }
         },
         "tiled/main2.tmx": {
             "scale": 0.8569,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 315.0892752946668,
-                "y": 334.92822966507185
+                "x": 314.5057766367138,
+                "y": 334.92822966507174
             }
         },
         "tiled/main3-2.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 4,
+            "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 523.625,
-                "y": 101.25
+                "x": 615,
+                "y": 268
             }
         },
         "tiled/main3-3.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 48.66666666666663,
-                "y": 516
+                "x": 202.5,
+                "y": 469
             }
         },
         "tiled/main3.tmx": {
@@ -197,14 +211,14 @@
         }
     },
     "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/map",
-    "last.externalTilesetPath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/tiled",
-    "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/assets/graphics/The Dark Series/tilesets/29- Sacred Temple Tileset",
-    "map.height": 50,
+    "last.externalTilesetPath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/The Dark Series/tilesets/DARK - Beneath Tileset/Tileset",
+    "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/The Dark Series/DARK Edition/Tileset",
+    "map.height": 20,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 40,
+    "map.width": 20,
     "openFiles": [
         "tiled/main2.tmx",
         "tiled/main2-left.tmx",
@@ -219,19 +233,20 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
-        "tiled/main3.tmx",
+        "tiled/main1.tmx",
         "tiled/main2-2.tmx",
+        "tiled/main2-left.tmx",
         "tiled/main3-2.tmx",
-        "tiled/entry.tmx",
         "tiled/main2.tmx",
+        "tiled/main3.tmx",
+        "tiled/entry.tmx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
         "tiled/high temple.tsx",
         "tiled/blood temple.tsx",
-        "tiled/main1-right.tmx",
-        "tiled/main2-left.tmx",
-        "tiled/main1.tmx"
+        "tiled/main1-right.tmx"
     ],
+    "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "All Files (*)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
