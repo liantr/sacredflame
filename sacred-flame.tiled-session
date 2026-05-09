@@ -108,22 +108,22 @@
             "expandedObjectLayers": [
                 8
             ],
-            "scale": 1.3278,
-            "selectedLayer": 2,
+            "scale": 18.8624,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 360.74710046693775,
-                "y": 277.15017321885824
+                "x": 478.80969547883615,
+                "y": 201.0878785308338
             }
         },
         "tiled/main2-2.tmx": {
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 1.4239,
+            "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 307.25472294402704,
-                "y": 101.13069738043404
+                "x": 359.66666666666663,
+                "y": 554.6666666666666
             }
         },
         "tiled/main2-left.tmx": {
@@ -142,12 +142,34 @@
                 "y": 334.92822966507185
             }
         },
-        "tiled/main3.tmx": {
-            "scale": 1.2475,
-            "selectedLayer": 1,
+        "tiled/main3-2.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 377.9559118236473,
-                "y": 170.74148296593185
+                "x": 523.625,
+                "y": 101.25
+            }
+        },
+        "tiled/main3-3.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 48.66666666666663,
+                "y": 516
+            }
+        },
+        "tiled/main3.tmx": {
+            "scale": 0.6858,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 543.1612715077282,
+                "y": 500.145815106445
             }
         },
         "tiled/main4-miniboss.tmx": {
@@ -197,18 +219,18 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
-        "tiled/main2.tmx",
-        "tiled/entry.tmx",
         "tiled/main3.tmx",
+        "tiled/main2-2.tmx",
+        "tiled/main3-2.tmx",
+        "tiled/entry.tmx",
+        "tiled/main2.tmx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
         "tiled/high temple.tsx",
         "tiled/blood temple.tsx",
         "tiled/main1-right.tmx",
         "tiled/main2-left.tmx",
-        "tiled/main1.tmx",
-        "main2-left.tmx",
-        "main4-miniboss.tmx"
+        "tiled/main1.tmx"
     ],
     "tileset.lastUsedFilter": "All Files (*)",
     "tileset.lastUsedFormat": "tsx",
