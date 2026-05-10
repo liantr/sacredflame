@@ -9,7 +9,7 @@ function Player:init(def, world, startX, startY)
 
     -- jump related variables
     self.canJump = true
-    self.doubleJumpAllowed = false -- TODO change to false before submission
+    self.doubleJumpAllowed = true -- TODO change to false before submission
     self.timesJumped = 0
 
     -- wall hold related variables

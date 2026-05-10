@@ -106,8 +106,9 @@ ROOM_DEFS= {
             north = {
                 { room = 'main2', gapX = TILE_SIZE * 18, spawnX = TILE_SIZE * 20, spawnY = TILE_SIZE * 47 }
             },
-            -- south = {
-            -- }
+            south = {
+                { room = 'main4', gapX = TILE_SIZE * 35, spawnX = TILE_SIZE * 36, spawnY = 1 }
+            }
         },
         objects = {
             {
@@ -119,6 +120,24 @@ ROOM_DEFS= {
                 type = 'torch',
                 spawnX = TILE_SIZE * 15,
                 spawnY = TILE_SIZE * 15.5
+            }
+        },
+        enemies = {}
+    },
+    ['main4'] = {
+        map = 'assets/graphics/map/main4.lua',
+        connectedRooms = {
+            north = {
+                { room = 'main3', gapX = TILE_SIZE * 35, spawnX = TILE_SIZE * 36, spawnY = TILE_SIZE * 49 }
+            },
+            -- south = {
+            -- }
+        },
+        objects = {
+            {
+                type = 'torch',
+                spawnX = TILE_SIZE * 10,
+                spawnY = TILE_SIZE * 16.5
             }
         },
         enemies = {}

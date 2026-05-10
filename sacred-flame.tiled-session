@@ -102,7 +102,7 @@
             "scale": 1.1333,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 286.3319509397336,
+                "x": 236.91873290390893,
                 "y": 294.7145504279538
             }
         },
@@ -172,10 +172,10 @@
                 2
             ],
             "scale": 1,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 202.5,
-                "y": 469
+                "x": 321.5,
+                "y": 465
             }
         },
         "tiled/main3.tmx": {
@@ -186,12 +186,34 @@
                 "y": 500.145815106445
             }
         },
+        "tiled/main4-2.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 265.25,
+                "y": 118
+            }
+        },
         "tiled/main4-miniboss.tmx": {
             "scale": 0.8498046874999999,
             "selectedLayer": 3,
             "viewCenter": {
                 "x": 639.5587221328431,
                 "y": 184.15996322684447
+            }
+        },
+        "tiled/main4.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 135,
+                "y": 226.66666666666669
             }
         },
         "tiled/map.tmx": {
@@ -218,7 +240,7 @@
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 20,
+    "map.width": 40,
     "openFiles": [
         "tiled/main2.tmx",
         "tiled/main2-left.tmx",
@@ -233,6 +255,8 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
+        "tiled/main3-3.tmx",
+        "tiled/main4.tmx",
         "tiled/main1.tmx",
         "tiled/main2-2.tmx",
         "tiled/main2-left.tmx",
@@ -242,9 +266,7 @@
         "tiled/entry.tmx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
-        "tiled/high temple.tsx",
-        "tiled/blood temple.tsx",
-        "tiled/main1-right.tmx"
+        "tiled/high temple.tsx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "All Files (*)",
