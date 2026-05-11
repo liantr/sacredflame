@@ -21,15 +21,13 @@ function VolleyAttack:init(targetX, targetY, room)
         texture = 'archer-bandit-attack-volley'
     })
 
-    local offsetX = -TILE_SIZE * 0.75
-    local offsetY = TILE_SIZE*.75
-    local hitBoxX = self.targetX + offsetX
-    local hitBoxY = self.targetY - self.height + offsetY
+    local hitBoxX = self.targetX - self.width/2
+    local hitBoxY = self.targetY - self.height/2
 
     self.hitBox = HitBox(hitBoxX, hitBoxY, self.width, self.height)
 
     -- give the player a chance to dodge
-    self.delay = 0.5
+    self.delay = 0.05
     self.delayTimer = 0
 
 end
@@ -37,6 +35,7 @@ end
 function VolleyAttack:update(dt)
 
     self.delayTimer = self.delayTimer + dt
+    -- 
     if self.hitBox and not self.hitPlayer and self.delayTimer >= self.delay then
         self.hitPlayer = damagePlayer(self.room, self.hitBox)
     end

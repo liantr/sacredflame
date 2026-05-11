@@ -26,15 +26,15 @@ function PlayerIdleState:update(dt)
         end
     end
 
-    if love.keyboard.wasPressed('z') and self.entity.canJump then
+    if love.keyboard.wasPressed('space') and self.entity.canJump then
         self.entity:changeState('jump')
     end
 
-    if love.keyboard.wasPressed('v') then
+    if love.keyboard.wasPressed('c') then
         self.entity:changeState('dash', {nextState='idle'})
-    elseif love.keyboard.wasPressed('x') then
+    elseif love.keyboard.wasPressed('z') then
         self.entity:changeState('swing-sword')
-    elseif love.keyboard.wasPressed('c') then
+    elseif love.keyboard.wasPressed('x') then
         self.entity:changeState('swing-sword', {combo = true})
     end
 end

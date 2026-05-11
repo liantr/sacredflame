@@ -31,9 +31,9 @@ function HUD:render()
 
     -- scissor clips the health bar based on the current
     -- percentage of max hp the player has
-    local scaleFactor = WINDOW_HEIGHT/VIRTUAL_HEIGHT
+    local scaleFactor = WINDOW_HEIGHT / VIRTUAL_HEIGHT
     local player = self.playState.player
-    local healthScaling = player.health/player.maxHealth
+    local healthScaling = math.max(0, player.health / PLAYER_MAX_HEALTH)
 
     love.graphics.setScissor(self.barX * scaleFactor,
         self.y * scaleFactor,

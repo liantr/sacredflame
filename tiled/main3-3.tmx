@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.1" orientation="orthogonal" renderorder="right-down" width="40" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="61">
+<map version="1.10" tiledversion="1.12.1" orientation="orthogonal" renderorder="right-down" width="40" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="65">
  <editorsettings>
   <export target="../sacredflame/assets/graphics/map/main3.lua" format="lua"/>
  </editorsettings>
@@ -145,9 +145,9 @@
   <object id="30" name="ground" type="ground" x="398.905" y="207.988" width="145.09" height="1.00075"/>
   <object id="31" name="ground" type="ground" x="448.182" y="127.863" width="159.635" height="1.00075"/>
   <object id="32" name="ground" type="ground" x="368.004" y="415.984" width="241.015" height="1.00075"/>
-  <object id="33" name="spike" type="spike" x="432.045" y="543.96" width="13.4565" height="15.0962"/>
-  <object id="35" name="spike" type="spike" x="481.966" y="543.505" width="13.5815" height="16.525"/>
-  <object id="36" name="spike" type="spike" x="432.083" y="640.407" width="13.9565" height="79.5782"/>
+  <object id="33" name="spike" type="spike" x="432.045" y="544.98" width="13.9633" height="14.0758"/>
+  <object id="35" name="spike" type="spike" x="481.966" y="545.002" width="14.0384" height="15.0278"/>
+  <object id="36" name="spike" type="spike" x="432.083" y="641.02" width="13.9565" height="78.9652"/>
   <object id="37" name="ground" type="ground" x="0.369645" y="768" width="495.619" height="1.00075"/>
   <object id="38" name="wall" type="wall" x="367.993" y="-0.565919" width="1.00018" height="240.542"/>
   <object id="39" name="wall" type="wall" x="319.006" y="-0.609552" width="1.00018" height="703.654"/>
@@ -172,5 +172,8 @@
   <object id="58" name="ground" type="ground" x="64.0069" y="448.016" width="223.996" height="0.934344"/>
   <object id="59" name="ground" type="ground" x="16.002" y="368.002" width="224.012" height="0.965594"/>
   <object id="60" name="ceiling" type="ceiling" x="16.009" y="399.004" width="222.952" height="0.978788"/>
+  <object id="61" name="ground" type="ground" x="481.933" y="544.037" width="14.0394" height="0.950037"/>
+  <object id="63" name="ground" type="ground" x="432.02" y="544.037" width="14.0394" height="0.950037"/>
+  <object id="64" name="ground" type="ground" x="432.04" y="640.043" width="14.0394" height="0.950037"/>
  </objectgroup>
 </map>

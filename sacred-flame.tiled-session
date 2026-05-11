@@ -136,11 +136,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 1.6205,
+            "scale": 4.4209,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 275.84078987966683,
-                "y": 652.8849120641778
+                "x": 317.58239272546314,
+                "y": 386.34667149223014
             }
         },
         "tiled/main2-left.tmx": {
@@ -174,11 +174,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1.1203,
+            "scale": 44.0487,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 568.5976970454342,
-                "y": 727.4837097206105
+                "x": 437.924388233932,
+                "y": 654.1850270269044
             }
         },
         "tiled/main3.tmx": {
@@ -204,11 +204,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 5.5,
-            "selectedLayer": 1,
+            "scale": 2.4274,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 35.63636363636364,
-                "y": 273.81818181818187
+                "x": 393.4250638543298,
+                "y": 174.67248908296943
             }
         },
         "tiled/main4-miniboss.tmx": {

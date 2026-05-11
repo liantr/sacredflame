@@ -32,8 +32,13 @@ function PlayState:init()
     self.transitioning = false
     self.transitionAlpha = 0
 
-    -- for respawning
-    self.saveData = nil
+    -- for respawning, default
+    self.saveData = {
+        spawnX = self.currentRoom.spawnX,
+        spawnY = self.currentRoom.spawnY,
+        room = self.currentRoom.name,
+        health = PLAYER_MAX_HEALTH
+    }
 
     -- define collision callbacks for our world; the World object expects four,
     -- one for different stages of any given collision

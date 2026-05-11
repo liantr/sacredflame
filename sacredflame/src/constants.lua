@@ -38,7 +38,7 @@ POWERUP_SIN_AMPLITUDE = 0.2
 -- DEBUG constants
 
 USE_ZOOM = true
-DEBUG = false --TODO set to false before submission
+DEBUG = true --TODO set to false before submission
 
 -- Box2D collision categories
 PLAYER_CATEGORY = 2

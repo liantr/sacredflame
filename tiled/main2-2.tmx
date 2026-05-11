@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.1" orientation="orthogonal" renderorder="right-down" width="40" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="81">
+<map version="1.10" tiledversion="1.12.1" orientation="orthogonal" renderorder="right-down" width="40" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="87">
  <editorsettings>
   <export target="../sacredflame/assets/graphics/map/main2.lua" format="lua"/>
  </editorsettings>
@@ -173,12 +173,12 @@
   <object id="63" name="wall" type="wall" x="496.015" y="289.024" width="0.981732" height="14.0304"/>
   <object id="64" name="wall" type="wall" x="447.012" y="241.033" width="0.981732" height="14.0304"/>
   <object id="65" name="wall" type="wall" x="496.012" y="193.009" width="0.981732" height="14.0304"/>
-  <object id="66" name="spike" type="spike" x="303.144" y="511.868" width="15.6978" height="48.4448"/>
-  <object id="67" name="spike" type="spike" x="353.112" y="592.763" width="15.8154" height="46.958"/>
-  <object id="68" name="spike" type="spikesarssss" x="352.579" y="431.787" width="16.0555" height="47.5387"/>
-  <object id="69" name="spike" type="spikesarssss" x="303.311" y="352.804" width="16.0555" height="47.5387"/>
-  <object id="70" name="spike" type="spikesarssss" x="353.49" y="273.336" width="16.0555" height="47.5387"/>
-  <object id="71" name="spike" type="spikesarssss" x="303.886" y="209.148" width="16.0555" height="47.5387"/>
+  <object id="66" name="spike" type="spike" x="302.956" y="512.963" width="15.1035" height="47.35"/>
+  <object id="67" name="spike" type="spike" x="353.112" y="592.957" width="15.8154" height="46.7636"/>
+  <object id="68" name="spike" type="spikesarssss" x="352.962" y="432.937" width="16.0555" height="46.3694"/>
+  <object id="69" name="spike" type="spikesarssss" x="302.911" y="353.017" width="16.0555" height="47.5387"/>
+  <object id="70" name="spike" type="spikesarssss" x="352.991" y="273.021" width="16.0555" height="47.8537"/>
+  <object id="71" name="spike" type="spikesarssss" x="302.951" y="209.01" width="16.0555" height="47.5387"/>
   <object id="73" name="wall" type="wall" x="193.045" y="0.0444292" width="3.12063" height="767.922"/>
   <object id="75" name="wall" type="wall" x="123.921" y="32.0076" width="3.12063" height="687.025"/>
   <object id="76" name="wall" type="wall" x="141.241" y="-0.0663497" width="1.80336" height="30.981"/>
@@ -186,5 +186,11 @@
   <object id="78" name="wall" type="wall" x="13.134" y="720.009" width="1.8164" height="47.9181"/>
   <object id="79" name="ceiling" type="ceiling" x="15.0069" y="719.024" width="112.041" height="1.02157"/>
   <object id="80" name="ground" type="ground" x="15.8089" y="768.003" width="177.319" height="1.02157"/>
+  <object id="81" name="ground" type="ground" x="302.944" y="511.97" width="15.0404" height="0.950037"/>
+  <object id="82" name="ground" type="ground" x="354.045" y="591.939" width="15.0404" height="0.950037"/>
+  <object id="83" name="ground" type="ground" x="353.999" y="431.938" width="15.0404" height="0.950037"/>
+  <object id="84" name="ground" type="ground" x="302.882" y="352.055" width="15.0404" height="0.950037"/>
+  <object id="85" name="ground" type="ground" x="354.043" y="272.02" width="15.0404" height="0.950037"/>
+  <object id="86" name="ground" type="ground" x="302.926" y="208.013" width="15.0404" height="0.950037"/>
  </objectgroup>
 </map>

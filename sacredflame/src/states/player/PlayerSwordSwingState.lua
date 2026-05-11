@@ -36,7 +36,7 @@ function PlayerSwordSwingState:update(dt)
         self.entity:changeState('idle')
     end
 
-    if love.keyboard.wasPressed('x') then
+    if love.keyboard.wasPressed('z') then
         self.entity:changeState('swing-sword')
     end
 

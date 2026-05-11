@@ -10,7 +10,7 @@ function Flame:init(def, world, player)
     self.fixture:setSensor(true) -- no collision
     self.body:setLinearDamping(5)
     self.body:setAngularDamping(5)
-
+    self.health = 1
     self.angle = 0
 end
 

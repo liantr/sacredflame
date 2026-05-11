@@ -80,13 +80,12 @@ function Entity:update(dt)
         self.currentAnimation:update(dt)
     end
 
-    if self.health == 0 and not self.dead then
+    if self.health <= 0 and not self.dead then
         local entityType = self.fixture:getUserData().type
         if entityType == 'enemy' then
             self:dropHealth()
         end
 
-        self:dropHealth()
         self:changeState('death')
     end
 end
