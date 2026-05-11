@@ -3,7 +3,6 @@ Player = Class{__includes=Entity}
 function Player:init(def, world, startX, startY)
     Entity.init(self, def, world, startX, startY)
     self.runSpeed = def.runSpeed
-    self.maxHealth = self.health
     self.timesDied = 0
     self.fixture:setUserData({type = 'player', entity = self})
 
@@ -54,4 +53,15 @@ function Player:grabWall()
                     self:changeState('wall-hold')
                 end
     end
+end
+
+function Player:render()
+    Entity.render(self)
+
+    local x, y = self.body:getPosition()
+    love.graphics.setColor(1, 1, 0.8, 0.12)
+    love.graphics.circle('fill', math.floor(x), math.floor(y), self.width * 4)
+    love.graphics.setColor(1, 1, 0.9, 0.05)
+    love.graphics.circle('fill', math.floor(x), math.floor(y), self.width * 7)
+    love.graphics.setColor(1, 1, 1, 1)
 end

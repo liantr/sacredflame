@@ -6,9 +6,9 @@ end
 
 function BossIdleState:processAI(params, dt)
     local player = params.player
-    local distFromPlayer = getDistanceFromPlayer(self.entity, player)
+    local distFromPlayer = getXDistanceFromPlayer(self.entity, player)
 
-   if math.abs(distFromPlayer) < ENEMY_CHASE_MIN_DISTANCE and self.entity.canAttack then
+   if math.abs(distFromPlayer) < ENEMY_DETECTION_RANGE and self.entity.canAttack then
         if distFromPlayer > 0 then
             self.entity.direction = 'right'
         else

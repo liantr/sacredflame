@@ -7,7 +7,7 @@ end
 
 function BossChaseState:processAI(params, dt)
     if self.room.player then
-        local distFromPlayer = getDistanceFromPlayer(self.entity, self.room.player)
+        local distFromPlayer = getXDistanceFromPlayer(self.entity, self.room.player)
 
         if math.abs(distFromPlayer) < self.entity.attackDistance and self.entity.canAttack then
             -- enemy within attack range
@@ -16,7 +16,7 @@ function BossChaseState:processAI(params, dt)
             print("Boss [chase] -> [" ..attack .."]")
 
             self.entity:changeState(attack, {animation = attack, player = self.player})
-        elseif math.abs(distFromPlayer) > ENEMY_CHASE_MIN_DISTANCE then
+        elseif math.abs(distFromPlayer) > ENEMY_DETECTION_RANGE then
             print("Boss [appear] -> [disappear]")
             self.entity:changeState('disappear')
         else

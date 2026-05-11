@@ -18,7 +18,7 @@ function BossAttackState:enter(params)
     self.entity.body:setLinearVelocity(0, evy)
 
     local ex, _ = self.entity.body:getPosition()
-    local px, _ = self.player:getPosition()
+    local px, _ = self.player.body:getPosition()
     self.attack2Direction = px - ex > 0 and 'right' or 'left'
 
     self.entity:changeAnimation(animation)
