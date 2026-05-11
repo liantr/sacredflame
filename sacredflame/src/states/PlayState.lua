@@ -18,7 +18,7 @@ function PlayState:init()
     self:spawnEntities()
 
     self.torchesLit = 0
-    self.totalTorches = 12
+    self.totalTorches = 5
 
     self.HUD = HUD(self)
 

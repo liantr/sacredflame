@@ -40,38 +40,38 @@ ROOM_DEFS= {
                 spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 11.5
             },
         },
-        -- enemies = {
-        --     {
-        --         type = 'dagger-bandit',
-        --         spawnX = VIRTUAL_WIDTH-TILE_SIZE * 7,
-        --         spawnY = TILE_SIZE * 4
-        --     },
-        --     {
-        --         type = 'dagger-bandit',
-        --         spawnX = TILE_SIZE * 20,
-        --         spawnY = TILE_SIZE * 6
-        --     },
-        --     {
-        --         type = 'dagger-bandit',
-        --         spawnX = TILE_SIZE * 22,
-        --         spawnY = TILE_SIZE * 6
-        --     },
-        --     {
-        --         type = 'dagger-bandit',
-        --         spawnX = TILE_SIZE * 15,
-        --         spawnY = TILE_SIZE * 10
-        --     },
-        --     {
-        --         type = 'archer-bandit',
-        --         spawnX = TILE_SIZE * 18,
-        --         spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3
-        --     },
-        --     {
-        --         type = 'archer-bandit',
-        --         spawnX = TILE_SIZE*4,
-        --         spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3
-        --     }
-        -- }
+        enemies = {
+            {
+                type = 'dagger-bandit',
+                spawnX = VIRTUAL_WIDTH-TILE_SIZE * 7,
+                spawnY = TILE_SIZE * 4
+            },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE * 20,
+                spawnY = TILE_SIZE * 6
+            },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE * 22,
+                spawnY = TILE_SIZE * 6
+            },
+            {
+                type = 'dagger-bandit',
+                spawnX = TILE_SIZE * 15,
+                spawnY = TILE_SIZE * 10
+            },
+            {
+                type = 'archer-bandit',
+                spawnX = TILE_SIZE * 18,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3
+            },
+            {
+                type = 'archer-bandit',
+                spawnX = TILE_SIZE*4,
+                spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3
+            }
+        }
     },
     ['main2'] = {
         map = 'assets/graphics/map/main2.lua',
@@ -81,7 +81,7 @@ ROOM_DEFS= {
                 { room = 'main1', gapX = TILE_SIZE * 28, spawnX = VIRTUAL_WIDTH - TILE_SIZE * 10, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 }
             },
             south = {
-                { room = 'main3', gapX = TILE_SIZE * 18, spawnX = TILE_SIZE * 21, spawnY = 1}
+                { room = 'main3', gapX = TILE_SIZE * 19, spawnX = TILE_SIZE * 20, spawnY = 1}
             },
             east = nil,
             west = nil
@@ -104,10 +104,10 @@ ROOM_DEFS= {
         map = 'assets/graphics/map/main3.lua',
         connectedRooms = {
             north = {
-                { room = 'main2', gapX = TILE_SIZE * 18, spawnX = TILE_SIZE * 20, spawnY = TILE_SIZE * 47 }
+                { room = 'main2', gapX = TILE_SIZE * 20, spawnX = TILE_SIZE * 21, spawnY = TILE_SIZE * 47 }
             },
             south = {
-                { room = 'main4', gapX = TILE_SIZE * 35, spawnX = TILE_SIZE * 36, spawnY = 1 }
+                { room = 'main4', gapX = TILE_SIZE * 34, spawnX = TILE_SIZE * 37, spawnY = 1 }
             }
         },
         objects = {
@@ -128,10 +128,11 @@ ROOM_DEFS= {
         map = 'assets/graphics/map/main4.lua',
         connectedRooms = {
             north = {
-                { room = 'main3', gapX = TILE_SIZE * 35, spawnX = TILE_SIZE * 36, spawnY = TILE_SIZE * 49 }
+                { room = 'main3', gapX = TILE_SIZE * 36, spawnX = TILE_SIZE * 36, spawnY = TILE_SIZE * 49 }
             },
-            -- south = {
-            -- }
+            south = {
+                { room = 'boss', gapX = TILE_SIZE * 2, spawnX = TILE_SIZE * 3, spawnY = 1 }
+            }
         },
         objects = {
             {
@@ -141,5 +142,20 @@ ROOM_DEFS= {
             }
         },
         enemies = {}
+    },
+    ['boss'] = {
+        map = 'assets/graphics/map/boss.lua',
+        connectedRooms = {
+            north = {
+                { room = 'main4', gapX = TILE_SIZE * 2, spawnX = TILE_SIZE * 3, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 }
+            }
+        },
+        enemies = {
+            {
+                 type = 'boss',
+                 spawnX = VIRTUAL_WIDTH / 2,
+                 spawnY = VIRTUAL_HEIGHT / 2
+            },
+        }
     }
 }

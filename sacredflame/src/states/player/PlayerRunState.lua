@@ -10,5 +10,9 @@ end
 
 
 function PlayerRunState:update(dt)
+    if not love.keyboard.isDown('lshift') then
+        self.player:changeState('walk')
+    end
+    
     PlayerWalkState.update(self, dt, true)
 end

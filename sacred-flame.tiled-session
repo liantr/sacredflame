@@ -82,18 +82,21 @@
             "scaleInEditor": 1
         },
         "tiled/boss.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 8,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 181.5,
-                "y": 82
+                "x": 376.5,
+                "y": 177.75
             }
         },
         "tiled/boss.tmx#beneath": {
             "scaleInDock": 1
         },
         "tiled/boss.tmx#dark": {
-            "scaleInDock": 1
+            "scaleInDock": 1.5
         },
         "tiled/entry.tmx": {
             "expandedObjectLayers": [
@@ -133,11 +136,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 1.5,
-            "selectedLayer": 1,
+            "scale": 1.6205,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 359.66666666666663,
-                "y": 548.6666666666666
+                "x": 275.84078987966683,
+                "y": 652.8849120641778
             }
         },
         "tiled/main2-left.tmx": {
@@ -171,11 +174,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1,
-            "selectedLayer": 1,
+            "scale": 1.1203,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 321.5,
-                "y": 465
+                "x": 568.5976970454342,
+                "y": 727.4837097206105
             }
         },
         "tiled/main3.tmx": {
@@ -195,6 +198,17 @@
             "viewCenter": {
                 "x": 265.25,
                 "y": 118
+            }
+        },
+        "tiled/main4-3.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 5.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 35.63636363636364,
+                "y": 273.81818181818187
             }
         },
         "tiled/main4-miniboss.tmx": {
@@ -255,15 +269,15 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
+        "tiled/main2-2.tmx",
+        "tiled/entry.tmx",
         "tiled/main3-3.tmx",
         "tiled/main4.tmx",
         "tiled/main1.tmx",
-        "tiled/main2-2.tmx",
         "tiled/main2-left.tmx",
         "tiled/main3-2.tmx",
         "tiled/main2.tmx",
         "tiled/main3.tmx",
-        "tiled/entry.tmx",
         "tiled/map.tmx",
         "tiled/main4-miniboss.tmx",
         "tiled/high temple.tsx"

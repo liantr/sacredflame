@@ -149,8 +149,8 @@
   <object id="35" name="spike" type="spike" x="481.966" y="543.505" width="13.5815" height="16.525"/>
   <object id="36" name="spike" type="spike" x="432.083" y="640.407" width="13.9565" height="79.5782"/>
   <object id="37" name="ground" type="ground" x="0.369645" y="768" width="495.619" height="1.00075"/>
-  <object id="38" name="wall" type="wall" x="367.993" y="-0.0114601" width="1.00018" height="239.988"/>
-  <object id="39" name="wall" type="wall" x="319.006" y="0.000353261" width="1.00018" height="703.044"/>
+  <object id="38" name="wall" type="wall" x="367.993" y="-0.565919" width="1.00018" height="240.542"/>
+  <object id="39" name="wall" type="wall" x="319.006" y="-0.609552" width="1.00018" height="703.654"/>
   <object id="40" name="wall_not_platformable" type="wall_not_platformable" x="14.9999" y="31.9605" width="1.00018" height="736.015"/>
   <object id="41" name="ceiling" type="ceiling" x="15.9885" y="30.9996" width="271.95" height="1.00075"/>
   <object id="42" name="ground" type="ground" x="368.001" y="271.993" width="32.0309" height="1.00075"/>
