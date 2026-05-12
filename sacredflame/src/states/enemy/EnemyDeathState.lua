@@ -6,16 +6,21 @@ function EnemyDeathState:init(entity)
 end
 
 function EnemyDeathState:enter(params)
+    local playerDirection = self.entity.room.player.direction
+
+    self.entity.direction = playerDirection == 'right' and 'left' or 'right'
     self.entity.body:setActive(false)
     self.entity:changeAnimation('death')
 
     if self.entity.fixture:getUserData().type == 'boss' then
+        self.entity.dead = true
+
         Timer.after(10, function()
             gStateStack:push(FadeInState({
                 r = 0, g = 0, b = 0
             }, 1,
             function()
-                
+                gStateStack:pop() -- pop play state
                 gStateStack:push(VictoryState())
                 gStateStack:push(FadeOutState({
                     r = 0, g = 0, b = 0

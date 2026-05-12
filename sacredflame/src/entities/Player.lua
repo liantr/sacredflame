@@ -59,9 +59,7 @@ function Player:render()
     Entity.render(self)
 
     local x, y = self.body:getPosition()
-    love.graphics.setColor(1, 1, 0.8, 0.12)
-    love.graphics.circle('fill', math.floor(x), math.floor(y), self.width * 4)
     love.graphics.setColor(1, 1, 0.9, 0.05)
-    love.graphics.circle('fill', math.floor(x), math.floor(y), self.width * 7)
+    love.graphics.circle('fill', math.floor(x), math.floor(y), self.width * 4)
     love.graphics.setColor(1, 1, 1, 1)
 end
