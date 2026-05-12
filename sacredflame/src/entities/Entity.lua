@@ -91,13 +91,13 @@ function Entity:update(dt)
 end
 
 function Entity:dropHealth()
-    -- regular enemies have a 20% chance to drop +1 health on death
+    -- regular enemies have a 4% chance to drop +1 health on death
     local chanceToDropHealth = math.random(1,25)
     if chanceToDropHealth == 1 and
-    self.room.player.health < PLAYER_MAX_HEALTH and
-    not self.droppedHealth then
-        self.droppedHealth = true
-        self.room.player.health = self.room.player.health + 1
+        self.room.player.health < PLAYER_MAX_HEALTH and
+        not self.droppedHealth then
+            self.droppedHealth = true
+            self.room.player:gainHealthFromEnemy()
     end
 end
 

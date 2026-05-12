@@ -17,7 +17,21 @@ function Player:init(def, world, startX, startY)
     self.touchingWall = false
     self.wallX = nil
 
-     self.dashing = false
+    self.dashing = false
+    self:createParticleSystem()
+end
+
+function Player:update(dt)
+    Entity.update(self, dt)
+    local x, y = self.body:getPosition()
+    self.particleSystem:setPosition(x, y)
+    self.particleSystem:update(dt)
+end
+
+function Player:gainHealthFromEnemy()
+    self.healthRestored = true
+    self:emitParticles()
+    self.health = self.health + 1
 end
 
 --[[
@@ -55,10 +69,36 @@ function Player:grabWall()
     end
 end
 
+function Player:createParticleSystem()
+    self.particleSystem = love.graphics.newParticleSystem(gTextures['particle'], 60)
+    self.particleSystem:setParticleLifetime(0.3, 0.6)
+    self.particleSystem:setRadialAcceleration(-20, 20)
+    self.particleSystem:setLinearAcceleration(-20, -60, 20, -20)
+    self.particleSystem:setEmissionArea('borderellipse', self.width/2, self.height/2)
+    self.particleSystem:setEmissionRate(20)
+    self.particleSystem:setSizes(0.5, 0)
+    self.particleSystem:setColors(1,1,1,1)
+end
+
+function Player:emitParticles()
+    -- emits particles while powered up
+    self.particleSystem:start()
+    Timer.after(3, function()
+        self.particleSystem:stop()
+        self.healthRestored = false
+    end)
+end
+
+
 function Player:render()
     Entity.render(self)
 
     local x, y = self.body:getPosition()
+
+    if self.healthRestored then
+        love.graphics.draw(self.particleSystem)
+    end
+    
     love.graphics.setColor(1, 1, 0.9, 0.05)
     love.graphics.circle('fill', math.floor(x), math.floor(y), self.width * 4)
     love.graphics.setColor(1, 1, 1, 1)

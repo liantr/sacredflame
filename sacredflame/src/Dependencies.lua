@@ -139,6 +139,8 @@ gTextures = {
     ['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
     ['boss-disappear'] = love.graphics.newImage('assets/graphics/characters/boss/boss-disappear.png'),
     ['boss-appear'] = love.graphics.newImage('assets/graphics/characters/boss/boss-appear.png'),
+
+    ['particle'] = love.graphics.newImage('assets/graphics/health/particle.png'),
 }
 
 gFrames = {
