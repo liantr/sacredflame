@@ -47,6 +47,12 @@ function PlayState:init()
         types[a:getUserData().type] = true
         types[b:getUserData().type] = true
 
+         if types['wall'] and types['boss'] then
+            local bossFixture = a:getUserData().type == 'boss' and a or b
+            local boss = bossFixture:getUserData().entity
+            boss:changeState('disappear')
+        end
+
         if types['player'] and types['ground'] then
             local playerFixture = a:getUserData().type == 'player' and a or b
             local groundFixture = a:getUserData().type == 'ground' and a or b

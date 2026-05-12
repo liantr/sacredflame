@@ -16,7 +16,7 @@ function BossAppearState:enter()
         local newEx = playerSide == 'right' and px + TILE_SIZE*4 or px - TILE_SIZE*4
 
         -- must appear within the room bounds
-        newEx = math.max(0, math.min(roomWidth - self.entity.width, newEx))
+        newEx = math.max(TILE_SIZE * 2, math.min(roomWidth - self.entity.width - TILE_SIZE * 2, newEx))
         self.entity.body:setPosition(newEx, ey)
     end
     self.entity:changeAnimation('appear')

@@ -73,7 +73,7 @@ function EnemyAttackState:render()
         love.graphics.setColor(1, 0, 1, 1)
         local hitBoxEntries = getHitBoxes(self)
 
-        if hitBoxEntries then
+        if hitBoxEntries and #hitBoxEntries > 0 then
             for _, hitBoxEntry in pairs(hitBoxEntries) do
                 if hitBoxEntry and hitBoxEntry.hitBox then
                     local hitBox = hitBoxEntry.hitBox

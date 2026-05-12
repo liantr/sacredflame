@@ -7,6 +7,7 @@ end
 
 function BossAttackState:enter(params)
     self.hitFrames = {}
+    self.hitBoxes = createEntityHitBoxes(self.entity)
     self.attack2TimerStarted = false
 
     local animation = 'attack1' -- default
@@ -26,7 +27,7 @@ function BossAttackState:enter(params)
     self.entity.currentAnimation:refresh()
 end
 
-function BossAttackState:processAI(params, dt)
+function BossAttackState:update(dt)
     local _, vy = self.entity.body:getLinearVelocity()
     self.hitBoxes = createEntityHitBoxes(self.entity)
     local hitBoxEntries = getHitBoxes(self)
@@ -44,6 +45,12 @@ function BossAttackState:processAI(params, dt)
     if self.entity.currentAnimation and self.entity.currentAnimation.name =='attack2' then
         self.entity.direction = self.attack2Direction
         self.entity.body:setLinearVelocity(self.attack2Direction == 'right' and 200 or -200, vy)
+
+        if self.entity.currentAnimation.timesPlayed > 0 then
+            currentAnimation.timesPlayed = 0
+            self.hitFrames = {}
+        end
+
         if not self.attack2TimerStarted then
             self.attack2TimerStarted = true
             Timer.after(self.attack2Duration, function ()
