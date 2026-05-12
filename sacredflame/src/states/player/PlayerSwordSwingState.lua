@@ -35,11 +35,6 @@ function PlayerSwordSwingState:update(dt)
         self.entity.currentAnimation.timesPlayed = 0
         self.entity:changeState('idle')
     end
-
-    if love.keyboard.wasPressed('z') then
-        self.entity:changeState('swing-sword')
-    end
-
 end
 
 function PlayerSwordSwingState:render()

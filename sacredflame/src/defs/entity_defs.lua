@@ -466,7 +466,7 @@ ENTITY_DEFS = {
         category = BOSS_CATEGORY,
         chaseSpeed = 100,
         attackDistance = TILE_SIZE * 5,
-        health = 22,
+        health = 30,
         hurtBoxes = {
             ['idle'] = {
                 {

@@ -241,7 +241,7 @@ gTextures['boss-attack2']:setFilter('nearest', 'nearest')
 gTextures['boss-attack3']:setFilter('nearest', 'nearest')
 
 gSounds = {
-    ['music'] = love.audio.newSource('assets/sounds/temple-background.wav', 'static'),
+    ['temple'] = love.audio.newSource('assets/sounds/temple-background.wav', 'static'),
     ['depths'] = love.audio.newSource('assets/sounds/depths-background.wav', 'static'),
     ['boss'] = love.audio.newSource('assets/sounds/boss-battle.wav', 'static'),
     ['hit-player'] = love.audio.newSource('assets/sounds/hit_player.wav', 'static'),

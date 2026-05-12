@@ -39,9 +39,6 @@ function love.load()
     gStateStack = StateStack()
     gStateStack:push(StartState())
 
-    gSounds['music']:setLooping(true)
-    gSounds['music']:play()
-
     love.keyboard.keysPressed = {}
 end
 

@@ -13,6 +13,7 @@ function Room:init(def, world, playState, name)
     self.player = nil
     self.flame = nil
     self.name = name
+    self.music = def.music
 
     self.def = def
     self.enemies = {}
@@ -236,7 +237,7 @@ function Room:renderDarkness()
     end)
 
     love.graphics.setStencilTest('notequal', 1)
-    love.graphics.setColor(0, 0, 0, 0.7)
+    love.graphics.setColor(0, 0, 0, 0.4) -- TODO 0..07 TODO
 
     local w = self.map.width * TILE_SIZE
     local h = self.map.height * TILE_SIZE

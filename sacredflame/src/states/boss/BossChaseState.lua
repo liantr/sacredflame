@@ -15,7 +15,7 @@ function BossChaseState:processAI(params, dt)
             local attack = attackOptions[math.random(#attackOptions)]
             print("Boss [chase] -> [" ..attack .."]")
 
-            self.entity:changeState(attack, {animation = attack, player = self.player})
+            self.entity:changeState(attack, {animation = attack, player = self.room.player})
         elseif math.abs(distFromPlayer) > ENEMY_DETECTION_RANGE then
             print("Boss [appear] -> [disappear]")
             self.entity:changeState('disappear')

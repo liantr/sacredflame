@@ -13,6 +13,8 @@ function PlayState:init()
 
     -- initialize the current room to entry
     self.currentRoom = self.map['entry']
+    gSounds[self.currentRoom.music]:play()
+    gSounds[self.currentRoom.music]:setLooping(true)
     self.currentRoom:enter()
 
     self:spawnEntities()
@@ -297,9 +299,17 @@ end
 
 function PlayState:moveTo(connection, verticalDirection)
     self.transitioning = true
+
+    local previousRoomMusic = self.currentRoom.music
     Timer.tween(0.5, {[self] = {transitionAlpha = 1}}):finish(function()
         self.currentRoom:exit()
         self.currentRoom = self.map[connection.room]
+        local newRoomMusic = self.currentRoom.music
+        if self.currentRoom.music ~= previousRoomMusic then
+            gSounds[previousRoomMusic]:stop()
+            gSounds[newRoomMusic]:play()
+            gSounds[newRoomMusic]:setLooping(true)
+        end
         self.currentRoom:enter()
 
         self.player.body:setPosition(connection.spawnX, connection.spawnY)

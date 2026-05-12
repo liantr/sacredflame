@@ -26,16 +26,19 @@ end
 function BossAppearState:processAI(params, dt)
     local currAnimation = self.entity.currentAnimation
     if currAnimation and currAnimation.timesPlayed > 0 then
-        local nextStateOptions = {'idle', 'chase', 'disappear', 'attack1', 'attack2', 'attack3'}
-        local nextState = nextStateOptions[math.random(#nextStateOptions)]
 
-        print("Boss [appear] -> [" ..nextState .."]")
-        if (nextState == 'attack1' or nextState == 'attack2' or nextState == 'attack3') and self.room.player then
-            self.entity:changeState(nextState, {player = self.room.player, animation = nextState})
-        elseif nextState =='chase' and self.room.player then
-            self.entity:changeState(nextState, {player = self.room.player})
+        -- from here either chase or immediately attack
+        if math.random(2) == 1 then
+            print("Boss [appear] -> [chase]")
+
+            self.entity:changeState('chase', {player = self.room.player})
         else
-            self.entity:changeState(nextState)
+            local attackOptions = { 'attack1', 'attack2', 'attack3' }
+            local attack = attackOptions[math.random(#attackOptions)]
+            print("Boss [appear] -> [" ..attack .."]")
+
+            self.entity:changeState(attack, {player = self.room.player, animation = attack})
         end
+
     end
 end

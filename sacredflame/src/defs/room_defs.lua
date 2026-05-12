@@ -1,6 +1,7 @@
 ROOM_DEFS= {
     ['entry'] = {
         map = 'assets/graphics/map/entry.lua',
+        music = 'temple',
         background = 'ruinedTemple',
         spawnX = TILE_SIZE * 3,
         spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1,
@@ -22,6 +23,7 @@ ROOM_DEFS= {
     },
     ['main1'] = {
         map = 'assets/graphics/map/main1.lua',
+        music = 'temple',
         connectedRooms = {
             north = {
                 { room = 'entry', gapX = TILE_SIZE * 19,  spawnX = TILE_SIZE * 21, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 2.75 - 1}
@@ -75,6 +77,7 @@ ROOM_DEFS= {
     },
     ['main2'] = {
         map = 'assets/graphics/map/main2.lua',
+        music = 'temple',
         connectedRooms = {
             north = {
                 { room = 'main1', gapX = TILE_SIZE * 9, spawnX = TILE_SIZE * 10, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 },
@@ -102,6 +105,7 @@ ROOM_DEFS= {
     },
     ['main3'] = {
         map = 'assets/graphics/map/main3.lua',
+        music = 'depths',
         connectedRooms = {
             north = {
                 { room = 'main2', gapX = TILE_SIZE * 20, spawnX = TILE_SIZE * 21, spawnY = TILE_SIZE * 47 }
@@ -126,6 +130,7 @@ ROOM_DEFS= {
     },
     ['main4'] = {
         map = 'assets/graphics/map/main4.lua',
+        music = 'depths',
         connectedRooms = {
             north = {
                 { room = 'main3', gapX = TILE_SIZE * 36, spawnX = TILE_SIZE * 36, spawnY = TILE_SIZE * 49 }
@@ -145,6 +150,7 @@ ROOM_DEFS= {
     },
     ['boss'] = {
         map = 'assets/graphics/map/boss.lua',
+        music = 'depths',
         connectedRooms = {
             north = {
                 { room = 'main4', gapX = TILE_SIZE * 2, spawnX = TILE_SIZE * 3, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 }
