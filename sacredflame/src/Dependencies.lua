@@ -30,6 +30,7 @@ require 'src.states.StateStack'
 require 'src.objects.Object'
 require 'src.objects.Powerup'
 require 'src.objects.Torch'
+require 'src.objects.Door'
 require 'src.VolleyAttack'
 require 'src.HitBox'
 require 'src.HUD'
@@ -79,6 +80,9 @@ require 'src.states.player.PlayerWallHoldState'
 require 'src.states.objects.TorchUnlitState'
 require 'src.states.objects.TorchLitState'
 
+require 'src.states.objects.DoorClosedState'
+require 'src.states.objects.DoorOpenState'
+
 gTextures = {
     -- backgrounds
     ['templeBg1'] = love.graphics.newImage('assets/graphics/ruinedTemple/background.png'),
@@ -93,6 +97,7 @@ gTextures = {
     -- objects
     ['torches'] = love.graphics.newImage('assets/graphics/objects/torches.png'),
     ['small-torches'] = love.graphics.newImage('assets/graphics/objects/small-torches.png'),
+    ['door'] = love.graphics.newImage('assets/graphics/objects/door.png'),
     ['wall-hold'] = love.graphics.newImage('assets/graphics/powerups/wall-hold.png'),
     ['double-jump'] = love.graphics.newImage('assets/graphics/powerups/double-jump.png'),
 
@@ -152,6 +157,7 @@ gFrames = {
         TILE_SIZE, TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2, TILE_SIZE, 0),
     ['double-jump'] = GenerateQuads(gTextures['double-jump'], TILE_SIZE*1.5, TILE_SIZE*1.5),
     ['wall-hold'] = GenerateQuads(gTextures['wall-hold'], TILE_SIZE*1.5, TILE_SIZE*1.5),
+    ['door'] = GenerateQuads(gTextures['door'], TILE_SIZE*3, TILE_SIZE*3),
 
     ['player-health-box'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
     TILE_SIZE, TILE_SIZE+1, TILE_SIZE*4, TILE_SIZE+1,0,0),

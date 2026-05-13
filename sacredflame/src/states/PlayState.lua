@@ -20,7 +20,7 @@ function PlayState:init()
     self:spawnEntities()
 
     self.torchesLit = 0
-    self.totalTorches = 5
+    self.totalTorches = 6
 
     self.HUD = HUD(self)
 
@@ -56,15 +56,12 @@ function PlayState:init()
         end
 
         if types['player'] and types['ground'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
-            local groundFixture = a:getUserData().type == 'ground' and a or b
             self.player.canJump = true
             self.player.canHoldWall = false
             self.player.timesJumped = 0
         end
 
         if types['player'] and types['wall'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
             local wallFixture = a:getUserData().type == 'wall' and a or b
 
             local wallShape = wallFixture:getShape()
@@ -78,15 +75,20 @@ function PlayState:init()
         end
 
         if types['player'] and types['torch'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
             local torchFixture = a:getUserData().type == 'torch' and a or b
 
             local torch = torchFixture:getUserData().entity
             torch.playerInRange = true
         end
 
+        if types['player'] and types['door'] then
+            local doorFixture = a:getUserData().type == 'door' and a or b
+
+            local door = doorFixture:getUserData().entity
+            door.playerInRange = true
+        end
+
         if types['player'] and types['powerup'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
             local powerupFixture = a:getUserData().type == 'powerup' and a or b
 
             local powerup = powerupFixture:getUserData().object
@@ -118,7 +120,6 @@ function PlayState:init()
 
         if types['player'] and types['spike'] then
             local playerFixture = a:getUserData().type == 'player' and a or b
-            local spikeFixture = a:getUserData().type == 'spike' and a or b
 
             -- player takes damage and goes invulnerable for a short period
             if not self.player.invulnerable then
@@ -129,7 +130,6 @@ function PlayState:init()
         end
 
         if types['enemy'] and types['wall'] then
-            local walLFixture = a:getUserData().type == 'wall' and a or b
             local enemyFixture = a:getUserData().type == 'enemy' and a or b
             local entity = enemyFixture:getUserData().entity
             entity:reverseDirection()
@@ -143,11 +143,17 @@ function PlayState:init()
         types[b:getUserData().type] = true
 
         if types['player'] and types['torch'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
             local torchFixture = a:getUserData().type == 'torch' and a or b
 
             local torch = torchFixture:getUserData().entity
             torch.playerInRange = false
+        end
+
+        if types['player'] and types['door'] then
+            local doorFixture = a:getUserData().type == 'door' and a or b
+
+            local door = doorFixture:getUserData().entity
+            door.playerInRange = false
         end
 
         if types['player'] and types['wall'] then
@@ -171,6 +177,15 @@ function PlayState:init()
 
         if types['player'] and types['torch'] then
             coll:setEnabled(false)
+        end
+
+        if types['player'] and types['door'] then
+            local doorFixture = a:getUserData().type == 'door' and a or b
+            local door = doorFixture:getUserData().entity
+
+            if door.open then
+                coll:setEnabled(false)
+            end
         end
 
         if types['player'] and types['wall'] then

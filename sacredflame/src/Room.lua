@@ -115,6 +115,13 @@ function Room:spawnObjects()
                 object:changeState('unlit')
             elseif objectDef.type == 'powerup' then
                 object = Powerup(objectDef, self.world, roomObjectDef.spawnX, roomObjectDef.spawnY, self)
+            elseif objectDef.type == 'door' then
+                object = Door(objectDef, self.world, roomObjectDef.spawnX, roomObjectDef.spawnY, self)
+                object.stateMachine = StateMachine {
+                    ['closed'] = function() return DoorClosedState(object) end,
+                    ['open'] = function() return DoorOpenState(object) end
+                }
+                object:changeState('closed')
             end
 
             table.insert(self.objects, object)
