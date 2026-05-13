@@ -65,21 +65,7 @@ function Room:spawnEnemies()
         for _, roomDefEnemy in pairs(self.def.enemies) do
             local enemyDef = ENTITY_DEFS[roomDefEnemy.type]
             local enemy
-            if roomDefEnemy.type == 'boss' then
-                enemy = Boss(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
-                enemy.stateMachine = StateMachine {
-                    ['idle'] = function() return BossIdleState(enemy) end,
-                    ['walk'] = function() return BossWalkState(enemy) end,
-                    ['chase'] = function() return BossChaseState(enemy, self) end,
-                    ['attack1'] = function() return BossAttackState(enemy) end,
-                    ['attack2'] = function() return BossAttackState(enemy) end,
-                    ['attack3'] = function() return BossAttackState(enemy) end,
-                    ['appear'] = function() return BossAppearState(enemy, self) end,
-                    ['disappear'] = function() return BossDisappearState(enemy) end,
-                    ['death'] = function() return EnemyDeathState(enemy) end
-                }
-                enemy:changeState('appear')
-            else
+            if roomDefEnemy.type ~= 'boss' then
                 enemy = Entity(enemyDef, self.world, roomDefEnemy.spawnX, roomDefEnemy.spawnY, self)
                 enemy.stateMachine = StateMachine {
                     ['idle'] = function() return EntityIdleState(enemy) end,
@@ -88,16 +74,33 @@ function Room:spawnEnemies()
                     ['attack'] = function() return EnemyAttackState(enemy) end,
                     ['death'] = function() return EnemyDeathState(enemy) end
                 }
+                enemy.fixture:setUserData({type='enemy', entity = enemy})
                 enemy:changeState('idle')
             end
-
-
-            if roomDefEnemy.type ~= 'boss' then
-            enemy.fixture:setUserData({type='enemy', entity = enemy})
-            end
-
             table.insert(self.enemies, enemy)
         end
+    end
+end
+
+function Room:spawnBoss()
+    if self.def.boss then
+        local bossDef = ENTITY_DEFS['boss']
+        local boss = Boss(bossDef, self.world, self.def.boss.spawnX, self.def.boss.spawnY, self)
+        boss.stateMachine = StateMachine {
+            ['idle'] = function() return BossIdleState(boss) end,
+            ['walk'] = function() return BossWalkState(boss) end,
+            ['chase'] = function() return BossChaseState(boss, self) end,
+            ['attack1'] = function() return BossAttackState(boss) end,
+            ['attack2'] = function() return BossAttackState(boss) end,
+            ['attack3'] = function() return BossAttackState(boss) end,
+            ['appear'] = function() return BossAppearState(boss, self) end,
+            ['disappear'] = function() return BossDisappearState(boss) end,
+            ['death'] = function() return EnemyDeathState(boss) end
+        }
+        boss.fixture:setUserData({type='boss', entity = boss})
+        boss.body:setActive(true)
+        boss:changeState('appear')
+        table.insert(self.enemies, boss)
     end
 end
 

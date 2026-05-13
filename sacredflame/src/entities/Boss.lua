@@ -4,7 +4,11 @@ function Boss:init(def, world, startX, startY, room)
     Entity.init(self, def, world, startX, startY, room)
     self.hurtBoxes = self:buildHurtBoxes(def)
     self.currentHurtBox = nil
-    self.fixture:setUserData({type='boss', entity = self})
+    self.room = room
+    self.playState = self.room.playState
+
+    local torchesLit = self.playState.torchesLit
+    self.health = self.health - (torchesLit * 2)
 end
 
 --[[

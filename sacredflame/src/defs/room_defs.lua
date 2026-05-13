@@ -233,12 +233,11 @@ ROOM_DEFS= {
                 { room = 'main4', gapX = TILE_SIZE * 2, spawnX = TILE_SIZE * 3, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 }
             }
         },
-        enemies = {
-            {
+        enemies = {},
+        boss = {
                  type = 'boss',
                  spawnX = VIRTUAL_WIDTH / 2,
                  spawnY = VIRTUAL_HEIGHT / 2
-            },
         }
     }
 }

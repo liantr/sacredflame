@@ -115,8 +115,6 @@ function PlayState:init()
         end
 
         if types['player'] and types['spike'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
-
             -- player takes damage and goes invulnerable for a short period
             damagePlayer(self.player)
         end
@@ -193,6 +191,8 @@ function PlayState:init()
     self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
     self.flameAvailable = true
+
+    self.bossBattleInitiated = false
 end
 
 function PlayState:spawnEntities()
@@ -262,6 +262,15 @@ function PlayState:update(dt)
         end
 
         self.torchesLit = torchesLit
+    end
+
+    if self.currentRoom.name == 'boss' and not self.bossBattleInitiated then
+        local px, _ = self.player.body:getPosition()
+
+        if px > (self.currentRoom.map.width * TILE_SIZE) / 2 - TILE_SIZE * 3 then
+            self.bossBattleInitiated = true
+            gStateStack:push(BossBattleState(self))
+        end
     end
 
     if love.keyboard.wasPressed('p') and gStateStack.name ~= 'start' then
@@ -376,8 +385,6 @@ function PlayState:getRoomConnection(connections)
     local overlappingConnection = nil
     local px, _ = self.player.body:getPosition()
     for _, connection in ipairs(connections) do
-        print('px_l:', px - self.player.width/2, 'px_r:', px + self.player.width/2, 'gapX:', connection.gapX, 'right edge:', connection.gapX + ROOM_CONNECTION_SIZE)
-
         if px >= connection.gapX and px <= connection.gapX + ROOM_CONNECTION_SIZE then
             overlappingConnection = connection
             break
@@ -389,9 +396,27 @@ end
 
 function PlayState:reSpawn()
     if self.saveData then
+
+        if self.bossBattleInitiated then
+            gStateStack:pop()
+            gSounds['boss']:stop()
+            self.bossBattleInitiated = false
+        end
+
+        for _, room in pairs(self.map) do
+            for _, enemy in pairs(room.enemies) do
+                enemy.body:destroy()
+            end
+            room.enemies = {}
+        end
+
+        gSounds[self.currentRoom.music]:stop()
         self.currentRoom:exit()
+
         self.currentRoom = self.map[self.saveData.room]
         self.currentRoom:enter()
+        gSounds[self.currentRoom.music]:play()
+        gSounds[self.currentRoom.music]:setLooping(true)
 
         self.player.health = self.saveData.health
         self.player.dead = false

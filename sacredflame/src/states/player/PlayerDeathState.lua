@@ -11,7 +11,6 @@ function PlayerDeathState:enter()
     self.player.invulnerable = false
     self.player:changeAnimation('death')
 
-
     Timer.after(5, function()
         if self.player.timesDied >= 3 then
             gStateStack:push(FadeInState({

@@ -14,7 +14,8 @@ function EnemyDeathState:enter(params)
 
     if self.entity.fixture:getUserData().type == 'boss' then
         self.entity.dead = true
-
+        
+        gSounds['boss']:stop()
         Timer.after(10, function()
             gStateStack:push(FadeInState({
                 r = 0, g = 0, b = 0
