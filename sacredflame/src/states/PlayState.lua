@@ -111,22 +111,14 @@ function PlayState:init()
             enemyFixture:getBody():setLinearVelocity(0, evy)
 
             -- player takes damage and goes invulnerable for a short period
-            if not self.player.invulnerable then
-                gSounds['hit-player']:play()
-                playerFixture:getUserData().entity:damage()
-                self.player:goInvulnerable(1.5)
-            end
+            damagePlayer(self.player)
         end
 
         if types['player'] and types['spike'] then
             local playerFixture = a:getUserData().type == 'player' and a or b
 
             -- player takes damage and goes invulnerable for a short period
-            if not self.player.invulnerable then
-                gSounds['hit-player']:play()
-                playerFixture:getUserData().entity:damage()
-                self.player:goInvulnerable(1.5)
-            end
+            damagePlayer(self.player)
         end
 
         if types['enemy'] and types['wall'] then

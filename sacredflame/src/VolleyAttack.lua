@@ -37,7 +37,7 @@ function VolleyAttack:update(dt)
     self.delayTimer = self.delayTimer + dt
     -- 
     if self.hitBox and not self.hitPlayer and self.delayTimer >= self.delay then
-        self.hitPlayer = damagePlayer(self.room, self.hitBox)
+        self.hitPlayer = damagePlayerWithHitBox(self.room, self.hitBox)
     end
 
     self.animation:update(dt)

@@ -36,7 +36,7 @@ function BossAttackState:update(dt)
 
     if hitBoxEntries and not self.hitFrames[currFrame] then
         for _, entry in pairs(hitBoxEntries) do
-            if damagePlayer(self.entity.room, entry.hitBox) then
+            if damagePlayerWithHitBox(self.entity.room, entry.hitBox) then
                 self.hitFrames[currFrame] = true
             end
         end

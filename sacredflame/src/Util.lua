@@ -95,15 +95,27 @@ function damageEnemy(room, hitBox)
     return false
 end
 
-function damagePlayer(room, hitBox)
+function damagePlayerWithHitBox(room, hitBox)
     local player = room.player
-    if player:collides(hitBox) and player.health > 0 then
+    if player:collides(hitBox) and player.health > 0 and not player.invulnerable then
         player:damage(1)
+        player:goInvulnerable(1.5)
         gSounds['hit-player']:play()
         return true
     end
     return false
 end
+
+function damagePlayer(player)
+    if player.health > 0 and not player.invulnerable then
+        player:damage(1)
+        player:goInvulnerable(1.5)
+        gSounds['hit-player']:play()
+        return true
+    end
+    return false
+end
+
 
 --[[
     Creates a hit box table per attack animation from entity_defs

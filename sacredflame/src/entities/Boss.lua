@@ -59,14 +59,11 @@ function Boss:update(dt)
     end
 
     -- Creates creates a hit box from the hurt box so player collision
-    -- with the body triggers damage to eht player
+    -- with the body triggers damage to the player
     if self.room.player and not self.room.player.invulnerable and self.currentHurtBox then
         local ex, ey = self:getHurtBoxPosition()
         local hitBox = HitBox(ex, ey, self.currentHurtBox.width, self.currentHurtBox.height)
-
-        if damagePlayer(self.room, hitBox) then
-            self.room.player:goInvulnerable(1.5)
-        end
+        damagePlayerWithHitBox(self.room, hitBox)
     end
 end
 
