@@ -126,7 +126,68 @@ ROOM_DEFS= {
                 spawnY = TILE_SIZE * 15.5
             }
         },
-        enemies = {}
+        enemies = {
+            {
+                 type = 'spitter',
+                 spawnX = TILE_SIZE * 15,
+                 spawnY = TILE_SIZE * 45
+            },
+            {
+                 type = 'ghoul',
+                 spawnX = TILE_SIZE * 13,
+                 spawnY = TILE_SIZE * 36
+            },
+            {
+                 type = 'ghoul',
+                 spawnX = TILE_SIZE,
+                 spawnY = TILE_SIZE * 30
+            },
+            {
+                 type = 'dagger-bandit',
+                 spawnX = TILE_SIZE * 5,
+                 spawnY = TILE_SIZE * 24
+            },
+            {
+                 type = 'dagger-bandit',
+                 spawnX = TILE_SIZE * 15,
+                 spawnY = TILE_SIZE * 24
+            },
+            {
+                 type = 'dagger-bandit',
+                 spawnX = TILE_SIZE * 6,
+                 spawnY = TILE_SIZE * 19
+            },
+            {
+                 type = 'archer-bandit',
+                 spawnX = TILE_SIZE * 2,
+                 spawnY = TILE_SIZE * 19
+            },
+            {
+                 type = 'dagger-bandit',
+                 spawnX = TILE_SIZE * 13,
+                 spawnY = TILE_SIZE * 13
+            },
+            {
+                 type = 'archer-bandit',
+                 spawnX = TILE_SIZE * 6,
+                 spawnY = TILE_SIZE * 13
+            },
+            {
+                 type = 'dagger-bandit',
+                 spawnX = TILE_SIZE * 31,
+                 spawnY = TILE_SIZE * 25
+            },
+            {
+                 type = 'archer-bandit',
+                 spawnX = TILE_SIZE * 33,
+                 spawnY = TILE_SIZE * 16
+            },
+            {
+                 type = 'dagger-bandit',
+                 spawnX = TILE_SIZE * 37,
+                 spawnY = TILE_SIZE * 12
+            },
+        },
     },
     ['main4'] = {
         map = 'assets/graphics/map/main4.lua',
@@ -142,11 +203,27 @@ ROOM_DEFS= {
         objects = {
             {
                 type = 'torch',
-                spawnX = TILE_SIZE * 10,
+                spawnX = TILE_SIZE * 17,
+                spawnY = TILE_SIZE * 16.5
+            },
+            {
+                type = 'door',
+                spawnX = TILE_SIZE * 12.5,
                 spawnY = TILE_SIZE * 16.5
             }
         },
-        enemies = {}
+        enemies = {
+            {
+                 type = 'ghoul',
+                 spawnX = TILE_SIZE * 30,
+                 spawnY = TILE_SIZE * 17
+            },
+            {
+                 type = 'spitter',
+                 spawnX = TILE_SIZE * 20,
+                 spawnY = TILE_SIZE * 17
+            },
+        }
     },
     ['boss'] = {
         map = 'assets/graphics/map/boss.lua',

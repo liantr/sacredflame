@@ -10,10 +10,8 @@ function VictoryState:enter()
                 r = 0, g = 0, b = 0
             }, 1,
             function()
-
-                
-                gStateStack:pop() -- pops the victory state
-                gStateStack:pop() -- pops the play state
+                gStateStack:clear() -- pops the victory state
+                gStateStack:push(StartState())
                 gStateStack:push(FadeOutState({
                     r = 0, g = 0, b = 0
                 }, 1,
