@@ -102,11 +102,11 @@
             "expandedObjectLayers": [
                 12
             ],
-            "scale": 1.1333,
+            "scale": 2.7158,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 236.91873290390893,
-                "y": 294.7145504279538
+                "x": 473.70940422711533,
+                "y": 231.23941380072165
             }
         },
         "tiled/high temple.tsx": {
@@ -174,11 +174,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 44.0487,
+            "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 437.924388233932,
-                "y": 654.1850270269044
+                "x": 479.5,
+                "y": 262
             }
         },
         "tiled/main3.tmx": {
@@ -207,8 +207,8 @@
             "scale": 2.4274,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 393.4250638543298,
-                "y": 174.67248908296943
+                "x": 433.5914970750597,
+                "y": 173.02463541237537
             }
         },
         "tiled/main4-miniboss.tmx": {

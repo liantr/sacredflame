@@ -200,14 +200,16 @@ function Room:render()
         attack:render()
     end
 
+    if self.player then
+        self.player:render()
+    end
+
+    self:renderForeground()
+
     for _, object in pairs(self.objects) do
         object:render()
     end
 
-    if self.player then
-        self.player:render()
-    end
-    self:renderForeground()
     self:renderDarkness()
 
     if DEBUG then

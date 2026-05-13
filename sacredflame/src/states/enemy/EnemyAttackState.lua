@@ -39,8 +39,8 @@ function EnemyAttackState:update(dt)
     if self.entity.rangedAttack and
         not self.rangedAttackSpawned and
         currentAnimation:getCurrentFrame() == currentAnimation.frames[#currentAnimation.frames] then
-        self.rangedAttackSpawned = true
         self:spawnRangedAttack(px, py)
+        self.rangedAttackSpawned = true
     end
 
     -- return to idle once the attack is complete
