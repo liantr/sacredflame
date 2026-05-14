@@ -25,6 +25,7 @@ love .
 | O | Open door (when in range) |
 | P | Pause |
 | Enter | Confirm (menus) |
+| Q | Hold to show controls panel
 
 ## Debug Mode
 
@@ -204,7 +205,8 @@ src/
                                 on lighting, proximity prompt rendering above the foreground layer.
     Door.lua                    Extends Object. Open/closed states with animation. Torch requirement
                                 check. Prompt renders when player is in range.
-    Powerup.lua                 Extends Object. Sine float animation. Consumed flag removes t the room.
+    Powerup.lua                 Extends Object. Sine float animation. Consumed flag removes from the room.
+                                Displays a dialog describing which powerup was picked up.
 
   states/
     BaseState.lua               Empty interface. All states inherit from this.
@@ -216,7 +218,8 @@ src/
     BossBattleState.lua         Pushed over PlayState during boss fight. Starts boss music, spawns
                                 boss. Manually calls playState:update since StateStack only updates
                                 the top state.
-    StartState.lua              Title screen. Press Enter to start.
+    StartState.lua              Title screen. Press Enter to start. Pushes a series of dialogs, introducing
+                                controls and the story.
     PauseState.lua              Pause menu. Resume or Quit.
     GameOverState.lua           Game over screen. Clears stack and returns to StartState.
     VictoryState.lua            Victory screen after boss death. Clears stack and returns to StartState.
