@@ -1,3 +1,5 @@
+DEBUG = false
+
 VIRTUAL_WIDTH = 640
 VIRTUAL_HEIGHT = 368
 
@@ -37,9 +39,7 @@ POWERUP_SIN_AMPLITUDE = 0.2
 TOTAL_TORCHES = 6
 MIN_TORCH_TO_OPEN_DOOR = 5
 
-
 USE_ZOOM = true
-DEBUG = true --TODO set to false before submission
 
 -- Box2D collision categories
 PLAYER_CATEGORY = 2
