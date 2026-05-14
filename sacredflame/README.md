@@ -173,7 +173,7 @@ src/
   Animation.lua                 Frame-based animation class. Supports looping, offsets, named frames.
                                 Extended from CS50 base with name, offsetX, offsetY fields.
   HitBox.lua                    Simple data class: x, y, width, height.
-  HUD.lua                       Renders health bar (scissor-clipped), torch count, flame indicator.
+  HUD.lua                       Renders health bar (scissor-clipped) and lit torch count.
   Room.lua                      Loads Tiled map, manages collidable bodies, enemies, objects, attacks.
                                 Handles enter/exit (activating/deactivating bodies), spawn, render,
                                 darkness overlay via stencil.
@@ -190,20 +190,19 @@ src/
     Entity.lua                  Base class for all entities. Box2D body creation, animation playback,
                                 invulnerability flashing, health/death logic, health drop on death.
     Player.lua                  Extends Entity. Input handling, wall grab logic, particle system
-                                for health restore effect, ambient glow render.
+                                for health restore effect, glow surrounding the player sprite render.
     Boss.lua                    Extends Entity. Custom hurtbox system per animation frame. Health
-                                scaled by torches lit at spawn. Hurtbox-to-hitbox damage conversion
-                                in update.
-    Flame.lua                   Extends Entity. Kinematic body. Follows player via lerp with sine
-                                float. Sensor fixture (no collision response).
+                                scaled by torches lit at spawn time.
+    Flame.lua                   Extends Entity. Kinematic body. Follows player and has a sine
+                                float.
 
   objects/
     Object.lua                  Base class for room objects. Box2D static body, basic render.
     Torch.lua                   Extends Object. Lit/unlit states, light radius expansion, save point
-                                on light, proximity prompt rendering above foreground layer.
+                                on lighting, proximity prompt rendering above the foreground layer.
     Door.lua                    Extends Object. Open/closed states with animation. Torch requirement
-                                check. Prompt rendering when player in range.
-    Powerup.lua                 Extends Object. Sine float animation. Consumed flag removes from room.
+                                check. Prompt renders when player is in range.
+    Powerup.lua                 Extends Object. Sine float animation. Consumed flag removes t the room.
 
   states/
     BaseState.lua               Empty interface. All states inherit from this.
@@ -271,7 +270,7 @@ src/
     Panel.lua                   Bordered panel rendering utility.
     Textbox.lua                 Scrolling text display for dialogue.
 
-  VolleyAttack.lua              Archer bandit ranged attack. Spawned at player position with brief
+  VolleyAttack.lua              Archer bandit ranged attack. Spawned at player position with a brief
                                 delay. Not a Box2D body - uses manual AABB collision via
                                 damagePlayerWithHitBox.
 
@@ -294,8 +293,6 @@ lib/
   knife/timer.lua               Timer, tween, after - used throughout for animation timing.
   sti/                          Simple Tiled Implementation - loads Tiled Lua map exports.
 ```
-
----
 
 ## Design Decisions
 
