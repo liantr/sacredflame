@@ -198,6 +198,9 @@ ROOM_DEFS= {
             },
             south = {
                 { room = 'boss', gapX = TILE_SIZE * 2, spawnX = TILE_SIZE * 3, spawnY = 1 }
+            },
+            east = {
+                { room = 'main4-right', gapX = TILE_SIZE * 39, gapY = TILE_SIZE * 15, spawnX = TILE_SIZE, spawnY = TILE_SIZE * 17 }
             }
         },
         objects = {
@@ -225,6 +228,23 @@ ROOM_DEFS= {
             },
         }
     },
+    ['main4-right'] = {
+        map = 'assets/graphics/map/main4-right.lua',
+        music = 'depths',
+        connectedRooms = {
+            west = {
+                { room = 'main4', gapY = TILE_SIZE * 15, gapX = 0, spawnX = TILE_SIZE * 39, spawnY = TILE_SIZE * 17 }
+            }
+        },
+        objects = {
+            {
+                type = 'torch',
+                spawnX = TILE_SIZE * 34.5,
+                spawnY = TILE_SIZE * 5.5
+            }
+        },
+        enemies = {}
+    },
     ['boss'] = {
         map = 'assets/graphics/map/boss.lua',
         music = 'depths',
@@ -235,9 +255,9 @@ ROOM_DEFS= {
         },
         enemies = {},
         boss = {
-                 type = 'boss',
-                 spawnX = VIRTUAL_WIDTH / 2,
-                 spawnY = VIRTUAL_HEIGHT / 2
+            type = 'boss',
+            spawnX = VIRTUAL_WIDTH / 2,
+            spawnY = VIRTUAL_HEIGHT / 2
         }
     }
 }
