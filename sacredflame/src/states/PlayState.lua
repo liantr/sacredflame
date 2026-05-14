@@ -5,6 +5,12 @@ function PlayState:init()
     -- Box2D world creation
     self.world = love.physics.newWorld(0, GRAVITY, true)
 
+    -- controls box
+    local controlsText = 'Left Shift | Run\nZ | Attack\nX | Attack Combo\nC | Dash\n'..
+        'Space | Jump\nLeft Arrow | Move Left\nRight Arrow | Move Right'
+
+    self.controlsPanel = Textbox(VIRTUAL_WIDTH - 160, 20, 120, 150, controlsText, gFonts['small'])
+
     -- Create the map of rooms
     self.map = {}
     for name, def in pairs(ROOM_DEFS) do
@@ -190,38 +196,6 @@ function PlayState:init()
     self.bossBattleInitiated = false
 end
 
-function PlayState:spawnEntities()
-    -- create player
-    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY, self.HUD)
-
-    self.player.stateMachine = StateMachine {
-        ['walk'] = function() return PlayerWalkState(self.player) end,
-        ['run'] = function() return PlayerRunState(self.player) end,
-        ['idle'] = function() return PlayerIdleState(self.player) end,
-        ['jump'] = function() return PlayerJumpState(self.player) end,
-        ['falling'] = function() return PlayerFallingState(self.player) end,
-        ['death'] = function() return PlayerDeathState(self.player, self) end,
-        ['dash'] = function() return PlayerDashState(self.player) end,
-        ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
-        ['wall-hold'] = function() return PlayerWallHoldState(self.player) end,
-    }
-
-    self.player:changeState('idle')
-
-    -- create flame companion
-    self.flame = Flame(ENTITY_DEFS['flame'], self.world, self.player)
-
-    self.flame.stateMachine = StateMachine {
-        ['idle'] = function() return FlameFollowingState(self.flame) end
-    }
-
-    self.flame:changeState('idle')
-
-    self.currentRoom.player = self.player
-    self.currentRoom.flame = self.flame
-    self.player.room = self.currentRoom
-end
-
 function PlayState:enter(params)
     if params then
         self = params.playState
@@ -262,6 +236,38 @@ function PlayState:update(dt)
     end
 
     self:updateCamera()
+end
+
+function PlayState:spawnEntities()
+    -- create player
+    self.player = Player(ENTITY_DEFS['player'], self.world, self.currentRoom.spawnX, self.currentRoom.spawnY, self.HUD)
+
+    self.player.stateMachine = StateMachine {
+        ['walk'] = function() return PlayerWalkState(self.player) end,
+        ['run'] = function() return PlayerRunState(self.player) end,
+        ['idle'] = function() return PlayerIdleState(self.player) end,
+        ['jump'] = function() return PlayerJumpState(self.player) end,
+        ['falling'] = function() return PlayerFallingState(self.player) end,
+        ['death'] = function() return PlayerDeathState(self.player, self) end,
+        ['dash'] = function() return PlayerDashState(self.player) end,
+        ['swing-sword'] = function() return PlayerSwordSwingState(self.player) end,
+        ['wall-hold'] = function() return PlayerWallHoldState(self.player) end,
+    }
+
+    self.player:changeState('idle')
+
+    -- create flame companion
+    self.flame = Flame(ENTITY_DEFS['flame'], self.world, self.player)
+
+    self.flame.stateMachine = StateMachine {
+        ['idle'] = function() return FlameFollowingState(self.flame) end
+    }
+
+    self.flame:changeState('idle')
+
+    self.currentRoom.player = self.player
+    self.currentRoom.flame = self.flame
+    self.player.room = self.currentRoom
 end
 
 function PlayState:updateTorchesLit()
@@ -454,9 +460,7 @@ function PlayState:render()
     love.graphics.push()
 
     -- zoom in around the player
-    if USE_ZOOM then
-        love.graphics.scale(CAMERA_ZOOM, CAMERA_ZOOM)
-    end
+    love.graphics.scale(CAMERA_ZOOM, CAMERA_ZOOM)
 
     -- translate the entire view of the scene to emulate a camera
     love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
@@ -474,6 +478,11 @@ function PlayState:render()
     love.graphics.pop()
 
     self.HUD:render()
+
+    -- draw the control panel
+    if love.keyboard.isDown('q') then
+        self.controlsPanel:render()
+    end
 
     -- room transition fade in and out
     love.graphics.setColor(0,0,0,self.transitionAlpha)

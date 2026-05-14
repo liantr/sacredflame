@@ -31,9 +31,9 @@ function Panel:render()
         love.graphics.rectangle('fill', self.x + 2, self.y + 2, self.width - 4, self.height - 4, 3)
         love.graphics.setColor(1, 1, 1, 1)
 
-        local decorX = self.x + (self.width / 4)  + gTextures['panel-decor']:getWidth() / 4
         local decorWidth = gTextures['panel-decor']:getWidth()
         local decorHeight = gTextures['panel-decor']:getHeight()
+        local decorX = self.x + self.width / 2 - (decorWidth / 2)
 
         -- draw the top decor
         love.graphics.draw(
