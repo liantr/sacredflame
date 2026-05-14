@@ -175,11 +175,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.75,
+            "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 216.66666666666669,
-                "y": 449.33333333333337
+                "x": 295,
+                "y": 568.6666666666666
             }
         },
         "tiled/main3.tmx": {
@@ -277,6 +277,7 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
+        "tiled/main3-3.tmx",
         "tiled/main4-right.tmx",
         "tiled/main4-3.tmx",
         "tiled/boss.tmx",
@@ -287,7 +288,6 @@
         "tiled/main3-2.tmx",
         "tiled/main2.tmx",
         "tiled/main1-right.tmx",
-        "tiled/main2-left.tmx",
-        "tiled/main4-2.tmx"
+        "tiled/main2-left.tmx"
     ]
 }

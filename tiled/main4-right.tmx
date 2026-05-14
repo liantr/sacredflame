@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.1" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="36">
+<map version="1.10" tiledversion="1.12.1" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="48">
  <editorsettings>
   <export target="../sacredflame/assets/graphics/map/main4-right.lua" format="lua"/>
  </editorsettings>
@@ -62,13 +62,13 @@
 171,157,187,187,187,187,187,187,187,187,187,187,187,187,187,159,157,187,187,187,187,187,187,159,157,187,187,187,187,187,187,187,159,157,187,187,187,187,159,171,
 171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,170,172,0,0,0,0,0,0,170,172,0,0,0,0,0,0,0,170,172,0,0,0,0,170,171,
 171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,170,172,0,0,0,0,0,0,170,172,0,0,0,0,0,0,0,170,172,0,0,0,0,170,171,
-171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,170,172,0,0,0,0,0,0,170,172,0,0,0,0,0,0,0,170,172,0,0,0,0,170,171,
-171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,170,172,0,0,0,0,0,0,170,172,0,0,0,0,0,0,0,170,172,0,0,0,0,170,171,
-171,172,0,0,0,0,0,0,155,155,0,0,0,0,0,186,188,0,0,0,0,0,0,186,188,0,0,0,0,0,0,0,170,157,0,0,0,1610612744,170,171,
+171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,186,188,0,0,0,0,0,0,170,172,0,0,0,0,0,0,0,170,172,0,0,0,0,170,171,
+171,172,0,0,0,0,0,0,0,0,155,155,0,0,0,0,0,0,0,0,0,0,0,170,172,0,0,0,0,0,0,0,170,172,0,0,0,0,170,171,
+171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,186,188,0,0,0,0,0,0,0,170,157,0,0,0,1610612744,170,171,
 171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,170,189,155,156,0,1610612743,170,171,
-171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,186,187,187,188,0,1610612742,170,171,
+171,172,0,0,0,0,0,0,0,0,0,0,0,0,0,155,155,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,186,187,187,188,0,1610612742,170,171,
 171,172,2684354563,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1610612741,170,171,
-171,172,2684354564,0,0,0,0,0,0,0,0,0,0,0,0,155,155,155,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1610612740,170,171,
+171,172,2684354564,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1610612740,170,171,
 171,172,2684354565,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,154,156,0,0,0,0,0,1610612739,170,171,
 171,172,2684354566,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,170,172,0,0,0,0,0,0,170,171,
 171,172,2684354567,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,155,155,0,0,0,0,0,170,172,0,0,0,0,0,0,170,171,
@@ -90,12 +90,10 @@
   <object id="7" name="wall" type="wall" x="543.028" y="32.0027" width="0.93466" height="79.9696"/>
   <object id="8" name="wall" type="wall" x="398.955" y="31.997" width="1.09091" height="79.006"/>
   <object id="9" name="wall" type="wall" x="368.027" y="31.9831" width="1.09091" height="79.006"/>
-  <object id="10" name="wall" type="wall" x="270.879" y="31.9495" width="1.09091" height="79.006"/>
-  <object id="11" name="wall" type="wall" x="240.032" y="31.9414" width="1.09091" height="79.006"/>
-  <object id="12" name="wall" type="wall" x="158.873" y="96.9861" width="1.09091" height="13.9843"/>
-  <object id="13" name="wall" type="wall" x="128.019" y="96.9861" width="1.09091" height="14.0278"/>
-  <object id="14" name="wall" type="wall" x="240.032" y="161.03" width="1.09091" height="14.0278"/>
-  <object id="15" name="wall" type="wall" x="286.893" y="161.017" width="1.09091" height="14.0278"/>
+  <object id="10" name="wall" type="wall" x="270.899" y="31.9534" width="1.09091" height="48.0495"/>
+  <object id="11" name="wall" type="wall" x="240.009" y="31.9687" width="1.09091" height="47.0138"/>
+  <object id="12" name="wall" type="wall" x="190.873" y="81.0486" width="1.09091" height="13.9843"/>
+  <object id="13" name="wall" type="wall" x="160.019" y="81.0486" width="1.09091" height="14.0278"/>
   <object id="16" name="wall" type="wall" x="368.024" y="209" width="1.09091" height="14.0278"/>
   <object id="17" name="wall" type="wall" x="398.892" y="209.002" width="1.09091" height="14.0278"/>
   <object id="18" name="spike" type="spike" x="64.3333" y="272.333" width="415.609" height="15.6667"/>
@@ -104,16 +102,18 @@
   <object id="21" name="ground" type="ground" x="543.002" y="111.988" width="32.984" height="0.993056"/>
   <object id="22" name="ground" type="ground" x="480.03" y="175.982" width="31.9405" height="0.993056"/>
   <object id="23" name="ground" type="ground" x="368.008" y="207.988" width="31.984" height="0.993056"/>
-  <object id="24" name="ground" type="ground" x="240.051" y="160.025" width="47.9405" height="0.993056"/>
-  <object id="25" name="ground" type="ground" x="128.03" y="95.9585" width="31.9849" height="0.993056"/>
+  <object id="25" name="ground" type="ground" x="160.03" y="80.021" width="31.9849" height="0.993056"/>
   <object id="26" name="ground" type="ground" x="0.0388" y="287.972" width="479.86" height="0.993056"/>
-  <object id="27" name="ceiling" type="ceiling" x="240.008" y="111.003" width="31.9849" height="0.993056"/>
+  <object id="27" name="ceiling" type="ceiling" x="240.008" y="78.9874" width="30.8872" height="1.01649"/>
   <object id="28" name="ceiling" type="ceiling" x="368.008" y="111.003" width="31.9849" height="0.993056"/>
   <object id="29" name="ceiling" type="ceiling" x="511.917" y="142.958" width="64.0758" height="0.993056"/>
   <object id="30" name="ceiling" type="ceiling" x="-0.06915" y="238.988" width="32.0758" height="0.993056"/>
   <object id="32" name="ceiling" type="ceiling" x="30.9594" y="30.9126" width="576.945" height="0.993056"/>
-  <object id="33" name="ceiling" type="ceiling" x="128.068" y="111.019" width="31.9849" height="0.993056"/>
-  <object id="34" name="ceiling" type="ceiling" x="240.036" y="175.03" width="47.8031" height="0.993056"/>
+  <object id="33" name="ceiling" type="ceiling" x="160.068" y="95.0815" width="31.9849" height="0.993056"/>
   <object id="35" name="ceiling" type="ceiling" x="367.973" y="223.003" width="31.9906" height="0.993056"/>
+  <object id="36" name="wall" type="wall" x="270.858" y="129.063" width="1.09091" height="13.9843"/>
+  <object id="37" name="wall" type="wall" x="240.004" y="129.063" width="1.09091" height="14.0278"/>
+  <object id="38" name="ground" type="ground" x="240.015" y="128.036" width="31.9849" height="0.993056"/>
+  <object id="39" name="ceiling" type="ceiling" x="240.053" y="143.096" width="31.9849" height="0.993056"/>
  </objectgroup>
 </map>
