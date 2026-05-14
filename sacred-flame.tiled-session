@@ -10,7 +10,8 @@
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "blood temple.tsx": {
             "scaleInDock": 1,
@@ -85,11 +86,11 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 8,
+            "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 376.5,
-                "y": 177.75
+                "x": 324.5,
+                "y": 348
             }
         },
         "tiled/boss.tmx#beneath": {
@@ -117,19 +118,19 @@
             "scale": 1.387890625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.27019420208273,
-                "y": 184.09231635237828
+                "x": 320.2701942020827,
+                "y": 183.73205741626788
             }
         },
         "tiled/main1.tmx": {
             "expandedObjectLayers": [
                 8
             ],
-            "scale": 18.8624,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 478.80969547883615,
-                "y": 201.0878785308338
+                "x": 526.5,
+                "y": 328
             }
         },
         "tiled/main2-2.tmx": {
@@ -139,8 +140,8 @@
             "scale": 4.4209,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 317.58239272546314,
-                "y": 386.34667149223014
+                "x": 339.6367255536203,
+                "y": 385.4418783505621
             }
         },
         "tiled/main2-left.tmx": {
@@ -155,7 +156,7 @@
             "scale": 0.8569,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 314.5057766367138,
+                "x": 314.50577663671373,
                 "y": 334.92822966507174
             }
         },
@@ -193,31 +194,45 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
+            "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 265.25,
-                "y": 118
+                "x": 331.33333333333337,
+                "y": 174.66666666666669
             }
         },
         "tiled/main4-3.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2.4274,
-            "selectedLayer": 0,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 433.5914970750597,
-                "y": 173.02463541237537
+                "x": 370.33333333333326,
+                "y": 216
             }
         },
         "tiled/main4-miniboss.tmx": {
             "scale": 0.8498046874999999,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 639.5587221328431,
-                "y": 184.15996322684447
+                "x": 450.10342450011495,
+                "y": 183.57159273730173
             }
+        },
+        "tiled/main4-right.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -175.5,
+                "y": 299
+            }
+        },
+        "tiled/main4-right.tmx#Spikes 48x16": {
+            "scaleInDock": 1
         },
         "tiled/main4.tmx": {
             "expandedObjectLayers": [
@@ -248,7 +263,7 @@
     },
     "last.exportedFilePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/map",
     "last.externalTilesetPath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/The Dark Series/tilesets/DARK - Beneath Tileset/Tileset",
-    "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/The Dark Series/DARK Edition/Tileset",
+    "last.imagePath": "/Users/lian/Desktop/Coursework/Spring 2026/CSCI E-23a Intro to Game Development/final - sacredflame/sacredflame/assets/graphics/The Dark Series",
     "map.height": 20,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
@@ -269,18 +284,18 @@
     ],
     "project": "sacred-flame.tiled-project",
     "recentFiles": [
-        "tiled/main2-2.tmx",
-        "tiled/entry.tmx",
-        "tiled/main3-3.tmx",
-        "tiled/main4.tmx",
-        "tiled/main1.tmx",
-        "tiled/main2-left.tmx",
+        "tiled/main3.tmx",
         "tiled/main3-2.tmx",
         "tiled/main2.tmx",
-        "tiled/main3.tmx",
-        "tiled/map.tmx",
+        "tiled/main1.tmx",
+        "tiled/main1-right.tmx",
+        "tiled/main2-left.tmx",
+        "tiled/main4-2.tmx",
+        "tiled/main4.tmx",
         "tiled/main4-miniboss.tmx",
-        "tiled/high temple.tsx"
+        "tiled/entry.tmx",
+        "tiled/main2-2.tmx",
+        "tiled/main3-3.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "All Files (*)",
