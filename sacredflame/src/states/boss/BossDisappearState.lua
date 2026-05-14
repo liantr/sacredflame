@@ -19,7 +19,6 @@ function BossDisappearState:processAI(params, dt)
     if not self.timerStarted then
         self.timerStarted = true
         Timer.after(1, function ()
-            print("Boss [disappear] -> [appear]")
             if  not self.entity.dead and not self.entity.destroyed then
                 self.entity:changeState('appear')
             end

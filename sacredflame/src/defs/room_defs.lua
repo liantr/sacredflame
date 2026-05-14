@@ -241,7 +241,12 @@ ROOM_DEFS= {
                 type = 'torch',
                 spawnX = TILE_SIZE * 34.5,
                 spawnY = TILE_SIZE * 5.5
-            }
+            },
+            {
+                type = 'attack-combo',
+                spawnX = TILE_SIZE * 37,
+                spawnY = TILE_SIZE * 15
+            },
         },
         enemies = {}
     },

@@ -28,6 +28,8 @@ function PlayerFallingState:update(dt)
         self.player:changeState('dash', {nextState='falling'})
     elseif love.keyboard.wasPressed('z') then
         self.player:changeState('swing-sword')
+    elseif love.keyboard.wasPressed('x') and self.player.attackComboAllowed then
+        self.player:changeState('swing-sword', {combo = true})
     end
 end
 

@@ -41,6 +41,17 @@ OBJECT_DEFS = {
         acquisitionText = "Double jump acquired",
         animations = {}
     },
+    ['attack-combo'] = {
+        type = 'powerup',
+        name = 'attack-combo',
+        bodyType = 'kinematic',
+        texture = 'attack-combo',
+        category = POWERUP_CATEGORY,
+        width = TILE_SIZE * 0.75,
+        height = TILE_SIZE * 0.75,
+        acquisitionText = "Attack combo acquired. Press [X] to use.",
+        animations = {}
+    },
     ['door'] = {
         type = 'door',
         name = 'door',

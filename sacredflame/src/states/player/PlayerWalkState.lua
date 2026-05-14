@@ -33,7 +33,7 @@ function PlayerWalkState:update(dt, run)
         self.entity:changeState('dash', {nextState='walk'})
     elseif love.keyboard.wasPressed('z') then
         self.entity:changeState('swing-sword')
-    elseif love.keyboard.wasPressed('x') then
+    elseif love.keyboard.wasPressed('x') and self.entity.attackComboAllowed then
         self.entity:changeState('swing-sword', {combo = true})
     end
 end

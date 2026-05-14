@@ -99,6 +99,7 @@ gTextures = {
     ['door'] = love.graphics.newImage('assets/graphics/objects/door.png'),
     ['wall-hold'] = love.graphics.newImage('assets/graphics/powerups/wall-hold.png'),
     ['double-jump'] = love.graphics.newImage('assets/graphics/powerups/double-jump.png'),
+    ['attack-combo'] = love.graphics.newImage('assets/graphics/powerups/attack-combo.png'),
     ['particle'] = love.graphics.newImage('assets/graphics/health/particle.png'),
     ['panel-decor'] = love.graphics.newImage('assets/graphics/decor/panel-decor.png'),
 
@@ -158,6 +159,7 @@ gFrames = {
         TILE_SIZE, TILE_SIZE * 2, TILE_SIZE, TILE_SIZE * 2, TILE_SIZE, 0),
     ['double-jump'] = GenerateQuads(gTextures['double-jump'], TILE_SIZE * 1.5, TILE_SIZE * 1.5),
     ['wall-hold'] = GenerateQuads(gTextures['wall-hold'], TILE_SIZE * 1.5, TILE_SIZE * 1.5),
+    ['attack-combo'] = GenerateQuads(gTextures['attack-combo'], TILE_SIZE * 1.5, TILE_SIZE * 1.5),
     ['door'] = GenerateQuads(gTextures['door'], TILE_SIZE * 3, TILE_SIZE * 3 ),
 
     ['player-health-box'] = GenerateQuadsFromRegion(gTextures['player-health-box'],

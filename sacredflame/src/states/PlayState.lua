@@ -107,6 +107,10 @@ function PlayState:init()
             if powerup.name == 'double-jump' then
                 self.player.doubleJumpAllowed = true
             end
+            
+            if powerup.name == 'attack-combo' then
+                self.player.attackComboAllowed = true
+            end
         end
 
         if types['player'] and types['enemy'] then

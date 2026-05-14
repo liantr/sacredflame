@@ -8,9 +8,11 @@ function Player:init(def, world, startX, startY)
     if DEBUG then
         self.doubleJumpAllowed = true
         self.wallHoldAllowed = true
+        self.attackComboAllowed = true
     else
         self.wallHoldAllowed = false
         self.doubleJumpAllowed = false
+        self.attackComboAllowed = false
     end
 
     -- jump related variables

@@ -28,8 +28,10 @@ function PlayerJumpState:update(dt)
     if love.keyboard.wasPressed('space') and self.player.canJump then
         self.player:changeState('jump')
     elseif love.keyboard.wasPressed('c') then
-        self.player:changeState('dash', {nextState='falling'})
+        self.player:changeState('dash', { nextState='falling' })
     elseif love.keyboard.wasPressed('z') then
         self.player:changeState('swing-sword')
+    elseif love.keyboard.wasPressed('x') and self.player.attackComboAllowed then
+        self.player:changeState('swing-sword', { combo = true })
     end
 end
