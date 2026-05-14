@@ -93,12 +93,14 @@ gTextures = {
     ['player-health-box'] = love.graphics.newImage('assets/graphics/health/health_bar_decoration.png'),
     ['player-health-bar'] = love.graphics.newImage('assets/graphics/health//health_bar.png'),
 
-    -- objects
+    -- objects, powerups, effects, decor
     ['torches'] = love.graphics.newImage('assets/graphics/objects/torches.png'),
     ['small-torches'] = love.graphics.newImage('assets/graphics/objects/small-torches.png'),
     ['door'] = love.graphics.newImage('assets/graphics/objects/door.png'),
     ['wall-hold'] = love.graphics.newImage('assets/graphics/powerups/wall-hold.png'),
     ['double-jump'] = love.graphics.newImage('assets/graphics/powerups/double-jump.png'),
+    ['particle'] = love.graphics.newImage('assets/graphics/health/particle.png'),
+    ['panel-decor'] = love.graphics.newImage('assets/graphics/decor/panel-decor.png'),
 
     -- player
     ['swordmaster-idle'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-idle.png'),
@@ -112,8 +114,10 @@ gTextures = {
     ['swordmaster-attack-combo'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-attack-combo.png'),
     ['swordmaster-wall-hold'] = love.graphics.newImage('assets/graphics/characters/swordmaster/swordmaster-wall-hold.png'),
 
+    -- flame
     ['flame-idle'] = love.graphics.newImage('assets/graphics/fire/fire1.png'),
 
+    -- enemies
     ['archer-bandit-idle'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-idle.png'),
     ['archer-bandit-run'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-run.png'),
     ['archer-bandit-death'] = love.graphics.newImage('assets/graphics/characters/archer bandit/archer-death.png'),
@@ -143,25 +147,23 @@ gTextures = {
     ['boss-death'] = love.graphics.newImage('assets/graphics/characters/boss/boss-death.png'),
     ['boss-disappear'] = love.graphics.newImage('assets/graphics/characters/boss/boss-disappear.png'),
     ['boss-appear'] = love.graphics.newImage('assets/graphics/characters/boss/boss-appear.png'),
-
-    ['particle'] = love.graphics.newImage('assets/graphics/health/particle.png'),
 }
 
 gFrames = {
     ['torch-unlit'] = GenerateQuadsFromRegion(gTextures['torches'],
-        TILE_SIZE, TILE_SIZE*3, TILE_SIZE, TILE_SIZE*3, 0, 0),
+        TILE_SIZE, TILE_SIZE * 3, TILE_SIZE, TILE_SIZE * 3, 0, 0),
     ['torch-lit'] = GenerateQuadsFromRegion(gTextures['torches'],
-        TILE_SIZE, TILE_SIZE*3, TILE_SIZE*4, TILE_SIZE*3, TILE_SIZE, 0),
+        TILE_SIZE, TILE_SIZE * 3, TILE_SIZE * 4, TILE_SIZE * 3, TILE_SIZE, 0),
     ['torch-hud'] = GenerateQuadsFromRegion(gTextures['small-torches'],
-        TILE_SIZE, TILE_SIZE*2, TILE_SIZE, TILE_SIZE*2, TILE_SIZE, 0),
-    ['double-jump'] = GenerateQuads(gTextures['double-jump'], TILE_SIZE*1.5, TILE_SIZE*1.5),
-    ['wall-hold'] = GenerateQuads(gTextures['wall-hold'], TILE_SIZE*1.5, TILE_SIZE*1.5),
-    ['door'] = GenerateQuads(gTextures['door'], TILE_SIZE*3, TILE_SIZE*3),
+        TILE_SIZE, TILE_SIZE * 2, TILE_SIZE, TILE_SIZE * 2, TILE_SIZE, 0),
+    ['double-jump'] = GenerateQuads(gTextures['double-jump'], TILE_SIZE * 1.5, TILE_SIZE * 1.5),
+    ['wall-hold'] = GenerateQuads(gTextures['wall-hold'], TILE_SIZE * 1.5, TILE_SIZE * 1.5),
+    ['door'] = GenerateQuads(gTextures['door'], TILE_SIZE * 3, TILE_SIZE * 3 ),
 
     ['player-health-box'] = GenerateQuadsFromRegion(gTextures['player-health-box'],
-    TILE_SIZE, TILE_SIZE+1, TILE_SIZE*4, TILE_SIZE+1,0,0),
+    TILE_SIZE, TILE_SIZE + 1, TILE_SIZE * 4, TILE_SIZE + 1, 0, 0),
     ['player-health-bar'] = GenerateQuadsFromRegion(gTextures['player-health-bar'],
-    TILE_SIZE, TILE_SIZE, TILE_SIZE*3, TILE_SIZE,0,0),
+    TILE_SIZE, TILE_SIZE, TILE_SIZE * 3, TILE_SIZE, 0, 0),
 
     ['swordmaster-idle'] = GenerateQuadsFromRegion(gTextures['swordmaster-idle'],
         TILE_SIZE*3, TILE_SIZE*1.5, TILE_SIZE*3*9, TILE_SIZE*1.5, 0, TILE_SIZE/2),
@@ -226,21 +228,21 @@ gFrames = {
         TILE_SIZE*2, TILE_SIZE*2, TILE_SIZE*2*8, TILE_SIZE*2, 0, 0),
 
     ['boss-idle'] = GenerateQuadsFromRegion(gTextures['boss-idle'],
-        TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*9*5, TILE_SIZE*4, 0, 0),
+        TILE_SIZE * 5, TILE_SIZE * 4, TILE_SIZE*9*5, TILE_SIZE * 4, 0, 0),
     ['boss-walk'] = GenerateQuadsFromRegion(gTextures['boss-walk'],
-        TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*2*5, TILE_SIZE*4, 0, 0),
+        TILE_SIZE * 5, TILE_SIZE * 4, (TILE_SIZE * 2) * 5, TILE_SIZE * 4, 0, 0),
     ['boss-disappear'] = GenerateQuadsFromRegion(gTextures['boss-disappear'],
-        TILE_SIZE*6, TILE_SIZE*4, TILE_SIZE*6*5, TILE_SIZE*4, 0, 0),
+        TILE_SIZE * 6, TILE_SIZE * 4, (TILE_SIZE * 6) * 5, TILE_SIZE * 4, 0, 0),
     ['boss-appear'] = GenerateQuadsFromRegion(gTextures['boss-appear'],
-        TILE_SIZE*6, TILE_SIZE*4, TILE_SIZE*6*9, TILE_SIZE*4, 0, 0),
+        TILE_SIZE * 6, TILE_SIZE * 4, (TILE_SIZE * 6) * 9, TILE_SIZE * 4, 0, 0),
     ['boss-death'] = GenerateQuadsFromRegion(gTextures['boss-death'],
-        TILE_SIZE*6, TILE_SIZE*3, TILE_SIZE*6*36, TILE_SIZE*3, 0, 0),
+        TILE_SIZE * 6, TILE_SIZE * 3, (TILE_SIZE * 6) * 36, TILE_SIZE * 3, 0, 0),
     ['boss-attack1'] = GenerateQuadsFromRegion(gTextures['boss-attack1'],
-        TILE_SIZE*18, TILE_SIZE*3, (TILE_SIZE*18)*5, TILE_SIZE*3*2, 0, 0),
+        TILE_SIZE * 18, TILE_SIZE * 3, (TILE_SIZE * 18) * 5, (TILE_SIZE * 3) * 2, 0, 0),
     ['boss-attack2'] = GenerateQuadsFromRegion(gTextures['boss-attack2'],
-        TILE_SIZE*5, TILE_SIZE*4, TILE_SIZE*5*16, TILE_SIZE*4, 0, 0),
+        TILE_SIZE * 5, TILE_SIZE * 4, (TILE_SIZE * 5) * 16, TILE_SIZE * 4, 0, 0),
     ['boss-attack3'] = GenerateQuadsFromRegion(gTextures['boss-attack3'],
-        (TILE_SIZE*16), TILE_SIZE*7.5, (TILE_SIZE * 16) * 30, TILE_SIZE * 7.5, 0, 0),
+        (TILE_SIZE * 16), TILE_SIZE * 7.5, (TILE_SIZE * 16) * 30, TILE_SIZE * 7.5, 0, 0),
 }
 
 gTextures['boss-attack1']:setFilter('nearest', 'nearest')
@@ -259,6 +261,5 @@ gFonts = {
     ['title'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 64),
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
     ['medium'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 16),
-    ['large'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 32),
---     ['huge'] = love.graphics.newFont('fonts/font.ttf', 64)
+    ['large'] = love.graphics.newFont('fonts/MedievalSharp.ttf', 32)
 }

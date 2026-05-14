@@ -4,6 +4,8 @@
 
     Author: Colton Ogden
     cogden@cs50.harvard.edu
+
+    Extended: top padding
 ]]
 
 Textbox = Class{}
@@ -18,6 +20,7 @@ function Textbox:init(x, y, width, height, text, font)
     self.text = text
     self.font = font or gFonts['small']
     
+    self.topPadding = TILE_SIZE * 2
     self.padding = 8 -- global padding for all edges
     self.lineHeight = self.font:getHeight()
     self.linePadding = 2 -- extra vertical space between lines
@@ -84,7 +87,7 @@ function Textbox:render()
         love.graphics.print(
             self.displayingChunks[i],
             self.x + self.padding,
-            self.y + self.padding + (i - 1) * (self.lineHeight + self.linePadding)
+            self.y + self.topPadding + self.padding + (i - 1) * (self.lineHeight + self.linePadding)
         )
     end
 end

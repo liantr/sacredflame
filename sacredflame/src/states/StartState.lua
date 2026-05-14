@@ -9,17 +9,20 @@ function StartState:update(dt)
             r = 0, g = 0, b = 0
         }, 1,
         function()
-
-            
             gStateStack:push(PlayState())
-            -- gStateStack:push(DialogueState("" .. 
-            --     "Brave warrior, you must descend to the temple depths and push back the dark dimension." ..
-            --     "The torches lit with the sacred flame with the power to keep the dark dimension contained " ..
-            --     "have been outed. You must light them along your path."
-            -- ))
-            -- gStateStack:push(DialogueState("" .. 
-            --    "Press [Space] to jump"
-            -- ))
+            gStateStack:push(DialogueState("" ..
+                "Hold [Q] to view controls at any time."
+            ))
+            gStateStack:push(DialogueState("" ..
+                "Find enough before you face what waits below. You have 3 attempts..."
+            ))
+            gStateStack:push(DialogueState("" ..
+                "A torch burns above you, light it to save your progress and restore your strength..."
+            ))
+            gStateStack:push(DialogueState("" ..
+                "The sacred flame is dying. Brave warrior, descend into the temple depths and rekindle "
+                .. "the torches before the darkness consumes what remains..."
+            ))
             gStateStack:push(FadeOutState({
                 r = 0, g = 0, b = 0
             }, 1,
