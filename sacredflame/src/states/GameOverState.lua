@@ -10,10 +10,8 @@ function GameOverState:enter()
                 r = 0, g = 0, b = 0
             }, 1,
             function()
-
-                
-                gStateStack:pop() -- pops the game over state
-                gStateStack:pop() -- pops the play state
+                gStateStack:clear()
+                gStateStack:pop(StartState())
                 gStateStack:push(FadeOutState({
                     r = 0, g = 0, b = 0
                 }, 1,

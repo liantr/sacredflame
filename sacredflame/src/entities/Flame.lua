@@ -18,9 +18,6 @@ function Flame:update(dt)
     Entity.update(self, dt)
 end
 
-function Flame:attack()
-end
-
 function Flame:returnToPlayer(dt)
     local px, py = self.player.body:getPosition()
     local x, y = self.body:getPosition()

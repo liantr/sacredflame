@@ -54,7 +54,7 @@ function BossAttackState:update(dt)
         if not self.attack2TimerStarted then
             self.attack2TimerStarted = true
             Timer.after(self.attack2Duration, function ()
-                if not self.entity.dead and self.entity.body:isActive() then
+                if not self.entity.dead and not self.entity.destroyed then
                     self.entity:changeState('disappear')
                 end
             end)

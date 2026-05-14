@@ -29,14 +29,10 @@ function BossAppearState:processAI(params, dt)
 
         -- from here either chase or immediately attack
         if math.random(2) == 1 then
-            print("Boss [appear] -> [chase]")
-
             self.entity:changeState('chase', {player = self.room.player})
         else
             local attackOptions = { 'attack1', 'attack2', 'attack3' }
             local attack = attackOptions[math.random(#attackOptions)]
-            print("Boss [appear] -> [" ..attack .."]")
-
             self.entity:changeState(attack, {player = self.room.player, animation = attack})
         end
 

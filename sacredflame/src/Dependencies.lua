@@ -59,7 +59,6 @@ require 'src.states.enemy.EnemyAttackState'
 require 'src.states.enemy.EnemyDeathState'
 
 require 'src.states.boss.BossIdleState'
-require 'src.states.boss.BossWalkState'
 require 'src.states.boss.BossChaseState'
 require 'src.states.boss.BossAttackState'
 require 'src.states.boss.BossAppearState'

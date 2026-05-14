@@ -4,14 +4,6 @@
 
     Author: Lian Randle
     lir140@g.harvard.edu
-
-    TODO: Description
-
-    Music credit:
-    TODO
-
-    Artwork credit:
-    TODO
 ]]
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
@@ -47,7 +39,6 @@ function push.resize(w, h)
 end
 
 function love.keypressed(key)
-
     love.keyboard.keysPressed[key] = true
 end
 

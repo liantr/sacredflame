@@ -15,11 +15,8 @@ function BossBattleState:enter()
 end
 
 function BossBattleState:update(dt)
+    -- BossBattleState is on top of the PlayState
+    -- StateStack only updates the top most state, but the PlayState should still update
+    -- otherwise gameplay breaks
     self.playState:update(dt)
-end
-
-function BossBattleState:exit()
-end
-
-function BossBattleState:render()
 end

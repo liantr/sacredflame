@@ -42,6 +42,8 @@ function Entity:init(def, world, startX, startY,room)
     self.flashTimer = 0
 
     self.droppedHealth = false
+
+    self.destroyed = false
 end
 
 function Entity:changeState(state, params)
@@ -115,9 +117,6 @@ end
 
 function Entity:render()
     local x, y = self.body:getPosition()
-    if self.dashing then
-        x, y = self.body:getPosition()
-    end
 
     self.stateMachine:render()
 

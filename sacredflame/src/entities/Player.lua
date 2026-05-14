@@ -5,14 +5,19 @@ function Player:init(def, world, startX, startY)
     self.runSpeed = def.runSpeed
     self.timesDied = 0
     self.fixture:setUserData({type = 'player', entity = self})
+    if DEBUG then
+        self.doubleJumpAllowed = true
+        self.wallHoldAllowed = true
+    else
+        self.wallHoldAllowed = false
+        self.doubleJumpAllowed = false
+    end
 
     -- jump related variables
     self.canJump = true
-    self.doubleJumpAllowed = true -- TODO change to false before submission
     self.timesJumped = 0
 
     -- wall hold related variables
-    self.wallHoldAllowed = true -- TODO set to false before submission
     self.canHoldWall = true
     self.touchingWall = false
     self.wallX = nil

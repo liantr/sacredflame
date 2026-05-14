@@ -15,15 +15,11 @@ function HUD:init(playState)
     self.y = TILE_SIZE
 
     -- torch counter layout [text1][torch][text2]
-    self.torchX = self.barX + 40
+    self.torchX = self.barX + 20
     self.torchY = self.y * 2
     self.torchText1X = self.torchX - 28
     self.torchText2X = self.torchX + 13
     self.torchTextY = self.torchY + 22
-
-    -- flame attack availability indicator
-    self.flameX = self.boxX
-    self.flameY = self.y * 2.5
 end
 
 function HUD:render()
@@ -56,15 +52,6 @@ function HUD:render()
     love.graphics.printf(" lit", self.torchText2X, self.torchTextY, 100)
 
     love.graphics.draw(gTextures['small-torches'], gFrames['torch-hud'][1], self.torchX, self.torchY)
-
-    local flameAvailable = self.playState.flameAvailable
-
-    -- flame atatck availability indicator
-    if not flameAvailable then
-        love.graphics.setColor(1, 1, 1, 0.5)
-    end
-
-    love.graphics.draw(gTextures['flame-idle'], gFrames['flame-idle'][3], self.flameX, self.flameY)
 
     love.graphics.setColor(1, 1, 1, 1)
 end

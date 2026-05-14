@@ -62,7 +62,7 @@ function Boss:update(dt)
         self.currentHurtBox = self.hurtBoxes[currAnimation.name][currAnimation:getCurrentFrame()] or nil
     end
 
-    -- Creates creates a hit box from the hurt box so player collision
+    -- Creates a hit box from the hurt box so player collision
     -- with the body triggers damage to the player
     if self.room.player and not self.room.player.invulnerable and self.currentHurtBox then
         local ex, ey = self:getHurtBoxPosition()

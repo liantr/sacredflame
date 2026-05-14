@@ -90,7 +90,6 @@ function Room:spawnBoss()
         local boss = Boss(bossDef, self.world, self.def.boss.spawnX, self.def.boss.spawnY, self)
         boss.stateMachine = StateMachine {
             ['idle'] = function() return BossIdleState(boss) end,
-            ['walk'] = function() return BossWalkState(boss) end,
             ['chase'] = function() return BossChaseState(boss, self) end,
             ['attack1'] = function() return BossAttackState(boss) end,
             ['attack2'] = function() return BossAttackState(boss) end,
@@ -171,6 +170,7 @@ end
 
 function Room:clearEnemies()
     for _, enemy in pairs(self.enemies) do
+        enemy.destroyed = true
         enemy.body:destroy()
     end
     self.enemies = {}
@@ -198,6 +198,7 @@ function Room:update(dt)
     for i = #self.enemies, 1, -1  do
         local enemy = self.enemies[i]
         if enemy.dead then
+            enemy.destroyed = true
             enemy.body:destroy()
             table.remove(self.enemies, i)
         end
@@ -262,7 +263,7 @@ function Room:renderDarkness()
     end)
 
     love.graphics.setStencilTest('notequal', 1)
-    love.graphics.setColor(0, 0, 0, 0.4) -- TODO 0..07 TODO
+    love.graphics.setColor(0, 0, 0, 0.6)
 
     local w = self.map.width * TILE_SIZE
     local h = self.map.height * TILE_SIZE
