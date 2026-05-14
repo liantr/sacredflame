@@ -315,8 +315,17 @@ end
 
 function PlayState:moveTo(connection, verticalDirection)
     self.transitioning = true
-
     local previousRoomMusic = self.currentRoom.music
+
+    if self.bossBattleInitiated then
+        previousRoomMusic = 'boss'
+        gSounds['boss']:stop()
+        self.bossBattleInitiated = false
+
+        gStateStack:pop()
+        self.currentRoom:clearEnemies()
+    end
+
     Timer.tween(0.5, {[self] = {transitionAlpha = 1}}):finish(function()
         self.currentRoom:exit()
         self.currentRoom = self.map[connection.room]
@@ -404,10 +413,8 @@ function PlayState:reSpawn()
         end
 
         for _, room in pairs(self.map) do
-            for _, enemy in pairs(room.enemies) do
-                enemy.body:destroy()
-            end
-            room.enemies = {}
+            room.allEnemiesDead = false
+            room:clearEnemies()
         end
 
         gSounds[self.currentRoom.music]:stop()

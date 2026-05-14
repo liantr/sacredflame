@@ -19,6 +19,8 @@ function Room:init(def, world, playState, name)
     self.enemies = {}
     self.objects = {}
     self.attacks = {}
+
+    self.allEnemiesDead = false
 end
 
 function Room:enter()
@@ -26,7 +28,7 @@ function Room:enter()
         tile.body:setActive(true)
     end
 
-    if #self.enemies == 0 then
+    if #self.enemies == 0 and not self.allEnemiesDead then
         self:spawnEnemies()
     else
         for _, enemy in pairs(self.enemies) do
@@ -167,6 +169,13 @@ function Room:addCollisionBodies()
     end
 end
 
+function Room:clearEnemies()
+    for _, enemy in pairs(self.enemies) do
+        enemy.body:destroy()
+    end
+    self.enemies = {}
+end
+
 function Room:update(dt)
     for i = #self.attacks, 1, -1 do
         local attack = self.attacks[i]
@@ -192,6 +201,10 @@ function Room:update(dt)
             enemy.body:destroy()
             table.remove(self.enemies, i)
         end
+    end
+
+    if #self.enemies == 0 then
+         self.allEnemiesDead = true
     end
 end
 
