@@ -34,7 +34,8 @@ Toggle in `src/constants.lua`:
 DEBUG = true   -- shows collision boxes, hitboxes, hurtboxes.
 ```
 
-When `DEBUG` is true, the player also starts with all powerups unlocked (wall hold and double jump), which allows testing later rooms without playing through the full game.
+When `DEBUG` is true, the player also starts with all powerups unlocked (wall hold, double jump, attack combo),
+which allows testing later rooms without playing through the full game.
 
 Set `DEBUG = false` before final play-through for the intended experience.
 
@@ -56,7 +57,7 @@ The final boss scales in difficulty based on how many torches have been lit — 
 | `main2` | Platforming room. No enemies. Wall-hold powerup at the bottom. Two entries from main1. |
 | `main3` | Long vertical descent. Heavy enemy placement across multiple elevation levels. Double-jump powerup near the top. |
 | `main4` | Pre-boss room. Door requires minimum torches to open. Side room accessible via east exit. |
-| `main4-right` | Optional side room east of main4. Contains one torch. No enemies. |
+| `main4-right` | Optional side room east of main4. Contains one torch. No enemies. Combo attack powerup near the bottom right. |
 | `boss` | Boss arena. Boss spawns when player crosses approaches the room's midpoint. Boss music triggers in the BattleState. |
 
 **Total torches:** 6 (one per room except boss room)
@@ -115,8 +116,9 @@ If the player leaves the boss room during a battle, the battle state is cleaned 
 |---|---|---|
 | Wall Hold | Main 2 (bottom left) | Player can grab and hold walls, enabling wall jumping |
 | Double Jump | Main 3 (top right) | Player can jump a second time in the air |
+| Combo Attack | Main 4 Right (bottom left) | Player can press X to deal double damage |
 
-Powerups float via a sine wave. Collision is handled by Box2D sensor.
+Powerups float via a sine wave and collision is handled by Box2D.
 
 
 ## State Architecture
@@ -220,7 +222,7 @@ src/
     VictoryState.lua            Victory screen after boss death. Clears stack and returns to StartState.
     FadeInState.lua             Black fade in. Pops itself on complete, then calls callback.
     FadeOutState.lua            Black fade out. Pops itself on complete, then calls callback.
-    DialogueState.lua           Text dialogue overlay. Used for tutorial text.
+    DialogueState.lua           Text dialogue overlay. Used for tutorial, control panel and powerup acquisition text.
 
     player/
       PlayerIdleState.lua       Stops horizontal movement. Transitions to walk, run, jump, dash, attack.
@@ -231,7 +233,7 @@ src/
       PlayerDashState.lua       Timed dash via Timer. Grants invulnerability for dash duration.
       PlayerWallHoldState.lua   Zeroes velocity. Checks arrow key hold. Wall jump on space.
       PlayerSwordSwingState.lua Handles both swing and combo animations. Per-frame hitbox damage.
-      PlayerDeathState.lua      Plays death animation. After 3 deaths pushes GameOverState, else respawns.
+      PlayerDeathState.lua      Plays death animation. After 3 deaths, it pushes GameOverState and otherwise respawns.
 
     enemy/
       EnemyChaseState.lua       Extends EntityWalkState. Chases player, transitions to attack or idle.
@@ -254,17 +256,17 @@ src/
                                 each frame since boss moves during attack2.
       BossAppearState.lua       Positions boss near room center (random left/right side). After
                                 animation completes, 50/50 chase or immediate attack.
-      BossDisappearState.lua    Plays disappear animation. After 1s transitions to appear, guarded
+      BossDisappearState.lua    Plays the disappear animation. After 1s transitions to appear, guarded
                                 by bodyDestroyed flag to handle respawn cleanup safely.
 
     objects/
       TorchUnlitState.lua       Sets unlit animation.
-      TorchLitState.lua         Sets lit animation, sets lit flag.
+      TorchLitState.lua         Sets lit animation and the lit flag.
       DoorClosedState.lua       Sets closed animation.
       DoorOpenState.lua         Sets open animation. Sets door.open = true at frame 9.
 
     flame/
-      FlameFollowingState.lua   Calls Flame:returnToPlayer each update.
+      FlameFollowingState.lua   Calls Flame:returnToPlayer every update.
 
   gui/
     Panel.lua                   Bordered panel rendering utility.
