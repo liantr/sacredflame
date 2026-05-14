@@ -20,10 +20,9 @@ function PlayState:init()
     self:spawnEntities()
 
     self.torchesLit = 0
-    self.totalTorches = 6
+    self.totalTorches = TOTAL_TORCHES
 
     self.HUD = HUD(self)
-
 
     -- camera that follows the player
     self.camX = 0
@@ -104,7 +103,6 @@ function PlayState:init()
         end
 
         if types['player'] and types['enemy'] then
-            local playerFixture = a:getUserData().type == 'player' and a or b
             local enemyFixture = a:getUserData().type == 'enemy' and a or b
 
             local _, evy = enemyFixture:getBody():getLinearVelocity()
@@ -189,9 +187,6 @@ function PlayState:init()
     end
 
     self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
-
-    self.flameAvailable = true
-
     self.bossBattleInitiated = false
 end
 
@@ -250,18 +245,7 @@ function PlayState:update(dt)
             enemy:processAI({player = self.player}, dt)
         end
 
-        local torchesLit = 0
-        for _, room in pairs(self.map) do
-            if room.objects then
-                for _, object in pairs(room.objects) do
-                    if object.type =='torch' and object.lit then
-                        torchesLit = torchesLit + 1
-                    end
-                end
-            end
-        end
-
-        self.torchesLit = torchesLit
+        self:updateTorchesLit()
     end
 
     if self.currentRoom.name == 'boss' and not self.bossBattleInitiated then
@@ -278,6 +262,21 @@ function PlayState:update(dt)
     end
 
     self:updateCamera()
+end
+
+function PlayState:updateTorchesLit()
+    local torchesLit = 0
+    for _, room in pairs(self.map) do
+        if room.objects then
+            for _, object in pairs(room.objects) do
+                if object.type =='torch' and object.lit then
+                    torchesLit = torchesLit + 1
+                end
+            end
+        end
+    end
+
+    self.torchesLit = torchesLit
 end
 
 function PlayState:updateCamera()
@@ -308,12 +307,9 @@ function PlayState:updateCamera()
         self.camX = self.camX + (targetX - self.camX) * camSpeed
         self.camY = self.camY + (targetY - self.camY) * camSpeed
     end
-
-    -- adjust background X to move a third the rate of the camera for parallax
-    --self.backgroundX = (self.camX / 3) % 256
 end
 
-function PlayState:moveTo(connection, verticalDirection)
+function PlayState:moveTo(connection, direction)
     self.transitioning = true
     local previousRoomMusic = self.currentRoom.music
 
@@ -343,10 +339,10 @@ function PlayState:moveTo(connection, verticalDirection)
         self.player.room = self.currentRoom
 
         local px, py = self.player.body:getPosition()
-        if verticalDirection then
-            if verticalDirection == 'south' then
+        if direction then
+            if direction == 'south' then
                 self.player:changeState('falling')
-            elseif verticalDirection == 'north' then
+            elseif direction == 'north' then
                 self.player:changeState('jump')
             end
         end
@@ -366,41 +362,52 @@ function PlayState:transitionRooms()
     local connections = self.currentRoom.connectedRooms
 
     local connectionPoints
-    local verticalDirection
+    local direction
     if y > self.currentRoom.map.height * TILE_SIZE and connections.south then
         connectionPoints = connections.south
-        verticalDirection = 'south'
+        direction = 'south'
     elseif y < 0 and connections.north then
         connectionPoints = connections.north
-        verticalDirection = 'north'
+        direction = 'north'
     elseif x > self.currentRoom.map.width * TILE_SIZE and connections.east then
         connectionPoints = connections.east
+        direction = 'east'
     elseif x < 0 and connections.west then
         connectionPoints = connections.west
+        direction = 'west'
     end
 
     if connectionPoints then
-        local connection = self:getRoomConnection(connectionPoints)
+        local connection = self:getRoomConnection(connectionPoints, direction)
         if connection then
-            self:moveTo(connection, verticalDirection)
+            self:moveTo(connection, direction)
         end
     end
 end
 
 --[[
-    Gets the room connection the player's x is overlapping
+    Gets the room connection the player's x or y is overlapping.
+    Checks x position for north and south connections.
+    Transitions if the player goes past the room height in either direction and is within the horizontal gap
+
+    Checks y position for east and west connections.
+    Transitions if the player goes past the room width in either direction and is within the vertical gap
 ]]
-function PlayState:getRoomConnection(connections)
-    local overlappingConnection = nil
-    local px, _ = self.player.body:getPosition()
+function PlayState:getRoomConnection(connections, direction)
+    local px, py = self.player.body:getPosition()
     for _, connection in ipairs(connections) do
-        if px >= connection.gapX and px <= connection.gapX + ROOM_CONNECTION_SIZE then
-            overlappingConnection = connection
-            break
+        if direction == 'east' or direction == 'west'then
+            if py >= connection.gapY and py <= connection.gapY + ROOM_CONNECTION_SIZE then
+                return connection
+            end
+        else
+            if px >= connection.gapX and px <= connection.gapX + ROOM_CONNECTION_SIZE then
+                return connection
+            end
         end
     end
 
-    return overlappingConnection
+    return nil
 end
 
 function PlayState:reSpawn()
@@ -471,6 +478,6 @@ function PlayState:render()
     -- room transition fade in and out
     love.graphics.setColor(0,0,0,self.transitionAlpha)
     love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
-    
+
     love.graphics.setColor(1, 1, 1, 1)
 end
