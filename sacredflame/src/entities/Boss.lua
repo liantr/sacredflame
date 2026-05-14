@@ -7,6 +7,7 @@ function Boss:init(def, world, startX, startY, room)
     self.room = room
     self.playState = self.room.playState
 
+    -- boss health decreases by 2 per lit torch
     local torchesLit = self.playState.torchesLit
     self.health = self.health - (torchesLit * 2)
 end

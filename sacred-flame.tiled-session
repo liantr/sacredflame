@@ -224,11 +224,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -175.5,
-                "y": 299
+                "x": -431.33333333333326,
+                "y": 252
             }
         },
         "tiled/main4-right.tmx#Spikes 48x16": {

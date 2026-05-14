@@ -87,7 +87,7 @@ end
 function Room:spawnBoss()
     if self.def.boss then
         local bossDef = ENTITY_DEFS['boss']
-        local boss = Boss(bossDef, self.world, self.def.boss.spawnX, self.def.boss.spawnY, self)
+        local boss = Boss(bossDef, self.world, (self.map.width * TILE_SIZE) / 2, (self.map.height * TILE_SIZE) / 2, self)
         boss.stateMachine = StateMachine {
             ['idle'] = function() return BossIdleState(boss) end,
             ['chase'] = function() return BossChaseState(boss, self) end,
@@ -168,6 +168,9 @@ function Room:addCollisionBodies()
     end
 end
 
+--[[
+    Destroys all existing enemies in a room in preparation for respawn
+]]
 function Room:clearEnemies()
     for _, enemy in pairs(self.enemies) do
         enemy.destroyed = true
