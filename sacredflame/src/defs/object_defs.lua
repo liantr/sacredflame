@@ -27,6 +27,7 @@ OBJECT_DEFS = {
         category = POWERUP_CATEGORY,
         width = TILE_SIZE * 0.75,
         height = TILE_SIZE * 0.75,
+        acquisitionText = "Wall hold acquired",
         animations = {}
     },
     ['double-jump'] = {
@@ -37,6 +38,7 @@ OBJECT_DEFS = {
         category = POWERUP_CATEGORY,
         width = TILE_SIZE * 0.75,
         height = TILE_SIZE * 0.75,
+        acquisitionText = "Double jump acquired",
         animations = {}
     },
     ['door'] = {

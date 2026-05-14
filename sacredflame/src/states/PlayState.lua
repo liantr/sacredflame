@@ -98,6 +98,7 @@ function PlayState:init()
 
             local powerup = powerupFixture:getUserData().object
             powerup.consumed = true
+            powerup:pushAcquisitionDialogue()
 
             if powerup.name == 'wall-hold' then
                 self.player.wallHoldAllowed = true

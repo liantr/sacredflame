@@ -3,10 +3,15 @@ Powerup = Class{__includes=Object}
 function Powerup:init(def, world, x, y)
     Object.init(self, def, world, x, y)
     self.name = def.name
+    self.acquisitionText = def.acquisitionText
     self.angle = 0
     self.fixture:setUserData({type='powerup', object = self})
     self.consumed = false
     self.baseY = self.y
+
+    self.dialogBoxX = VIRTUAL_WIDTH / 2
+    self.dialogBoxY = VIRTUAL_HEIGHT / 2
+    self.dialogBoxWidth = TILE_SIZE * 6
 end
 
 function Powerup:update(dt)
@@ -15,6 +20,16 @@ function Powerup:update(dt)
     local x, _ = self.body:getPosition()
     local floatingY = math.sin(self.angle) * POWERUP_SIN_AMPLITUDE
     self.body:setPosition(x, self.baseY + floatingY)
+end
+
+function Powerup:pushAcquisitionDialogue()
+    gStateStack:push(DialogueState(
+        self.acquisitionText,
+        self.dialogBoxX,
+        self.dialogBoxY,
+        self.dialogBoxWidth,
+        self.dialogBoxWidth
+    ))
 end
 
 function Powerup:render()
