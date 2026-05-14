@@ -38,8 +38,6 @@ TOTAL_TORCHES = 6
 MIN_TORCH_TO_OPEN_DOOR = 5
 
 
--- DEBUG constants
-
 USE_ZOOM = true
 DEBUG = true --TODO set to false before submission
 
