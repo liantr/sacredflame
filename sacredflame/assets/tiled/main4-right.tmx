@@ -5,7 +5,7 @@
  </editorsettings>
  <tileset firstgid="1" source="blood temple.tsx"/>
  <tileset firstgid="257" name="Spikes 48x16" tilewidth="16" tileheight="16" tilecount="27" columns="27">
-  <image source="../sacredflame/assets/graphics/The Dark Series/Spikes 48x16.png" width="432" height="16"/>
+  <image source="../graphics/The Dark Series/Spikes 48x16.png" width="432" height="16"/>
  </tileset>
  <tileset firstgid="284" source="high temple.tsx"/>
  <layer id="3" name="background" width="40" height="20">
@@ -88,10 +88,10 @@
   <object id="5" name="wall" type="wall" x="512.007" y="32.0026" width="1.09091" height="111.006"/>
   <object id="6" name="wall" type="wall" x="574.904" y="113" width="1.09091" height="29.8242"/>
   <object id="7" name="wall" type="wall" x="543.028" y="32.0027" width="0.93466" height="79.9696"/>
-  <object id="8" name="wall" type="wall" x="398.955" y="31.997" width="1.09091" height="79.006"/>
-  <object id="9" name="wall" type="wall" x="368.027" y="31.9831" width="1.09091" height="79.006"/>
+  <object id="8" name="wall" type="wall" x="398.955" y="32.997" width="1.09091" height="79.006"/>
+  <object id="9" name="wall" type="wall" x="368.027" y="31.9831" width="1.09091" height="80.006"/>
   <object id="10" name="wall" type="wall" x="270.899" y="31.9534" width="1.09091" height="48.0495"/>
-  <object id="11" name="wall" type="wall" x="240.009" y="31.9687" width="1.09091" height="47.0138"/>
+  <object id="11" name="wall" type="wall" x="240.009" y="31.9687" width="1.09091" height="48.0763"/>
   <object id="12" name="wall" type="wall" x="190.873" y="81.0486" width="1.09091" height="13.9843"/>
   <object id="13" name="wall" type="wall" x="160.019" y="81.0486" width="1.09091" height="14.0278"/>
   <object id="16" name="wall" type="wall" x="368.024" y="209" width="1.09091" height="14.0278"/>
@@ -104,8 +104,8 @@
   <object id="23" name="ground" type="ground" x="368.008" y="207.988" width="31.984" height="0.993056"/>
   <object id="25" name="ground" type="ground" x="160.03" y="80.021" width="31.9849" height="0.993056"/>
   <object id="26" name="ground" type="ground" x="0.0388" y="287.972" width="479.86" height="0.993056"/>
-  <object id="27" name="ceiling" type="ceiling" x="240.008" y="78.9874" width="30.8872" height="1.01649"/>
-  <object id="28" name="ceiling" type="ceiling" x="368.008" y="111.003" width="31.9849" height="0.993056"/>
+  <object id="27" name="ceiling" type="ceiling" x="241.071" y="78.9874" width="29.8247" height="1.01649"/>
+  <object id="28" name="ceiling" type="ceiling" x="369.164" y="111.003" width="29.7825" height="0.993056"/>
   <object id="29" name="ceiling" type="ceiling" x="511.917" y="142.958" width="64.0758" height="0.993056"/>
   <object id="30" name="ceiling" type="ceiling" x="-0.06915" y="238.988" width="32.0758" height="0.993056"/>
   <object id="32" name="ceiling" type="ceiling" x="30.9594" y="30.9126" width="576.945" height="0.993056"/>
