@@ -89,6 +89,13 @@ gTextures = {
     ['templeBg3'] = love.graphics.newImage('assets/graphics/ruinedTemple/background3.png'),
     ['templeBg4'] = love.graphics.newImage('assets/graphics/ruinedTemple/background4.png'),
 
+    ['bossRoomBg1'] = love.graphics.newImage('assets/graphics/Boss Room/layer 1.png'),
+    ['bossRoomBg2'] = love.graphics.newImage('assets/graphics/Boss Room/layer 2.png'),
+    ['bossRoomBg3'] = love.graphics.newImage('assets/graphics/Boss Room/layer 3.png'),
+    ['bossRoomBg4'] = love.graphics.newImage('assets/graphics/Boss Room/layer 4.png'),
+    ['bossRoomBg5'] = love.graphics.newImage('assets/graphics/Boss Room/layer 5.png'),
+    ['bossRoomFg'] = love.graphics.newImage('assets/graphics/Boss Room/foreground.png'),
+
     -- health bars
     ['player-health-box'] = love.graphics.newImage('assets/graphics/health/health_bar_decoration.png'),
     ['player-health-bar'] = love.graphics.newImage('assets/graphics/health//health_bar.png'),

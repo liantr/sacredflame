@@ -253,6 +253,7 @@ ROOM_DEFS= {
     ['boss'] = {
         map = 'assets/graphics/map/boss.lua',
         music = 'depths',
+        background = 'boss',
         connectedRooms = {
             north = {
                 { room = 'main4', gapX = TILE_SIZE * 2, spawnX = TILE_SIZE * 3, spawnY = VIRTUAL_HEIGHT - TILE_SIZE * 3 }

@@ -476,9 +476,19 @@ function PlayState:render()
         love.graphics.draw(gTextures['templeBg2'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
         love.graphics.draw(gTextures['templeBg3'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
         love.graphics.draw(gTextures['templeBg4'], 0, 0, 0, VIRTUAL_WIDTH / 1024, VIRTUAL_HEIGHT / 576)
+    elseif self.currentRoom.background == 'boss' then
+        love.graphics.draw(gTextures['bossRoomBg1'], 0, 0, 0, VIRTUAL_WIDTH / 480, VIRTUAL_HEIGHT / 270)
+        love.graphics.draw(gTextures['bossRoomBg2'], 0, 0, 0, VIRTUAL_WIDTH / 480, VIRTUAL_HEIGHT / 270)
+        love.graphics.draw(gTextures['bossRoomBg3'], 0, 0, 0, VIRTUAL_WIDTH / 480, VIRTUAL_HEIGHT / 270)
+        love.graphics.draw(gTextures['bossRoomBg4'], 0, 0, 0, VIRTUAL_WIDTH / 480, VIRTUAL_HEIGHT / 270)
+        love.graphics.draw(gTextures['bossRoomBg5'], 0, 0, 0, VIRTUAL_WIDTH / 480, VIRTUAL_HEIGHT / 270)
     end
 
     self.currentRoom:render()
+
+    if self.currentRoom.background == 'boss' then
+        love.graphics.draw(gTextures['bossRoomFg'], 0, 0, 0, VIRTUAL_WIDTH / 480, VIRTUAL_HEIGHT / 270)
+    end
 
     love.graphics.pop()
 
