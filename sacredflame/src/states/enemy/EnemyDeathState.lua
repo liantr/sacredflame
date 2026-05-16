@@ -13,22 +13,7 @@ function EnemyDeathState:enter(params)
     self.entity:changeAnimation('death')
 
     if self.entity.fixture:getUserData().type == 'boss' then
-        self.entity.dead = true
-        
         gSounds['boss']:stop()
-        Timer.after(10, function()
-            gStateStack:push(FadeInState({
-                r = 0, g = 0, b = 0
-            }, 1,
-            function()
-                gStateStack:pop() -- pop play state
-                gStateStack:push(VictoryState())
-                gStateStack:push(FadeOutState({
-                    r = 0, g = 0, b = 0
-                }, 1,
-                function() end))
-            end))
-        end)
     end
 end
 
@@ -40,5 +25,19 @@ function EnemyDeathState:update(dt)
     if anim.timesPlayed > 0 then
         anim.timesPlayed = 0
         self.entity.dead = true
+
+        if self.entity.fixture:getUserData().type == 'boss' then
+            gStateStack:push(FadeInState({
+                    r = 0, g = 0, b = 0
+                }, 1,
+            function()
+                gStateStack:clear()
+                gStateStack:push(VictoryState())
+                gStateStack:push(FadeOutState({
+                    r = 0, g = 0, b = 0
+                }, 1,
+                function() end))
+            end))
+        end
     end
 end
