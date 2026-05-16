@@ -195,8 +195,8 @@ src/
   entities/
     Entity.lua                  Base class for all entities. Box2D body creation, animation playback,
                                 invulnerability flashing, health/death logic, health drop on death.
-    Player.lua                  Extends Entity. Input handling, wall grab logic, particle system
-                                for health restore effect, glow surrounding the player sprite render.
+    Player.lua                  Extends Entity. Input handling, wall grab logic, taking damage from enemies,
+                                particle system for health restore effect, glow surrounding the player sprite render.
     Boss.lua                    Extends Entity. Custom hurtbox system per animation frame. Health
                                 scaled by torches lit at spawn time.
     Flame.lua                   Extends Entity. Kinematic body. Follows player and has a sine

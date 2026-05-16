@@ -120,12 +120,12 @@ function PlayState:init()
             enemyFixture:getBody():setLinearVelocity(0, evy)
 
             -- player takes damage and goes invulnerable for a short period
-            damagePlayer(self.player)
+            self.player:takeDamage()
         end
 
         if types['player'] and types['spike'] then
             -- player takes damage and goes invulnerable for a short period
-            damagePlayer(self.player)
+            self.player:takeDamage()
         end
 
         if types['enemy'] and types['wall'] then

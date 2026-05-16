@@ -28,6 +28,34 @@ function Player:init(def, world, startX, startY)
     self:createParticleSystem()
 end
 
+--[[
+    Called when the player collides with an enemy's Box2D box
+]]
+function Player:takeDamage()
+    if self.health > 0 and not self.invulnerable then
+        self:damage(1)
+        self:goInvulnerable(1.5)
+        gSounds['hit-player']:play()
+        return true
+    end
+
+    return false
+end
+
+--[[
+    Damages the player when colliding with an enemy's hit box
+]]
+function Player:takeDamageFromEnemyHitBox(hitBox)
+    if self:collides(hitBox) and self.health > 0 and not self.invulnerable then
+        self:damage(1)
+        self:goInvulnerable(1.5)
+        gSounds['hit-player']:play()
+        return true
+    end
+
+    return false
+end
+
 function Player:update(dt)
     Entity.update(self, dt)
     local x, y = self.body:getPosition()

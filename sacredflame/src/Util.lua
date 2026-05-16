@@ -83,7 +83,9 @@ function getYDistanceFromPlayer(entity, player)
     return py - ey
 end
 
-
+--[[
+    Damage enemies when they collide with the player's hit box
+]]
 function damageEnemy(room, hitBox)
     for k, enemy in pairs(room.enemies) do
         if enemy:collides(hitBox) and enemy.health > 0 then
@@ -95,27 +97,16 @@ function damageEnemy(room, hitBox)
     return false
 end
 
+--[[
+    Damages the player when colliding with an enemy's hit box
+]]
 function damagePlayerWithHitBox(room, hitBox)
-    local player = room.player
-    if player:collides(hitBox) and player.health > 0 and not player.invulnerable then
-        player:damage(1)
-        player:goInvulnerable(1.5)
-        gSounds['hit-player']:play()
-        return true
+    if room and room.player then
+        return room.player:takeDamageFromEnemyHitBox(hitBox)
     end
+
     return false
 end
-
-function damagePlayer(player)
-    if player.health > 0 and not player.invulnerable then
-        player:damage(1)
-        player:goInvulnerable(1.5)
-        gSounds['hit-player']:play()
-        return true
-    end
-    return false
-end
-
 
 --[[
     Creates a hit box table per attack animation from entity_defs
