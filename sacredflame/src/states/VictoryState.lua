@@ -31,9 +31,10 @@ function VictoryState:render()
     love.graphics.setFont(gFonts['title'])
 
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.printf('Congratulations, you\'ve defeated the darkness', 0, VIRTUAL_HEIGHT / 2 - 40, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Congratulations', 0, VIRTUAL_HEIGHT / 2 - 40, VIRTUAL_WIDTH, 'center')
 
     love.graphics.setFont(gFonts['large'])
-    
+    love.graphics.printf('You\'ve defeated the darkness', 0, (VIRTUAL_HEIGHT / 2) + 40, VIRTUAL_WIDTH, 'center')
+
     love.graphics.setColor(1, 1, 1, 1)
 end
