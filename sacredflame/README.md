@@ -32,17 +32,20 @@ love .
 Toggle in `src/constants.lua`:
 
 ```lua
-DEBUG = true   -- shows collision boxes, hitboxes, hurtboxes.
+DEBUG = true
 ```
 
-When `DEBUG` is true, the player also starts with all powerups unlocked (wall hold, double jump, attack combo),
-which allows testing later rooms without playing through the full game.
+When DEBUG is true:
+1. The player starts with all powerups unlocked (wall hold, double jump, attack combo)
+2. Boss health is set to 2 for a quick defeat
+3. Boss gate only needs 1 torch to open
+4. All Box2D bodies, AABB hitboxes, hurtboxes and collision surface debug rectangles are rendered
 
 Set `DEBUG = false` before final play-through for the intended experience.
 
 ## Gameplay Overview
 
-The player descends through 7 interconnected rooms of a corrupted ancient temple, fighting enemies and rekindling sacred torches. Each torch lit is a respawn point and restores full health. A minimum number of torches must be lit to open the door to the boss room.
+The player descends through 7 interconnected rooms of a corrupted ancient temple, fighting enemies and rekindling sacred torches. Each lit torch is a respawn point and restores full health. A minimum number of torches must be lit to open the door to the boss room.
 
 The final boss scales in difficulty based on how many torches have been lit — the more torches lit, the weaker the boss. This creates a trade-off between taking time to explore and rushing to the boss.
 

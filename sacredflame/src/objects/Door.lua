@@ -87,5 +87,5 @@ function Door:render()
 end
 
 function Door:openingRequirementMet()
-    return self.playState.torchesLit >= MIN_TORCH_TO_OPEN_DOOR
+    return self.playState.torchesLit >= (DEBUG and 1 or MIN_TORCH_TO_OPEN_DOOR)
 end
