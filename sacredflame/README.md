@@ -15,6 +15,7 @@ love .
 ## Controls
 
 | Key | Action |
+|---|---|
 | Arrow Left / Right | Move |
 | Space | Jump |
 | Left Shift | Run |
